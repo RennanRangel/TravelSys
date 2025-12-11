@@ -1,10 +1,10 @@
-#  Golobe - Sistema de Reservas de Voos e Hotéis
+#  Travel - Sistema de Reservas de Voos e Hotéis
 
 Sistema web desenvolvido em **ASP.NET Core MVC** para gestão de reservas de voos e hospedagens, utilizando **Entity Framework Core** para persistência de dados e **Bootstrap 5** para interface responsiva.
 
 ##  Sobre o Projeto
 
-O **Golobe** é uma aplicação de reservas de viagens que permite aos usuários:
+O **Travel** é uma aplicação de reservas de viagens que permite aos usuários:
 - Pesquisar e reservar voos
 - Pesquisar e reservar hotéis
 - Gerenciar suas reservas e tickets
