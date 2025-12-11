@@ -1,0 +1,96 @@
+@model IEnumerable<ProjetoHotelAviao.Models.Booking>
+@{
+    ViewData["Title"] = "My Tickets - Travel";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/flight-booking.css">
+    <link rel="stylesheet" href="~/css/mytickets.css">
+}
+
+<div class="main-container my-tickets-container">
+    <div class="page-header">
+        <h1><i class="fas fa-ticket-alt me-3"></i>My Tickets</h1>
+        <p>View all your booked flight tickets (@Model.Count() total)</p>
+    </div>
+    
+    @if (!Model.Any())
+    {
+        <div class="empty-state">
+            <i class="fas fa-plane-departure"></i>
+            <h2>No tickets yet</h2>
+            <p>You haven't booked any flights yet. Start exploring our destinations!</p>
+            <a href="@Url.Action("Index", "Flights")" class="btn-browse">
+                <i class="fas fa-search me-2"></i>Browse Flights
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="tickets-list">
+            @foreach (var booking in Model)
+            {
+                <div class="ticket-card">
+                    <div class="ticket-card-header">
+                        <div>
+                            <div class="ticket-number">Ticket #@booking.TicketNumber</div>
+                            <strong>@booking.Flight?.Airline</strong>
+                        </div>
+                        <div class="ticket-status">@booking.Status</div>
+                    </div>
+                    <div class="ticket-card-body">
+                        <div class="flight-route">
+                            <div class="route-point">
+                                <div class="time">@booking.Flight?.Departure</div>
+                                <div class="city">@booking.Flight?.From</div>
+                            </div>
+                            <div class="route-arrow">
+                                <div class="line"></div>
+                                <i class="fas fa-plane"></i>
+                                <div class="line"></div>
+                            </div>
+                            <div class="route-point">
+                                <div class="time">@booking.Flight?.Arrival</div>
+                                <div class="city">@booking.Flight?.To</div>
+                            </div>
+                        </div>
+                        <div class="ticket-details">
+                            <div class="detail-item">
+                                <span class="label">Booking Date</span>
+                                <span class="value">@booking.BookingDate.ToString("dd MMM yyyy")</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Duration</span>
+                                <span class="value">@booking.Flight?.Duration</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Gate</span>
+                                <span class="value">@booking.Gate</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Seat</span>
+                                <span class="value">@booking.Seat</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ticket-card-footer">
+                        <div class="ticket-price">$@booking.TotalPrice.ToString("F2")</div>
+                        <div class="ticket-actions-group">
+                            <form asp-action="Ticket" asp-route-id="" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="@booking.Id" />
+                                <button type="submit" class="btn-view-ticket" style="border:none; cursor:pointer;">
+                                    <i class="fas fa-eye me-2"></i>View Ticket
+                                </button>
+                            </form>
+                            <form asp-controller="Flights" asp-action="DeleteTicket" asp-route-id="@booking.Id" method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to cancel this ticket? This action cannot be undone.');">
+                                <button type="submit" class="btn-delete-ticket">
+                                    <i class="fas fa-trash-alt me-2"></i>Cancel
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

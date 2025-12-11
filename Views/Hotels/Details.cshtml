@@ -1,0 +1,173 @@
+@model ProjetoHotelAviao.Models.Hotel
+@{
+    ViewData["Title"] = "Hotel Details - Travel";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/hotel-details.css">
+}
+
+
+<div class="container">
+    
+    <div class="breadcrumbs">
+        <a href="@Url.Action("Index", "Hotels")">Hotels</a> <i class="fas fa-chevron-right"></i>
+        <a href="#">@Model.Location</a> <i class="fas fa-chevron-right"></i>
+        <span id="breadcrumbHotelName">@Model.Name</span>
+    </div>
+
+    <div class="hotel-title-section">
+        <div class="hotel-info">
+            <div class="title-row">
+                <h1 id="hotelTitle">@Model.Name</h1>
+                <div class="stars" id="hotelStars">
+                    @for (int i = 0; i < Model.Stars; i++)
+                    {
+                        <i class="fas fa-star"></i>
+                    }
+                    <span>@Model.Stars Star Hotel</span>
+                </div>
+            </div>
+            <div class="location-row">
+                <i class="fas fa-map-marker-alt"></i>
+                <span id="hotelLocation">@Model.Location</span>
+            </div>
+            <div class="rating-row">
+                <span class="rating-badge">@Model.Rating</span>
+                <span class="rating-text">Very Good</span>
+                <span class="review-count">@Model.Reviews reviews</span>
+            </div>
+        </div>
+        <div class="hotel-price-action">
+            <div class="price-display">
+                <span class="price" id="hotelPrice">$@Model.Price</span>
+                <span class="unit">/night</span>
+            </div>
+            <div class="action-buttons">
+                <form asp-action="Booking" asp-route-id="" method="post">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <button type="submit" class="btn-book" style="border: none; cursor: pointer;">Book now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-grid" id="hotelGallery">
+        @{
+            var galleryImages = new List<string>();
+            if (!string.IsNullOrEmpty(Model.GalleryImages))
+            {
+                try
+                {
+                    galleryImages = System.Text.Json.JsonSerializer.Deserialize<List<string>>(Model.GalleryImages) ?? new List<string>();
+                }
+                catch { }
+            }
+            
+            var placeholders = new List<string>
+            {
+                "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600",
+                "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600",
+                "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600",
+                "https://images.unsplash.com/photo-1512918760532-3ed0006feb19?w=600"
+            };
+        }
+
+        <div class="gallery-item main-image">
+            @if (!string.IsNullOrEmpty(Model.MainImage))
+            {
+                <img src="@Model.MainImage" alt="Hotel Main View">
+            }
+            else
+            {
+                <div style="width: 100%; height: 100%; background-color: #eee; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-hotel" style="font-size: 64px; color: #ccc;"></i>
+                </div>
+            }
+        </div>
+
+        @for (int i = 0; i < 4; i++)
+        {
+            var imgUrl = (i < galleryImages.Count) ? galleryImages[i] : placeholders[i];
+            var isLast = (i == 3);
+            
+            <div class="gallery-item @(isLast ? "view-all-container" : "")">
+                <img src="@imgUrl" alt="Gallery Image">
+               
+            </div>
+        }
+    </div>
+
+    <section class="overview-section">
+        <h2>Overview</h2>
+        <p id="hotelOverview">
+            @if (!string.IsNullOrEmpty(Model.Overview))
+            {
+                @Model.Overview
+            }
+            else
+            {
+                @:No overview available for this hotel.
+            }
+        </p>
+
+        <div class="overview-badges" id="hotelAmenities">
+            <div class="badge">
+                <span class="badge-score">@Model.Rating</span>
+                <div class="badge-text">
+                    <strong>Very good</strong>
+                    <span>@Model.Reviews reviews</span>
+                </div>
+            </div>
+            @if (!string.IsNullOrEmpty(Model.Amenities))
+            {
+                @foreach (var amenity in Model.Amenities.Split(',').Take(4))
+                {
+                    <div class="badge">
+                        <i class="fas fa-check"></i>
+                        <span>@amenity.Trim()</span>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+
+    <section class="amenities-section">
+        <h2>Amenities</h2>
+        <div class="amenities-grid">
+            @if (!string.IsNullOrEmpty(Model.Amenities))
+            {
+                @foreach (var amenity in Model.Amenities.Split(','))
+                {
+                    <div class="amenity-item"><i class="fas fa-check-circle"></i> @amenity.Trim()</div>
+                }
+            }
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <div class="reviews-header">
+            <h2>Reviews</h2>
+        </div>
+
+        <div class="rating-summary">
+            <span class="big-score">@Model.Rating</span>
+            <div class="rating-text-group">
+                <span class="status">Very good</span>
+                <span class="count">@Model.Reviews verified reviews</span>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+@section Scripts {
+    <script src="~/js/favorites-manager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            FavoritesManager.initButtons();
+        });
+    </script>
+}

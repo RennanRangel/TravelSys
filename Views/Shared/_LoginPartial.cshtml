@@ -1,0 +1,14 @@
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <div class="user-info">
+        <span class="user-email">@User.Identity?.Name</span>
+        <a href="@Url.Action("Logout", "Account")" class="btn-logout">Logout</a>
+    </div>
+}
+else
+{
+    <div class="auth-links">
+        <a href="@Url.Action("Login", "Account")" class="btn-login">Login</a>
+        <a href="@Url.Action("Register", "Account")" class="btn-signup">Sign up</a>
+    </div>
+}

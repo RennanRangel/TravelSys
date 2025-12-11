@@ -1,0 +1,211 @@
+@model ProjetoHotelAviao.Models.Flight
+
+@{
+    ViewData["Title"] = "Edit Flight - Admin Panel";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css">
+}
+
+<div class="container" style="margin-top: 120px; margin-bottom: 60px;">
+    <div class="admin-header" style="margin-bottom: 40px;">
+        <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 8px;">
+            <i class="fas fa-edit" style="color: #8DD3BB;"></i> Edit Flight
+        </h1>
+        <p style="color: #112211; opacity: 0.7;">Update flight information for @Model.Airline</p>
+    </div>
+
+    <div class="features-section">
+        <form asp-action="UpdateFlight" class="admin-form editing-mode" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-grid">
+                
+                <div class="form-section-group">
+                    <h3><i class="fas fa-info-circle"></i> Basic Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="Airline"><i class="fas fa-plane"></i> Airline Name *</label>
+                            <input asp-for="Airline" required placeholder="e.g., Emirates">
+                            <span asp-validation-for="Airline" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Logo"><i class="fas fa-image"></i> Airline Logo URL (or paste image) *</label>
+                            <div class="input-group">
+                                <input asp-for="Logo" class="magic-paste-target" data-target-file="LogoUpload" required placeholder="Paste image here or enter URL">
+                                <input asp-for="LogoUpload" type="file" class="form-control d-none" accept="image/*">
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="this.previousElementSibling.click()"><i class="fas fa-upload"></i></button>
+                            </div>
+                            <span asp-validation-for="Logo" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="form-section-group">
+                    <h3><i class="fas fa-route"></i> Route Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="From"><i class="fas fa-plane-departure"></i> From (Origin) *</label>
+                            <input asp-for="From" required placeholder="e.g., Lahore">
+                            <span asp-validation-for="From" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="To"><i class="fas fa-plane-arrival"></i> To (Destination) *</label>
+                            <input asp-for="To" required placeholder="e.g., Karachi">
+                            <span asp-validation-for="To" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                         <div class="form-group full-width">
+                            <label asp-for="TripType"><i class="fas fa-exchange-alt"></i> Trip Type *</label>
+                            <select asp-for="TripType" required>
+                                <option value="Round trip">Round trip</option>
+                                <option value="One Way">One Way</option>
+                                <option value="Multi-City">Multi-City</option>
+                            </select>
+                            <span asp-validation-for="TripType" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="form-section-group">
+                    <h3><i class="fas fa-clock"></i> Schedule Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="Departure"><i class="fas fa-calendar-day"></i> Departure Time *</label>
+                            <input asp-for="Departure" required placeholder="e.g., 12:00 pm">
+                            <span asp-validation-for="Departure" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Arrival"><i class="fas fa-calendar-check"></i> Arrival Time *</label>
+                            <input asp-for="Arrival" required placeholder="e.g., 02:30 pm">
+                            <span asp-validation-for="Arrival" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="Duration"><i class="fas fa-hourglass-half"></i> Duration *</label>
+                            <input asp-for="Duration" required placeholder="e.g., 2h 30m">
+                            <span asp-validation-for="Duration" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Stops"><i class="fas fa-map-marker-alt"></i> Stops *</label>
+                            <select asp-for="Stops" required>
+                                <option value="non stop">Non Stop</option>
+                                <option value="1 stop">1 Stop</option>
+                                <option value="2 stops">2 Stops</option>
+                            </select>
+                            <span asp-validation-for="Stops" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="form-section-group">
+                    <h3><i class="fas fa-star"></i> Pricing & Rating</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="Price"><i class="fas fa-dollar-sign"></i> Price ($) *</label>
+                            <input asp-for="Price" type="number" required min="0" step="1" placeholder="e.g., 150">
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Rating"><i class="fas fa-star-half-alt"></i> Rating (0-5) *</label>
+                            <input asp-for="Rating" type="number" required min="0" max="5" step="0.1" placeholder="e.g., 4.5">
+                            <span asp-validation-for="Rating" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="Reviews"><i class="fas fa-comments"></i> Number of Reviews *</label>
+                            <input asp-for="Reviews" type="number" required min="0" placeholder="e.g., 100">
+                            <span asp-validation-for="Reviews" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="form-section-group">
+                    <h3><i class="fas fa-images"></i> Visual Details</h3>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label asp-for="MainImage"><i class="fas fa-image"></i> Main Image URL (or paste image)</label>
+                            <div class="input-group">
+                                <input asp-for="MainImage" class="magic-paste-target" data-target-file="MainImageUpload" placeholder="Paste image here or enter URL">
+                                <input asp-for="MainImageUpload" type="file" class="form-control d-none" accept="image/*">
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="this.previousElementSibling.click()"><i class="fas fa-upload"></i></button>
+                            </div>
+                            <span asp-validation-for="MainImage" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label asp-for="GalleryImagesUpload"><i class="fas fa-images"></i> Gallery Images</label>
+                            <input type="hidden" asp-for="GalleryImages" />
+                            <div class="input-group">
+                                <input asp-for="GalleryImagesUpload" type="file" class="form-control" multiple accept="image/*">
+                            </div>
+                            <span asp-validation-for="GalleryImagesUpload" class="text-danger"></span>
+                            @if (!string.IsNullOrEmpty(Model.GalleryImages))
+                            {
+                                <div class="mt-2">
+                                    <label>Current Gallery:</label>
+                                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                        @{
+                                            var gallery = new List<string>();
+                                            try {
+                                                gallery = System.Text.Json.JsonSerializer.Deserialize<List<string>>(Model.GalleryImages) ?? new List<string>();
+                                            } catch {}
+                                        }
+                                        @foreach(var img in gallery)
+                                        {
+                                            <div style="position: relative; text-align: center;">
+                                                <img src="@img" style="height: 80px; width: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;" />
+                                                <div style="margin-top: 5px;">
+                                                    <input type="checkbox" name="ImagesToDelete" value="@img" id="del_@img.GetHashCode()" />
+                                                    <label for="del_@img.GetHashCode()" style="font-size: 12px; color: #dc3545; cursor: pointer;">Delete</label>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label asp-for="Policies"><i class="fas fa-file-contract"></i> Airline Policies</label>
+                            <textarea asp-for="Policies" rows="4" placeholder="Enter airline policies..."></textarea>
+                            <span asp-validation-for="Policies" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label asp-for="Amenities"><i class="fas fa-concierge-bell"></i> Amenities</label>
+                            <input asp-for="Amenities" placeholder="e.g., WiFi, Meal, Entertainment">
+                            <span asp-validation-for="Amenities" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+                <a asp-action="Index" class="btn-cancel">
+                    <i class="fas fa-times"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/admin-upload.js"></script>
+}

@@ -1,0 +1,186 @@
+@model ProjetoHotelAviao.Models.Hotel
+
+@{
+    ViewData["Title"] = "Edit Hotel - Admin Panel";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin.css">
+}
+
+<div class="container" style="margin-top: 120px; margin-bottom: 60px;">
+    <div class="admin-header" style="margin-bottom: 40px;">
+        <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 8px;">
+            <i class="fas fa-edit" style="color: #8DD3BB;"></i> Edit Hotel
+        </h1>
+        <p style="color: #112211; opacity: 0.7;">Update hotel information for @Model.Name</p>
+    </div>
+
+    <div class="features-section">
+        <form asp-action="UpdateHotel" class="admin-form editing-mode" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-grid">
+                
+                <div class="form-section-group">
+                    <h3><i class="fas fa-info-circle"></i> Basic Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="Name"><i class="fas fa-hotel"></i> Hotel Name *</label>
+                            <input asp-for="Name" required placeholder="e.g., Grand Hotel">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Type"><i class="fas fa-building"></i> Property Type</label>
+                            <select asp-for="Type">
+                                <option value="Hotel">Hotel</option>
+                                <option value="Motel">Motel</option>
+                                <option value="Resort">Resort</option>
+                            </select>
+                            <span asp-validation-for="Type" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="form-section-group">
+                    <h3><i class="fas fa-map-marker-alt"></i> Location Information</h3>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label asp-for="Location"><i class="fas fa-location-arrow"></i> Location *</label>
+                            <input asp-for="Location" required placeholder="e.g., Istanbul, Turkey">
+                            <span asp-validation-for="Location" class="text-danger"></span>
+                        </div>
+                    </div>
+                
+                </div>
+
+                
+                <div class="form-section-group">
+                    <h3><i class="fas fa-align-left"></i> Description</h3>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label asp-for="Overview"><i class="fas fa-file-alt"></i> Overview</label>
+                            <textarea asp-for="Overview" rows="4" placeholder="Enter hotel description..."></textarea>
+                            <span asp-validation-for="Overview" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="form-section-group">
+                    <h3><i class="fas fa-star"></i> Pricing & Rating</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="Stars"><i class="fas fa-star"></i> Stars *</label>
+                            <select asp-for="Stars" required>
+                                <option value="3">3 Stars</option>
+                                <option value="4">4 Stars</option>
+                                <option value="5">5 Stars</option>
+                            </select>
+                            <span asp-validation-for="Stars" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Price"><i class="fas fa-dollar-sign"></i> Price ($) *</label>
+                            <input asp-for="Price" type="number" required min="0" step="1" placeholder="e.g., 200">
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                         <div class="form-group">
+                            <label asp-for="Rating"><i class="fas fa-star-half-alt"></i> Rating (0-5) *</label>
+                            <input asp-for="Rating" type="number" required min="0" max="5" step="0.1" placeholder="e.g., 4.8">
+                            <span asp-validation-for="Rating" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Reviews"><i class="fas fa-comments"></i> Number of Reviews *</label>
+                            <input asp-for="Reviews" type="number" required min="0" placeholder="e.g., 250">
+                            <span asp-validation-for="Reviews" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="form-section-group">
+                    <h3><i class="fas fa-images"></i> Visual Details</h3>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label asp-for="MainImage"><i class="fas fa-image"></i> Main Image URL (or paste image)</label>
+                            <div class="input-group">
+                                <input asp-for="MainImage" class="magic-paste-target" data-target-file="MainImageUpload" placeholder="Paste image here or enter URL">
+                                <input asp-for="MainImageUpload" type="file" class="form-control d-none" accept="image/*">
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="this.previousElementSibling.click()"><i class="fas fa-upload"></i></button>
+                            </div>
+                            <span asp-validation-for="MainImage" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label><i class="fas fa-images"></i> Gallery Images</label>
+                            <input type="hidden" asp-for="GalleryImages" />
+                            
+                            
+                            <div class="mb-3">
+                                <label class="form-label small text-muted">Add new images</label>
+                                <input asp-for="GalleryImagesUpload" type="file" multiple class="form-control" accept="image/*" />
+                            </div>
+
+                            
+                            @if (!string.IsNullOrEmpty(Model.GalleryImages))
+                            {
+                                <div class="mt-3">
+                                    <label class="form-label small text-muted">Current Gallery (Select to delete)</label>
+                                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                                        @{
+                                            var gallery = new List<string>();
+                                            try {
+                                                gallery = System.Text.Json.JsonSerializer.Deserialize<List<string>>(Model.GalleryImages) ?? new List<string>();
+                                            } catch {}
+                                        }
+                                        @foreach(var img in gallery)
+                                        {
+                                            <div style="position: relative; text-align: center; border: 1px solid #ddd; padding: 5px; border-radius: 8px;">
+                                                <img src="@img" style="height: 100px; width: 100px; object-fit: cover; border-radius: 4px; display: block; margin-bottom: 5px;" />
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" name="ImagesToDelete" value="@img" id="del_@img.GetHashCode()">
+                                                    <label class="form-check-label text-danger small" for="del_@img.GetHashCode()">Delete</label>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="form-section-group">
+                    <h3><i class="fas fa-concierge-bell"></i> Amenities</h3>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label asp-for="Amenities"><i class="fas fa-list-ul"></i> Amenities (comma-separated)</label>
+                            <textarea asp-for="Amenities" rows="3" placeholder="e.g., Free WiFi, Pool, Spa, Restaurant, Gym, Bar"></textarea>
+                            <span asp-validation-for="Amenities" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+                <a asp-action="Index" class="btn-cancel">
+                    <i class="fas fa-times"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/admin-upload.js"></script>
+}

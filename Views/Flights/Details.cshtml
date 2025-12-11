@@ -1,0 +1,168 @@
+@model ProjetoHotelAviao.Models.Flight
+@{
+    ViewData["Title"] = "Flight Details - Travel";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/flight-details.css">
+}
+
+
+<div class="main-container">
+    
+    <div class="breadcrumbs">
+        <a href="@Url.Action("Index", "Flights")">Flights</a> <i class="fas fa-chevron-right"></i>
+        <a href="#">@Model.Airline</a> <i class="fas fa-chevron-right"></i>
+        <span>@Model.From to @Model.To</span>
+    </div>
+
+    
+    <div class="title-section">
+        <div class="title-info">
+            <h1>@Model.Airline Flight</h1>
+            <div class="location-info">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>@Model.From to @Model.To</span>
+            </div>
+            <div class="rating-info">
+                <span class="badge">@Model.Rating</span>
+                <span class="rating-text">Very Good</span>
+                <span class="reviews">@Model.Reviews reviews</span>
+            </div>
+        </div>
+        <div class="price-actions">
+            <div class="price">$@Model.Price</div>
+            <div class="action-buttons">
+               
+                <form asp-action="Booking" asp-route-id="" method="post" style="flex: 1; display: flex;">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <button type="submit" class="btn-book">Book now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="hero-section">
+        @if (!string.IsNullOrEmpty(Model.MainImage))
+        {
+            <img src="@Model.MainImage" alt="@Model.Airline" class="hero-image">
+        }
+        else
+        {
+            <div style="width: 100%; height: 400px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-plane" style="font-size: 64px; color: #ccc;"></i>
+            </div>
+        }
+    </div>
+
+    
+    <div class="features-section">
+        <div class="features-header">
+            <h2>Basic Economy Features</h2>
+            <div class="class-options">
+                <label class="checkbox-option">
+                    <input type="checkbox" checked>
+                    <span>Economy</span>
+                </label>
+            </div>
+        </div>
+        <div class="features-gallery">
+            @if (!string.IsNullOrEmpty(Model.GalleryImages))
+            {
+                var gallery = new List<string>();
+                try {
+                    gallery = System.Text.Json.JsonSerializer.Deserialize<List<string>>(Model.GalleryImages) ?? new List<string>();
+                } catch { }
+
+                if (gallery.Any())
+                {
+                    foreach (var img in gallery.Take(7))
+                    {
+                        <img src="@img" alt="Flight Feature">
+                    }
+                }
+            }
+       
+        </div>
+    </div>
+
+    
+    <div class="policies-section">
+        <h3>@Model.Airline Policies</h3>
+        <div class="policies-grid">
+            @if (!string.IsNullOrEmpty(Model.Policies))
+            {
+                @foreach (var policy in Model.Policies.Split('\n'))
+                {
+                    <div class="policy-item">
+                        <i class="fas fa-stopwatch"></i>
+                        <span>@policy</span>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="policy-item">
+                    <i class="fas fa-info-circle"></i>
+                    <span>No specific policies listed.</span>
+                </div>
+            }
+        </div>
+    </div>
+
+    
+    <div class="return-flights">
+        <div class="return-flight-card">
+            <div class="flight-header">
+                <h3>Flight Schedule</h3>
+                <span class="flight-duration">@Model.Duration</span>
+            </div>
+            <div class="flight-content">
+                <div class="airline-details">
+                    <div class="airline-logo-box">
+                        <img src="@Model.Logo" alt="@Model.Airline">
+                    </div>
+                    <div class="airline-name">
+                        <h4>@Model.Airline</h4>
+                        <span>@Model.Stops</span>
+                    </div>
+                </div>
+                <div class="flight-amenities">
+                    <i class="fas fa-plane"></i>
+                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-stopwatch"></i>
+                    <i class="fas fa-utensils"></i>
+                    <i class="fas fa-wheelchair"></i>
+                </div>
+            </div>
+            <div class="flight-timeline">
+                <div class="time-point">
+                    <span class="time">@Model.Departure</span>
+                    <span class="airport">@Model.From</span>
+                </div>
+                <div class="flight-path">
+                    <div class="path-line"></div>
+                    <i class="fas fa-plane"></i>
+                    <div class="path-line"></div>
+                </div>
+                <div class="time-point">
+                    <span class="time">@Model.Arrival</span>
+                    <span class="airport">@Model.To</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    <script src="~/js/favorites-manager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            FavoritesManager.initButtons();
+        });
+    </script>
+}

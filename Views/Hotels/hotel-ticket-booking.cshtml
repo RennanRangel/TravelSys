@@ -1,0 +1,150 @@
+@model ProjetoHotelAviao.Models.HotelBooking
+@{
+    ViewData["Title"] = "Reservation - Travel";
+    var hotel = Model.Hotel;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/flight-booking.css">
+    <link rel="stylesheet" href="~/css/flight-ticket.css">
+}
+
+<div class="main-container">
+    <div class="breadcrumbs">
+        <a href="@Url.Action("Index", "Hotels")">Hotels</a> <i class="fas fa-chevron-right"></i>
+        <a href="@Url.Action("MyReservations", "Hotels")">My Reservations</a> <i class="fas fa-chevron-right"></i>
+        <span>Reservation #@Model.ReservationNumber</span>
+    </div>
+
+    <div class="ticket-header-section">
+        <div class="ticket-title">
+            <h1>@hotel?.Name</h1>
+            <div class="location-info">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>@hotel?.Location</span>
+            </div>
+        </div>
+        <div class="ticket-actions">
+            <span class="price">$@Model.TotalPrice.ToString("F2")</span>
+            <div class="action-buttons">
+                <button class="btn-icon"><i class="fas fa-share-alt"></i></button>
+                <button class="btn-download">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="booking-confirmation" style="background: #d4edda; border-radius: 12px; padding: 16px 24px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px;">
+        <i class="fas fa-check-circle" style="color: #155724; font-size: 24px;"></i>
+        <div>
+            <strong style="color: #155724;">Reservation Confirmed!</strong>
+            <p style="margin: 0; color: #155724; opacity: 0.8;">Your reservation number is: @Model.ReservationNumber</p>
+        </div>
+    </div>
+
+    <div class="boarding-pass">
+        <div class="pass-details">
+            <div class="pass-header">
+                <div class="pass-header-top">
+                    <div class="passenger-profile">
+                        <div class="profile-text">
+                            <h3>@(Model.UserName ?? Model.UserEmail)</h3>
+                            <span>Reservation N'@Model.Id</span>
+                        </div>
+                    </div>
+                    <span class="class-label">@Model.RoomType</span>
+                </div>
+
+                <div class="pass-header-bottom">
+                    <div class="flight-route-item">
+                        <h2>@Model.CheckIn.ToString("MMM d")</h2>
+                        <span>Check-In</span>
+                    </div>
+                    <div class="flight-route-arrow">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <div class="flight-route-item">
+                        <h2>@Model.CheckOut.ToString("MMM d")</h2>
+                        <span>Check-Out</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pass-info-grid">
+                <div class="info-item">
+                    <div class="icon-box"><i class="far fa-calendar"></i></div>
+                    <div class="info-text">
+                        <span class="label">Booking Date</span>
+                        <span class="value">@Model.BookingDate.ToString("dd MMM yyyy")</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="icon-box"><i class="fas fa-moon"></i></div>
+                    <div class="info-text">
+                        <span class="label">Nights</span>
+                        <span class="value">@Model.Nights night(s)</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="icon-box"><i class="fas fa-star"></i></div>
+                    <div class="info-text">
+                        <span class="label">Hotel Rating</span>
+                        <span class="value">@hotel?.Stars Stars</span>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="icon-box"><i class="fas fa-door-open"></i></div>
+                    <div class="info-text">
+                        <span class="label">Room</span>
+                        <span class="value">@Model.RoomType</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pass-footer">
+                <div class="flight-code">
+                    <h2><i class="fas fa-hotel"></i></h2>
+                    <span>@Model.ReservationNumber</span>
+                </div>
+                <div class="barcode">
+                    @for (int i = 0; i < 23; i++)
+                    {
+                        <div class="bar" style="width: @(new Random().Next(1, 6))px;"></div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="pass-map">
+            <div class="map-placeholder">
+                @if (!string.IsNullOrEmpty(hotel?.MainImage))
+                {
+                    <img src="@hotel.MainImage" alt="@hotel.Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                }
+                else
+                {
+                    <i class="fas fa-hotel" style="font-size: 48px; color: #8DD3BB;"></i>
+                    <p>@hotel?.Name</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="terms-section">
+        <h2>Terms and Conditions</h2>
+
+        <h3>Check-in/Check-out</h3>
+        <ul>
+            <li>Check-in time is from 3:00 PM. Check-out time is until 11:00 AM.</li>
+            <li>Early check-in or late check-out may be possible upon request and availability.</li>
+        </ul>
+
+        <h3>Cancellation Policy</h3>
+        <ul>
+            <li>Free cancellation up to 24 hours before check-in.</li>
+            <li>Cancellations made within 24 hours of check-in may incur a charge.</li>
+        </ul>
+
+        <h3>Contact Us</h3>
+        <p>If you have any questions, please contact us at <a href="#">travel.com/help</a></p>
+    </div>
+</div>

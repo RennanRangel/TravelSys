@@ -1,0 +1,1037 @@
+/* CSS/flight-details.css - Mobile First Refactor */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FAFBFC;
+    color: #112211;
+    line-height: 1.6;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+.header {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E7E8E9;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-tabs {
+    display: none;
+    /* Hidden on mobile */
+    gap: 24px;
+}
+
+.tab-link {
+    text-decoration: none;
+    color: #112211;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.tab-link.active {
+    background-color: #8DD3BB;
+    color: #112211;
+}
+
+.tab-link:hover {
+    background-color: #FAFBFC;
+}
+
+.tab-link.active:hover {
+    background-color: #7bc1a8;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-decoration: none;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #112211;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.logo-text i {
+    font-size: 18px;
+    color: #8DD3BB;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-favorites {
+    background-color: transparent;
+    border: none;
+    color: #112211;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-favorites:hover {
+    background-color: #FAFBFC;
+}
+
+.user-profile-container {
+    position: relative;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.user-profile:hover {
+    background-color: #FAFBFC;
+}
+
+.user-profile span {
+    font-weight: 600;
+    font-size: 14px;
+    display: none;
+    /* Hide on mobile */
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    width: 260px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.5s ease;
+    z-index: 1000;
+}
+
+.user-profile-container:hover .profile-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-header {
+    padding: 20px;
+}
+
+.user-info h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.status {
+    font-size: 12px;
+    color: #8DD3BB;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #E7E8E9;
+    margin: 0 15px;
+}
+
+.dropdown-menu {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #112211;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #FAFBFC;
+}
+
+.dropdown-menu a i {
+    width: 20px;
+    color: #79747E;
+}
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+.main-container {
+    max-width: 1400px;
+    margin: 24px auto;
+    padding: 0 20px;
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    font-size: 12px;
+    color: #112211;
+    flex-wrap: wrap;
+}
+
+.breadcrumbs a {
+    text-decoration: none;
+    color: #FF8682;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
+    color: #e06561;
+}
+
+.breadcrumbs i {
+    font-size: 10px;
+    color: #79747E;
+}
+
+.breadcrumbs span {
+    color: #79747E;
+}
+
+/* Title Section */
+.title-section {
+    display: flex;
+    flex-direction: column;
+    /* Stacked on mobile */
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.title-info h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #112211;
+}
+
+.location-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #112211;
+}
+
+.location-info i {
+    color: #112211;
+}
+
+.rating-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.badge {
+    padding: 6px 12px;
+    border: 1px solid #8DD3BB;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #112211;
+}
+
+.rating-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #112211;
+}
+
+.reviews {
+    font-size: 14px;
+    color: #79747E;
+}
+
+.price-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Left align on mobile */
+    gap: 16px;
+    width: 100%;
+}
+
+.price {
+    font-size: 28px;
+    font-weight: 700;
+    color: #FF8682;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.btn-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #8DD3BB;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #112211;
+    transition: all 0.3s ease;
+}
+
+.btn-icon:hover {
+    background-color: #FAFBFC;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.btn-book {
+    padding: 12px 24px;
+    background-color: #8DD3BB;
+    border: none;
+    border-radius: 8px;
+    color: #112211;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    /* Stretch on mobile */
+    text-align: center;
+}
+
+.btn-book:hover {
+    background-color: #7bc1a8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Hero Section */
+.hero-section {
+    width: 100%;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.hero-section:hover .hero-image {
+    transform: scale(1.02);
+}
+
+/* Features */
+.features-section {
+    margin-bottom: 32px;
+}
+
+.features-header {
+    display: flex;
+    flex-direction: column;
+    /* Stacked on mobile */
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.features-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #112211;
+}
+
+.class-options {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #112211;
+}
+
+.checkbox-option input {
+    accent-color: #8DD3BB;
+    width: 18px;
+    height: 18px;
+}
+
+.features-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns on mobile */
+    gap: 12px;
+}
+
+.features-gallery img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.features-gallery img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Policies */
+.policies-section {
+    background-color: rgba(141, 211, 187, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+}
+
+.policies-section h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #112211;
+}
+
+.policies-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Single column on mobile */
+    gap: 16px;
+}
+
+.policy-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.policy-item i {
+    font-size: 20px;
+    color: #112211;
+    width: 24px;
+}
+
+.policy-item span {
+    font-size: 14px;
+    color: #112211;
+    font-weight: 500;
+}
+
+/* Return Flights */
+.return-flights {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.return-flight-card {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #E7E8E9;
+    transition: all 0.3s ease;
+}
+
+.return-flight-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: #8DD3BB;
+    transform: translateY(-2px);
+}
+
+.flight-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.flight-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #112211;
+}
+
+.flight-duration {
+    font-size: 14px;
+    font-weight: 600;
+    color: #112211;
+}
+
+.flight-content {
+    display: flex;
+    flex-direction: column;
+    /* Stacked on mobile */
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.airline-details {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.airline-logo-box {
+    width: 60px;
+    height: 40px;
+    border: 1px solid #8DD3BB;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.airline-logo-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.airline-name h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.airline-name span {
+    font-size: 12px;
+    color: #79747E;
+}
+
+.flight-amenities {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    justify-content: space-between;
+    /* Spread evenly on mobile */
+}
+
+.flight-amenities i {
+    font-size: 18px;
+    color: #112211;
+    opacity: 0.7;
+    transition: all 0.3s;
+}
+
+.flight-amenities i:hover {
+    color: #8DD3BB;
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.flight-timeline {
+    display: flex;
+    flex-direction: column;
+    /* Stacked point-to-point on mobile, maybe? Or keep row for small screens if fits */
+    gap: 24px;
+    padding: 0;
+}
+
+.time-point {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.time {
+    font-size: 18px;
+    font-weight: 600;
+    color: #112211;
+}
+
+.airport {
+    font-size: 12px;
+    color: #79747E;
+}
+
+.flight-path {
+    display: none;
+    /* Hide path line on mobile to simplify */
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.path-line {
+    display: none;
+}
+
+.flight-path i {
+    font-size: 24px;
+    color: #8DD3BB;
+    transform: rotate(90deg);
+    /* Rotate for vertical stack if needed, but we hide it mostly */
+    display: none;
+}
+
+/* Newsletter */
+.newsletter-section {
+    background-color: #8DD3BB;
+    padding: 40px 0;
+    margin-top: 40px;
+}
+
+.newsletter-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    /* Stacked */
+    gap: 32px;
+}
+
+.newsletter-content {
+    flex: 1;
+}
+
+.newsletter-content h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #112211;
+    margin-bottom: 16px;
+}
+
+.newsletter-info h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.newsletter-info p {
+    font-size: 14px;
+    color: #112211;
+    opacity: 0.8;
+    margin-bottom: 24px;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 100%;
+}
+
+.newsletter-form input {
+    width: 100%;
+    padding: 14px 20px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-color: #112211;
+}
+
+.newsletter-form button {
+    width: 100%;
+    padding: 14px 32px;
+    background-color: #112211;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+}
+
+.newsletter-graphic {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #FF8682 0%, #FFB6B3 100%);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Footer */
+.footer {
+    background-color: #FFFFFF;
+    padding: 40px 0 24px;
+    border-top: 1px solid #E7E8E9;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Single column */
+    gap: 32px;
+}
+
+.footer-column h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #79747E;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #112211;
+}
+
+.footer-logo {
+    margin-bottom: 24px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background-color: #FAFBFC;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #112211;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: #8DD3BB;
+    transform: translateY(-2px);
+}
+
+@media (min-width: 576px) {
+    .header-container {
+        padding: 16px 30px;
+    }
+
+    .main-container,
+    .newsletter-container,
+    .footer-container {
+        padding: 0 30px;
+    }
+
+    .action-buttons {
+        flex-wrap: nowrap;
+        width: auto;
+    }
+
+    .btn-book {
+        width: auto;
+        flex: none;
+        padding: 12px 48px;
+    }
+
+    .features-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .policies-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .newsletter-form {
+        flex-direction: row;
+    }
+
+    .newsletter-form button {
+        width: auto;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .header-right {
+        gap: 24px;
+    }
+
+    .breadcrumbs {
+        font-size: 14px;
+    }
+
+    .title-section {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .price-actions {
+        align-items: flex-end;
+        width: auto;
+    }
+
+    .hero-section {
+        height: 400px;
+    }
+
+    .features-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .features-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .flight-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .flight-amenities {
+        width: auto;
+        gap: 24px;
+    }
+
+    .flight-timeline {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .flight-path {
+        display: flex;
+        margin: 0 24px;
+    }
+
+    .path-line {
+        display: block;
+        flex: 1;
+        height: 2px;
+        background-color: #E7E8E9;
+    }
+
+    .flight-path i {
+        display: block;
+        transform: rotate(0deg);
+        font-size: 24px;
+        color: #8DD3BB;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .header-tabs {
+        display: flex;
+    }
+
+    .user-profile span {
+        display: inline;
+    }
+
+    .hero-section {
+        height: 500px;
+    }
+
+    .features-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .policies-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .flight-timeline {
+        padding: 0 40px;
+    }
+
+    .newsletter-container {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .newsletter-graphic {
+        width: 300px;
+        height: 200px;
+    }
+
+    .footer-container {
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+    .main-container,
+    .newsletter-container,
+    .footer-container {
+        padding: 0 40px;
+    }
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 576px) {
+    .features-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .policies-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .features-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .policies-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .flight-timeline {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .flight-path {
+        display: flex;
+        flex: 1;
+        margin: 0 32px;
+    }
+}
+
+@media (min-width: 992px) {
+    .features-gallery {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    .policies-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+
+    .flight-duration-line {
+        height: 2px;
+        background: #E7E8E9;
+        width: 100%;
+        position: relative;
+    }
+}
+
+@media (min-width: 1200px) {
+    .main-container {
+        padding: 0 40px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .main-container {
+        max-width: 1320px;
+    }
+}

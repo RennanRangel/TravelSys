@@ -1,0 +1,108 @@
+@model IEnumerable<ProjetoHotelAviao.Models.HotelBooking>
+@{
+    ViewData["Title"] = "My Reservations - Travel";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/flight-booking.css">
+    <link rel="stylesheet" href="~/css/myReservationHotels.css">
+}
+
+<div class="main-container my-reservations-container">
+    <div class="page-header">
+        <h1><i class="fas fa-hotel me-3"></i>My Reservations</h1>
+        <p>View all your hotel reservations (@Model.Count() total)</p>
+    </div>
+    
+    @if (!Model.Any())
+    {
+        <div class="empty-state">
+            <i class="fas fa-concierge-bell"></i>
+            <h2>No reservations yet</h2>
+            <p>You haven't booked any hotels yet. Start exploring our accommodations!</p>
+            <a href="@Url.Action("Index", "Hotels")" class="btn-browse">
+                <i class="fas fa-search me-2"></i>Browse Hotels
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="reservations-list">
+            @foreach (var booking in Model)
+            {
+                <div class="reservation-card">
+                    <div class="reservation-card-header">
+                        <div>
+                            <div class="reservation-number">Reservation #@booking.ReservationNumber</div>
+                            <strong>@booking.Hotel?.Name</strong>
+                        </div>
+                        <div class="reservation-status">@booking.Status</div>
+                    </div>
+                    <div class="reservation-card-body">
+                        <div class="hotel-info">
+                            @if (!string.IsNullOrEmpty(booking.Hotel?.MainImage))
+                            {
+                                <img src="@booking.Hotel.MainImage" alt="@booking.Hotel.Name" class="hotel-image">
+                            }
+                            else
+                            {
+                                <div class="hotel-image" style="display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-hotel" style="font-size: 24px; color: #8DD3BB;"></i>
+                                </div>
+                            }
+                            <div class="hotel-details">
+                                <h3>@booking.Hotel?.Name</h3>
+                                <div class="location"><i class="fas fa-map-marker-alt me-1"></i>@booking.Hotel?.Location</div>
+                            </div>
+                        </div>
+                        <div class="dates-row">
+                            <div class="date-item">
+                                <div class="date">@booking.CheckIn.ToString("MMM d")</div>
+                                <div class="label">Check-In</div>
+                            </div>
+                            <i class="fas fa-arrow-right date-arrow"></i>
+                            <div class="date-item">
+                                <div class="date">@booking.CheckOut.ToString("MMM d")</div>
+                                <div class="label">Check-Out</div>
+                            </div>
+                        </div>
+                        <div class="reservation-details">
+                            <div class="detail-item">
+                                <span class="label">Booking Date</span>
+                                <span class="value">@booking.BookingDate.ToString("dd MMM yyyy")</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Nights</span>
+                                <span class="value">@booking.Nights night(s)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Room Type</span>
+                                <span class="value">@booking.RoomType</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Stars</span>
+                                <span class="value">@booking.Hotel?.Stars ⭐</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reservation-card-footer">
+                        <div class="reservation-price">$@booking.TotalPrice.ToString("F2")</div>
+                        <div class="actions-group">
+                            <form asp-action="Ticket" asp-route-id="" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="@booking.Id" />
+                                <button type="submit" class="btn-view" style="border:none; cursor:pointer;">
+                                    <i class="fas fa-eye me-2"></i>View
+                                </button>
+                            </form>
+                            <form asp-controller="Hotels" asp-action="DeleteReservation" asp-route-id="@booking.Id" method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to cancel this reservation? This action cannot be undone.');">
+                                <button type="submit" class="btn-cancel">
+                                    <i class="fas fa-trash-alt me-2"></i>Cancel
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

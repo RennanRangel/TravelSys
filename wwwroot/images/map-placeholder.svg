@@ -1,0 +1,9 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+ <rect width="100%" height="100%" fill="#EBF6F2"/>
+ <path d="M 100 300 Q 300 100 500 300" stroke="#8DD3BB" stroke-width="4" fill="none" stroke-dasharray="10,10"/>
+ <circle cx="100" cy="300" r="8" fill="#112211"/>
+ <circle cx="500" cy="300" r="8" fill="#112211"/>
+ <text x="80" y="330" font-family="sans-serif" font-size="14" fill="#112211">Newark (EWR)</text>
+ <text x="480" y="330" font-family="sans-serif" font-size="14" fill="#112211">Istanbul (IST)</text>
+ <path d="M 300 190 L 320 200 L 300 210 Z" fill="#112211" transform="rotate(-15 310 200)"/>
+</svg>

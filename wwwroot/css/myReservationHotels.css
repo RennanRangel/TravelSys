@@ -1,0 +1,316 @@
+.my-reservations-container {
+    padding: 40px 0;
+}
+
+.page-header {
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #112211;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: #112211;
+    opacity: 0.7;
+}
+
+.reservations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.reservation-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.reservation-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+}
+
+.reservation-card-header {
+    background: linear-gradient(135deg, #8DD3BB, #5FBFA5);
+    padding: 20px 24px;
+    color: #112211;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reservation-number {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.reservation-status {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.reservation-card-body {
+    padding: 24px;
+}
+
+.hotel-info {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.hotel-image {
+    width: 100px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #f0f0f0;
+}
+
+.hotel-details h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #112211;
+    margin-bottom: 4px;
+}
+
+.hotel-details .location {
+    font-size: 14px;
+    color: #112211;
+    opacity: 0.7;
+}
+
+.dates-row {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.date-item {
+    text-align: center;
+}
+
+.date-item .date {
+    font-size: 20px;
+    font-weight: 700;
+    color: #112211;
+}
+
+.date-item .label {
+    font-size: 12px;
+    color: #112211;
+    opacity: 0.6;
+}
+
+.date-arrow {
+    color: #8DD3BB;
+    font-size: 24px;
+}
+
+.reservation-details {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    border-top: 1px solid #E7E8E9;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detail-item .label {
+    font-size: 12px;
+    color: #112211;
+    opacity: 0.6;
+}
+
+.detail-item .value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #112211;
+}
+
+.reservation-card-footer {
+    padding: 16px 24px;
+    background: #FAFBFC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reservation-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FF8682;
+}
+
+.actions-group {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-view {
+    padding: 12px 24px;
+    background: #112211;
+    color: #FFFFFF;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-view:hover {
+    background: #2c3e50;
+    color: #FFFFFF;
+}
+
+.btn-cancel {
+    padding: 12px 24px;
+    background: #FF8682;
+    color: #FFFFFF;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-cancel:hover {
+    background: #e06660;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.empty-state i {
+    font-size: 64px;
+    color: #8DD3BB;
+    margin-bottom: 24px;
+}
+
+.empty-state h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #112211;
+    margin-bottom: 12px;
+}
+
+.empty-state p {
+    color: #112211;
+    opacity: 0.7;
+    margin-bottom: 24px;
+}
+
+.btn-browse {
+    display: inline-block;
+    padding: 16px 32px;
+    background-color: #8DD3BB;
+    color: #112211;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.btn-browse:hover {
+    background-color: #7bc1a8;
+    transform: translateY(-2px);
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 576px) {
+
+    /* Small devices (landscape phones, 576px and up) */
+    .hotel-location {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@media (min-width: 768px) {
+
+    /* Medium devices (tablets, 768px and up) */
+    .booking-card {
+        flex-direction: row;
+        align-items: center;
+        padding: 24px;
+        gap: 24px;
+    }
+
+    .hotel-image {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 0;
+    }
+
+    .hotel-info {
+        flex: 1;
+        text-align: left;
+    }
+
+    .booking-actions {
+        flex-direction: column;
+        gap: 12px;
+        width: auto;
+        border-top: none;
+        padding-top: 0;
+        margin-top: 0;
+        border-left: 1px solid #E7E8E9;
+        padding-left: 24px;
+    }
+
+    .btn-view-ticket {
+        width: auto;
+    }
+}
+
+@media (min-width: 992px) {
+
+    /* Large devices (desktops, 992px and up) */
+    .booking-card {
+        padding: 32px;
+    }
+
+    .booking-actions {
+        flex-direction: row;
+        border-left: none;
+        padding-left: 0;
+        gap: 16px;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    /* X-Large devices (large desktops, 1200px and up) */
+    .my-reservations-container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    /* XX-Large devices (larger desktops, 1400px and up) */
+    .my-reservations-container {
+        max-width: 1320px;
+    }
+}

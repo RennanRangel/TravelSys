@@ -1,0 +1,278 @@
+@model ProjetoHotelAviao.Models.Hotel
+@{
+    ViewData["Title"] = "Payment - Travel";
+    var baseFare = Model.Price;
+    var taxes = baseFare * 0.1m;
+    var serviceFee = 15m;
+    var total = baseFare + taxes + serviceFee;
+    var partTotal = total / 2;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/flight-booking.css">
+    <link rel="stylesheet" href="~/css/flight-payment.css">
+}
+
+<div class="main-container">
+    
+    <div class="breadcrumbs">
+        <a href="@Url.Action("Index", "Hotels")">Hotels</a> <i class="fas fa-chevron-right"></i>
+        <a href="@Url.Action("Details", "Hotels", new { id = Model.Id })">@Model.Name</a> <i class="fas fa-chevron-right"></i>
+        <a href="@Url.Action("Booking", "Hotels", new { id = Model.Id })">Booking</a> <i class="fas fa-chevron-right"></i>
+        <span>Payment</span>
+    </div>
+
+    <div class="booking-layout">
+        
+        <div class="booking-content">
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
+                    @TempData["Success"]
+                </div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger" style="background-color: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
+                    @TempData["Error"]
+                </div>
+            }
+            
+
+            <div class="flight-info-section">
+                <div class="flight-title-header">
+                    <h2>@Model.Name</h2>
+                    <span class="flight-price">$@Model.Price/night</span>
+                </div>
+                <div class="flight-card">
+                    <div class="flight-card-header">
+                        <h3>@Model.Location</h3>
+                        <span class="duration"><i class="fas fa-star" style="color: gold;"></i> @Model.Stars Stars</span>
+                    </div>
+                    <div class="flight-card-body">
+                        <div class="airline-info">
+                            <div class="airline-logo">
+                                @if (!string.IsNullOrEmpty(Model.MainImage))
+                                {
+                                    <img src="@Model.MainImage" alt="@Model.Name" style="width: 48px; height: 48px; border-radius: 8px; object-fit: cover;">
+                                }
+                                else
+                                {
+                                    <i class="fas fa-hotel" style="font-size: 24px; color: #8DD3BB;"></i>
+                                }
+                            </div>
+                            <div class="airline-text">
+                                <h4>@Model.Name</h4>
+                                <span>Standard Room</span>
+                            </div>
+                        </div>
+                        <div class="flight-amenities">
+                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-swimming-pool"></i>
+                            <i class="fas fa-parking"></i>
+                            <i class="fas fa-utensils"></i>
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+                    </div>
+                    <div class="flight-timeline">
+                        <div class="time-point">
+                            <span class="time">@DateTime.Now.AddDays(7).ToString("MMM d")</span>
+                            <span class="airport">Check-In</span>
+                        </div>
+                        <div class="flight-path">
+                            <div class="path-line"></div>
+                            <i class="fas fa-bed"></i>
+                            <div class="path-line"></div>
+                        </div>
+                        <div class="time-point">
+                            <span class="time">@DateTime.Now.AddDays(8).ToString("MMM d")</span>
+                            <span class="airport">Check-Out</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="payment-options">
+                <label class="payment-card selected" data-amount="@total.ToString(System.Globalization.CultureInfo.InvariantCulture)" data-type="full">
+                    <div class="payment-header">
+                        <div class="payment-title">
+                            <h3>Pay in full</h3>
+                            <p>Pay the total and you are all set</p>
+                        </div>
+                        <div class="radio-circle selected">
+                            <div class="inner-circle"></div>
+                        </div>
+                    </div>
+                    <input type="radio" name="payment" checked>
+                </label>
+
+                <label class="payment-card" data-amount="@partTotal.ToString(System.Globalization.CultureInfo.InvariantCulture)" data-type="part">
+                    <div class="payment-header">
+                        <div class="payment-title">
+                            <h3>Pay part now, part later</h3>
+                            <p>Pay $@partTotal.ToString("F2") now, and the rest ($@partTotal.ToString("F2")) will be automatically charged later.</p>
+                        </div>
+                        <div class="radio-circle">
+                            <div class="inner-circle"></div>
+                        </div>
+                    </div>
+                    <a href="#" class="more-info">More info</a>
+                    <input type="radio" name="payment">
+                </label>
+            </div>
+
+            
+            <div class="payment-methods-section">
+                @{
+                    var userCards = ViewBag.UserCards as List<ProjetoHotelAviao.Models.UserCard>;
+                }
+                @if (userCards != null)
+                {
+                    foreach (var card in userCards)
+                    {
+                        <div class="saved-card" style="position: relative;">
+                             <form asp-controller="Cards" asp-action="DeleteCard" method="post" style="position: absolute; top: 10px; right: 10px; z-index: 10;">
+                                <input type="hidden" name="id" value="@card.Id" />
+                                <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                                <button type="submit" style="background: none; border: none; color: #ff6b6b; cursor: pointer;" title="Delete card" onclick="return confirm('Are you sure you want to delete this card?')">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                            <div class="card-brand">
+                                <i class="fab fa-cc-@card.CardType.ToLower()"></i>
+                            </div>
+                            <div class="card-details">
+                                <span class="card-number">**** @card.CardNumber.Substring(Math.Max(0, card.CardNumber.Length - 4))</span>
+                                <span class="card-expiry">@card.ExpiryDate</span>
+                            </div>
+                            <div class="radio-circle">
+                                <div class="inner-circle"></div>
+                            </div>
+                        </div>
+                    }
+                }
+
+                <div class="add-new-card" id="addNewCardBtn">
+                    <div class="add-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <span>Add a new card</span>
+                </div>
+            </div>
+        </div>
+
+        
+        <aside class="booking-sidebar">
+            <div class="booking-summary-card">
+                <div class="plane-icon">
+                    <i class="fas fa-hotel"></i>
+                </div>
+                <span class="class-type">@Model.Stars Star Hotel</span>
+                <h3 class="airline-title">@Model.Name</h3>
+                <div class="rating-row">
+                    <span class="rating-score">@Model.Rating</span>
+                    <span class="rating-text">@(Model.Rating >= 4.5m ? "Excellent" : Model.Rating >= 4m ? "Very Good" : "Good")</span>
+                    <span class="rating-reviews">@Model.Reviews reviews</span>
+                </div>
+                <div class="protection-text">
+                    Your booking is protected by <strong>Travel</strong>
+                </div>
+                <div class="price-details">
+                    <h4>Price Details</h4>
+                    <div class="price-row">
+                        <span>Base Price (1 night)</span>
+                        <span>$@baseFare</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Taxes</span>
+                        <span>$@taxes.ToString("F2")</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Service Fee</span>
+                        <span>$@serviceFee</span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Total</span>
+                        <span id="totalPriceDisplay">$@total.ToString("F2")</span>
+                    </div>
+                </div>
+                <form asp-controller="Hotels" asp-action="CompletePayment" method="post">
+                    <input type="hidden" name="hotelId" value="@Model.Id" />
+                    <input type="hidden" name="paymentType" id="selectedPaymentType" value="full" />
+                    <input type="hidden" name="nights" value="1" />
+                    @{
+                        var hasCards = (ViewBag.UserCards as List<ProjetoHotelAviao.Models.UserCard>)?.Any() == true;
+                    }
+                    <button type="submit" class="btn-book-now" style="width: 100%; border: none; cursor: pointer; @(hasCards ? "" : "background-color: grey; cursor: not-allowed;")" @(hasCards ? "" : "disabled")>
+                        Complete Payment
+                    </button>
+                    @if (!hasCards)
+                    {
+                        <div class="text-danger mt-2 text-center" style="font-size: 0.9em;">
+                            Please add a card to proceed.
+                        </div>
+                    }
+                </form>
+            </div>
+        </aside>
+</div>
+
+<div class="modal-overlay" id="addCardModal">
+    <div class="modal-content">
+        <button class="close-modal"><i class="fas fa-times"></i></button>
+        <h2>Add a new Card</h2>
+
+        <form class="add-card-form" asp-controller="Cards" asp-action="AddCard" method="post">
+            <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+            <div class="form-group full-width">
+                <label>Card Number</label>
+                <div class="input-with-icon">
+                    <input type="text" name="cardNumber" placeholder="0000 0000 0000 0000" required maxlength="19">
+                    <i class="fab fa-cc-visa"></i>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Exp. Date</label>
+                    <input type="text" name="expiryDate" placeholder="MM/YY" required maxlength="5">
+                </div>
+                <div class="form-group">
+                    <label>CVC</label>
+                    <input type="text" name="cvc" placeholder="123" required maxlength="4">
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label>Name on Card</label>
+                <input type="text" name="nameOnCard" placeholder="Example Name" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label>Country or Region</label>
+                <select name="country">
+                    <option value="United States">United States</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Canada">Canada</option>
+                </select>
+            </div>
+
+            <div class="form-checkbox">
+                <input type="checkbox" id="saveCard" name="saveCard" value="true" checked>
+                <label for="saveCard">Securely save my information for 1-click checkout</label>
+            </div>
+
+            <button type="submit" class="btn-add-card">Add Card</button>
+
+            <p class="terms-text">
+                By confirming your subscription, you allow The Outdoor Inn Crowd Limited to charge your card for
+                this payment and future payments in accordance with their terms. You can always cancel your
+                subscription.
+            </p>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/flight-payment.js?v=@DateTime.Now.Ticks"></script>
+}

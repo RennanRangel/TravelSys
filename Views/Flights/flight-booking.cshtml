@@ -1,0 +1,155 @@
+@model ProjetoHotelAviao.Models.Flight
+@{
+    ViewData["Title"] = "Book Flight - Travel";
+    var baseFare = Model.Price;
+    var taxes = baseFare * 0.1m;
+    var serviceFee = 25m;
+    var total = baseFare + taxes + serviceFee;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/flight-booking.css">
+}
+
+<div class="main-container">
+    
+    <div class="breadcrumbs">
+        <a href="@Url.Action("Index", "Flights")">Flights</a> <i class="fas fa-chevron-right"></i>
+        <a href="@Url.Action("Details", "Flights", new { id = Model.Id })">@Model.Airline</a> <i class="fas fa-chevron-right"></i>
+        <span>Booking</span>
+    </div>
+
+    <div class="booking-layout">
+        
+        <div class="booking-content">
+            
+            <div class="flight-info-section">
+                <div class="flight-title-header">
+                    <h2>@Model.Airline Flight</h2>
+                    <span class="flight-price">$@Model.Price</span>
+                </div>
+                <div class="flight-card">
+                    <div class="flight-card-header">
+                        <h3>@Model.From → @Model.To</h3>
+                        <span class="duration">@Model.Duration</span>
+                    </div>
+                    <div class="flight-card-body">
+                        <div class="airline-info">
+                            <div class="airline-logo">
+                                @if (!string.IsNullOrEmpty(Model.Logo))
+                                {
+                                    <img src="@Model.Logo" alt="@Model.Airline">
+                                }
+                                else
+                                {
+                                    <i class="fas fa-plane" style="font-size: 24px; color: #8DD3BB;"></i>
+                                }
+                            </div>
+                            <div class="airline-text">
+                                <h4>@Model.Airline</h4>
+                                <span>@Model.Stops</span>
+                            </div>
+                        </div>
+                        <div class="flight-amenities">
+                            <i class="fas fa-plane"></i>
+                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-stopwatch"></i>
+                            <i class="fas fa-utensils"></i>
+                            <i class="fas fa-wheelchair"></i>
+                        </div>
+                    </div>
+                    <div class="flight-timeline">
+                        <div class="time-point">
+                            <span class="time">@Model.Departure</span>
+                            <span class="airport">@Model.From</span>
+                        </div>
+                        <div class="flight-path">
+                            <div class="path-line"></div>
+                            <i class="fas fa-plane"></i>
+                            <div class="path-line"></div>
+                        </div>
+                        <div class="time-point">
+                            <span class="time">@Model.Arrival</span>
+                            <span class="airport">@Model.To</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="payment-options-section">
+                <label class="payment-option-container" onclick="selectPayment('full')">
+                    <div class="payment-option-content">
+                        <h3>Pay in full</h3>
+                        <p>Pay the total and you are all set</p>
+                    </div>
+                    <div class="radio-circle selected" id="radio-full">
+                        <div class="inner-dot"></div>
+                    </div>
+                    <input type="radio" name="paymentType" value="full" checked style="display:none;">
+                </label>
+
+                <div class="payment-option-separator"></div>
+
+                <label class="payment-option-container" onclick="selectPayment('part')">
+                    <div class="payment-option-content">
+                        <h3>Pay part now, part later</h3>
+                        <p>Pay $@((total / 2).ToString("F2")) now, and the rest will be automatically charged later. No extra fees.</p>
+                        <a href="#" class="more-info-link">More info</a>
+                    </div>
+                    <div class="radio-circle" id="radio-part">
+                        <div class="inner-dot"></div>
+                    </div>
+                    <input type="radio" name="paymentType" value="part" style="display:none;">
+                </label>
+            </div>
+
+          
+
+        
+        <aside class="booking-sidebar">
+            <div class="booking-summary-card">
+                <div class="plane-icon">
+                    <i class="fas fa-plane"></i>
+                </div>
+                <span class="class-type">Economy</span>
+                <h3 class="airline-title">@Model.Airline</h3>
+                <div class="rating-row">
+                    <span class="rating-score">@Model.Rating</span>
+                    <span class="rating-text">Very Good</span>
+                    <span class="rating-reviews">@Model.Reviews reviews</span>
+                </div>
+                <div class="protection-text">
+                    Your booking is protected by <strong>Travel</strong>
+                </div>
+                <div class="price-details">
+                    <h4>Price Details</h4>
+                    <div class="price-row">
+                        <span>Base Fare</span>
+                        <span>$@baseFare</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Taxes</span>
+                        <span>$@taxes.ToString("F2")</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Service Fee</span>
+                        <span>$@serviceFee</span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Total</span>
+                        <span>$@total.ToString("F2")</span>
+                    </div>
+                </div>
+                <form asp-action="Payment" asp-route-id="" method="post">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <button type="submit" class="btn-book-now" style="width: 100%; cursor: pointer;">Confirm Booking</button>
+                </form>
+            </div>
+        </aside>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/flight-booking.js"></script>
+}

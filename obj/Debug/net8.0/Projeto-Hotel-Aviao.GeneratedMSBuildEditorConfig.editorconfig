@@ -1,0 +1,143 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ProjetoHotelAviao
+build_property.RootNamespace = ProjetoHotelAviao
+build_property.ProjectDir = C:\Users\Renna\OneDrive\Projetos Back-End\Projetos em Csharp\RazorPage\Projeto-Hotel-Aviao\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Renna\OneDrive\Projetos Back-End\Projetos em Csharp\RazorPage\Projeto-Hotel-Aviao
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Account/SetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTZXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Account/Signup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWdudXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Admin/EditFlight.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEZsaWdodC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Admin/EditHotel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEhvdGVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Flights/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxpZ2h0c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Flights/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxpZ2h0c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Flights/flight-booking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxpZ2h0c1xmbGlnaHQtYm9va2luZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Flights/flight-payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxpZ2h0c1xmbGlnaHQtcGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Flights/flight-ticket-booking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxpZ2h0c1xmbGlnaHQtdGlja2V0LWJvb2tpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Flights/flight-ticket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxpZ2h0c1xmbGlnaHQtdGlja2V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Flights/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxpZ2h0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Flights/MyTickets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmxpZ2h0c1xNeVRpY2tldHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Hotels/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Hotels/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Hotels/hotel-booking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXGhvdGVsLWJvb2tpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Hotels/hotel-payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXGhvdGVsLXBheW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Hotels/hotel-ticket-booking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXGhvdGVsLXRpY2tldC1ib29raW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Hotels/hotel-ticket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXGhvdGVsLXRpY2tldC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Hotels/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Hotels/MyReservations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG90ZWxzXE15UmVzZXJ2YXRpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos Back-End/Projetos em Csharp/RazorPage/Projeto-Hotel-Aviao/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

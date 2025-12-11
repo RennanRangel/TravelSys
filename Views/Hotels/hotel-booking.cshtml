@@ -1,0 +1,132 @@
+@model ProjetoHotelAviao.Models.Hotel
+@{
+    ViewData["Title"] = "Hotel Booking - Travel";
+    var baseFare = Model.Price;
+    var taxes = baseFare * 0.1m;
+    var serviceFee = 15m;
+    var total = baseFare + taxes + serviceFee;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/flight-booking.css">
+    <link rel="stylesheet" href="~/css/hotel-booking.css">
+}
+
+<div class="main-container">
+   
+    <div class="breadcrumbs">
+        <a href="@Url.Action("Index", "Hotels")">Hotels</a> <i class="fas fa-chevron-right"></i>
+        <a href="@Url.Action("Details", "Hotels", new { id = Model.Id })">@Model.Name</a> <i class="fas fa-chevron-right"></i>
+        <span>Booking</span>
+    </div>
+
+    <div class="booking-layout">
+        <div class="booking-content">
+            <div class="room-info-section">
+                <div class="room-title-header">
+                    <h2>@Model.Name</h2>
+                    <span class="room-price">$@Model.Price</span>
+                </div>
+                <div class="room-card">
+                    <div class="hotel-info-card">
+                        <div class="hotel-details">
+                            <h3>@Model.Location</h3>
+                            <div class="hotel-rating">
+                                <span class="rating-badge" style="background: rgba(141, 211, 187, 0.2); color: #8DD3BB; padding: 6px 12px; border-radius: 20px; font-size: 14px;">@Model.Stars Stars</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hotel-info-card" style="margin-top: 0; align-items: center;">
+                        <div class="hotel-logo">
+                            @if (!string.IsNullOrEmpty(Model.MainImage))
+                            {
+                                <img src="@Model.MainImage" alt="@Model.Name" style="width: 60px; height: 60px; border-radius: 8px; object-fit: cover;">
+                            }
+                            else
+                            {
+                                <i class="fas fa-hotel" style="font-size: 32px; color: #FFFFFF;"></i>
+                            }
+                        </div>
+                        <div class="hotel-details" style="margin-left: 16px;">
+                            <h3>@Model.Name</h3>
+                            <div class="hotel-location">
+                                <span>Standard Room</span>
+                            </div>
+                        </div>
+                        <div class="hotel-rating">
+                            <i class="fas fa-wifi" style="font-size: 16px; color: #8DD3BB; padding: 10px; background-color: rgba(141, 211, 187, 0.15); border-radius: 8px; margin-right: 8px;"></i>
+                            <i class="fas fa-swimming-pool" style="font-size: 16px; color: #8DD3BB; padding: 10px; background-color: rgba(141, 211, 187, 0.15); border-radius: 8px; margin-right: 8px;"></i>
+                            <i class="fas fa-utensils" style="font-size: 16px; color: #8DD3BB; padding: 10px; background-color: rgba(141, 211, 187, 0.15); border-radius: 8px; margin-right: 8px;"></i>
+                            <i class="fas fa-parking" style="font-size: 16px; color: #8DD3BB; padding: 10px; background-color: rgba(141, 211, 187, 0.15); border-radius: 8px;"></i>
+                        </div>
+                    </div>
+                    <div class="booking-dates">
+                        <div class="date-item">
+                            <label>@DateTime.Now.AddDays(7).ToString("t")</label>
+                            <span>Check-In</span>
+                        </div>
+                        <div class="date-separator">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <div class="date-item">
+                            <label>@DateTime.Now.AddDays(8).ToString("t")</label>
+                            <span>Check-Out</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <aside class="booking-sidebar">
+            <div class="booking-summary-card">
+                <div class="summary-header">
+                    @if (!string.IsNullOrEmpty(Model.MainImage))
+                    {
+                        <img src="@Model.MainImage" alt="@Model.Name" class="summary-image">
+                    }
+                    else
+                    {
+                        <div class="summary-image" style="background: #8DD3BB; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-hotel" style="font-size: 32px; color: white;"></i>
+                        </div>
+                    }
+                    <div class="summary-info">
+                        <h3>@Model.Name</h3>
+                        <p>@Model.Location</p>
+                        <div class="rating-badge">
+                            <span class="score">@Model.Rating</span>
+                            <span class="label">@(Model.Rating >= 4.5m ? "Excellent" : Model.Rating >= 4m ? "Very Good" : "Good")</span>
+                            <span class="reviews">@Model.Reviews reviews</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="protection-text">
+                    Your booking is protected by <strong>Travel</strong>
+                </div>
+                <div class="price-details">
+                    <h4>Price Details</h4>
+                    <div class="price-row">
+                        <span>Base Price (1 night)</span>
+                        <span>$@baseFare</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Taxes</span>
+                        <span>$@taxes.ToString("F2")</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Service Fee</span>
+                        <span>$@serviceFee</span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Total</span>
+                        <span>$@total.ToString("F2")</span>
+                    </div>
+                </div>
+                <form asp-action="Payment" asp-route-id="" method="post">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <button type="submit" class="btn-book-now">Confirm Booking</button>
+                </form>
+            </div>
+        </aside>
+    </div>
+</div>

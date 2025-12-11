@@ -1,0 +1,389 @@
+@model ProjetoHotelAviao.Models.ViewModels.AdminViewModel
+@{
+    ViewData["Title"] = "Admin Panel - Golobe";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/flight-details.css">
+    <link rel="stylesheet" href="~/css/admin.css">
+}
+
+<div class="container" style="margin-top: 120px;">
+    <div class="admin-header" style="margin-bottom: 40px;">
+        <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 8px;">
+            <i class="fas fa-user-shield"></i> Admin Panel
+        </h1>
+        <p style="color: #112211; opacity: 0.7;">Manage flights and hotels for your travel platform</p>
+    </div>
+
+    
+    <div class="admin-tabs">
+        <button class="admin-tab-btn active" data-tab="flights">
+            <i class="fas fa-plane"></i> Manage Flights
+        </button>
+        <button class="admin-tab-btn" data-tab="hotels">
+            <i class="fas fa-hotel"></i> Manage Hotels
+        </button>
+       
+    </div>
+
+    
+    <div id="flights" class="tab-content active">
+        
+        <div class="features-section">
+            <div class="features-header">
+                <h2><i class="fas fa-plus-circle"></i> Add New Flight</h2>
+            </div>
+
+            <form asp-action="CreateFlight" method="post" class="admin-form" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger mb-3"></div>
+                <div class="form-grid">
+                    
+                    <div class="form-section-group">
+                        <h3><i class="fas fa-info-circle"></i> Basic Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="NewFlight.Airline"><i class="fas fa-plane"></i> Airline Name *</label>
+                                <input asp-for="NewFlight.Airline" required placeholder="e.g., Emirates">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NewFlight.Logo"><i class="fas fa-image"></i> Airline Logo URL (or paste image) *</label>
+                                <div class="input-group">
+                                    <input asp-for="NewFlight.Logo" class="magic-paste-target" data-target-file="FlightLogoUpload" placeholder="Paste image here or enter URL">
+                                    <input asp-for="FlightLogoUpload" type="file" class="form-control d-none" accept="image/*">
+                                    <button type="button" class="btn btn-secondary btn-sm" onclick="this.previousElementSibling.click()"><i class="fas fa-upload"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-section-group">
+                        <h3><i class="fas fa-route"></i> Route Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="NewFlight.From"><i class="fas fa-plane-departure"></i> From (Origin) *</label>
+                                <input asp-for="NewFlight.From" required placeholder="e.g., Lahore">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NewFlight.To"><i class="fas fa-plane-arrival"></i> To (Destination) *</label>
+                                <input asp-for="NewFlight.To" required placeholder="e.g., Karachi">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                             <div class="form-group full-width">
+                                <label asp-for="NewFlight.TripType"><i class="fas fa-exchange-alt"></i> Trip Type *</label>
+                                <select asp-for="NewFlight.TripType" required>
+                                    <option value="Round trip">Round trip</option>
+                                    <option value="One Way">One Way</option>
+                                    <option value="Multi-City">Multi-City</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-section-group">
+                        <h3><i class="fas fa-clock"></i> Schedule Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="NewFlight.Departure"><i class="fas fa-calendar-day"></i> Departure Time *</label>
+                                <input asp-for="NewFlight.Departure" required placeholder="e.g., 12:00 pm">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NewFlight.Arrival"><i class="fas fa-calendar-check"></i> Arrival Time *</label>
+                                <input asp-for="NewFlight.Arrival" required placeholder="e.g., 02:30 pm">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="NewFlight.Duration"><i class="fas fa-hourglass-half"></i> Duration *</label>
+                                <input asp-for="NewFlight.Duration" required placeholder="e.g., 2h 30m">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NewFlight.Stops"><i class="fas fa-map-marker-alt"></i> Stops *</label>
+                                <select asp-for="NewFlight.Stops" required>
+                                    <option value="non stop">Non Stop</option>
+                                    <option value="1 stop">1 Stop</option>
+                                    <option value="2 stops">2 Stops</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-section-group">
+                        <h3><i class="fas fa-star"></i> Pricing & Rating</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="NewFlight.Price"><i class="fas fa-dollar-sign"></i> Price ($) *</label>
+                                <input asp-for="NewFlight.Price" type="number" required min="0" step="1" placeholder="e.g., 150">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NewFlight.Rating"><i class="fas fa-star-half-alt"></i> Rating (0-5) *</label>
+                                <input asp-for="NewFlight.Rating" type="number" required min="0" max="5" step="0.1" placeholder="e.g., 4.5">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="NewFlight.Reviews"><i class="fas fa-comments"></i> Number of Reviews *</label>
+                                <input asp-for="NewFlight.Reviews" type="number" required min="0" placeholder="e.g., 100">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section-group">
+                        <h3><i class="fas fa-images"></i> Visual Details</h3>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label asp-for="NewFlight.MainImage"><i class="fas fa-image"></i> Main Image URL (or paste image)</label>
+                                <div class="input-group">
+                                    <input asp-for="NewFlight.MainImage" class="magic-paste-target" data-target-file="FlightMainImageUpload" placeholder="Paste image here or enter URL">
+                                    <input asp-for="FlightMainImageUpload" type="file" class="form-control d-none" accept="image/*">
+                                    <button type="button" class="btn btn-secondary btn-sm" onclick="this.previousElementSibling.click()"><i class="fas fa-upload"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label asp-for="NewFlight.GalleryImagesUpload"><i class="fas fa-images"></i> Gallery Images</label>
+                                <div class="input-group">
+                                    <input asp-for="NewFlight.GalleryImagesUpload" type="file" class="form-control" multiple accept="image/*">
+                                </div>
+                                <span asp-validation-for="NewFlight.GalleryImagesUpload" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label asp-for="NewFlight.Policies"><i class="fas fa-file-contract"></i> Airline Policies</label>
+                                <textarea asp-for="NewFlight.Policies" rows="4" placeholder="Enter airline policies..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-plus"></i> Add Flight
+                    </button>
+                    <button type="reset" class="btn-reset">
+                        <i class="fas fa-redo"></i> Reset Form
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        
+        <div class="return-flights">
+            <h3><i class="fas fa-list"></i> Registered Flights</h3>
+            <div class="items-list">
+                @foreach (var flight in Model.Flights)
+                {
+                    <div class="flight-card">
+                        <div class="flight-info">
+                            <img src="@flight.Logo" alt="@flight.Airline" class="airline-logo" style="width: 50px; height: 50px; object-fit: contain;">
+                            <div>
+                                <h4>@flight.Airline</h4>
+                                <p>@flight.From -> @flight.To</p>
+                            </div>
+                        </div>
+                        <div class="flight-actions d-flex gap-3">
+                            <form asp-action="DeleteFlight" method="post">
+                                <input type="hidden" name="id" value="@flight.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </form>
+                            <form asp-action="EditFlight" asp-route-id="" method="post">
+                                <input type="hidden" name="id" value="@flight.Id" />
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="hotels" class="tab-content">
+        <div class="features-section">
+            <div class="features-header">
+                <h2><i class="fas fa-plus-circle"></i> Add New Hotel</h2>
+            </div>
+
+            <form asp-action="CreateHotel" method="post" class="admin-form" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger mb-3"></div>
+                <div class="form-grid">
+                    <div class="form-section-group">
+                        <h3><i class="fas fa-info-circle"></i> Basic Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="NewHotel.Name"><i class="fas fa-hotel"></i> Hotel Name *</label>
+                                <input asp-for="NewHotel.Name" required placeholder="e.g., Grand Hotel">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NewHotel.Type"><i class="fas fa-building"></i> Property Type</label>
+                                <select asp-for="NewHotel.Type" class="form-control">
+                                    <option value="Hotel">Hotel</option>
+                                    <option value="Motel">Motel</option>
+                                    <option value="Resort">Resort</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label asp-for="NewHotel.Overview"><i class="fas fa-align-left"></i> Overview</label>
+                            <textarea asp-for="NewHotel.Overview" rows="4" placeholder="Enter hotel description..."></textarea>
+                        </div>
+                    </div>
+                    
+
+                    <div class="form-section-group">
+                        <h3><i class="fas fa-images"></i> Visual Details</h3>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label asp-for="NewHotel.MainImage"><i class="fas fa-image"></i> Main Image URL (or paste image)</label>
+                                <div class="input-group">
+                                    <input asp-for="NewHotel.MainImage" class="magic-paste-target" data-target-file="HotelMainImageUpload" placeholder="Paste image here or enter URL">
+                                    <input asp-for="HotelMainImageUpload" type="file" class="form-control d-none" accept="image/*">
+                                    <button type="button" class="btn btn-secondary btn-sm" onclick="this.previousElementSibling.click()"><i class="fas fa-upload"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label asp-for="NewHotel.GalleryImagesUpload"><i class="fas fa-images"></i> Gallery Images</label>
+                                <div class="input-group">
+                                    <input asp-for="NewHotel.GalleryImagesUpload" type="file" class="form-control" multiple accept="image/*">
+                                </div>
+                                <span asp-validation-for="NewHotel.GalleryImagesUpload" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section-group">
+                        <h3><i class="fas fa-map-marker-alt"></i> Location Information</h3>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label asp-for="NewHotel.Location"><i class="fas fa-location-arrow"></i> Location *</label>
+                                <input asp-for="NewHotel.Location" required placeholder="e.g., Istanbul, Turkey">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section-group">
+                        <h3><i class="fas fa-star"></i> Hotel Details</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="NewHotel.Stars"><i class="fas fa-star"></i> Stars *</label>
+                                <select asp-for="NewHotel.Stars" required>
+                                    <option value="3">3 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="5">5 Stars</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NewHotel.Price"><i class="fas fa-dollar-sign"></i> Price per Night ($) *</label>
+                                <input asp-for="NewHotel.Price" type="number" required min="0" step="1" placeholder="e.g., 200">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section-group">
+                        <h3><i class="fas fa-comments"></i> Rating & Reviews</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="NewHotel.Rating"><i class="fas fa-star-half-alt"></i> Rating (0-5) *</label>
+                                <input asp-for="NewHotel.Rating" type="number" required min="0" max="5" step="0.1" placeholder="e.g., 4.8">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NewHotel.Reviews"><i class="fas fa-comment-dots"></i> Number of Reviews *</label>
+                                <input asp-for="NewHotel.Reviews" type="number" required min="0" placeholder="e.g., 250">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section-group">
+                        <h3><i class="fas fa-concierge-bell"></i> Amenities</h3>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label asp-for="NewHotel.Amenities"><i class="fas fa-list-ul"></i> Amenities (comma-separated)</label>
+                                <textarea asp-for="NewHotel.Amenities" rows="3" placeholder="e.g., Free WiFi, Pool, Spa, Restaurant, Gym, Bar"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-plus"></i> Add Hotel
+                        </button>
+                        <button type="reset" class="btn-reset">
+                            <i class="fas fa-redo"></i> Reset Form
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        
+        <div class="return-flights">
+            <h3><i class="fas fa-list"></i> Registered Hotels</h3>
+            <div class="items-list">
+                @foreach (var hotel in Model.Hotels)
+                {
+                    <div class="flight-card">
+                        <div class="flight-info">
+                             @if(!string.IsNullOrEmpty(hotel.MainImage)) {
+                                <img src="@hotel.MainImage" alt="@hotel.Name" class="airline-logo" style="width: 50px; height: 50px; object-fit: cover;">
+                             } else {
+                                <i class="fas fa-hotel" style="font-size: 24px; margin-right: 15px;"></i>
+                             }
+                            <div>
+                                <h4>@hotel.Name</h4>
+                                <p>@hotel.Location</p>
+                            </div>
+                        </div>
+                        <div class="flight-actions d-flex gap-3">
+                            <form asp-action="DeleteHotel" method="post">
+                                <input type="hidden" name="id" value="@hotel.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </form>
+                            <form asp-action="EditHotel" asp-route-id="" method="post">
+                                <input type="hidden" name="id" value="@hotel.Id" />
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        
+        document.querySelectorAll('.admin-tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                
+                document.querySelectorAll('.admin-tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+                button.classList.add('active');
+
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+    </script>
+    <script src="~/js/admin-upload.js"></script>
+}

@@ -1,0 +1,347 @@
+@model ProjetoHotelAviao.Models.PaginatedList<ProjetoHotelAviao.Models.Hotel>
+@using System.Linq
+@{
+    ViewData["Title"] = "Hotel Listing - Travel";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/hotel-listing.css">
+}
+
+
+
+<div class="main-container">
+    <div class="top-section">
+        <aside class="sidebar">
+        <h3 class="sidebar-title">Filters</h3>
+
+        <form asp-action="Index" method="get">
+            @if (ViewData["CurrentLocation"] != null)
+            {
+                <input type="hidden" name="location" value="@ViewData["CurrentLocation"]" />
+            }
+            <div class="filter-section">
+                <div class="filter-header">
+                    <h4>Price</h4>
+                    <i class="fas fa-chevron-up"></i>
+                </div>
+                <div class="filter-content">
+                    <div class="price-range">
+                        <input type="range" name="minPrice" min="50" max="1200" value="@(ViewData["MinPrice"] ?? 50)" class="range-slider">
+                        <input type="range" name="maxPrice" min="50" max="1200" value="@(ViewData["MaxPrice"] ?? 1200)" class="range-slider">
+                    </div>
+                    <div class="price-labels">
+                        <span>$@(ViewData["MinPrice"] ?? 50)</span>
+                        <span>$@(ViewData["MaxPrice"] ?? 1200)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-header">
+                    <h4>Rating</h4>
+                    <i class="fas fa-chevron-up"></i>
+                </div>
+                <div class="filter-content">
+                    <div class="rating-options">
+                        @{
+                            var selectedRatings = ViewData["SelectedRatings"] as int[] ?? new int[0];
+                        }
+                        <label class="rating-option">
+                            <input type="checkbox" name="rating" value="0" @(selectedRatings.Contains(0))>
+                            <span>0+</span>
+                        </label>
+                        <label class="rating-option">
+                            <input type="checkbox" name="rating" value="1" @(selectedRatings.Contains(1))>
+                            <span>1+</span>
+                        </label>
+                        <label class="rating-option">
+                            <input type="checkbox" name="rating" value="2" @(selectedRatings.Contains(2))>
+                            <span>2+</span>
+                        </label>
+                        <label class="rating-option">
+                            <input type="checkbox" name="rating" value="3" @(selectedRatings.Contains(3))>
+                            <span>3+</span>
+                        </label>
+                        <label class="rating-option">
+                            <input type="checkbox" name="rating" value="4" @(selectedRatings.Contains(4))>
+                            <span>4+</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-header">
+                    <h4>Freebies</h4>
+                    <i class="fas fa-chevron-up"></i>
+                </div>
+                <div class="filter-content">
+                    @{
+                         var selectedFreebies = ViewData["SelectedFreebies"] as string[] ?? new string[0];
+                    }
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="freebies" value="Free breakfast" @(selectedFreebies.Contains("Free breakfast") ? "checked" : "")>
+                        <span>Free breakfast</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="freebies" value="Free parking" @(selectedFreebies.Contains("Free parking") ? "checked" : "")>
+                        <span>Free parking</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="freebies" value="Free internet" @(selectedFreebies.Contains("Free internet") ? "checked" : "")>
+                        <span>Free internet</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="freebies" value="Free airport shuttle" @(selectedFreebies.Contains("Free airport shuttle") ? "checked" : "")>
+                        <span>Free airport shuttle</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="freebies" value="Free cancellation" @(selectedFreebies.Contains("Free cancellation") ? "checked" : "")>
+                        <span>Free cancellation</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-header">
+                    <h4>Amenities</h4>
+                    <i class="fas fa-chevron-up"></i>
+                </div>
+                <div class="filter-content">
+                    @{
+                         var selectedAmenities = ViewData["SelectedAmenities"] as string[] ?? new string[0];
+                    }
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="amenities" value="24hr front desk" @(selectedAmenities.Contains("24hr front desk") ? "checked" : "")>
+                        <span>24hr front desk</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="amenities" value="Air-conditioned" @(selectedAmenities.Contains("Air-conditioned") ? "checked" : "")>
+                        <span>Air-conditioned</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="amenities" value="Fitness" @(selectedAmenities.Contains("Fitness") ? "checked" : "")>
+                        <span>Fitness</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="amenities" value="Pool" @(selectedAmenities.Contains("Pool") ? "checked" : "")>
+                        <span>Pool</span>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px; background-color: #8DD3BB; border: none; color: #112211;">Apply Filters</button>
+        </form>
+    </aside>
+
+    <div class="right-column">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <div class="search-container">
+                <form asp-action="Index" method="get" class="search-fields">
+                    <div class="search-field">
+                        <label>Enter Destination</label>
+                        <div class="route-input-container">
+                            <input type="text" name="location" value="@ViewData["CurrentLocation"]" placeholder="Istanbul, Turkey" list="location-list">
+                            <datalist id="location-list">
+                                @if (ViewData["AvailableLocations"] is List<string> locations)
+                                {
+                                    foreach (var loc in locations)
+                                    {
+                                        <option value="@loc"></option>
+                                    }
+                                }
+                            </datalist>
+                            <i class="fas fa-bed"></i>
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label>Check In</label>
+                        <div class="route-input-container">
+                             <input type="text" name="checkIn" placeholder="Fri 12/2" onfocus="(this.type='date')" onblur="(this.type='text')">
+                             <i class="fas fa-calendar"></i>
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label>Check Out</label>
+                        <div class="route-input-container">
+                            <input type="text" name="checkOut" placeholder="Sun 12/4" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label>Rooms & Guests</label>
+                        <div class="route-input-container">
+                            <input type="text" name="guests" placeholder="1 room, 2 guests">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <main class="content">
+        <div class="sorting-header">
+            <div class="sorting-tabs">
+                @{
+                    var currentType = ViewData["CurrentType"] as string;
+                }
+                <a href="#" onclick="applyPropertyType('Hotel'); return false;" class="sort-tab @(currentType == "Hotel" ? "active" : "")" style="text-decoration: none; color: inherit;">
+                    Hotels<br><span>@ViewData["HotelCount"] places</span>
+                </a>
+                <a href="#" onclick="applyPropertyType('Motel'); return false;" class="sort-tab @(currentType == "Motel" ? "active" : "")" style="text-decoration: none; color: inherit;">
+                    Motels<br><span>@ViewData["MotelCount"] places</span>
+                </a>
+                <a href="#" onclick="applyPropertyType('Resort'); return false;" class="sort-tab @(currentType == "Resort" ? "active" : "")" style="text-decoration: none; color: inherit;">
+                    Resorts<br><span>@ViewData["ResortCount"] places</span>
+                </a>
+            </div>
+            <div class="sorting-options">
+                <button class="btn-other-sort"><i class="fas fa-sliders-h"></i> Other sort</button>
+            </div>
+        </div>
+
+        <div class="results-info">
+            <p>Showing @Model.Count() of <span>@Model.Count() places</span></p>
+            <div class="sort-dropdown">
+                <form id="filterForm" asp-action="Index" method="get">
+                    <input type="hidden" name="propertyType" id="propertyTypeInput" value="@currentType" />
+                    @if (ViewData["CurrentLocation"] != null)
+                    {
+                        <input type="hidden" name="location" value="@ViewData["CurrentLocation"]" />
+                    }
+                    <label>Sort by</label>
+                    <select name="sortOrder" onchange="this.form.submit()">
+                        <option value="price_asc" selected="@((ViewData["CurrentSort"] as string) == "price_asc")">Price: Low to High</option>
+                        <option value="price_desc" selected="@((ViewData["CurrentSort"] as string) == "price_desc")">Price: High to Low</option>
+                        <option value="rating_desc" selected="@((ViewData["CurrentSort"] as string) == "rating_desc")">Rating: High to Low</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+        
+        <script>
+            function applyPropertyType(type) {
+                var current = document.getElementById('propertyTypeInput').value;
+                if (current === type) {
+                     document.getElementById('propertyTypeInput').value = ""; // Toggle off to show all
+                } else {
+                     document.getElementById('propertyTypeInput').value = type;
+                }
+                document.getElementById('filterForm').submit();
+            }
+        </script>
+
+        <div class="hotel-cards">
+            @if (!Model.Any())
+            {
+                <div class="no-results">
+                    <p>No hotels found. Please try different search criteria or add hotels from the Admin Panel.</p>
+                </div>
+            }
+
+            @foreach (var hotel in Model)
+            {
+                <div class="hotel-card">
+                    <div class="hotel-image">
+                        @if(!string.IsNullOrEmpty(hotel.MainImage)) {
+                            <img src="@hotel.MainImage" alt="@hotel.Name">
+                        } else {
+                            <div style="width: 100%; height: 200px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-hotel" style="font-size: 48px; color: #ccc;"></i>
+                            </div>
+                        }
+                    </div>
+                    <div class="hotel-details">
+                        <div class="hotel-header">
+                            <h3>@hotel.Name</h3>
+                            <div class="hotel-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>@hotel.Location</span>
+                            </div>
+                            <div class="rating">
+                                <div class="stars">
+                                    @for(int i=0; i < (int)hotel.Stars; i++) {
+                                        <i class="fas fa-star"></i>
+                                    }
+                                </div>
+                                <span class="rating-score">@hotel.Stars Star Hotel</span>
+                                <span class="reviews">20+ Amenities</span>
+                            </div>
+                            <div class="rating-badge">
+                                <span class="score">@hotel.Rating</span>
+                                <span class="label">Very Good</span>
+                                <span class="count">@hotel.Reviews reviews</span>
+                            </div>
+                        </div>
+                        <div class="hotel-price-section">
+                            <p class="price-label">starting from</p>
+                            <p class="price">$@hotel.Price</p>
+                            <p class="night-price">/night</p>
+                            <p class="tax-label">excl. tax</p>
+                            <form asp-action="Details" asp-route-id="" method="post" class="details-form">
+                                <input type="hidden" name="id" value="@hotel.Id" />
+                                <button type="submit" class="btn-view-details">View Place</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        
+        </main>
+    </div>
+    </div>
+</div>
+
+<div class="pagination-container" style="display: flex; justify-content: center; gap: 8px; margin: 40px auto; max-width: 1400px;">
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-location="@ViewData["CurrentLocation"]"
+       class="btn btn-default @prevDisabled"
+       style="padding: 8px 16px; border: 1px solid #E7E8E9; border-radius: 4px; text-decoration: none; color: #112211; @(!Model.HasPreviousPage ? "opacity: 0.5; pointer-events: none;" : "")">
+        Previous
+    </a>
+
+    @for (int i = 1; i <= Model.TotalPages; i++)
+    {
+        var activeClass = i == Model.PageIndex ? "background-color: #8DD3BB; border-color: #8DD3BB;" : "";
+        <a asp-action="Index"
+           asp-route-pageNumber="@i"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-location="@ViewData["CurrentLocation"]"
+           class="btn btn-default"
+           style="padding: 8px 16px; border: 1px solid #E7E8E9; border-radius: 4px; text-decoration: none; color: #112211; @activeClass">
+            @i
+        </a>
+    }
+
+    <a asp-action="Index"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-location="@ViewData["CurrentLocation"]"
+       class="btn btn-default @nextDisabled"
+       style="padding: 8px 16px; border: 1px solid #E7E8E9; border-radius: 4px; text-decoration: none; color: #112211; @(!Model.HasNextPage ? "opacity: 0.5; pointer-events: none;" : "")">
+        Next
+    </a>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/hotel-listing.js"></script>
+    <script src="~/js/favorites-manager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            FavoritesManager.initButtons();
+        });
+    </script>
+}

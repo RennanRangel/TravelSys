@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #112211;
+    background-color: #FAFBFC;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1232px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.header {
+    padding: 24px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: transparent;
+}
+
+.header-content {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+    font-size: 24px;
+    color: #112211;
+    justify-self: center;
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    gap: 32px;
+    justify-self: start;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #112211;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #8DD3BB;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-self: end;
+}
+
+.btn-text {
+    text-decoration: none;
+    color: #112211;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.btn-text:hover {
+    color: #8DD3BB;
+}
+
+.btn-signup {
+    background-color: #112211;
+    color: #FFFFFF;
+    padding: 10px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-signup:hover {
+    background-color: #000;
+}
+
+
+.footer {
+    background-color: #8DD3BB;
+    padding: 64px 0 24px 0;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 64px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+.social-links {
+    display: flex;
+    gap: 16px;
+}
+
+.social-links a {
+    color: #112211;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.footer-column h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #112211;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.footer-column ul li a:hover {
+    opacity: 1;
+}
+
+main {
+    min-height: calc(100vh - 200px);
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .nav,
+    .header-actions {
+        justify-self: center;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 576px) {
+
+    /* Small devices (landscape phones, 576px and up) */
+    .container {
+        max-width: 540px;
+        padding: 0 30px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    /* Medium devices (tablets, 768px and up) */
+    .container {
+        max-width: 720px;
+    }
+
+    .header-content {
+        grid-template-columns: 1fr auto 1fr;
+        gap: 0;
+        text-align: left;
+    }
+
+    .nav,
+    .header-actions {
+        justify-self: auto;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+
+    /* Large devices (desktops, 992px and up) */
+    .container {
+        max-width: 960px;
+    }
+
+    .footer-content {
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    /* X-Large devices (large desktops, 1200px and up) */
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    /* XX-Large devices (larger desktops, 1400px and up) */
+    .container {
+        max-width: 1320px;
+    }
+}

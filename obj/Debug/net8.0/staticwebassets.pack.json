@@ -1,0 +1,481 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\_Layout.css",
+      "PackagePath": "staticwebassets\\css\\_Layout.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\account.css",
+      "PackagePath": "staticwebassets\\css\\account.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\flight-booking.css",
+      "PackagePath": "staticwebassets\\css\\flight-booking.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\flight-details.css",
+      "PackagePath": "staticwebassets\\css\\flight-details.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\flight-payment.css",
+      "PackagePath": "staticwebassets\\css\\flight-payment.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\flight-ticket.css",
+      "PackagePath": "staticwebassets\\css\\flight-ticket.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\flights-listing.css",
+      "PackagePath": "staticwebassets\\css\\flights-listing.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\flights.css",
+      "PackagePath": "staticwebassets\\css\\flights.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\forgot-password.css",
+      "PackagePath": "staticwebassets\\css\\forgot-password.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\home.css",
+      "PackagePath": "staticwebassets\\css\\home.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\hotel-booking.css",
+      "PackagePath": "staticwebassets\\css\\hotel-booking.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\hotel-details.css",
+      "PackagePath": "staticwebassets\\css\\hotel-details.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\hotel-listing.css",
+      "PackagePath": "staticwebassets\\css\\hotel-listing.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\hotel-ticket.css",
+      "PackagePath": "staticwebassets\\css\\hotel-ticket.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\myReservationHotels.css",
+      "PackagePath": "staticwebassets\\css\\myReservationHotels.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\mytickets.css",
+      "PackagePath": "staticwebassets\\css\\mytickets.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\signup.css",
+      "PackagePath": "staticwebassets\\css\\signup.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Frame 186.png",
+      "PackagePath": "staticwebassets\\images\\Frame 186.png"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Frame 187.png",
+      "PackagePath": "staticwebassets\\images\\Frame 187.png"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Frame36.png",
+      "PackagePath": "staticwebassets\\images\\Frame36.png"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Rectangle 3.png",
+      "PackagePath": "staticwebassets\\images\\Rectangle 3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Rectangle 31.png",
+      "PackagePath": "staticwebassets\\images\\Rectangle 31.png"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Sydney.jpg",
+      "PackagePath": "staticwebassets\\images\\Sydney.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Turkey.webp",
+      "PackagePath": "staticwebassets\\images\\Turkey.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\baku.avif",
+      "PackagePath": "staticwebassets\\images\\baku.avif"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\baku.webp",
+      "PackagePath": "staticwebassets\\images\\baku.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\dubai.webp",
+      "PackagePath": "staticwebassets\\images\\dubai.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\emirates.jpg",
+      "PackagePath": "staticwebassets\\images\\emirates.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\londres.jpg",
+      "PackagePath": "staticwebassets\\images\\londres.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\male.webp",
+      "PackagePath": "staticwebassets\\images\\male.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\map-placeholder.svg",
+      "PackagePath": "staticwebassets\\images\\map-placeholder.svg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\newyork.jpg",
+      "PackagePath": "staticwebassets\\images\\newyork.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\paris.webp",
+      "PackagePath": "staticwebassets\\images\\paris.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\praia-skin.webp",
+      "PackagePath": "staticwebassets\\images\\praia-skin.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\sri-lanka-1.webp",
+      "PackagePath": "staticwebassets\\images\\sri-lanka-1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\sri-lanka-2.webp",
+      "PackagePath": "staticwebassets\\images\\sri-lanka-2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\sri-lanka-3.webp",
+      "PackagePath": "staticwebassets\\images\\sri-lanka-3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\tokyo.webp",
+      "PackagePath": "staticwebassets\\images\\tokyo.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\0313b1e0-03e0-4bd9-9c9f-4e639918f2f6_2024_Nitro_option_01_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\0313b1e0-03e0-4bd9-9c9f-4e639918f2f6_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\058b26f3-d626-461b-bd0d-be96a17ca3ef_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\058b26f3-d626-461b-bd0d-be96a17ca3ef_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\09742ad6-f6d8-42b9-845d-21129f0bfa96_2024_Nitro_Default_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\09742ad6-f6d8-42b9-845d-21129f0bfa96_2024_Nitro_Default_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\0ec73294-0d7c-43d1-8ab9-ebfe6860252e_2024_Nitro_Default_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\0ec73294-0d7c-43d1-8ab9-ebfe6860252e_2024_Nitro_Default_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\13181c0e-d89f-4fa7-8943-141ee70842e8_2024_Nitro_option_01_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\13181c0e-d89f-4fa7-8943-141ee70842e8_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\1dcb78f1-8491-469d-8043-54e6db6decfe_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\1dcb78f1-8491-469d-8043-54e6db6decfe_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\2905063b-bed7-44df-9914-48fabc8eec15_2024_Nitro_option_01_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\2905063b-bed7-44df-9914-48fabc8eec15_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\29482978-4c88-4fb9-be5a-750646713667_2024_Nitro_Default_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\29482978-4c88-4fb9-be5a-750646713667_2024_Nitro_Default_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\3aac4876-38a2-455c-827d-56b734938d95_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\3aac4876-38a2-455c-827d-56b734938d95_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\42e0aef6-04cc-4067-a52a-f6066429561a_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\42e0aef6-04cc-4067-a52a-f6066429561a_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\441e202b-196f-478f-b09c-42a0a505aeb5_2024_Nitro_Default_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\441e202b-196f-478f-b09c-42a0a505aeb5_2024_Nitro_Default_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\4d9f139d-1e09-49cc-8dc3-09c0beeadb22_2024_Nitro_option_02_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\4d9f139d-1e09-49cc-8dc3-09c0beeadb22_2024_Nitro_option_02_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\4e998899-d522-464e-a025-12afb6697abd_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\4e998899-d522-464e-a025-12afb6697abd_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\565251b2-1bf4-44fc-b1f9-f16f696b00b5_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\565251b2-1bf4-44fc-b1f9-f16f696b00b5_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\6000c558-0912-457a-a652-b621b96c9e66_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\6000c558-0912-457a-a652-b621b96c9e66_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\605043d9-6895-474f-8e1f-48793788e9de_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\605043d9-6895-474f-8e1f-48793788e9de_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\60786dcb-e4ee-43c0-9ee9-6931fd4a55fc_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\60786dcb-e4ee-43c0-9ee9-6931fd4a55fc_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\65d4448e-30d2-4d12-b75a-6a6e9b1e7113_2024_Nitro_Default_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\65d4448e-30d2-4d12-b75a-6a6e9b1e7113_2024_Nitro_Default_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\67b53cd5-2ef7-4743-bff8-b140cd80f98e_2024_Nitro_option_01_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\67b53cd5-2ef7-4743-bff8-b140cd80f98e_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\74ccfbb8-20f1-468b-a095-413952978acc_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\74ccfbb8-20f1-468b-a095-413952978acc_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\78f21593-2cbc-4787-ba1d-5bf5330e9bc0_2024_Nitro_option_01_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\78f21593-2cbc-4787-ba1d-5bf5330e9bc0_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\7a3d5e15-941a-4924-94fd-5f3314617890_2024_Nitro_option_02_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\7a3d5e15-941a-4924-94fd-5f3314617890_2024_Nitro_option_02_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\835c4df5-c38d-49ec-b5bc-4e3b32a0c01b_134087294382169685.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\835c4df5-c38d-49ec-b5bc-4e3b32a0c01b_134087294382169685.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\8475c824-2979-48d3-bfb9-908a21568924_2024_Nitro_option_01_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\8475c824-2979-48d3-bfb9-908a21568924_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\8fbb87ee-9dc6-4ca3-82b9-bc9bdba5f6f5_134089977118816177.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\8fbb87ee-9dc6-4ca3-82b9-bc9bdba5f6f5_134089977118816177.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\94bb1473-fc11-4416-b7f5-e8803c6bf3df_2024_Nitro_option_02_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\94bb1473-fc11-4416-b7f5-e8803c6bf3df_2024_Nitro_option_02_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\9b100c1b-4179-4f84-ab92-4fbb2cf28cbe_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\9b100c1b-4179-4f84-ab92-4fbb2cf28cbe_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\9b494d36-a567-4bc5-bbfa-5ae5d77414fa_2024_Nitro_option_01_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\9b494d36-a567-4bc5-bbfa-5ae5d77414fa_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\9e9181eb-d4f6-44ff-a3b2-fc4b9d411f28_2024_Nitro_option_01_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\9e9181eb-d4f6-44ff-a3b2-fc4b9d411f28_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\a038fc5c-62c9-42e0-9b55-1c7f95f49bd9_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\a038fc5c-62c9-42e0-9b55-1c7f95f49bd9_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\ab96d1cd-6495-4c49-8c38-dda9682fabdc_2024_Nitro_option_02_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\ab96d1cd-6495-4c49-8c38-dda9682fabdc_2024_Nitro_option_02_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\b06e23da-05d3-437d-9d08-e6ea1e4bf183_2024_Nitro_option_02_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\b06e23da-05d3-437d-9d08-e6ea1e4bf183_2024_Nitro_option_02_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\b27163ad-db1e-47e5-ac00-7ed96af364d3_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\b27163ad-db1e-47e5-ac00-7ed96af364d3_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\b9b0d664-5b76-4fe8-a461-a20cde23d0bc_2024_Nitro_Default_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\b9b0d664-5b76-4fe8-a461-a20cde23d0bc_2024_Nitro_Default_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\baae3fe6-e094-44b9-826f-0c397520695d_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\baae3fe6-e094-44b9-826f-0c397520695d_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\baebbaf8-9166-4b31-a0dc-51e7d6e2db88_2024_Nitro_option_02_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\baebbaf8-9166-4b31-a0dc-51e7d6e2db88_2024_Nitro_option_02_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\bf52aaad-bc45-4553-b9ed-e06bb883aec1_2024_Nitro_option_01_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\bf52aaad-bc45-4553-b9ed-e06bb883aec1_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\c3d04ea7-8bb4-4c26-9fc6-a3a0557f8fb5_2024_Nitro_option_02_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\c3d04ea7-8bb4-4c26-9fc6-a3a0557f8fb5_2024_Nitro_option_02_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\c6dec1fc-64ae-4e2e-8195-7bc5b7ce2b64_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\c6dec1fc-64ae-4e2e-8195-7bc5b7ce2b64_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\cd190a0c-e7e8-4fb2-aad3-25c053217bc5_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\cd190a0c-e7e8-4fb2-aad3-25c053217bc5_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\d7f7b284-c10e-4d79-b5d3-ad31bc130580_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\d7f7b284-c10e-4d79-b5d3-ad31bc130580_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\da5ad802-d614-48af-a21f-0f53e8fcbedd_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\da5ad802-d614-48af-a21f-0f53e8fcbedd_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\db2075ad-4e0f-4cbf-991d-f90ebfdde81f_2024_Nitro_option_02_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\db2075ad-4e0f-4cbf-991d-f90ebfdde81f_2024_Nitro_option_02_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\e1bf638e-ecbc-448e-b916-017771008737_2024_Nitro_Default_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\e1bf638e-ecbc-448e-b916-017771008737_2024_Nitro_Default_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\e45f4a44-9359-4c48-8664-077565ecb24b_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\e45f4a44-9359-4c48-8664-077565ecb24b_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\e58d3290-353a-452f-9130-01d5e79a6763_2024_Nitro_option_01_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\e58d3290-353a-452f-9130-01d5e79a6763_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\e6e43dd5-7a1f-48a9-bd96-394aa8e9b99e_2024_Nitro_Default_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\e6e43dd5-7a1f-48a9-bd96-394aa8e9b99e_2024_Nitro_Default_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\e8d27451-d559-4122-a1c5-ec39d8bed156_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\e8d27451-d559-4122-a1c5-ec39d8bed156_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\ea3b7c22-a98d-490b-a504-7d59487510f9_2024_Nitro_Default_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\ea3b7c22-a98d-490b-a504-7d59487510f9_2024_Nitro_Default_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\f91958f5-8030-49a0-8b7b-3c7d1284b3a4_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\f91958f5-8030-49a0-8b7b-3c7d1284b3a4_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\f952f4a7-2d75-44bf-8c89-b0dcd26b7f12_2024_Nitro_option_02_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\f952f4a7-2d75-44bf-8c89-b0dcd26b7f12_2024_Nitro_option_02_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\fb7eab7f-61b1-417b-b1e8-4834a95cd968_2024_Nitro_option_02_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\fb7eab7f-61b1-417b-b1e8-4834a95cd968_2024_Nitro_option_02_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\fc15743b-cb34-45ec-a9d7-607edb2c195c_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\fc15743b-cb34-45ec-a9d7-607edb2c195c_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\fdfd68dc-44d4-4485-a2c4-5a78995b9cc2_Img-aviao.webp",
+      "PackagePath": "staticwebassets\\images\\uploads\\fdfd68dc-44d4-4485-a2c4-5a78995b9cc2_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\account.js",
+      "PackagePath": "staticwebassets\\js\\account.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\admin-upload.js",
+      "PackagePath": "staticwebassets\\js\\admin-upload.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\admin.js",
+      "PackagePath": "staticwebassets\\js\\admin.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\auth.js",
+      "PackagePath": "staticwebassets\\js\\auth.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\flight-booking.js",
+      "PackagePath": "staticwebassets\\js\\flight-booking.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\flight-details.js",
+      "PackagePath": "staticwebassets\\js\\flight-details.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\flight-payment.js",
+      "PackagePath": "staticwebassets\\js\\flight-payment.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\flight-ticket.js",
+      "PackagePath": "staticwebassets\\js\\flight-ticket.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\flights-listing.js",
+      "PackagePath": "staticwebassets\\js\\flights-listing.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\flights.js",
+      "PackagePath": "staticwebassets\\js\\flights.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\home.js",
+      "PackagePath": "staticwebassets\\js\\home.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\hotel-booking.js",
+      "PackagePath": "staticwebassets\\js\\hotel-booking.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\hotel-details.js",
+      "PackagePath": "staticwebassets\\js\\hotel-details.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\hotel-listing.js",
+      "PackagePath": "staticwebassets\\js\\hotel-listing.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\hotel-ticket.js",
+      "PackagePath": "staticwebassets\\js\\hotel-ticket.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\login.js",
+      "PackagePath": "staticwebassets\\js\\login.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\script.js",
+      "PackagePath": "staticwebassets\\js\\script.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\signup.js",
+      "PackagePath": "staticwebassets\\js\\signup.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Projeto-Hotel-Aviao.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Projeto-Hotel-Aviao.props",
+      "PackagePath": "build\\Projeto-Hotel-Aviao.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Projeto-Hotel-Aviao.props",
+      "PackagePath": "buildMultiTargeting\\Projeto-Hotel-Aviao.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Projeto-Hotel-Aviao.props",
+      "PackagePath": "buildTransitive\\Projeto-Hotel-Aviao.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
