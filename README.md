@@ -18,7 +18,7 @@ O **Travel** é uma aplicação de reservas de viagens que permite aos usuários
 - **Bootstrap 5.3.3** (Framework CSS)
 - **Font Awesome 6** (Ícones)
 - **BCrypt.Net** (Hash de senhas)
-- **Cookie Authentication** (Autenticação e autorização)
+- **ASP.NET Identity** (Autenticação e autorização)
 
 ##  Estrutura do Projeto
 
