@@ -1,0 +1,15 @@
+# Ignorar ficheiros de configuração do próprio Git
+.gitignore export-ignore
+.gitattributes export-ignore
+
+# Ignorar ficheiros de configuração de ferramentas de desenvolvimento
+.editorconfig export-ignore
+.eslintrc.js export-ignore
+.prettierrc export-ignore
+
+# Ignorar pastas de testes ou documentação interna que o utilizador final não precisa
+TravelSys-master export-ignore
+
+# Ignorar scripts de automação ou CI/CD
+.github/ export-ignore
+travis.yml export-ignore
