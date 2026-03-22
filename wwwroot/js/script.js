@@ -1,166 +1,89 @@
-// Tab Switching
-const tabButtons = document.querySelectorAll('.tab-btn');
+/**
+ * Núcleo de Interações Globais (TravelSys)
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Cache de Elementos
+    const DOM = {
+        tabBtns: document.querySelectorAll('.tab-btn'),
+        flightsForm: document.querySelector('#flights-form'),
+        staysForm: document.querySelector('#stays-form'),
+        newsletterForm: document.querySelector('.newsletter-form'),
+        header: document.querySelector('.header'),
+        featureCards: document.querySelectorAll('.feature-card'),
+        destinationCards: document.querySelectorAll('.destination-card'),
+        animatedElements: document.querySelectorAll('.destination-card, .review-card, .feature-card')
+    };
 
-tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        tabButtons.forEach(btn => btn.classList.remove('active'));
+    // --- CHAVEAMENTO DE ABAS (Home/Busca) ---
 
-        // Add active class to clicked button
-        button.classList.add('active');
+    DOM.tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const type = btn.dataset.tab;
+            DOM.tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
-        // Get the tab type
-        const tabType = button.dataset.tab;
-
-        // Toggle forms
-        const flightsForm = document.getElementById('flights-form');
-        const staysForm = document.getElementById('stays-form');
-
-        if (tabType === 'flights') {
-            flightsForm.style.display = 'flex';
-            staysForm.style.display = 'none';
-        } else {
-            flightsForm.style.display = 'none';
-            staysForm.style.display = 'flex';
-        }
-    });
-});
-
-// Smooth Scrolling for Links - COMENTADO PORQUE ESTAVA BLOQUEANDO NAVEGAÇÃO
-// document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-//     anchor.addEventListener('click', function (e) {
-//         e.preventDefault();
-//         const target = document.querySelector(this.getAttribute('href'));
-//         if (target) {
-//             target.scrollIntoView({
-//                 behavior: 'smooth',
-//                 block: 'start'
-//             });
-//         }
-//     });
-// });
-
-// Newsletter Form Submission
-const newsletterForm = document.querySelector('.newsletter-form');
-
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const emailInput = newsletterForm.querySelector('input[type="email"]');
-        const email = emailInput.value;
-
-        if (email) {
-            // Show success message
-            alert(`Thank you for subscribing with ${email}!`);
-            emailInput.value = '';
-        }
-    });
-}
-
-// Search Form Handling
-const searchForm = document.querySelector('.search-form');
-
-if (searchForm) {
-    const showFlightsBtn = searchForm.querySelector('.btn-primary');
-
-    showFlightsBtn?.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        // Get form values
-        const fromTo = document.getElementById('from')?.value;
-        const trip = document.getElementById('trip')?.value;
-        const depart = document.getElementById('depart')?.value;
-        const passengers = document.getElementById('passengers')?.value;
-
-        // Validate
-        if (!fromTo || !depart || !passengers) {
-            alert('Please fill in all required fields');
-            return;
-        }
-
-        // In a real application, this would navigate to search results
-        console.log('Search parameters:', {
-            fromTo,
-            trip,
-            depart,
-            passengers
+            if (DOM.flightsForm) DOM.flightsForm.style.display = type === 'flights' ? 'flex' : 'none';
+            if (DOM.staysForm) DOM.staysForm.style.display = type === 'stays' ? 'flex' : 'none';
         });
-
-        alert('Search functionality would be implemented here!');
     });
-}
 
-// Add animation on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+    // --- NEWSLETTER ---
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+    DOM.newsletterForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = DOM.newsletterForm.querySelector('input[type="email"]')?.value;
+        if (email) {
+            alert(`Obrigado por se inscrever, ${email}!`);
+            DOM.newsletterForm.reset();
         }
     });
-}, observerOptions);
 
-// Observe destination cards and review cards
-document.querySelectorAll('.destination-card, .review-card, .feature-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(card);
-});
+    // --- ANIMAÇÕES AO ROLAR (Observer) ---
 
-// Feature Cards Click Handlers
-document.querySelectorAll('.feature-card').forEach(card => {
-    const button = card.querySelector('.btn-secondary');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-    button?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const cardType = card.classList.contains('flights-card') ? 'flights' : 'hotels';
-        console.log(`Navigating to ${cardType} page`);
-
-        if (cardType === 'flights') {
-            window.location.href = 'flights-listing.html';
-        } else {
-            window.location.href = 'hotel-listing.html';
-        }
+    DOM.animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
     });
-});
 
-// Destination Card Click Handlers
-document.querySelectorAll('.destination-card').forEach(card => {
-    card.addEventListener('click', () => {
-        const destination = card.querySelector('h3')?.textContent;
-        console.log(`Clicked on destination: ${destination}`);
-        alert(`Exploring ${destination}...`);
+    // --- HEADER: EFEITO DE SCROLL ---
+
+    window.addEventListener('scroll', () => {
+        if (!DOM.header) return;
+        const isScrolled = window.pageYOffset > 100;
+        DOM.header.style.background = isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent';
+        DOM.header.style.backdropFilter = isScrolled ? 'blur(10px)' : 'none';
+        DOM.header.style.boxShadow = isScrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
     });
-});
 
-// Header scroll effect
-let lastScroll = 0;
-const header = document.querySelector('.header');
+    // --- CARDS DE RECURSOS E DESTINOS ---
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+    DOM.featureCards.forEach(card => {
+        card.querySelector('.btn-secondary')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isFlight = card.classList.contains('flights-card');
+            window.location.href = isFlight ? 'flights-listing.html' : 'hotel-listing.html';
+        });
+    });
 
-    if (currentScroll > 100) {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-        header.style.backdropFilter = 'blur(10px)';
-        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    } else {
-        header.style.background = 'transparent';
-        header.style.backdropFilter = 'none';
-        header.style.boxShadow = 'none';
-    }
+    DOM.destinationCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const name = card.querySelector('h3')?.textContent;
+            if (name) alert(`Explorando ${name}...`);
+        });
+    });
 
-    lastScroll = currentScroll;
-});
-
-// Add loading animation
-window.addEventListener('load', () => {
+    // --- CARREGAMENTO INICIAL ---
     document.body.style.opacity = '0';
     setTimeout(() => {
         document.body.style.transition = 'opacity 0.5s ease';

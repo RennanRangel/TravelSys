@@ -1,6 +1,6 @@
 @model ProjetoHotelAviao.Models.Booking
 @{
-    ViewData["Title"] = "Ticket - Travel";
+    ViewData["Title"] = "Confirmation - TravelSys";
     var flight = Model.Flight;
 }
 
@@ -10,141 +10,223 @@
 }
 
 <div class="main-container">
-    
+    <!-- Breadcrumbs -->
     <div class="breadcrumbs">
-        <a href="@Url.Action("Index", "Flights")">Flights</a> <i class="fas fa-chevron-right"></i>
-        <a href="@Url.Action("MyTickets", "Flights")">My Tickets</a> <i class="fas fa-chevron-right"></i>
-        <span>Ticket #@Model.TicketNumber</span>
+        <nav>
+            <a href="#">Turkey</a> <i class="fas fa-chevron-right"></i>
+            <a href="#">Istanbul</a> <i class="fas fa-chevron-right"></i>
+            <span>CVK Park Bosphorus Hotel Istanbul</span>
+        </nav>
     </div>
 
-    
-    <div class="ticket-header-section">
-        <div class="ticket-title">
-            <h1>@flight?.Airline</h1>
-            <div class="location-info">
+    <!-- Confirmation Header -->
+    <div class="confirmation-header">
+        <div class="header-left">
+            <h2>@(flight?.Airline ?? "Unknown") A380 Airbus</h2>
+            <div class="location-box">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>@flight?.From → @flight?.To</span>
+                <span>Gümüssuyu Mah. Inönü Cad. No:8, Istanbul 34437</span>
             </div>
         </div>
-        <div class="ticket-actions">
-            <span class="price">$@Model.TotalPrice.ToString("F2")</span>
-            <div class="action-buttons">
-                <button class="btn-icon"><i class="fas fa-share-alt"></i></button>
+        <div class="header-right">
+            <span class="price">R$ @Model.TotalPrice.ToString("N2")</span>
+            <div class="actions">
+                <button class="btn-share"><i class="fas fa-share-alt"></i></button>
                 <button class="btn-download">Download</button>
             </div>
         </div>
     </div>
 
-    
-    <div class="booking-confirmation" style="background: #d4edda; border-radius: 12px; padding: 16px 24px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px;">
-        <i class="fas fa-check-circle" style="color: #155724; font-size: 24px;"></i>
-        <div>
-            <strong style="color: #155724;">Booking Confirmed!</strong>
-            <p style="margin: 0; color: #155724; opacity: 0.8;">Your ticket number is: @Model.TicketNumber</p>
+    <!-- Boarding Pass Section - Ida -->
+    <div class="boarding-pass-container">
+        <!-- Vertical Timeline Side -->
+        <div class="pass-timeline">
+            <div class="time-block top">
+                <span class="time">@flight?.Departure</span>
+                <span class="airport">@flight?.From (@flight?.From?.Substring(0, Math.Min(3, flight.From.Length)).ToUpper())</span>
+            </div>
+            <div class="path-vertical">
+                <div class="line"></div>
+                <i class="fas fa-plane"></i>
+                <div class="line"></div>
+            </div>
+            <div class="time-block bottom">
+                <span class="time">@flight?.Arrival</span>
+                <span class="airport">@flight?.To (@flight?.To?.Substring(0, Math.Min(3, flight.To.Length)).ToUpper())</span>
+            </div>
+        </div>
+
+        <!-- Main Ticket Body -->
+        <div class="pass-main">
+            <div class="pass-ticket-header">
+                <div class="passenger-info">
+                    <div class="profile-pic">
+                        <img src="https://ui-avatars.com/api/?name=@(System.Net.WebUtility.UrlEncode(Model.UserName ?? "James Doe"))&background=8DD3BB&color=fff" alt="Profile">
+                    </div>
+                    <div class="name-id">
+                        <h3>@(Model.UserName ?? "John Doe")</h3>
+                        <span>Boarding Pass N°@(Model.TicketNumber?.Length >= 4 ? Model.TicketNumber.Substring(Model.TicketNumber.Length - 4) : "0000")</span>
+                    </div>
+                </div>
+                <div class="class-badge">
+                    <span>Business Class</span>
+                </div>
+            </div>
+
+            <div class="pass-ticket-details">
+                <div class="detail-item">
+                    <div class="icon-circle"><i class="far fa-calendar"></i></div>
+                    <div class="text">
+                        <label>Date</label>
+                        <span>Wed, Dec 8</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="icon-circle"><i class="far fa-clock"></i></div>
+                    <div class="text">
+                        <label>Flight time</label>
+                        <span>@flight.Departure</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="icon-circle"><i class="fas fa-door-open"></i></div>
+                    <div class="text">
+                        <label>Gate</label>
+                        <span>@Model.Gate</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="icon-circle"><i class="fas fa-chair"></i></div>
+                    <div class="text">
+                        <label>Seat</label>
+                        <span>@Model.Seat</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pass-ticket-footer">
+                <div class="airline-code">
+                    <h2>EK</h2>
+                    <span>@flight.Airline</span>
+                </div>
+                <div class="barcode-area">
+                    <div class="barcode-img"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IDA/LABEL Side -->
+        <div class="pass-map-side" style="display: flex; align-items: center; justify-content: center; background: #fafafa; border-radius: 0 16px 16px 0;">
+             <h2 style="transform: rotate(90deg); color: #8DD3BB; font-size: 40px; white-space: nowrap;">IDA</h2>
         </div>
     </div>
 
-    
-    <div class="boarding-pass">
-        
-        <div class="pass-details">
-            
-            <div class="pass-header">
-                <div class="pass-header-top">
-                    <div class="passenger-profile">
-                        <div class="profile-text">
-                            <h3>@(Model.UserName ?? Model.UserEmail)</h3>
-                            <span>Boarding Pass N'@Model.Id</span>
+    @if (Model.IsRoundTrip)
+    {
+        <!-- Boarding Pass Section - Volta -->
+        <div class="boarding-pass-container" style="margin-top: 40px;">
+            <!-- Vertical Timeline Side -->
+            <div class="pass-timeline">
+                <div class="time-block top">
+                    <span class="time">@flight.Arrival</span>
+                    <span class="airport">@flight.To (@flight.To?.Substring(0, Math.Min(3, flight.To.Length)).ToUpper())</span>
+                </div>
+                <div class="path-vertical">
+                    <div class="line"></div>
+                    <i class="fas fa-plane" style="transform: rotate(180deg);"></i>
+                    <div class="line"></div>
+                </div>
+                <div class="time-block bottom">
+                    <span class="time">@flight.Departure</span>
+                    <span class="airport">@flight.From (@flight.From?.Substring(0, Math.Min(3, flight.From.Length)).ToUpper())</span>
+                </div>
+            </div>
+
+            <!-- Main Ticket Body -->
+            <div class="pass-main">
+                <div class="pass-ticket-header">
+                    <div class="passenger-info">
+                        <div class="profile-pic">
+                            <img src="https://ui-avatars.com/api/?name=@(System.Net.WebUtility.UrlEncode(Model.UserName ?? "James Doe"))&background=8DD3BB&color=fff" alt="Profile">
+                        </div>
+                        <div class="name-id">
+                            <h3>@(Model.UserName ?? "John Doe")</h3>
+                            <span>Boarding Pass N°@Model.TicketNumber.Substring(Model.TicketNumber.Length - 4)V</span>
                         </div>
                     </div>
-                    <span class="class-label">Economy</span>
+                    <div class="class-badge">
+                        <span>Business Class</span>
+                    </div>
                 </div>
 
-                <div class="pass-header-bottom">
-                    <div class="flight-route-item">
-                        <h2>@flight?.Departure</h2>
-                        <span>@flight?.From</span>
+                <div class="pass-ticket-details">
+                    <div class="detail-item">
+                        <div class="icon-circle"><i class="far fa-calendar"></i></div>
+                        <div class="text">
+                            <label>Date</label>
+                            <span>Sat, Dec 11</span>
+                        </div>
                     </div>
-                    <div class="flight-route-arrow">
-                        <i class="fas fa-plane"></i>
+                    <div class="detail-item">
+                        <div class="icon-circle"><i class="far fa-clock"></i></div>
+                        <div class="text">
+                            <label>Flight time</label>
+                            <span>@flight.Departure</span>
+                        </div>
                     </div>
-                    <div class="flight-route-item">
-                        <h2>@flight?.Arrival</h2>
-                        <span>@flight?.To</span>
+                    <div class="detail-item">
+                        <div class="icon-circle"><i class="fas fa-door-open"></i></div>
+                        <div class="text">
+                            <label>Gate</label>
+                            <span>@Model.Gate</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="icon-circle"><i class="fas fa-chair"></i></div>
+                        <div class="text">
+                            <label>Seat</label>
+                            <span>@Model.Seat</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pass-ticket-footer">
+                    <div class="airline-code">
+                        <h2>EK</h2>
+                        <span>@flight.Airline</span>
+                    </div>
+                    <div class="barcode-area">
+                        <div class="barcode-img"></div>
                     </div>
                 </div>
             </div>
 
-            
-            <div class="pass-info-grid">
-                <div class="info-item">
-                    <div class="icon-box"><i class="far fa-calendar"></i></div>
-                    <div class="info-text">
-                        <span class="label">Booking Date</span>
-                        <span class="value">@Model.BookingDate.ToString("dd MMM yyyy")</span>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="icon-box"><i class="far fa-clock"></i></div>
-                    <div class="info-text">
-                        <span class="label">Duration</span>
-                        <span class="value">@flight?.Duration</span>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="icon-box"><i class="fas fa-door-open"></i></div>
-                    <div class="info-text">
-                        <span class="label">Gate</span>
-                        <span class="value">@Model.Gate</span>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <div class="icon-box"><i class="fas fa-chair"></i></div>
-                    <div class="info-text">
-                        <span class="label">Seat</span>
-                        <span class="value">@Model.Seat</span>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="pass-footer">
-                <div class="flight-code">
-                    <h2>@(flight?.Airline?.Substring(0, Math.Min(2, flight.Airline.Length)).ToUpper() ?? "FL")</h2>
-                    <span>@Model.TicketNumber</span>
-                </div>
-                <div class="barcode">
-                    @for (int i = 0; i < 23; i++)
-                    {
-                        <div class="bar" style="width: @(new Random().Next(1, 6))px;"></div>
-                    }
-                </div>
+            <!-- VOLTA/LABEL Side -->
+            <div class="pass-map-side" style="display: flex; align-items: center; justify-content: center; background: #fafafa; border-radius: 0 16px 16px 0;">
+                <h2 style="transform: rotate(90deg); color: #FF8682; font-size: 40px; white-space: nowrap;">VOLTA</h2>
             </div>
         </div>
+    }
 
-        
-        <div class="pass-map">
-            <div class="map-placeholder">
-                <i class="fas fa-plane" style="font-size: 48px; color: #8DD3BB;"></i>
-                <p>@flight?.From → @flight?.To</p>
-            </div>
-        </div>
-    </div>
-
-    
-    <div class="terms-section">
+    <!-- Terms and Conditions Section -->
+    <div class="terms-conditions-container">
         <h2>Terms and Conditions</h2>
+        
+        <div class="legal-section">
+            <h3>Payments</h3>
+            <p>If you are purchasing your ticket using a debit or credit card via the Website, we will process these payments via the automated secure common payment gateway which will be subject to fraud screening purposes.</p>
+            <p>If you do not supply the correct card billing address and/or cardholder information, your booking will not be confirmed and the overall cost may increase. We reserve the right to cancel your booking if payment is declined for any reason or if you have supplied incorrect card information. If we become aware of, or is notified of, any fraud or illegal activity associated with the payment for the booking, the booking will be cancelled and you will be liable for all costs and expenses arising from such cancellation, without prejudice to any action that may be taken against us.</p>
+            <p>Golobe may require the card holder to provide additional payment verification upon request by either submitting an online form or visiting the nearest Golobe office, or at the airport at the time of check-in. Golobe reserves the right to deny boarding or to collect a guarantee payment (in cash or from another credit card) if the card originally used for the purchase cannot be presented by the cardholder at check-in or when collecting the tickets, or in the case the original payment has been withheld or disputed by the card issuing bank. Credit card details are held in a secured environment and transferred through an internationally accepted system.</p>
+        </div>
 
-        <h3>Payments</h3>
-        <ul>
-            <li>If you are purchasing your ticket using a debit or credit card via the Website, we will process
-                these payments via the automated secure common payment gateway which will be subject to fraud
-                screening purposes.</li>
-            <li>If you do not supply the correct card billing address and/or cardholder information, your booking
-                will not be confirmed and the overall cost may increase.</li>
-        </ul>
-
-        <h3>Contact Us</h3>
-        <p>If you have any questions about our Website, please contact us at <a href="#">travel.com/help</a></p>
+        <div class="contact-section">
+            <h3>Contact Us</h3>
+            <p>If you have any questions about our Website or our Terms of Use, please contact:</p>
+            <p>Golobe Group Q.C.S.C</p>
+            <p>Golobe Tower</p>
+            <p>P.O. Box: 22550</p>
+            <p>Doha, State of Qatar</p>
+            <p>Further contact details can be found at <a href="#">golobe.com/help</a></p>
+        </div>
     </div>
 </div>

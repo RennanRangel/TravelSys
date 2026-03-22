@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\Projeto-Hotel-Aviao.csproj": {}
+    "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\Projeto-Hotel-Aviao.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\Projeto-Hotel-Aviao.csproj": {
+    "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\Projeto-Hotel-Aviao.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\Projeto-Hotel-Aviao.csproj",
+        "projectUniqueName": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\Projeto-Hotel-Aviao.csproj",
         "projectName": "Projeto-Hotel-Aviao",
-        "projectPath": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\Projeto-Hotel-Aviao.csproj",
+        "projectPath": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\Projeto-Hotel-Aviao.csproj",
         "packagesPath": "C:\\Users\\Renna\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\obj\\",
+        "outputPath": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Renna\\AppData\\Roaming\\NuGet\\NuGet.Config"

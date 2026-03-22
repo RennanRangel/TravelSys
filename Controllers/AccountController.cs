@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using ProjetoHotelAviao.Data;
 using ProjetoHotelAviao.Models;
 
+using ProjetoHotelAviao.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
+
 namespace ProjetoHotelAviao.Controllers;
 
 public class AccountController : Controller
@@ -27,11 +30,32 @@ public class AccountController : Controller
     }
 
     [Authorize]
-    public async Task<IActionResult> Index()
+    [HttpGet]
+    public async Task<IActionResult> Index(string tab)
     {
+        ViewBag.ActiveTab = tab ?? "account";
         var user = await _userManager.GetUserAsync(User);
         if (user == null) return NotFound();
-        return View(user);
+
+        var viewModel = new AccountIndexViewModel
+        {
+            User = user,
+            FlightBookings = await _context.Bookings
+                .Include(b => b.Flight)
+                .Where(b => b.UserId == user.Id || b.UserEmail == user.Email)
+                .OrderByDescending(b => b.BookingDate)
+                .ToListAsync(),
+            StayBookings = await _context.HotelBookings
+                .Include(b => b.Hotel)
+                .Where(b => b.UserId == user.Id || b.UserEmail == user.Email)
+                .OrderByDescending(b => b.BookingDate)
+                .ToListAsync(),
+            PaymentMethods = await _context.UserCards
+                .Where(c => c.UserId == user.Id)
+                .ToListAsync()
+        };
+
+        return View(viewModel);
     }
 
     [HttpGet]
@@ -46,6 +70,7 @@ public class AccountController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(string email, string password, bool rememberMe, string? returnUrl = null)
     {
         var user = await _userManager.FindByEmailAsync(email);
@@ -54,14 +79,11 @@ public class AccountController : Controller
         {
             bool passwordValid = false;
             
-            
             if (user.IsBCryptPassword)
             {
                 if (BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
                 {
                     passwordValid = true;
-                    
-                    
                     var token = await _userManager.GeneratePasswordResetTokenAsync(user);
                     await _userManager.ResetPasswordAsync(user, token, password);
                     user.IsBCryptPassword = false;
@@ -70,14 +92,12 @@ public class AccountController : Controller
             }
             else
             {
-                
                 passwordValid = await _userManager.CheckPasswordAsync(user, password);
             }
             
             if (passwordValid)
             {
                 await _signInManager.SignInAsync(user, rememberMe);
-                
                 
                 if (await _userManager.IsInRoleAsync(user, "Admin"))
                 {
@@ -108,6 +128,7 @@ public class AccountController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Signup(string email, string password, string confirmPassword, 
         string? firstName, string? lastName, string? phone)
     {
@@ -139,14 +160,11 @@ public class AccountController : Controller
         
         if (result.Succeeded)
         {
-            
             if (!await _roleManager.RoleExistsAsync("User"))
             {
                 await _roleManager.CreateAsync(new IdentityRole("User"));
             }
             await _userManager.AddToRoleAsync(user, "User");
-            
-            
             await _signInManager.SignInAsync(user, isPersistent: false);
             
             return RedirectToAction("Index", "Home");
@@ -161,6 +179,7 @@ public class AccountController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()
     {
         await _signInManager.SignOutAsync();
@@ -168,6 +187,7 @@ public class AccountController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> SwitchAccount()
     {
         await _signInManager.SignOutAsync();
@@ -175,9 +195,11 @@ public class AccountController : Controller
     }
 
     [Authorize]
+    [HttpGet]
     public async Task<IActionResult> Profile()
     {
         var user = await _userManager.GetUserAsync(User);
+        if (user == null) return NotFound();
         return View(user);
     }
 
@@ -192,6 +214,7 @@ public class AccountController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> ForgotPassword(string email)
     {
         var user = await _userManager.FindByEmailAsync(email);
@@ -201,22 +224,19 @@ public class AccountController : Controller
             return View();
         }
 
-        
         return RedirectToAction("SetPassword", new { email = email });
     }
 
     [HttpGet]
     public IActionResult SetPassword(string email)
     {
-        if (string.IsNullOrEmpty(email))
-        {
-            return RedirectToAction("Login");
-        }
+        if (string.IsNullOrEmpty(email)) return RedirectToAction("Login");
         ViewData["Email"] = email;
         return View();
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> SetPassword(string email, string password, string confirmPassword)
     {
         if (password != confirmPassword)
@@ -227,12 +247,8 @@ public class AccountController : Controller
         }
 
         var user = await _userManager.FindByEmailAsync(email);
-        if (user == null)
-        {
-            return RedirectToAction("Login");
-        }
+        if (user == null) return RedirectToAction("Login");
 
-        
         var token = await _userManager.GeneratePasswordResetTokenAsync(user);
         var result = await _userManager.ResetPasswordAsync(user, token, password);
         

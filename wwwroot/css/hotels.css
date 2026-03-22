@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FFFFFF;
+    color: #112211;
+    line-height: 1.6;
+}
+
+/* Listing and Hotel-specific Landing styles remain here */
+
+/* Sections */
+.recent-searches {
+    max-width: 1200px;
+    margin: 220px auto 80px;
+    padding: 0 40px;
+}
+
+.recent-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.recent-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.recent-card:hover {
+    transform: translateY(-4px);
+}
+
+.recent-card img {
+    width: 90px;
+    height: 90px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.recent-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.recent-info p {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+/* Fall into travel */
+.travel-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 40px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+}
+
+.section-header-text h2 {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+.section-header-text p {
+    font-size: 16px;
+    opacity: 0.7;
+    max-width: 600px;
+}
+
+.btn-see-all {
+    padding: 10px 24px;
+    border: 1px solid #8DD3BB;
+    border-radius: 4px;
+    color: #112211;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-see-all:hover {
+    background-color: #8DD3BB;
+}
+
+.travel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.travel-card {
+    height: 420px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.travel-card:hover {
+    transform: translateY(-8px);
+}
+
+.card-overlay {
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    padding: 24px;
+    width: 100%;
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+}
+
+.card-title { font-size: 24px; font-weight: 700; margin: 0; }
+.card-subtitle { font-size: 14px; opacity: 0.8; }
+.card-price { font-size: 24px; font-weight: 700; }
+
+.btn-book {
+    width: 100%;
+    padding: 12px;
+    background-color: #8DD3BB;
+    color: #112211;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.travel-section-alt {
+    max-width: 1200px;
+    margin: 200px auto 80px;
+    padding: 0 40px;
+}
+
+.promo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.promo-card {
+    background-color: #8DD3BB;
+    padding: 40px;
+    border-radius: 16px;
+}
+
+.promo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.promo-card h3 { font-size: 40px; font-weight: 700; line-height: 1.2; }
+.promo-price { background: #FFFFFF; padding: 4px 12px; border-radius: 4px; font-weight: 600; }
+
+.promo-card p { font-size: 14px; line-height: 1.6; margin: 24px 0; }
+
+.promo-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.promo-images img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.footer {
+    background-color: #8DD3BB;
+    padding: 60px 0 40px;
+}
+
+@media (max-width: 1024px) {
+    .recent-grid, .travel-grid { grid-template-columns: repeat(2, 1fr); }
+    .promo-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .recent-grid, .travel-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+}

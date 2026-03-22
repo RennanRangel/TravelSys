@@ -272,6 +272,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    align-items: center;
 }
 
 .search-field {
@@ -291,7 +292,7 @@ body {
 
 .search-field input,
 .search-field select {
-    padding: 12px 16px;
+    padding: 14px 18px;
     border: 1px solid #79747E;
     border-radius: 4px;
     font-family: 'Montserrat', sans-serif;
@@ -299,6 +300,13 @@ body {
     color: #112211;
     background-color: #FFFFFF;
     width: 100%;
+    height: 48px;
+    min-width: 180px;
+    box-sizing: border-box;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .search-field input:focus,
@@ -356,14 +364,14 @@ body {
 
 
 .top-section {
-    margin-left: -175px;
+    margin-left: 0;
     display: flex;
     gap: 24px;
     align-items: flex-start;
 }
 
 .sidebar {
-    margin-left: 325px;
+    margin-left: 0;
     
     background-color: #FFFFFF;
     border-radius: 12px;
@@ -382,13 +390,15 @@ body {
 }
 
 .right-column .search-bar {
-  
     background-color: #FFFFFF;
     border-radius: 12px;
-    padding: 20px;
+    padding: 24px 32px;
     border: none;
     display: block;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    width: 145%;
+    margin-left: -325px;
+    box-sizing: border-box;
 }
 
 
@@ -567,58 +577,75 @@ body {
 .sorting-header {
     background-color: #FFFFFF;
     border-radius: 12px;
-    padding: 16px;
+    padding: 0;
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    align-items: stretch;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
 }
 
 .sorting-tabs {
     display: flex;
-    gap: 12px;
-    overflow-x: auto;
-    width: 100%;
+    flex: 1;
 }
 
 .sort-tab {
     flex: 1;
-    min-width: 80px;
-    padding: 10px;
+    padding: 16px 20px;
     background-color: transparent;
-    border: 1px solid #E7E8E9;
-    border-radius: 4px;
+    border: none;
+    border-bottom: 3px solid transparent;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
-    text-align: center;
+    text-align: left;
+    text-decoration: none;
+    color: #112211;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+}
+
+.sort-tab + .sort-tab {
+    border-left: 1px solid #E7E8E9;
 }
 
 .sort-tab span {
     display: block;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 400;
     color: #112211;
-    opacity: 0.7;
-    margin-top: 4px;
+    opacity: 0.5;
+    margin-top: 0;
+}
+
+.sort-tab strong {
+    font-weight: 600;
+    font-size: 16px;
 }
 
 .sort-tab.active {
-    background-color: #8DD3BB;
-    border-color: #8DD3BB;
+    background-color: transparent;
+    border-bottom: 3px solid #8DD3BB;
 }
 
 .sort-tab:hover {
-    border-color: #8DD3BB;
+    background-color: rgba(141, 211, 187, 0.06);
+}
+
+.sorting-options {
+    display: flex;
+    align-items: center;
+    border-left: 1px solid #E7E8E9;
 }
 
 .btn-other-sort {
-    width: 100%;
-    padding: 12px;
+    padding: 16px 24px;
     background-color: transparent;
-    border: 1px solid #E7E8E9;
-    border-radius: 4px;
+    border: none;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 600;
@@ -628,10 +655,13 @@ body {
     justify-content: center;
     gap: 8px;
     transition: all 0.3s;
+    white-space: nowrap;
+    color: #112211;
+    height: 100%;
 }
 
 .btn-other-sort:hover {
-    border-color: #8DD3BB;
+    background-color: rgba(141, 211, 187, 0.06);
 }
 
 .results-info {
@@ -1096,7 +1126,8 @@ body {
 
     .search-field {
         width: auto;
-        flex: 1;
+        flex: 1 1 0;
+        min-width: 0;
     }
 
     .footer-container {
@@ -1163,11 +1194,11 @@ body {
     .sidebar {
         display: block;
         width: 300px;
-        margin: 0;
+        margin-top: 144px;
+        margin-left: 0;
     }
 
     .right-column {
-        flex: 1;
         width: calc(100% - 324px);
         /* Account for gap */
     }
@@ -1188,5 +1219,253 @@ body {
 @media (min-width: 1200px) {
     .main-container {
         max-width: 1200px;
+    }
+}
+/* --- Premium Flight Card Redesign (Mockup 2955) --- */
+.flight-card-premium {
+    background: #FFFFFF;
+    border: 1px solid #E7E8E9;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(17, 34, 17, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.flight-card-premium:hover {
+    box-shadow: 0 8px 24px rgba(17, 34, 17, 0.1);
+}
+
+.card-upper-section {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 20px;
+}
+
+.airline-logo-side {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.airline-logo-side img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.flight-details-main {
+    flex: 1;
+}
+
+.info-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.rating-badge-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rating-tag {
+    border: 1px solid #8DD3BB;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #112211;
+}
+
+.rating-mood {
+    font-weight: 700;
+    font-size: 14px;
+    color: #112211;
+}
+
+.review-status {
+    font-size: 14px;
+    color: #112211;
+    opacity: 0.6;
+}
+
+.price-capsule {
+    text-align: right;
+}
+
+.price-hint {
+    display: block;
+    font-size: 12px;
+    color: #112211;
+    opacity: 0.6;
+    margin-bottom: 2px;
+}
+
+.price-total {
+    font-size: 28px;
+    font-weight: 700;
+    color: #FF8682; /* Pink/Coral Color */
+}
+
+.flight-itinerary-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.itinerary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.row-left input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border: 1.5px solid #D7D9DB !important;
+    border-radius: 4px;
+}
+
+.time-slot {
+    display: flex;
+    flex-direction: column;
+}
+
+.flight-time-range {
+    font-size: 16px;
+    font-weight: 600;
+    color: #112211;
+}
+
+.airline-name-sub {
+    font-size: 14px;
+    color: #112211;
+    opacity: 0.5;
+}
+
+.row-middle {
+    flex: 1;
+    text-align: center;
+}
+
+.stop-type {
+    font-size: 14px;
+    font-weight: 500;
+    color: #112211;
+}
+
+.row-right {
+    flex: 1;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.duration-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #112211;
+}
+
+.route-code {
+    font-size: 14px;
+    color: #112211;
+    opacity: 0.5;
+}
+
+.card-footer-divider {
+    height: 1px;
+    background-color: #E7E8E9;
+    margin: 20px 0;
+}
+
+.card-bottom-actions {
+    display: flex;
+    gap: 16px;
+}
+
+.btn-wishlist {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #8DD3BB;
+    border-radius: 4px;
+    background: transparent;
+    color: #112211;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-wishlist:hover {
+    background: rgba(141, 211, 187, 0.1);
+}
+
+.btn-action-primary {
+    flex: 1;
+    background: #8DD3BB;
+    color: #112211;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
+    height: 48px;
+    transition: background 0.2s;
+}
+
+.btn-action-primary:hover {
+    background: #7bc1a8;
+}
+
+@media (max-width: 768px) {
+    .card-upper-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .airline-logo-side {
+        width: 100px;
+        margin-bottom: 16px;
+    }
+    
+    .info-header-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .price-capsule {
+        text-align: center;
+    }
+    
+    .itinerary-row {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    
+    .row-middle, .row-right {
+        text-align: center;
     }
 }

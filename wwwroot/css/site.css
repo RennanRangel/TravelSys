@@ -1,4 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 /* Site-wide styles */
 body {
     font-family: 'Montserrat', sans-serif;
+}
+
+.site-nav-link {
+    color: #112211 !important;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.site-nav-link.active,
+.site-nav-link:hover {
+    color: #8DD3BB !important;
 }

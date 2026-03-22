@@ -1,501 +1,326 @@
-/* Hotel Ticket CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
-
-body {
-    background-color: #FAFBFC;
-    color: #112211;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 .main-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-
-.header {
-    background-color: #FFFFFF;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    padding: 15px 0;
-    margin-bottom: 30px;
-}
-
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    position: relative;
-}
-
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-.header-tabs {
-    display: flex;
-    gap: 20px;
-}
-
-.tab-link {
-    text-decoration: none;
+    max-width: 1240px !important;
+    margin: 0 auto !important;
+    padding: 32px 20px;
+    font-family: 'Montserrat', 'Inter', sans-serif;
     color: #112211;
-    font-weight: 600;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 14px;
+    margin-bottom: 32px;
 }
 
-.tab-link.active {
-    border-bottom: 3px solid #8DD3BB;
-    padding-bottom: 24px;
-    margin-bottom: -24px;
+.breadcrumbs a {
+    color: #FF8682 !important;
+    text-decoration: none !important;
+    font-weight: 500;
+    transition: opacity 0.2s;
 }
 
-.logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    text-decoration: none;
-    color: #112211;
-    font-size: 24px;
-    font-weight: 700;
+.breadcrumbs a:hover {
+    opacity: 0.8;
+    text-decoration: underline !important;
 }
 
-.logo i {
-    transform: rotate(-15deg);
-    margin: 0 2px;
-    background-color: #8DD3BB;
-    padding: 4px;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.btn-favorites {
-    background: none;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-
-.ticket-card {
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin: 40px 0;
-    display: flex;
-}
-
-.info-section {
-    flex: 2;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.ticket-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 30px;
-}
-
-.hotel-name h1 {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.hotel-location {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #112211;
-    opacity: 0.7;
-}
-
-.room-info {
-    text-align: right;
-    max-width: 200px;
-}
-
-.room-info span {
-    font-size: 14px;
-    font-weight: 600;
-    color: #112211;
-}
-
-.info-body {
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-}
-
-.time-grid {
-    display: flex;
-    gap: 40px;
-}
-
-.time-item {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-}
-
-.icon-box {
-    width: 32px;
-    height: 32px;
-    background-color: #EBF6F2;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #8DD3BB;
-}
-
-.icon-box i {
-    font-size: 16px;
-    color: #112211;
-}
-
-.time-item .text {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.time-item .label {
-    font-size: 12px;
-    color: #112211;
+.breadcrumbs span {
     opacity: 0.6;
 }
 
-.time-item .value {
-    font-size: 16px;
-    font-weight: 600;
+.breadcrumbs i {
+    font-size: 10px;
+    opacity: 0.5;
     color: #112211;
 }
 
-.footer-row {
+/* Header Section */
+.ticket-header-top {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
+    margin-bottom: 32px;
 }
 
-.booking-code h2 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #112211;
-}
-
-.booking-code span {
-    font-size: 14px;
-    color: #112211;
-    opacity: 0.6;
-}
-
-.barcode {
-    width: 200px;
-    height: 40px;
-    background-image: repeating-linear-gradient(90deg,
-            #000 0,
-            #000 2px,
-            transparent 2px,
-            transparent 4px,
-            #000 4px,
-            #000 8px,
-            transparent 8px,
-            transparent 9px);
-}
-
-/* Right Image Section */
-.image-section {
-    flex: 1;
-    position: relative;
-}
-
-.hotel-image-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.hotel-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.hotel-logo-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #112211;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.hotel-logo-overlay h3 {
+.ticket-header-top h1 {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 8px;
-    font-family: serif;
 }
 
-.hotel-logo-overlay span {
-    font-size: 14px;
-    letter-spacing: 2px;
-    margin-bottom: 4px;
-}
-
-.hotel-logo-overlay small {
-    font-size: 10px;
-    letter-spacing: 4px;
-}
-
-.terms-section {
-    margin-bottom: 60px;
-}
-
-.terms-section h2 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 24px;
-    color: #112211;
-}
-
-.terms-section h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: #112211;
-    margin-top: 32px;
-}
-
-.terms-section ul {
-    list-style: disc;
-    padding-left: 20px;
-    color: #112211;
-    opacity: 0.75;
-}
-
-.terms-section li {
-    margin-bottom: 12px;
-    line-height: 1.6;
-}
-
-.terms-section p {
-    line-height: 1.6;
-    margin-bottom: 16px;
-    opacity: 0.75;
-}
-
-.footer {
-    background-color: #8DD3BB;
-    padding: 60px 0 40px;
-    margin-top: 80px;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 40px;
-}
-
-.footer-column h4 {
+.ticket-header-top .location {
     font-size: 16px;
+    opacity: 0.6;
+}
+
+.ticket-header-top .price-tag {
+    font-size: 32px;
     font-weight: 700;
-    margin-bottom: 16px;
-    color: #112211;
-}
-
-.footer-column ul {
-    list-style: none;
-}
-
-.footer-column ul li {
+    color: #FF8682;
     margin-bottom: 12px;
 }
 
-.footer-column ul li a {
-    text-decoration: none;
-    color: #112211;
-    font-size: 14px;
-    transition: opacity 0.3s;
-}
-
-.footer-column ul li a:hover {
-    opacity: 0.7;
-}
-
-.footer-logo {
-    margin-bottom: 24px;
-}
-
-.social-links {
+.ticket-actions {
     display: flex;
     gap: 16px;
 }
 
-.social-links a {
-    width: 40px;
+.btn-action-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #8DD3BB;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.btn-download {
+    background: #8DD3BB;
+    border: none;
+    padding: 0 24px;
+    height: 48px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Ticket Card */
+.ticket-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 64px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.ticket-left {
+    padding: 40px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 240px;
+    border-right: 1px dashed #E7E8E9;
+}
+
+.ticket-date strong {
+    font-size: 24px;
+    font-weight: 700;
+    display: block;
+}
+
+.ticket-date span {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.ticket-timeline {
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0.3;
+}
+
+.ticket-timeline .line {
+    width: 1px;
     height: 40px;
-    background-color: #FFFFFF;
+    background: #112211;
+}
+
+.ticket-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.guest-profile-header {
+    background: #8DD3BB;
+    padding: 20px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #112211;
+}
+
+.guest-info-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.guest-avatar {
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
+    object-fit: cover;
+}
+
+.guest-info-box h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.room-type-tag {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+    max-width: 200px;
+}
+
+.ticket-info-grid {
+    padding: 40px 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.info-item-ticket {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.info-item-ticket .icon-box {
+    width: 32px;
+    height: 32px;
+    background: rgba(141, 211, 187, 0.1);
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #8DD3BB;
-    text-decoration: none;
-    transition: all 0.3s;
 }
 
-.social-links a:hover {
-    background-color: #112211;
-    color: #FFFFFF;
+.info-item-ticket .text-wrap {
+    display: flex;
+    flex-direction: column;
 }
 
+.info-item-ticket .label {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.info-item-ticket .value {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.ticket-barcode-section {
+    padding: 0 40px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ticket-barcode-section h4 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.ticket-barcode-section span {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.barcode-img {
+    margin-top: 16px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.ticket-right {
+    min-width: 280px;
+    background: #FAFAFA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px dashed #E7E8E9;
+}
+
+.hotel-branding {
+    text-align: center;
+}
+
+.hotel-branding h2 {
+    font-family: 'Times New Roman', serif;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Terms and Conditions */
+.terms-footer {
+    padding-top: 64px;
+    border-top: 1px solid #E7E8E9;
+}
+
+.terms-footer h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 32px;
+}
+
+.terms-block {
+    margin-bottom: 40px;
+}
+
+.terms-block h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.terms-block p, .terms-block li {
+    font-size: 14px;
+    line-height: 1.8;
+    opacity: 0.6;
+    margin-bottom: 12px;
+}
+
+.terms-block ul {
+    list-style: none;
+}
+
+.terms-block li::before {
+    content: "•";
+    margin-right: 8px;
+}
 
 @media (max-width: 992px) {
     .ticket-card {
         flex-direction: column;
     }
-
-    .image-section {
-        height: 300px;
-    }
-
-    .time-grid {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .footer-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .ticket-header {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .room-info {
-        text-align: left;
-    }
-
-    .footer-row {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-    }
-
-    .footer-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 576px) {
-    .info-section {
-        padding: 20px;
-    }
-
-    .footer-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Responsive Breakpoints */
-@media (min-width: 576px) {
-    .info-section {
-        padding: 30px;
-    }
-
-    .footer-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 768px) {
-    .ticket-header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .room-info {
-        text-align: right;
-    }
-
-    .footer-row {
+    .ticket-left {
+        border-right: none;
+        border-bottom: 1px dashed #E7E8E9;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
     }
-
-    .footer-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 992px) {
-    .ticket-card {
+    .ticket-timeline {
         flex-direction: row;
+        width: auto;
     }
-
-    .image-section {
-        flex: 1;
-        height: auto;
+    .ticket-timeline .line {
+        width: 40px;
+        height: 1px;
     }
-
-    .info-section {
-        flex: 1.5;
-    }
-
-    .footer-container {
-        grid-template-columns: repeat(6, 1fr);
-    }
-}
-
-@media (min-width: 1200px) {
-    .main-container {
-        max-width: 1200px;
-    }
-}
-
-@media (min-width: 1400px) {
-    .main-container {
-        max-width: 1320px;
+    .ticket-right {
+        border-left: none;
+        border-top: 1px dashed #E7E8E9;
+        padding: 40px;
     }
 }

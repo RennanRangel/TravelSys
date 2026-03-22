@@ -1,0 +1,536 @@
+@model AdminViewModel
+@{
+    ViewData["Title"] = "Criar Novo Voo";
+    Layout = "_AdminLayout";
+}
+
+<div class="mgmt-creation-container">
+    <!-- Sidebar Stepper -->
+    <div class="mgmt-stepper-sidebar">
+        <div class="stepper-section-title">QUAL É O VOO?</div>
+        <a href="#section-detalhes" class="stepper-item active">Detalhes do voo</a>
+        <a href="#section-rota" class="stepper-item">Rota e Tipo</a>
+        <a href="#section-horarios" class="stepper-item">Horários</a>
+        <a href="#section-descricao" class="stepper-item">Descrição e Políticas</a>
+        
+        <div class="stepper-section-title">GALERIA E VALORES</div>
+        <a href="#section-imagens" class="stepper-item">Identidade Visual</a>
+        <a href="#section-valores" class="stepper-item">Valores e Precificação</a>
+    </div>
+
+    <!-- Main Content Form -->
+    <div class="mgmt-creation-content-wrapper">
+        <form asp-action="CreateFlight" method="post" enctype="multipart/form-data">
+            <div class="mgmt-creation-content">
+                <div class="creation-header">
+                    <h2>Detalhe os dados do seu voo</h2>
+                </div>
+
+                <!-- Seção: Detalhes -->
+                <div id="section-detalhes" class="creation-form-section active">
+                    <div class="admin-form-group">
+                        <label>Dê um nome para a companhia aérea * <i class="fas fa-circle-info" title="Use o nome comercial completo"></i></label>
+
+                        <input asp-for="NewFlight.Airline" class="admin-input" placeholder="Ex: Emirates" required>
+                        <div class="form-tip">
+                            <i class="fas fa-wand-magic-sparkles"></i> Dica: evite siglas, abreviações e juntar palavras. Dê preferência a nomes que estejam de acordo com a marca.
+                        </div>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label>Quais as classes do voo disponíveis? *</label>
+                        <div class="d-flex gap-4 mt-2">
+                            <label class="custom-checkbox d-flex align-items-center gap-2">
+                                <input type="checkbox" id="chkEconomy" value="Economica" onchange="togglePriceFields()" checked style="width: 20px; height: 20px;">
+                                <span>Econômica</span>
+                            </label>
+                            <label class="custom-checkbox d-flex align-items-center gap-2">
+                                <input type="checkbox" id="chkBusiness" value="Executiva" onchange="togglePriceFields()" style="width: 20px; height: 20px;">
+                                <span>Executiva</span>
+                            </label>
+                            <label class="custom-checkbox d-flex align-items-center gap-2">
+                                <input type="checkbox" id="chkFirstClass" value="Primeira Classe" onchange="togglePriceFields()" style="width: 20px; height: 20px;">
+                                <span>Primeira Classe</span>
+                            </label>
+                        </div>
+                        <input type="hidden" id="FlightClasses" name="NewFlight.FlightClasses" value="Economica">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label>Qual o terminal de embarque? *</label>
+                        <div class="admin-select-wrapper">
+                            <select class="admin-input admin-input-select" required>
+                                <option value="" disabled selected>Selecione o terminal</option>
+                                <option value="T1">Terminal 1</option>
+                                <option value="T2">Terminal 2</option>
+                                <option value="T3">Terminal 3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label>Tipo de Bilhete? *</label>
+                        <div class="admin-select-wrapper">
+                            <select asp-for="NewFlight.TripType" class="admin-input admin-input-select" required>
+                                <option value="" disabled selected>Selecione o tipo de bilhete</option>
+                                <option value="Round trip">Ida e Volta</option>
+                                <option value="One Way">Apenas Ida</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="switch-container">
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="switch-label">Voo com assistência para PCD <i class="fas fa-circle-info" title="Indica se o voo possui suporte especial"></i></span>
+                    </div>
+
+                    <div class="section-footer-actions">
+                        <a asp-action="GestaoViagens" class="btn-sair">Sair</a>
+                        <button type="button" class="btn-continuar next-step">Continuar</button>
+                    </div>
+                </div>
+
+                <!-- Seção: Rota -->
+                <div id="section-rota" class="creation-form-section">
+                    <div class="creation-header d-flex justify-content-between align-items-center">
+                        <h2>Rota e Conectividade</h2>
+                        <div class="creation-header-actions">
+                            <button type="button" class="header-action-btn" title="Traduzir"><i class="fas fa-globe"></i></button>
+                            <button type="button" class="header-action-btn" title="Excluir"><i class="fas fa-trash-can"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="section-sub-title">Estrutura de Voo</div>
+                        <div class="section-description">Informe a modalidade de trajeto para este voo</div>
+                        <div class="admin-form-group">
+                            <input asp-for="NewFlight.Duration" class="admin-input" placeholder="Duração estimada (ex: 12h 30m)" required>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <div class="section-sub-title">Modo de Viagem</div>
+                        <div class="admin-radio-group">
+                            <label class="admin-radio-item">
+                                <input type="radio" asp-for="NewFlight.Stops" value="Direct" checked required>
+                                Direto
+                            </label>
+                            <label class="admin-radio-item">
+                                <input type="radio" asp-for="NewFlight.Stops" value="Scale" required>
+                                Escala
+                            </label>
+                            <label class="admin-radio-item">
+                                <input type="radio" asp-for="NewFlight.Stops" value="Connection" required>
+                                Conexão
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <div class="section-sub-title">Origem e Destino</div>
+                        <div class="section-description">
+                            A definição correta dos aeroportos é crucial para a indexação no portal de busca. O volume de visualizações pode aumentar significativamente quando os códigos IATA estão corretos.
+                        </div>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-7 admin-form-group">
+                                <label>País de Destino *</label>
+                                <div class="admin-select-wrapper">
+                                    <select class="admin-input admin-input-select" required>
+                                        <option value="" disabled selected>Selecione uma opção</option>
+                                        <option value="BR">Brasil</option>
+                                        <option value="US">Estados Unidos</option>
+                                        <option value="AE" selected>Emirados Árabes</option>
+                                        <option value="FR">França</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5 admin-form-group">
+                                <label>Código IATA / Aeroporto</label>
+                                <input asp-for="NewFlight.To" class="admin-input" placeholder="Ex: DXB" required>
+                                <a href="#" class="form-tip mt-2 d-inline-block" style="color: #0030BF; text-decoration: none;">Não sei o código, como posso encontrar?</a>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 admin-form-group">
+                            <label>Aeroporto de Origem *</label>
+                            <input asp-for="NewFlight.From" class="admin-input" placeholder="Ex: Guarulhos (GRU)" required>
+                        </div>
+                    </div>
+
+                    <div class="section-footer-actions justify-content-end gap-3 mt-5">
+                        <button type="submit" class="btn-save-exit d-flex align-items-center">Salvar e sair</button>
+                        <button type="button" class="btn-voltar prev-step">Voltar</button>
+                        <button type="button" class="btn-update-continue next-step">Atualizar e continuar</button>
+                    </div>
+                </div>
+
+                <!-- Seção: Horários -->
+                <div id="section-horarios" class="creation-form-section">
+                    <div class="creation-header d-flex justify-content-between align-items-center">
+                        <h2>Horários e Disponibilidade</h2>
+                        <div class="creation-header-actions">
+                            <button type="button" class="header-action-btn" title="Traduzir"><i class="fas fa-globe"></i></button>
+                            <button type="button" class="header-action-btn" title="Excluir"><i class="fas fa-trash-can"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="section-sub-title">Agendamento de Voo</div>
+                        <div class="section-description">Defina os horários previstos de partida e chegada</div>
+                        <div class="row g-4">
+                            <div class="col-md-6 admin-form-group">
+                                <label>Horário de Partida * <i class="fas fa-clock text-muted ms-1"></i></label>
+                                <input asp-for="NewFlight.Departure" class="admin-input" placeholder="Ex: 10:00 AM" required>
+                            </div>
+                            <div class="col-md-6 admin-form-group">
+                                <label>Horário de Chegada * <i class="fas fa-clock text-muted ms-1"></i></label>
+                                <input asp-for="NewFlight.Arrival" class="admin-input" placeholder="Ex: 12:00 PM" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <div class="section-sub-title">Frequência do Voo</div>
+                        <div class="section-description">Selecione com que frequência este voo opera</div>
+                        <div class="admin-radio-group">
+                            <label class="admin-radio-item">
+                                <input type="radio" name="flight_frequency" value="daily" checked required>
+                                Diário
+                            </label>
+                            <label class="admin-radio-item">
+                                <input type="radio" name="flight_frequency" value="weekly" required>
+                                Semanal
+                            </label>
+                            <label class="admin-radio-item">
+                                <input type="radio" name="flight_frequency" value="custom" required>
+                                Personalizado
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section-footer-actions justify-content-end gap-3 mt-5">
+                        <button type="submit" class="btn-save-exit d-flex align-items-center">Salvar e sair</button>
+                        <button type="button" class="btn-voltar prev-step">Voltar</button>
+                        <button type="button" class="btn-update-continue next-step">Atualizar e continuar</button>
+                    </div>
+                </div>
+
+                <!-- Seção: Descrição e Políticas -->
+                <div id="section-descricao" class="creation-form-section">
+                    <div class="creation-header">
+                        <h2>Descreva e detalhe aqui as informações do seu voo <i class="fas fa-circle-info" style="font-size: 16px; color: #666; cursor: help;"></i></h2>
+                    </div>
+
+                    <div class="ai-assistant-banner">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                        <div class="ai-assistant-text">
+                            Você pode usar a <strong>IA de Suporte</strong>, nossa inteligência artificial, para te ajudar a descrever os detalhes do voo! Peça sugestões para as políticas e serviços e edite como quiser. Assim, você ganha tempo e recebe sugestões baseadas em todo aprendizado do sistema. Ah, e não se preocupe, nenhum conteúdo já salvo será apagado.
+                        </div>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label>Descreva sobre o voo e aproveite para falar sobre os serviços de bordo e entretenimento. *</label>
+                        <div class="rich-editor-container">
+                            <div class="editor-toolbar">
+                                <select class="toolbar-select"><option>Normal</option></select>
+                                <div class="toolbar-group">
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-bold"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-italic"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-underline"></i></button>
+                                </div>
+                                <div class="toolbar-group">
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-image"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-list-ul"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-list-ol"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-remove-format"></i></button>
+                                </div>
+                            </div>
+                            <div class="editor-content-area">
+                                <textarea asp-for="NewFlight.Amenities" class="editor-textarea" placeholder="Descreva as comodidades como Wi-Fi, refeições, etc..." required>- Wi-Fi gratuito de alta velocidade a bordo
+- Sistema de entretenimento individual de última geração
+- Refeições gourmet preparadas por chefs renomados
+- Assentos ergonômicos com maior espaço para as pernas
+- Kit de amenidades exclusivo para voos de longa distância
+- Atendimento personalizado e equipe multilíngue</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-group mt-5">
+                        <label>Descreva as políticas de cancelamento e bagagem. Cite também as regras importantes para o embarque. *</label>
+                        <div class="rich-editor-container">
+                            <div class="editor-toolbar">
+                                <select class="toolbar-select"><option>Normal</option></select>
+                                <div class="toolbar-group">
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-bold"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-italic"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-underline"></i></button>
+                                </div>
+                                <div class="toolbar-group">
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-image"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-list-ul"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-list-ol"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-remove-format"></i></button>
+                                </div>
+                            </div>
+                            <div class="editor-content-area">
+                                <textarea asp-for="NewFlight.Policies" class="editor-textarea" placeholder="Detalhe as políticas de reembolso e franquia de bagagem..." required>- Franquia de bagagem inclusa conforme a classe tarifária
+- Reembolso integral disponível para cancelamentos em até 24h
+- Taxas de alteração reduzidas para flexibilidade de datas
+- Check-in antecipado disponível via aplicativo ou totem
+- Prioridade no embarque para membros do programa de fidelidade
+- Assistência especial disponível sob solicitação prévia</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-footer-actions">
+                        <button type="button" class="btn-sair prev-step">Voltar</button>
+                        <button type="button" class="btn-continuar next-step">Continuar</button>
+                    </div>
+                </div>
+
+                <!-- Seção: Imagens -->
+                <div id="section-imagens" class="creation-form-section">
+                    <div class="creation-header d-flex justify-content-between align-items-center">
+                        <h2>Identidade Visual e Ativos</h2>
+                        <div class="creation-header-actions">
+                            <button type="button" class="header-action-btn" title="Traduzir"><i class="fas fa-globe"></i></button>
+                            <button type="button" class="header-action-btn" title="Excluir"><i class="fas fa-trash-can"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="section-sub-title">Companhia Aérea</div>
+                        <div class="section-description">Selecione o logotipo oficial da companhia para este voo</div>
+                        <div class="admin-file-upload-container">
+                            <label class="admin-file-upload-label">
+                                <i class="fas fa-cloud-arrow-up upload-icon"></i>
+                                <span class="upload-text">Clique aqui para enviar o logo</span>
+                                <span class="upload-hint">Formatos aceitos: PNG, JPG ou SVG. Tamanho máximo: 2MB.</span>
+                                <input name="FlightLogoUpload" type="file" class="admin-file-input" onchange="updateFileUpload(this)" required>
+                            </label>
+                            <div class="filename-display"><i class="fas fa-file-image me-1"></i> <span class="name-text"></span></div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <div class="section-sub-title">Banner de Exibição</div>
+                        <div class="section-description">Esta imagem será o cartão de visitas lateral no portal de busca</div>
+                        <div class="admin-file-upload-container">
+                            <label class="admin-file-upload-label">
+                                <i class="fas fa-image upload-icon"></i>
+                                <span class="upload-text">Clique para selecionar a imagem de capa</span>
+                                <span class="upload-hint">Recomendamos imagens em alta resolução (mínimo 1200x800px).</span>
+                                <input name="FlightMainImageUpload" type="file" class="admin-file-input" onchange="updateFileUpload(this)" required>
+                            </label>
+                            <div class="filename-display"><i class="fas fa-file-image me-1"></i> <span class="name-text"></span></div>
+                        </div>
+                    </div>
+
+                    <div class="section-footer-actions justify-content-end gap-3 mt-5">
+                        <button type="submit" class="btn-save-exit d-flex align-items-center">Salvar e sair</button>
+                        <button type="button" class="btn-voltar prev-step">Voltar</button>
+                        <button type="button" class="btn-update-continue next-step">Atualizar e continuar</button>
+                    </div>
+                </div>
+
+                <!-- Seção: Valores -->
+                <div id="section-valores" class="creation-form-section">
+                    <div class="creation-header d-flex justify-content-between align-items-center">
+                        <h2>Valores e Precificação</h2>
+                        <div class="creation-header-actions">
+                            <button type="button" class="header-action-btn" title="Traduzir"><i class="fas fa-globe"></i></button>
+                            <button type="button" class="header-action-btn" title="Excluir"><i class="fas fa-trash-can"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4" id="price-economy-container">
+                        <div class="section-sub-title">Preço - Classe Econômica</div>
+                        <div class="admin-form-group">
+                            <label>Preço (R$) *</label>
+                            <input asp-for="NewFlight.EconomyPrice" type="number" step="0.01" class="admin-input" placeholder="Ex: 1200.00" required>
+                        </div>
+                    </div>
+                    <div class="mt-4" id="price-business-container" style="display: none;">
+                        <div class="section-sub-title">Preço - Classe Executiva</div>
+                        <div class="admin-form-group">
+                            <label>Preço (R$) *</label>
+                            <input asp-for="NewFlight.BusinessPrice" type="number" step="0.01" class="admin-input" placeholder="Ex: 3500.00">
+                        </div>
+                    </div>
+                    <div class="mt-4" id="price-firstclass-container" style="display: none;">
+                        <div class="section-sub-title">Preço - Primeira Classe</div>
+                        <div class="admin-form-group">
+                            <label>Preço (R$) *</label>
+                            <input asp-for="NewFlight.FirstClassPrice" type="number" step="0.01" class="admin-input" placeholder="Ex: 8000.00">
+                        </div>
+                    </div>
+                    <div class="form-tip mt-2">
+                        <i class="fas fa-circle-info"></i> Taxas e impostos serão calculados no checkout.
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="section-sub-title">Status de Publicação</div>
+                        <div class="admin-form-group">
+                            <label>Status *</label>
+                            <div class="admin-select-wrapper">
+                                <select asp-for="NewFlight.Status" class="admin-input admin-input-select" required>
+                                    <option value="rascunho">Rascunho</option>
+                                    <option value="aprovacao">Aprovação</option>
+                                    <option value="aprovada">Aprovada</option>
+                                    <option value="reprovada">Reprovada</option>
+                                    <option value="publicada" selected>Publicada</option>
+                                    <option value="congelada">Congelada</option>
+                                    <option value="encerrada">Encerrada</option>
+                                    <option value="cancelada">Cancelada</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-footer-actions justify-content-end gap-3 mt-5">
+                        <button type="submit" class="btn-save-exit d-flex align-items-center">Salvar e sair</button>
+                        <button type="button" class="btn-voltar prev-step">Voltar</button>
+                        <button type="submit" class="btn-update-continue">Finalizar Cadastro</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.updateFileUpload = function(input) {
+                const container = input.closest('.admin-file-upload-container');
+                const display = container.querySelector('.filename-display');
+                const textSpan = display.querySelector('.name-text');
+                
+                if (input.files && input.files.length > 0) {
+                    textSpan.textContent = input.files[0].name;
+                    display.style.display = 'block';
+                } else {
+                    display.style.display = 'none';
+                }
+            };
+
+            const sections = document.querySelectorAll('.creation-form-section');
+            const stepperItems = document.querySelectorAll('.stepper-item');
+            const nextButtons = document.querySelectorAll('.next-step');
+            const prevButtons = document.querySelectorAll('.prev-step');
+            let currentStep = 0;
+
+            function updateUI() {
+                sections.forEach((s, i) => {
+                    s.classList.toggle('active', i === currentStep);
+                });
+
+                stepperItems.forEach((item, i) => {
+                    item.classList.toggle('active', i === currentStep);
+                    // Also update href to prevent jumping or just use currentstep
+                });
+
+                // Scroll to top of form
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            nextButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Basic validation could go here
+                    if (currentStep < sections.length - 1) {
+                        currentStep++;
+                        updateUI();
+                    }
+                });
+            });
+
+            prevButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (currentStep > 0) {
+                        currentStep--;
+                        updateUI();
+                    }
+                });
+            });
+
+            document.addEventListener('invalid', function(e) {
+                const section = e.target.closest('.creation-form-section');
+                if (section) {
+                    const sectionsArray = Array.from(sections);
+                    const index = sectionsArray.indexOf(section);
+                    if (index !== -1 && index !== currentStep) {
+                        e.preventDefault();
+                        currentStep = index;
+                        updateUI();
+                        setTimeout(() => e.target.reportValidity(), 50);
+                    }
+                }
+            }, true);
+
+            // Stepper click behavior
+            stepperItems.forEach((item, i) => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (i <= currentStep) { // Only allow going back or to current
+                       currentStep = i;
+                       updateUI();
+                    }
+                });
+            });
+
+            // Initialize multi-class UI logic
+            window.togglePriceFields = function() {
+                const chkEco = document.getElementById('chkEconomy');
+                const chkBus = document.getElementById('chkBusiness');
+                const chkFir = document.getElementById('chkFirstClass');
+                
+                const eco = chkEco ? chkEco.checked : false;
+                const bus = chkBus ? chkBus.checked : false;
+                const fir = chkFir ? chkFir.checked : false;
+                
+                const contEco = document.getElementById('price-economy-container');
+                const contBus = document.getElementById('price-business-container');
+                const contFir = document.getElementById('price-firstclass-container');
+                
+                if (contEco) {
+                    contEco.style.display = eco ? 'block' : 'none';
+                    const inp = document.querySelector('[name="NewFlight.EconomyPrice"]');
+                    if (inp) inp.required = eco;
+                }
+                if (contBus) {
+                    contBus.style.display = bus ? 'block' : 'none';
+                    const inp = document.querySelector('[name="NewFlight.BusinessPrice"]');
+                    if (inp) inp.required = bus;
+                }
+                if (contFir) {
+                    contFir.style.display = fir ? 'block' : 'none';
+                    const inp = document.querySelector('[name="NewFlight.FirstClassPrice"]');
+                    if (inp) inp.required = fir;
+                }
+                
+                const classes = [];
+                if (eco) classes.push(chkEco.value);
+                if (bus) classes.push(chkBus.value);
+                if (fir) classes.push(chkFir.value);
+                
+                const hiddenInput = document.getElementById('FlightClasses');
+                if (hiddenInput) {
+                    hiddenInput.value = classes.join(',');
+                }
+            };
+            
+            // Initialization
+            togglePriceFields();
+
+            // Assuming RichTextEditor is a custom class/function you have defined elsewhere
+            // new RichTextEditor(document.querySelector('.editor-container'));
+        });
+    </script>
+}

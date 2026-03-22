@@ -1,0 +1,443 @@
+@using ProjetoHotelAviao.Models.ViewModels
+@model AccountIndexViewModel
+@{
+    ViewData["Title"] = "My Account - TravelSys";
+    var user = Model.User;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/account.css" asp-append-version="true">
+}
+
+<div class="account-profile-container">
+    <!-- Profile Header with Cover and Avatar -->
+    <div class="profile-hero-section">
+        <div class="profile-cover">
+            <div class="cover-overlay"></div>
+            <button class="btn-upload-cover"><i class="fas fa-cloud-upload-alt"></i> Upload new cover</button>
+        </div>
+        
+        <div class="profile-avatar-wrapper">
+            <div class="avatar-container">
+                <img src="https://ui-avatars.com/api/?name=@(user.FirstName ?? user.UserName)&background=8DD3BB&color=fff&size=160" alt="Avatar" class="avatar-img">
+                <button class="btn-edit-avatar"><i class="fas fa-pencil-alt"></i></button>
+            </div>
+            <div class="profile-titles">
+                <h1>@(user.FirstName ?? "User") @(user.LastName ?? "")</h1>
+                <p>@user.Email</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Tabs -->
+    <div class="profile-tabs-container">
+        <div class="tabs-nav">
+            <button class="tab-btn @(ViewBag.ActiveTab == "account" ? "active" : "")" data-target="account-tab">Account</button>
+            <button class="tab-btn @(ViewBag.ActiveTab == "bookings" ? "active" : "")" data-target="bookings-tab">Tickets/Bookings</button>
+            <button class="tab-btn @(ViewBag.ActiveTab == "payments" ? "active" : "")" data-target="payment-tab">Payment methods</button>
+        </div>
+    </div>
+
+    <!-- Account Details Tab -->
+    <div class="tab-content-panel @(ViewBag.ActiveTab == "account" ? "active" : "")" id="account-tab" style="@(ViewBag.ActiveTab == "account" ? "" : "display: none;")">
+        <div class="content-header">
+            <h2>Account</h2>
+        </div>
+        
+        <div class="account-details-card">
+            <!-- Row: Name -->
+            <div class="detail-row">
+                <div class="info-group">
+                    <label>Name</label>
+                    <div class="value">@(user.FirstName ?? "Not set") @(user.LastName ?? "")</div>
+                </div>
+                <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
+            </div>
+
+            <!-- Row: Email -->
+            <div class="detail-row">
+                <div class="info-group">
+                    <label>Email</label>
+                    <div class="value">@user.Email</div>
+                </div>
+                <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
+            </div>
+
+            <!-- Row: Password -->
+            <div class="detail-row">
+                <div class="info-group">
+                    <label>Password</label>
+                    <div class="value">************</div>
+                </div>
+                <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
+            </div>
+
+            <!-- Row: Phone -->
+            <div class="detail-row">
+                <div class="info-group">
+                    <label>Phone number</label>
+                    <div class="value">@(user.PhoneNumber ?? "+1 000-000-0000")</div>
+                </div>
+                <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
+            </div>
+
+            <!-- Row: Address -->
+            <div class="detail-row">
+                <div class="info-group">
+                    <label>Address</label>
+                    <div class="value">St 32 main downtown, Los Angeles, California, USA</div>
+                </div>
+                <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
+            </div>
+
+            <!-- Row: Date of birth -->
+            <div class="detail-row">
+                <div class="info-group">
+                    <label>Date of birth</label>
+                    <div class="value">01-01-1992</div>
+                </div>
+                <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tickets/Bookings Tab -->
+    <div class="tab-content-panel @(ViewBag.ActiveTab == "bookings" ? "active" : "")" id="bookings-tab" style="@(ViewBag.ActiveTab == "bookings" ? "" : "display: none;")">
+        <div class="header-with-filter">
+            <h2>Tickets/Bookings</h2>
+            <div class="filter-dropdown">
+                <span>Upcoming</span> <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <!-- Sub-tabs for Flights / Stays -->
+        <div class="sub-tabs-nav">
+            <button class="sub-tab-btn active" data-subtarget="flights-list">
+                <i class="fas fa-plane"></i> Flights
+            </button>
+            <button class="sub-tab-btn" data-subtarget="stays-list">
+                <i class="fas fa-bed"></i> Stays
+            </button>
+        </div>
+
+        <!-- Flight Bookings List -->
+        <div class="ticket-list-container active-sub" id="flights-list">
+            @if (Model.FlightBookings.Any())
+            {
+                @foreach (var booking in Model.FlightBookings)
+                {
+                    <div class="booking-ticket-card">
+                        <div class="ticket-main-info">
+                            <div class="airline-logo-box">
+                                <img src="@booking.Flight?.Logo" alt="@booking.Flight?.Airline">
+                            </div>
+                            <div class="route-time-box">
+                                <div class="time-point">
+                                    <span class="city-code">@booking.Flight?.From</span>
+                                    <span class="time-val">@booking.Flight?.Departure</span>
+                                </div>
+                                <div class="route-separator"></div>
+                                <div class="time-point">
+                                    <span class="city-code">@booking.Flight?.To</span>
+                                    <span class="time-val">@booking.Flight?.Arrival</span>
+                                </div>
+                            </div>
+                            
+                            <div class="ticket-divider"></div>
+                            
+                            <div class="ticket-details-grid">
+                                <div class="detail-item-mini">
+                                    <div class="icon-wrap"><i class="far fa-calendar"></i></div>
+                                    <div class="text-wrap">
+                                        <span class="label">Date</span>
+                                        <span class="value">@booking.BookingDate.ToString("dd-MM-yy")</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item-mini">
+                                    <div class="icon-wrap"><i class="fas fa-door-open"></i></div>
+                                    <div class="text-wrap">
+                                        <span class="label">Gate</span>
+                                        <span class="value">@booking.Gate</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item-mini">
+                                    <div class="icon-wrap"><i class="far fa-clock"></i></div>
+                                    <div class="text-wrap">
+                                        <span class="label">Flight time</span>
+                                        <span class="value">@booking.Flight?.Duration</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item-mini">
+                                    <div class="icon-wrap"><i class="fas fa-chair"></i></div>
+                                    <div class="text-wrap">
+                                        <span class="label">Seat no.</span>
+                                        <span class="value">@booking.Seat</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ticket-actions-right">
+                            <a href="/Flights/Ticket/@booking.Id" class="btn-download-ticket">Download Ticket</a>
+                            <button class="btn-goto-detail"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="empty-state">
+                    <p>No flight bookings found.</p>
+                </div>
+            }
+        </div>
+
+        <!-- Stay Bookings List -->
+        <div class="ticket-list-container" id="stays-list" style="display: none;">
+            @if (Model.StayBookings.Any())
+            {
+                @foreach (var booking in Model.StayBookings)
+                {
+                    <div class="booking-ticket-card">
+                        <div class="ticket-main-info">
+                            <div class="airline-logo-box">
+                                <img src="@booking.Hotel?.MainImage" alt="@booking.Hotel?.Name">
+                            </div>
+                            <div class="route-time-box">
+                                <div class="time-point" style="min-width: 150px;">
+                                    <span class="city-code">@booking.Hotel?.Name</span>
+                                    <span class="time-val" style="font-size: 16px;">@booking.RoomType</span>
+                                </div>
+                            </div>
+                            
+                            <div class="ticket-divider"></div>
+
+                            <div class="ticket-details-grid">
+                                <div class="detail-item-mini">
+                                    <div class="icon-wrap"><i class="far fa-calendar"></i></div>
+                                    <div class="text-wrap">
+                                        <span class="label">Check In</span>
+                                        <span class="value">@booking.CheckIn.ToString("dd-MM-yy")</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item-mini">
+                                    <div class="icon-wrap"><i class="fas fa-moon"></i></div>
+                                    <div class="text-wrap">
+                                        <span class="label">Nights</span>
+                                        <span class="value">@booking.Nights</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item-mini">
+                                    <div class="icon-wrap"><i class="far fa-calendar-check"></i></div>
+                                    <div class="text-wrap">
+                                        <span class="label">Check Out</span>
+                                        <span class="value">@booking.CheckOut.ToString("dd-MM-yy")</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item-mini">
+                                    <div class="icon-wrap"><i class="fas fa-hashtag"></i></div>
+                                    <div class="text-wrap">
+                                        <span class="label">Booking ID</span>
+                                        <span class="value">@booking.Id</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ticket-actions-right">
+                            <a href="/Hotels/Ticket/@booking.Id" class="btn-download-ticket">Download Ticket</a>
+                            <button class="btn-goto-detail"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="empty-state">
+                    <p>No stay bookings found.</p>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Payment Methods Tab -->
+    <div class="tab-content-panel @(ViewBag.ActiveTab == "payments" ? "active" : "")" id="payment-tab" style="@(ViewBag.ActiveTab == "payments" ? "" : "display: none;")">
+        <div class="content-header">
+            <h2>Payment methods</h2>
+        </div>
+
+        <div class="payment-methods-grid">
+            @if (Model.PaymentMethods.Any())
+            {
+                @foreach (var card in Model.PaymentMethods)
+                {
+                    <div class="payment-card-premium visa-green">
+                        <div class="card-top-row">
+                            <div class="card-number-huge">
+                                **** **** **** @(card.CardNumber.Length > 4 ? card.CardNumber.Substring(card.CardNumber.Length - 4) : "4321")
+                            </div>
+                            <button class="btn-delete-card"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                        <div class="card-bottom-row">
+                            <div class="expiry-box">
+                                <span>Valid Thru</span>
+                                <div class="val">@card.ExpiryDate</div>
+                            </div>
+                            <div class="card-type-logo">
+                                <i class="fab fa-cc-visa"></i>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            
+            <!-- Default placeholder if no cards, or just as an 'Add' option -->
+            @if (!Model.PaymentMethods.Any())
+            {
+                <div class="payment-card-premium visa-green">
+                    <div class="card-top-row">
+                        <div class="card-number-huge">**** **** **** 4321</div>
+                        <button class="btn-delete-card"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                    <div class="card-bottom-row">
+                        <div class="expiry-box">
+                            <span>Valid Thru</span>
+                            <div class="val">02/27</div>
+                        </div>
+                        <div class="card-type-logo">
+                            <i class="fab fa-cc-visa"></i>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!-- Add New Card Box -->
+            <div class="add-new-card-box" id="open-add-card">
+                <div class="plus-circle-wrap">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <span>Add a new card</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add New Card Modal -->
+    <div class="modal-overlay" id="add-card-modal" style="display: none;">
+        <div class="modal-card-content">
+            <button class="close-modal" id="close-add-card">&times;</button>
+            <h2 class="modal-title">Add a new Card</h2>
+            
+            <form id="add-card-form" class="premium-form">
+                <div class="form-row-full">
+                    <div class="input-group-premium">
+                        <label>Card Number</label>
+                        <input type="text" placeholder="4321 4321 4321 4321" class="has-icon">
+                        <i class="fab fa-cc-visa input-icon-right"></i>
+                    </div>
+                </div>
+                
+                <div class="form-row-split">
+                    <div class="input-group-premium">
+                        <label>Exp. Date</label>
+                        <input type="text" placeholder="02/27">
+                    </div>
+                    <div class="input-group-premium">
+                        <label>CVC</label>
+                        <input type="text" placeholder="123">
+                    </div>
+                </div>
+
+                <div class="form-row-full">
+                    <div class="input-group-premium">
+                        <label>Name on Card</label>
+                        <input type="text" placeholder="John Doe">
+                    </div>
+                </div>
+
+                <div class="form-row-full">
+                    <div class="input-group-premium">
+                        <label>Country or Region</label>
+                        <select>
+                            <option>United States</option>
+                            <option>Brazil</option>
+                            <option>Canada</option>
+                            <option>United Kingdom</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow-custom"></i>
+                    </div>
+                </div>
+
+                <label class="checkbox-container">
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                    Securely save my information for 1-click checkout
+                </label>
+
+                <button type="submit" class="btn-add-card-submit">Add Card</button>
+
+                <p class="form-disclaimer">
+                    By confirming your subscription, you allow The Outdoor Inn Crowd Limited to charge your card for this payment and future payments in accordance with their terms. You can always cancel your subscription.
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Main Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content-panel').forEach(p => p.style.display = 'none');
+                
+                btn.classList.add('active');
+                const targetId = btn.getAttribute('data-target');
+                document.getElementById(targetId).style.display = 'block';
+            });
+        });
+
+        // Sub-tab switching for Flights/Stays
+        document.querySelectorAll('.sub-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.ticket-list-container').forEach(l => l.style.display = 'none');
+                
+                btn.classList.add('active');
+                const targetId = btn.getAttribute('data-subtarget');
+                document.getElementById(targetId).style.display = 'flex';
+            });
+        });
+
+        // Modal Logic
+        const addCardModal = document.getElementById('add-card-modal');
+        const openModalBtn = document.getElementById('open-add-card');
+        const closeModalBtn = document.getElementById('close-add-card');
+
+        openModalBtn.addEventListener('click', () => {
+            addCardModal.style.display = 'flex';
+            setTimeout(() => addCardModal.classList.add('active'), 10);
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            addCardModal.classList.remove('active');
+            setTimeout(() => addCardModal.style.display = 'none', 300);
+        });
+
+        // Close on overlay click
+        addCardModal.addEventListener('click', (e) => {
+            if (e.target === addCardModal) {
+                closeModalBtn.click();
+            }
+        });
+
+        // Handle URL Hash for direct tab access (Legacy fallback)
+        window.addEventListener('load', () => {
+            const hash = window.location.hash;
+            if (hash === '#payments' && '@ViewBag.ActiveTab' !== 'payments') {
+                const btn = document.querySelector('.tab-btn[data-target="payment-tab"]');
+                if (btn) btn.click();
+            }
+        });
+    </script>
+}

@@ -1,97 +1,74 @@
-// ========================================
-// SIGNUP PAGE - JavaScript
-// ========================================
+/**
+ * Gerenciamento de Cadastro (Carrossel & Validação)
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Cache de Elementos
+    const DOM = {
+        image: document.querySelector('.signup-left img'),
+        indicators: document.querySelectorAll('.indicator'),
+        toggleBtns: document.querySelectorAll('.toggle-password'),
+        form: document.querySelector('.signup-form'),
+        password: document.querySelector('#password'),
+        confirm: document.querySelector('#confirmPassword')
+    };
 
-document.addEventListener('DOMContentLoaded', function () {
-
-    // ========================================
-    // 1. CAROUSEL DE IMAGENS
-    // ========================================
     const images = [
         'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&h=1600&fit=crop',
         'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=1600&fit=crop',
         'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&h=1600&fit=crop'
     ];
 
-    let currentImageIndex = 0;
-    const imageElement = document.querySelector('.signup-left img');
-    const indicators = document.querySelectorAll('.indicator');
+    let currentIndex = 0;
 
-    function changeImage(index) {
-        if (!imageElement) return;
+    // --- CARROSSEL ---
 
-        currentImageIndex = index;
-        imageElement.src = images[currentImageIndex];
+    const changeImage = (index) => {
+        if (!DOM.image) return;
+        currentIndex = index;
+        DOM.image.src = images[currentIndex];
+        DOM.indicators.forEach((ind, i) => ind.classList.toggle('active', i === currentIndex));
+    };
 
-        indicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === currentImageIndex);
-        });
-    }
-
-    // Click nos indicadores
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => changeImage(index));
-    });
-
-    // Auto-rotate a cada 5 segundos
-    if (imageElement) {
+    if (DOM.image && DOM.indicators.length > 0) {
+        DOM.indicators.forEach((ind, i) => ind.addEventListener('click', () => changeImage(i)));
         setInterval(() => {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            changeImage(currentImageIndex);
+            currentIndex = (currentIndex + 1) % images.length;
+            changeImage(currentIndex);
         }, 5000);
     }
 
-    // ========================================
-    // 2. TOGGLE DE VISIBILIDADE DA SENHA
-    // ========================================
-    const togglePasswordButtons = document.querySelectorAll('.toggle-password');
+    // --- VISIBILIDADE DA SENHA ---
 
-    togglePasswordButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const passwordInput = this.previousElementSibling;
+    DOM.toggleBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const input = this.previousElementSibling;
             const icon = this.querySelector('i');
+            if (!input || !icon) return;
 
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            } else {
-                passwordInput.type = 'password';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            }
+            const isLocked = input.type === 'password';
+            input.type = isLocked ? 'text' : 'password';
+            icon.classList.toggle('fa-eye', isLocked);
+            icon.classList.toggle('fa-eye-slash', !isLocked);
         });
     });
 
-    // ========================================
-    // 3. VALIDAÇÃO DO FORMULÁRIO (CLIENT-SIDE)
-    // ========================================
-    const signupForm = document.querySelector('.signup-form');
-    const passwordInput = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirmPassword');
+    // --- VALIDAÇÃO ---
 
-    if (signupForm) {
-        signupForm.addEventListener('submit', function (e) {
-            const password = passwordInput ? passwordInput.value : '';
-            const confirmPassword = confirmPasswordInput ? confirmPasswordInput.value : '';
+    if (DOM.form) {
+        DOM.form.addEventListener('submit', (e) => {
+            const pass = DOM.password?.value || '';
+            const conf = DOM.confirm?.value || '';
 
-            // Validar se as senhas coincidem
-            if (password !== confirmPassword) {
+            if (pass !== conf) {
                 e.preventDefault();
                 alert('As senhas não coincidem!');
-                return false;
+                return;
             }
 
-            // Validar tamanho mínimo da senha
-            if (password.length < 6) {
+            if (pass.length < 6) {
                 e.preventDefault();
                 alert('A senha deve ter pelo menos 6 caracteres!');
-                return false;
             }
-
-            // Formulário válido - deixar o ASP.NET processar
-            return true;
         });
     }
-
 });

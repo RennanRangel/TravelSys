@@ -20,10 +20,289 @@ public class AdminController : Controller
 
     public async Task<IActionResult> Index()
     {
+        var flights = await _context.Flights.ToListAsync();
+        var hotels = await _context.Hotels.ToListAsync();
+        var bookings = await _context.Bookings.Include(b => b.Flight).OrderByDescending(b => b.BookingDate).ToListAsync();
+        var hotelBookings = await _context.HotelBookings.Include(b => b.Hotel).OrderByDescending(b => b.BookingDate).ToListAsync();
+
         var viewModel = new AdminViewModel
         {
-            Flights = await _context.Flights.ToListAsync(),
-            Hotels = await _context.Hotels.ToListAsync()
+            Flights = flights,
+            Hotels = hotels,
+            RecentBookings = bookings.Take(8).ToList(),
+            RecentHotelBookings = hotelBookings.Take(8).ToList(),
+            TotalFlights = flights.Count,
+            TotalHotels = hotels.Count,
+            TotalBookings = bookings.Count + hotelBookings.Count,
+            TotalRevenue = bookings.Sum(b => b.TotalPrice) + hotelBookings.Sum(b => b.TotalPrice)
+        };
+        return View(viewModel);
+    }
+
+    [AllowAnonymous] // Temporary access for fix
+    public async Task<IActionResult> FixDb()
+    {
+        var results = new List<string>();
+        string[] queries = {
+            "ALTER TABLE Hotels ADD COLUMN IF NOT EXISTS Region LONGTEXT NULL;",
+            "ALTER TABLE Hotels ADD COLUMN IF NOT EXISTS BookingMode LONGTEXT NULL;",
+            "ALTER TABLE Hotels ADD COLUMN IF NOT EXISTS CheckIn LONGTEXT NULL;",
+            "ALTER TABLE Hotels ADD COLUMN IF NOT EXISTS CheckOut LONGTEXT NULL;",
+            "ALTER TABLE Hotels ADD COLUMN IF NOT EXISTS ReceptionMode LONGTEXT NULL;",
+            "ALTER TABLE Hotels ADD COLUMN IF NOT EXISTS ZipCode LONGTEXT NULL;",
+            "ALTER TABLE Hotels ADD COLUMN IF NOT EXISTS Country LONGTEXT NULL;",
+            "ALTER TABLE Hotels MODIFY COLUMN Stars INT NULL;"
+        };
+
+        foreach (var query in queries)
+        {
+            try
+            {
+                // Note: IF NOT EXISTS for ADD COLUMN is MariaDB/MySQL 8.0.21+. 
+                // If it fails due to syntax on older MySQL, we try the standard ADD.
+                await _context.Database.ExecuteSqlRawAsync(query);
+                results.Add($"Sucesso: {query}");
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("Duplicate column name") || ex.Message.Contains("already exists"))
+                {
+                    results.Add($"Ignorado (já existe): {query}");
+                }
+                else
+                {
+                    // Try without IF NOT EXISTS if it's a syntax error
+                    try 
+                    {
+                        var standardQuery = query.Replace("IF NOT EXISTS ", "");
+                        await _context.Database.ExecuteSqlRawAsync(standardQuery);
+                        results.Add($"Sucesso (Standard): {standardQuery}");
+                    }
+                    catch (Exception ex2)
+                    {
+                        results.Add($"Erro: {query} - {ex2.Message}");
+                    }
+                }
+            }
+        }
+        
+        return Content("Resultado da atualização:\n" + string.Join("\n", results));
+    }
+
+    public async Task<IActionResult> GestaoViagens()
+    {
+        var flights = await _context.Flights.ToListAsync();
+        var viewModel = new AdminViewModel
+        {
+            Flights = flights,
+            NewFlight = new Flight
+            {
+                Amenities = "- Wi-Fi gratuito de alta velocidade a bordo\n- Sistema de entretenimento individual de última geração\n- Refeições gourmet preparadas por chefs renomados\n- Assentos ergonômicos com maior espaço para as pernas\n- Kit de amenidades exclusivo para voos de longa distância\n- Atendimento personalizado e equipe multilíngue",
+                Policies = "- Franquia de bagagem inclusa conforme a classe tarifária\n- Reembolso integral disponível para cancelamentos em até 24h\n- Taxas de alteração reduzidas para flexibilidade de datas\n- Check-in antecipado disponível via aplicativo ou totem\n- Prioridade no embarque para membros do programa de fidelidade\n- Assistência especial disponível sob solicitação prévia"
+            }
+        };
+        return View(viewModel);
+    }
+
+    public async Task<IActionResult> GestaoHospedagens()
+    {
+        var hotels = await _context.Hotels.ToListAsync();
+        var viewModel = new AdminViewModel
+        {
+            Hotels = hotels,
+            NewHotel = new Hotel
+            {
+                Overview = "O nosso hotel é uma excelente opção para quem busca conforto e sofisticação no coração da cidade. Oferecemos quartos modernos, serviço de primeira classe e uma localização estratégica próxima aos principais pontos turísticos. Seja para viagens de negócios ou lazer, garantimos uma estadia inesquecível com atendimento personalizado.",
+                Amenities = "- Piscina infinita com vista panorâmica\n- Spa de luxo e Centro de Bem-Estar\n- Academia 24h com equipamentos de ponta\n- Restaurante de Gastronomia Premiada\n- Wi-Fi de alta velocidade em todas as áreas\n- Serviço de Quarto 24h e Concierge"
+            }
+        };
+        return View(viewModel);
+    }
+
+    public async Task<IActionResult> AnalisarDados()
+    {
+        var flightBookingsCount = await _context.Bookings.CountAsync();
+        var hotelBookingsCount = await _context.HotelBookings.CountAsync();
+        var totalBookings = flightBookingsCount + hotelBookingsCount;
+
+        var flightRevenue = await _context.Bookings.SumAsync(b => b.TotalPrice);
+        var hotelRevenue = await _context.HotelBookings.SumAsync(h => h.TotalPrice);
+        var totalRevenue = flightRevenue + hotelRevenue;
+
+        var usersCount = await _context.Users.CountAsync();
+
+        decimal conversionRate = 0;
+        if (usersCount > 0)
+        {
+            conversionRate = Math.Round((decimal)totalBookings / usersCount * 100, 1);
+        }
+
+        var viewModel = new AdminViewModel
+        {
+            TotalBookings = totalBookings,
+            TotalRevenue = totalRevenue,
+            ActiveUsers = usersCount,
+            ConversionRate = conversionRate
+        };
+
+        return View(viewModel);
+    }
+
+    public async Task<IActionResult> Relatorios()
+    {
+        var flightBookings = await _context.Bookings.Include(b => b.Flight).ToListAsync();
+        var hotelBookings = await _context.HotelBookings.Include(b => b.Hotel).ToListAsync();
+
+        ViewBag.TotalFlightBookings = flightBookings.Count;
+        ViewBag.TotalHotelBookings = hotelBookings.Count;
+        ViewBag.FlightRevenue = flightBookings.Sum(b => b.TotalPrice);
+        ViewBag.HotelRevenue = hotelBookings.Sum(b => b.TotalPrice);
+        ViewBag.TotalFlights = await _context.Flights.CountAsync();
+        ViewBag.TotalHotels = await _context.Hotels.CountAsync();
+        ViewBag.TotalUsers = await _context.Users.CountAsync();
+
+        return View();
+    }
+
+    public async Task<IActionResult> ExportFinanceiro()
+    {
+        var flightBookings = await _context.Bookings.Include(b => b.Flight).ToListAsync();
+        var hotelBookings = await _context.HotelBookings.Include(b => b.Hotel).ToListAsync();
+
+        var csv = new System.Text.StringBuilder();
+        csv.AppendLine("Tipo,ID,Cliente,Email,Item,Data,Valor,Status");
+
+        foreach (var b in flightBookings)
+        {
+            csv.AppendLine($"Voo,{b.Id},{b.UserName},{b.UserEmail},{b.Flight?.From} → {b.Flight?.To},{b.BookingDate:dd/MM/yyyy},{b.TotalPrice:F2},{b.Status}");
+        }
+        foreach (var b in hotelBookings)
+        {
+            csv.AppendLine($"Hotel,{b.Id},{b.UserName},{b.UserEmail},{b.Hotel?.Name},{b.BookingDate:dd/MM/yyyy},{b.TotalPrice:F2},{b.Status}");
+        }
+
+        var bytes = System.Text.Encoding.UTF8.GetBytes(csv.ToString());
+        return File(bytes, "text/csv", $"relatorio-financeiro-{DateTime.Now:yyyy-MM-dd}.csv");
+    }
+
+    public async Task<IActionResult> ExportHoteis()
+    {
+        var hotels = await _context.Hotels.ToListAsync();
+        var hotelBookings = await _context.HotelBookings.Include(b => b.Hotel).ToListAsync();
+
+        var csv = new System.Text.StringBuilder();
+        csv.AppendLine("ID,Nome,Localização,Estrelas,Preço,Status,Total Reservas,Receita Total");
+
+        foreach (var h in hotels)
+        {
+            var bookings = hotelBookings.Where(b => b.HotelId == h.Id).ToList();
+            csv.AppendLine($"{h.Id},{h.Name},{h.Location},{h.Stars},{h.Price:F2},{h.Status},{bookings.Count},{bookings.Sum(b => b.TotalPrice):F2}");
+        }
+
+        var bytes = System.Text.Encoding.UTF8.GetBytes(csv.ToString());
+        return File(bytes, "text/csv", $"relatorio-hoteis-{DateTime.Now:yyyy-MM-dd}.csv");
+    }
+
+    public async Task<IActionResult> ExportVoos()
+    {
+        var flights = await _context.Flights.ToListAsync();
+        var flightBookings = await _context.Bookings.Include(b => b.Flight).ToListAsync();
+
+        var csv = new System.Text.StringBuilder();
+        csv.AppendLine("ID,Origem,Destino,Companhia,Preço,Status,Total Reservas,Receita Total");
+
+        foreach (var f in flights)
+        {
+            var bookings = flightBookings.Where(b => b.FlightId == f.Id).ToList();
+            csv.AppendLine($"{f.Id},{f.From},{f.To},{f.Airline},{f.Price:F2},{f.Status},{bookings.Count},{bookings.Sum(b => b.TotalPrice):F2}");
+        }
+
+        var bytes = System.Text.Encoding.UTF8.GetBytes(csv.ToString());
+        return File(bytes, "text/csv", $"relatorio-voos-{DateTime.Now:yyyy-MM-dd}.csv");
+    }
+
+    public async Task<IActionResult> GerenciarTarefas()
+    {
+        // Garante que a tabela existe antes de consultar
+        try {
+            await _context.Database.ExecuteSqlRawAsync(@"
+                CREATE TABLE IF NOT EXISTS AdminTasks (
+                    Id INT AUTO_INCREMENT PRIMARY KEY,
+                    Title LONGTEXT NOT NULL,
+                    Description LONGTEXT NULL,
+                    Status LONGTEXT NOT NULL,
+                    Priority LONGTEXT NOT NULL,
+                    AssignedTo LONGTEXT NULL,
+                    CreatedAt DATETIME(6) NOT NULL,
+                    CompletedAt DATETIME(6) NULL
+                );
+            ");
+        } catch { }
+
+        var tasks = await _context.AdminTasks.OrderByDescending(t => t.CreatedAt).ToListAsync();
+        return View(tasks);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateTask([FromBody] AdminTask task)
+    {
+        if (string.IsNullOrEmpty(task.Title))
+            return BadRequest("Título é obrigatório");
+
+        task.CreatedAt = DateTime.Now;
+        _context.AdminTasks.Add(task);
+        await _context.SaveChangesAsync();
+        return Json(new { success = true, id = task.Id });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateTaskStatus([FromBody] UpdateTaskRequest request)
+    {
+        var task = await _context.AdminTasks.FindAsync(request.Id);
+        if (task == null) return NotFound();
+
+        task.Status = request.Status;
+        if (request.Status == "concluido")
+            task.CompletedAt = DateTime.Now;
+        else
+            task.CompletedAt = null;
+
+        await _context.SaveChangesAsync();
+        return Json(new { success = true });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteTask([FromBody] DeleteTaskRequest request)
+    {
+        var task = await _context.AdminTasks.FindAsync(request.Id);
+        if (task == null) return NotFound();
+
+        _context.AdminTasks.Remove(task);
+        await _context.SaveChangesAsync();
+        return Json(new { success = true });
+    }
+
+    public class UpdateTaskRequest
+    {
+        public int Id { get; set; }
+        public string Status { get; set; } = string.Empty;
+    }
+
+    public class DeleteTaskRequest
+    {
+        public int Id { get; set; }
+    }
+
+    [HttpGet]
+    public IActionResult CreateFlight()
+    {
+        var viewModel = new AdminViewModel
+        {
+            NewFlight = new Flight
+            {
+                Amenities = "- Wi-Fi gratuito de alta velocidade a bordo\n- Sistema de entretenimento individual de última geração\n- Refeições gourmet preparadas por chefs renomados\n- Assentos ergonômicos com maior espaço para as pernas\n- Kit de amenidades exclusivo para voos de longa distância\n- Atendimento personalizado e equipe multilíngue",
+                Policies = "- Franquia de bagagem inclusa conforme a classe tarifária\n- Reembolso integral disponível para cancelamentos em até 24h\n- Taxas de alteração reduzidas para flexibilidade de datas\n- Check-in antecipado disponível via aplicativo ou totem\n- Prioridade no embarque para membros do programa de fidelidade\n- Assistência especial disponível sob solicitação prévia"
+            }
         };
         return View(viewModel);
     }
@@ -40,6 +319,12 @@ public class AdminController : Controller
             model.NewFlight.To = model.NewFlight.To?.Trim() ?? string.Empty;
             model.NewFlight.Departure = model.NewFlight.Departure?.Trim() ?? string.Empty;
             model.NewFlight.Arrival = model.NewFlight.Arrival?.Trim() ?? string.Empty;
+
+            var prices = new List<decimal>();
+            if (model.NewFlight.EconomyPrice.HasValue) prices.Add(model.NewFlight.EconomyPrice.Value);
+            if (model.NewFlight.BusinessPrice.HasValue) prices.Add(model.NewFlight.BusinessPrice.Value);
+            if (model.NewFlight.FirstClassPrice.HasValue) prices.Add(model.NewFlight.FirstClassPrice.Value);
+            model.NewFlight.Price = prices.Any() ? prices.Min() : 0;
         }
 
         if (model.FlightLogoUpload != null)
@@ -101,12 +386,12 @@ public class AdminController : Controller
             model.NewFlight.GalleryImages = System.Text.Json.JsonSerializer.Serialize(galleryPaths);
         }
 
-        ModelState.Remove("NewHotel.Name");
-        ModelState.Remove("NewHotel.Location");
-        ModelState.Remove("NewHotel.Stars");
-        ModelState.Remove("NewHotel.Price");
         ModelState.Remove("NewHotel.Rating");
         ModelState.Remove("NewHotel.Reviews");
+        ModelState.Remove("NewFlight.Rating");
+        ModelState.Remove("NewFlight.Reviews");
+        ModelState.Remove("NewFlight.Logo"); // Handled in controller
+        ModelState.Remove("NewFlight.MainImage"); // Handled in controller
        
         foreach (var key in ModelState.Keys.Where(k => k.StartsWith("NewHotel")))
         {
@@ -117,13 +402,12 @@ public class AdminController : Controller
         {
             _context.Flights.Add(model.NewFlight);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Flights");
+            return RedirectToAction(nameof(GestaoViagens));
         }
 
        
         model.Flights = await _context.Flights.ToListAsync();
-        model.Hotels = await _context.Hotels.ToListAsync();
-        return View("Index", model);
+        return View("GestaoViagens", model);
     }
 
     [HttpPost]
@@ -135,7 +419,30 @@ public class AdminController : Controller
             _context.Flights.Remove(flight);
             await _context.SaveChangesAsync();
         }
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(GestaoViagens));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteMassFlight([FromBody] List<int> ids)
+    {
+        var flights = await _context.Flights.Where(f => ids.Contains(f.Id)).ToListAsync();
+        _context.Flights.RemoveRange(flights);
+        await _context.SaveChangesAsync();
+        return Ok();
+    }
+
+    [HttpGet]
+    public IActionResult CreateHotel()
+    {
+        var viewModel = new AdminViewModel
+        {
+            NewHotel = new Hotel
+            {
+                Overview = "O nosso hotel é uma excelente opção para quem busca conforto e sofisticação no coração da cidade. Oferecemos quartos modernos, serviço de primeira classe e uma localização estratégica próxima aos principais pontos turísticos. Seja para viagens de negócios ou lazer, garantimos uma estadia inesquecível com atendimento personalizado.",
+                Amenities = "- Piscina infinita com vista panorâmica\n- Spa de luxo e Centro de Bem-Estar\n- Academia 24h com equipamentos de ponta\n- Restaurante de Gastronomia Premiada\n- Wi-Fi de alta velocidade em todas as áreas\n- Serviço de Quarto 24h e Concierge"
+            }
+        };
+        return View(viewModel);
     }
 
     [HttpPost]
@@ -182,16 +489,21 @@ public class AdminController : Controller
             ModelState.Remove(key);
         }
 
+        // Remove validation for fields that are now either optional or not in the UI
+        ModelState.Remove("NewHotel.Stars");
+        ModelState.Remove("NewHotel.Rating");
+        ModelState.Remove("NewHotel.Reviews");
+        ModelState.Remove("NewHotel.Logo"); // If not required
+
         if (ModelState.IsValid)
         {
             _context.Hotels.Add(model.NewHotel);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(GestaoHospedagens));
         }
 
-        model.Flights = await _context.Flights.ToListAsync();
         model.Hotels = await _context.Hotels.ToListAsync();
-        return View("Index", model);
+        return View("GestaoHospedagens", model);
     }
 
     [HttpPost]
@@ -203,38 +515,34 @@ public class AdminController : Controller
             _context.Hotels.Remove(hotel);
             await _context.SaveChangesAsync();
         }
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(GestaoHospedagens));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteMassHotel([FromBody] List<int> ids)
+    {
+        var hotels = await _context.Hotels.Where(h => ids.Contains(h.Id)).ToListAsync();
+        _context.Hotels.RemoveRange(hotels);
+        await _context.SaveChangesAsync();
+        return Ok();
     }
 
     
-    [AcceptVerbs("Get", "Post")]
+    [HttpGet]
     public async Task<IActionResult> EditFlight(int? id)
     {
-        if (id == null || id == 0)
-        {
-            if (HttpContext.Request.Method == "POST" && HttpContext.Request.Form.ContainsKey("id"))
-            {
-                if (int.TryParse(HttpContext.Request.Form["id"], out int formId))
-                {
-                    id = formId;
-                }
-            }
-        }
-
         if (id == null || id == 0) return NotFound();
 
         var flight = await _context.Flights.FindAsync(id);
-        if (flight == null)
-        {
-            return NotFound();
-        }
+        if (flight == null) return NotFound();
+
         return View(flight);
     }
 
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> UpdateFlight(int id, [Bind("Id,Airline,Logo,From,To,Departure,Arrival,Duration,Stops,Price,Rating,Reviews,MainImage,Policies,Amenities,GalleryImages,LogoUpload,MainImageUpload,GalleryImagesUpload,ImagesToDelete,TripType")] Flight flight)
+    public async Task<IActionResult> UpdateFlight(int id, [Bind("Id,Airline,Logo,From,To,Departure,Arrival,Duration,Stops,Price,MainImage,Policies,Amenities,GalleryImages,LogoUpload,MainImageUpload,GalleryImagesUpload,ImagesToDelete,TripType,FlightClasses,EconomyPrice,BusinessPrice,FirstClassPrice,Status")] Flight flight)
     {
         if (id != flight.Id)
         {
@@ -246,6 +554,12 @@ public class AdminController : Controller
         flight.To = flight.To?.Trim() ?? string.Empty;
         flight.Departure = flight.Departure?.Trim() ?? string.Empty;
         flight.Arrival = flight.Arrival?.Trim() ?? string.Empty;
+
+        var prices = new List<decimal>();
+        if (flight.EconomyPrice.HasValue) prices.Add(flight.EconomyPrice.Value);
+        if (flight.BusinessPrice.HasValue) prices.Add(flight.BusinessPrice.Value);
+        if (flight.FirstClassPrice.HasValue) prices.Add(flight.FirstClassPrice.Value);
+        flight.Price = prices.Any() ? prices.Min() : 0;
 
         if (flight.LogoUpload != null)
         {
@@ -352,40 +666,27 @@ public class AdminController : Controller
                 }
                 throw;
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(GestaoViagens));
         }
         return View(flight);
     }
 
     
-    [AcceptVerbs("Get", "Post")]
+    [HttpGet]
     public async Task<IActionResult> EditHotel(int? id)
     {
-        if (id == null || id == 0)
-        {
-            if (HttpContext.Request.Method == "POST" && HttpContext.Request.Form.ContainsKey("id"))
-            {
-                if (int.TryParse(HttpContext.Request.Form["id"], out int formId))
-                {
-                    id = formId;
-                }
-            }
-        }
-
         if (id == null || id == 0) return NotFound();
 
         var hotel = await _context.Hotels.FindAsync(id);
-        if (hotel == null)
-        {
-            return NotFound();
-        }
+        if (hotel == null) return NotFound();
+
         return View(hotel);
     }
 
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> UpdateHotel(int id, [Bind("Id,Name,Type,Location,Overview,MapUrl,MainImage,GalleryImages,Stars,Price,Rating,Reviews,Amenities,MainImageUpload,GalleryImagesUpload,ImagesToDelete")] Hotel hotel)
+    public async Task<IActionResult> UpdateHotel(int id, [Bind("Id,Name,Type,Location,Overview,MapUrl,MainImage,GalleryImages,Price,Amenities,Region,BookingMode,CheckIn,CheckOut,ReceptionMode,ZipCode,Country,MainImageUpload,GalleryImagesUpload,ImagesToDelete")] Hotel hotel)
     {
         if (id != hotel.Id)
         {
@@ -463,7 +764,7 @@ public class AdminController : Controller
                 }
                 throw;
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(GestaoHospedagens));
         }
         return View(hotel);
     }

@@ -1,150 +1,135 @@
 @model ProjetoHotelAviao.Models.HotelBooking
 @{
-    ViewData["Title"] = "Reservation - Travel";
+    ViewData["Title"] = "Reservation Confirmed - Travel";
     var hotel = Model.Hotel;
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/flight-booking.css">
-    <link rel="stylesheet" href="~/css/flight-ticket.css">
+    <link rel="stylesheet" href="~/css/hotel-ticket.css" asp-append-version="true">
 }
 
 <div class="main-container">
     <div class="breadcrumbs">
-        <a href="@Url.Action("Index", "Hotels")">Hotels</a> <i class="fas fa-chevron-right"></i>
-        <a href="@Url.Action("MyReservations", "Hotels")">My Reservations</a> <i class="fas fa-chevron-right"></i>
-        <span>Reservation #@Model.ReservationNumber</span>
+        <a href="#">Turkey</a> <i class="fas fa-chevron-right"></i>
+        <a href="#">Istanbul</a> <i class="fas fa-chevron-right"></i>
+        <span>@hotel?.Name</span>
     </div>
 
-    <div class="ticket-header-section">
-        <div class="ticket-title">
+    <header class="ticket-header-top">
+        <div class="hotel-title-wrap">
             <h1>@hotel?.Name</h1>
-            <div class="location-info">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>@hotel?.Location</span>
-            </div>
+            <p class="location"><i class="fas fa-map-marker-alt"></i> @hotel?.Location</p>
         </div>
-        <div class="ticket-actions">
-            <span class="price">$@Model.TotalPrice.ToString("F2")</span>
-            <div class="action-buttons">
-                <button class="btn-icon"><i class="fas fa-share-alt"></i></button>
+        <div class="ticket-actions-wrap" style="text-align: right;">
+            <div class="price-tag">$@Model.TotalPrice.ToString("F0")</div>
+            <div class="ticket-actions">
+                <button class="btn-action-icon"><i class="fas fa-share-alt"></i></button>
                 <button class="btn-download">Download</button>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div class="booking-confirmation" style="background: #d4edda; border-radius: 12px; padding: 16px 24px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px;">
-        <i class="fas fa-check-circle" style="color: #155724; font-size: 24px;"></i>
-        <div>
-            <strong style="color: #155724;">Reservation Confirmed!</strong>
-            <p style="margin: 0; color: #155724; opacity: 0.8;">Your reservation number is: @Model.ReservationNumber</p>
+    <div class="ticket-card">
+        <!-- Left Panel: Dates -->
+        <div class="ticket-left">
+            <div class="ticket-date">
+                <strong>@Model.CheckIn.ToString("ddd, MMM d")</strong>
+                <span>Check-In</span>
+            </div>
+            <div class="ticket-timeline">
+                <div class="line"></div>
+                <i class="fas fa-bed"></i>
+                <div class="line"></div>
+            </div>
+            <div class="ticket-date">
+                <strong>@Model.CheckOut.ToString("ddd, MMM d")</strong>
+                <span>Check-Out</span>
+            </div>
         </div>
-    </div>
 
-    <div class="boarding-pass">
-        <div class="pass-details">
-            <div class="pass-header">
-                <div class="pass-header-top">
-                    <div class="passenger-profile">
-                        <div class="profile-text">
-                            <h3>@(Model.UserName ?? Model.UserEmail)</h3>
-                            <span>Reservation N'@Model.Id</span>
-                        </div>
-                    </div>
-                    <span class="class-label">@Model.RoomType</span>
+        <!-- Center Panel: Guest & Info -->
+        <div class="ticket-center">
+            <div class="guest-profile-header">
+                <div class="guest-info-box">
+                    <img src="https://ui-avatars.com/api/?name=@(Model.UserName ?? Model.UserEmail)&background=fff&color=8DD3BB" alt="Guest" class="guest-avatar">
+                    <h3>@(Model.UserName ?? "James Doe")</h3>
                 </div>
-
-                <div class="pass-header-bottom">
-                    <div class="flight-route-item">
-                        <h2>@Model.CheckIn.ToString("MMM d")</h2>
-                        <span>Check-In</span>
-                    </div>
-                    <div class="flight-route-arrow">
-                        <i class="fas fa-bed"></i>
-                    </div>
-                    <div class="flight-route-item">
-                        <h2>@Model.CheckOut.ToString("MMM d")</h2>
-                        <span>Check-Out</span>
-                    </div>
+                <div class="room-type-tag">
+                    @Model.RoomType
                 </div>
             </div>
 
-            <div class="pass-info-grid">
-                <div class="info-item">
-                    <div class="icon-box"><i class="far fa-calendar"></i></div>
-                    <div class="info-text">
-                        <span class="label">Booking Date</span>
-                        <span class="value">@Model.BookingDate.ToString("dd MMM yyyy")</span>
+            <div class="ticket-info-grid">
+                <div class="info-item-ticket">
+                    <div class="icon-box"><i class="fas fa-clock"></i></div>
+                    <div class="text-wrap">
+                        <span class="label">Check-In time</span>
+                        <span class="value">12:00pm</span>
                     </div>
                 </div>
-                <div class="info-item">
-                    <div class="icon-box"><i class="fas fa-moon"></i></div>
-                    <div class="info-text">
-                        <span class="label">Nights</span>
-                        <span class="value">@Model.Nights night(s)</span>
+                <div class="info-item-ticket">
+                    <div class="icon-box"><i class="fas fa-clock"></i></div>
+                    <div class="text-wrap">
+                        <span class="label">Check-Out time</span>
+                        <span class="value">11:30pm</span>
                     </div>
                 </div>
-                <div class="info-item">
-                    <div class="icon-box"><i class="fas fa-star"></i></div>
-                    <div class="info-text">
-                        <span class="label">Hotel Rating</span>
-                        <span class="value">@hotel?.Stars Stars</span>
-                    </div>
-                </div>
-                <div class="info-item">
+                <div class="info-item-ticket">
                     <div class="icon-box"><i class="fas fa-door-open"></i></div>
-                    <div class="info-text">
-                        <span class="label">Room</span>
-                        <span class="value">@Model.RoomType</span>
+                    <div class="text-wrap">
+                        <span class="label">Room no.</span>
+                        <span class="value">On arrival</span>
                     </div>
                 </div>
             </div>
 
-            <div class="pass-footer">
-                <div class="flight-code">
-                    <h2><i class="fas fa-hotel"></i></h2>
-                    <span>@Model.ReservationNumber</span>
-                </div>
-                <div class="barcode">
-                    @for (int i = 0; i < 23; i++)
-                    {
-                        <div class="bar" style="width: @(new Random().Next(1, 6))px;"></div>
-                    }
+            <div class="ticket-barcode-section">
+                <span>RESERVATION CODE</span>
+                <h4>@Model.ReservationNumber</h4>
+                <div class="barcode-wrap" style="margin-top: 10px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Barcode_EAN8_example.svg/1200px-Barcode_EAN8_example.svg.png" 
+                         alt="Barcode" 
+                         style="width: 100%; max-width: 400px; height: 60px; object-fit: cover;">
                 </div>
             </div>
         </div>
 
-        <div class="pass-map">
-            <div class="map-placeholder">
-                @if (!string.IsNullOrEmpty(hotel?.MainImage))
-                {
-                    <img src="@hotel.MainImage" alt="@hotel.Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-                }
-                else
-                {
-                    <i class="fas fa-hotel" style="font-size: 48px; color: #8DD3BB;"></i>
-                    <p>@hotel?.Name</p>
-                }
+        <!-- Right Panel: Branding -->
+        <div class="ticket-right">
+            <div class="hotel-branding">
+                <p style="letter-spacing: 4px; font-size: 10px; opacity: 0.6; margin-bottom: 8px;">HOTEL BRAND</p>
+                <h2>@hotel?.Name.Split(' ')[0]</h2>
+                <p style="letter-spacing: 2px; font-size: 12px; opacity: 0.6; margin-top: 8px;">ISTANBUL</p>
             </div>
         </div>
     </div>
 
-    <div class="terms-section">
+    <section class="terms-footer">
         <h2>Terms and Conditions</h2>
+        
+        <div class="terms-block">
+            <h3>Payments</h3>
+            <ul>
+                <li>If you are purchasing your ticket using a debit or credit card via the Website, we will process these payments via the automated secure common payment gateway which will be subject to fraud screening purposes.</li>
+                <li>If you do not supply the correct card billing address and/or cardholder information, your booking will not be confirmed...</li>
+                <li>Golobe may require the card holder to provide additional payment verification upon request...</li>
+            </ul>
+        </div>
 
-        <h3>Check-in/Check-out</h3>
-        <ul>
-            <li>Check-in time is from 3:00 PM. Check-out time is until 11:00 AM.</li>
-            <li>Early check-in or late check-out may be possible upon request and availability.</li>
-        </ul>
-
-        <h3>Cancellation Policy</h3>
-        <ul>
-            <li>Free cancellation up to 24 hours before check-in.</li>
-            <li>Cancellations made within 24 hours of check-in may incur a charge.</li>
-        </ul>
-
-        <h3>Contact Us</h3>
-        <p>If you have any questions, please contact us at <a href="#">travel.com/help</a></p>
-    </div>
+        <div class="terms-block">
+            <h3>Contact Us</h3>
+            <p>If you have any questions about our Website or our Terms of Use, please contact:</p>
+            <p>
+                Golobe Group Q.C.S.C<br>
+                Golobe Tower<br>
+                P.O. Box 22550<br>
+                Doha, State of Qatar
+            </p>
+            <p>Further contact details can be found at <a href="#" style="color: #FF8682;">golobe.com/help</a></p>
+        </div>
+    </section>
 </div>
+
+@section Scripts {
+    <!-- FontAwesome handles icons -->
+}

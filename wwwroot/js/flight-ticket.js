@@ -1,29 +1,50 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Download Button
-    const downloadBtn = document.querySelector('.btn-download');
-    if (downloadBtn) {
-        downloadBtn.addEventListener('click', function () {
-            alert('Downloading boarding pass...');
-            // In a real app, this would trigger a PDF download
-        });
-    }
+/**
+ * Gerenciador de Bilhetes de Voo (Simplificado)
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    const DOM = {
+        botaoDownload: document.querySelector('.btn-download'),
+        botaoCompartilhar: document.querySelector('.btn-icon')
+    };
 
-    // Share Button
-    const shareBtn = document.querySelector('.btn-icon');
-    if (shareBtn) {
-        shareBtn.addEventListener('click', function () {
+    const config = {
+        tituloVoo: 'Flight Ticket - Golobe',
+        mensagemCompartilhamento: 'Confira meu voo para Istambul!'
+    };
+
+    const baixarCartaoEmbarque = () => {
+        alert('Baixando cartão de embarque...');
+    };
+
+    const copiarLinkParaTransferencia = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            alert('Link da passagem copiado para a área de transferência!');
+        } catch (erro) {
+            alert('Não foi possível copiar o link automaticamente.');
+        }
+    };
+
+    const compartilharVoo = async () => {
+        const dados = {
+            title: config.tituloVoo,
+            text: config.mensagemCompartilhamento,
+            url: window.location.href
+        };
+
+        try {
             if (navigator.share) {
-                navigator.share({
-                    title: 'Flight Ticket - Golobe',
-                    text: 'Check out my flight to Istanbul!',
-                    url: window.location.href
-                }).then(() => {
-                    console.log('Thanks for sharing!');
-                }).catch(console.error);
+                await navigator.share(dados);
             } else {
-                alert('Share URL copied to clipboard!');
-                navigator.clipboard.writeText(window.location.href);
+                await copiarLinkParaTransferencia();
             }
-        });
-    }
+        } catch (erro) {
+            if (erro.name !== 'AbortError') {
+                await copiarLinkParaTransferencia();
+            }
+        }
+    };
+
+    DOM.botaoDownload?.addEventListener('click', baixarCartaoEmbarque);
+    DOM.botaoCompartilhar?.addEventListener('click', compartilharVoo);
 });

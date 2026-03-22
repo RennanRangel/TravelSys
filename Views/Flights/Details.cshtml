@@ -24,18 +24,22 @@
                 <i class="fas fa-map-marker-alt"></i>
                 <span>@Model.From to @Model.To</span>
             </div>
-            <div class="rating-info">
-                <span class="badge">@Model.Rating</span>
-                <span class="rating-text">Very Good</span>
-                <span class="reviews">@Model.Reviews reviews</span>
-            </div>
+
         </div>
         <div class="price-actions">
-            <div class="price">$@Model.Price</div>
+            @{
+                var voltaSel = Context.Request.Query["volta"].FirstOrDefault();
+                var multiplier = (Model.TripType == "Round trip" && (voltaSel == null || voltaSel == "true")) ? 2 : 1;
+                var displayPrice = Model.Price * multiplier;
+            }
+            <div class="price" id="flight-price-display">R$ @displayPrice.ToString("0.00")</div>
             <div class="action-buttons">
                
-                <form asp-action="Booking" asp-route-id="" method="post" style="flex: 1; display: flex;">
-                    <input type="hidden" name="id" value="@Model.Id" />
+                <form asp-action="Booking" asp-route-id="@Model.Id" method="get" style="flex: 1; display: flex;">
+                    @{
+                        bool isVoltaSelected = multiplier == 2;
+                    }
+                    <input type="hidden" name="volta" value="@(isVoltaSelected ? "true" : "false")" />
                     <button type="submit" class="btn-book">Book now</button>
                 </form>
             </div>
@@ -59,45 +63,95 @@
     
     <div class="features-section">
         <div class="features-header">
-            <h2>Basic Economy Features</h2>
+            <h2 id="features-title-display">Recursos do Voo</h2>
             <div class="class-options">
-                <label class="checkbox-option">
-                    <input type="checkbox" checked>
-                    <span>Economy</span>
-                </label>
+                @{ bool firstChecked = true; }
+                @if (Model.EconomyPrice.HasValue)
+                {
+                    <label class="checkbox-option">
+                        <input type="radio" name="flight-class" value="@Model.EconomyPrice.Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)" @(firstChecked ? "checked" : "") onchange="updateFlightPrice(this.value, 'Economy Features')">
+                        <span>Econômica</span>
+                    </label>
+                    firstChecked = false;
+                }
+                @if (Model.BusinessPrice.HasValue)
+                {
+                    <label class="checkbox-option">
+                        <input type="radio" name="flight-class" value="@Model.BusinessPrice.Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)" @(firstChecked ? "checked" : "") onchange="updateFlightPrice(this.value, 'Business Features')">
+                        <span>Executiva</span>
+                    </label>
+                    firstChecked = false;
+                }
+                @if (Model.FirstClassPrice.HasValue)
+                {
+                    <label class="checkbox-option">
+                        <input type="radio" name="flight-class" value="@Model.FirstClassPrice.Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)" @(firstChecked ? "checked" : "") onchange="updateFlightPrice(this.value, 'First Class Features')">
+                        <span>Primeira Classe</span>
+                    </label>
+                    firstChecked = false; /* firstChecked logic completes */
+                }
             </div>
+            
+            <script>
+                function updateFlightPrice(val, name) {
+                    document.getElementById('flight-price-display').innerHTML = 'R$ ' + parseFloat(val).toFixed(2);
+                    document.getElementById('features-title-display').innerHTML = name;
+                }
+            </script>
         </div>
         <div class="features-gallery">
-            @if (!string.IsNullOrEmpty(Model.GalleryImages))
-            {
-                var gallery = new List<string>();
-                try {
-                    gallery = System.Text.Json.JsonSerializer.Deserialize<List<string>>(Model.GalleryImages) ?? new List<string>();
-                } catch { }
-
-                if (gallery.Any())
-                {
-                    foreach (var img in gallery.Take(7))
-                    {
-                        <img src="@img" alt="Flight Feature">
-                    }
-                }
-            }
-       
+            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=300" alt="Cockpit">
+            <img src="https://images.unsplash.com/photo-1540339832862-47455993ac53?w=300" alt="Cabin">
+            <img src="https://images.unsplash.com/photo-1506012733851-bb978506bb73?w=300" alt="Window">
+            <img src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?w=300" alt="Wing">
+            <img src="https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=300" alt="Interior">
+            <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=300" alt="Service">
+            <img src="https://images.unsplash.com/photo-1520437358207-35c97471a53b?w=300" alt="Legroom">
+            <img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?w=300" alt="Entertainment">
         </div>
     </div>
 
-    
+    @if (!string.IsNullOrEmpty(Model.Amenities))
+    {
+        <div class="policies-section amenities-description-section">
+            <h3>Serviços de Bordo & Entretenimento</h3>
+            <div style="color: #4B5563; font-size: 15px; line-height: 1.6;">
+                @foreach (var line in Model.Amenities.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    var text = line.Trim();
+                    if (text.StartsWith("-")) {
+                        text = text.Substring(1).Trim();
+                        <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
+                            <i class="fas fa-check" style="color: #8DD3BB; margin-top: 4px;"></i>
+                            <span>@text</span>
+                        </div>
+                    } else {
+                        <p style="margin-bottom: 12px;">@text</p>
+                    }
+                }
+            </div>
+        </div>
+    }
+
     <div class="policies-section">
         <h3>@Model.Airline Policies</h3>
         <div class="policies-grid">
             @if (!string.IsNullOrEmpty(Model.Policies))
             {
-                @foreach (var policy in Model.Policies.Split('\n'))
+                @foreach (var block in Model.Policies.Split(new[] { "\r\n\r\n", "\n\n" }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    <div class="policy-item">
-                        <i class="fas fa-stopwatch"></i>
-                        <span>@policy</span>
+                    var lines = block.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                    <div class="policy-item" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                        <div class="policy-title" style="display: flex; align-items: center; gap: 8px; font-weight: bold;">
+                            <i class="fas fa-stopwatch"></i>
+                            <span>@lines[0]</span>
+                        </div>
+                        @if (lines.Length > 1) 
+                        {
+                            <span style="color: #555; padding-left: 28px;">
+                                @Html.Raw(string.Join("<br/>", lines.Skip(1)))
+                            </span>
+                        }
                     </div>
                 }
             }
@@ -112,46 +166,107 @@
     </div>
 
     
-    <div class="return-flights">
+    <div class="flight-schedules">
+        <!-- Ida Flight -->
         <div class="return-flight-card">
             <div class="flight-header">
-                <h3>Flight Schedule</h3>
+                <h3>Ida Wed, Dec 8</h3>
                 <span class="flight-duration">@Model.Duration</span>
             </div>
             <div class="flight-content">
-                <div class="airline-details">
+                <div class="airline-details-box">
                     <div class="airline-logo-box">
                         <img src="@Model.Logo" alt="@Model.Airline">
                     </div>
-                    <div class="airline-name">
+                    <div class="airline-info-text">
                         <h4>@Model.Airline</h4>
-                        <span>@Model.Stops</span>
+                        <span>Airbus A320</span>
                     </div>
                 </div>
                 <div class="flight-amenities">
-                    <i class="fas fa-plane"></i>
-                    <i class="fas fa-wifi"></i>
-                    <i class="fas fa-stopwatch"></i>
-                    <i class="fas fa-utensils"></i>
-                    <i class="fas fa-wheelchair"></i>
+                    <div class="amenity-item"><i class="fas fa-plane"></i></div>
+                    <div class="amenity-separator"></div>
+                    <div class="amenity-item"><i class="fas fa-wifi"></i></div>
+                    <div class="amenity-separator"></div>
+                    <div class="amenity-item"><i class="fas fa-stopwatch"></i></div>
+                    <div class="amenity-separator"></div>
+                    <div class="amenity-item"><i class="fas fa-utensils"></i></div>
+                    <div class="amenity-separator"></div>
+                    <div class="amenity-item"><i class="fas fa-wheelchair"></i></div>
                 </div>
             </div>
-            <div class="flight-timeline">
-                <div class="time-point">
+            <div class="flight-timeline-row">
+                <div class="time-point-horizontal">
                     <span class="time">@Model.Departure</span>
-                    <span class="airport">@Model.From</span>
+                    <span class="airport">@Model.From (@Model.From.Substring(0, Math.Min(3, Model.From.Length)).ToUpper())</span>
                 </div>
-                <div class="flight-path">
+                <div class="flight-path-horizontal">
+                    <div class="path-dot"></div>
                     <div class="path-line"></div>
                     <i class="fas fa-plane"></i>
                     <div class="path-line"></div>
+                    <div class="path-dot"></div>
                 </div>
-                <div class="time-point">
+                <div class="time-point-horizontal">
                     <span class="time">@Model.Arrival</span>
-                    <span class="airport">@Model.To</span>
+                    <span class="airport">@Model.To (@Model.To.Substring(0, Math.Min(3, Model.To.Length)).ToUpper())</span>
                 </div>
             </div>
         </div>
+
+        @{
+            var voltaParam = Context.Request.Query["volta"].FirstOrDefault();
+            var showVolta = Model.TripType == "Round trip" && (voltaParam == null || voltaParam == "true");
+        }
+        @if (showVolta)
+        {
+        <!-- Return Flight -->
+        <div class="return-flight-card" style="margin-top: 24px;">
+            <div class="flight-header">
+                <h3>Return Sat, Dec 11</h3>
+                <span class="flight-duration">@Model.Duration</span>
+            </div>
+            <div class="flight-content">
+                <div class="airline-details-box">
+                    <div class="airline-logo-box">
+                        <img src="@Model.Logo" alt="@Model.Airline">
+                    </div>
+                    <div class="airline-info-text">
+                        <h4>@Model.Airline</h4>
+                        <span>Airbus A320</span>
+                    </div>
+                </div>
+                <div class="flight-amenities">
+                    <div class="amenity-item"><i class="fas fa-plane"></i></div>
+                    <div class="amenity-separator"></div>
+                    <div class="amenity-item"><i class="fas fa-wifi"></i></div>
+                    <div class="amenity-separator"></div>
+                    <div class="amenity-item"><i class="fas fa-stopwatch"></i></div>
+                    <div class="amenity-separator"></div>
+                    <div class="amenity-item"><i class="fas fa-utensils"></i></div>
+                    <div class="amenity-separator"></div>
+                    <div class="amenity-item"><i class="fas fa-wheelchair"></i></div>
+                </div>
+            </div>
+            <div class="flight-timeline-row">
+                <div class="time-point-horizontal">
+                    <span class="time">@Model.Arrival</span>
+                    <span class="airport">@Model.To (@Model.To.Substring(0, Math.Min(3, Model.To.Length)).ToUpper())</span>
+                </div>
+                <div class="flight-path-horizontal">
+                    <div class="path-dot"></div>
+                    <div class="path-line"></div>
+                    <i class="fas fa-plane" style="transform: rotate(180deg);"></i>
+                    <div class="path-line"></div>
+                    <div class="path-dot"></div>
+                </div>
+                <div class="time-point-horizontal">
+                    <span class="time">@Model.Departure</span>
+                    <span class="airport">@Model.From (@Model.From.Substring(0, Math.Min(3, Model.From.Length)).ToUpper())</span>
+                </div>
+            </div>
+        </div>
+        }
     </div>
 </div>
 

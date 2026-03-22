@@ -1,9 +1,14 @@
 @model ProjetoHotelAviao.Models.Flight
 @{
-    ViewData["Title"] = "Book Flight - Travel";
-    var baseFare = Model.Price;
-    var taxes = baseFare * 0.1m;
-    var serviceFee = 25m;
+    ViewData["Title"] = "Book Flight - TravelSys";
+    
+    // Read selections from query string
+    var isVolta = Context.Request.Query["volta"].FirstOrDefault() == "true";
+    var multiplier = isVolta ? 2 : 1;
+    
+    var baseFare = Model.Price * multiplier;
+    var taxes = 20m * multiplier;
+    var serviceFee = 5m * multiplier;
     var total = baseFare + taxes + serviceFee;
 }
 
@@ -12,144 +17,222 @@
 }
 
 <div class="main-container">
-    
     <div class="breadcrumbs">
-        <a href="@Url.Action("Index", "Flights")">Flights</a> <i class="fas fa-chevron-right"></i>
-        <a href="@Url.Action("Details", "Flights", new { id = Model.Id })">@Model.Airline</a> <i class="fas fa-chevron-right"></i>
-        <span>Booking</span>
+        <nav>
+            <a href="#">Turkey</a> <i class="fas fa-chevron-right"></i>
+            <a href="#">Istanbul</a> <i class="fas fa-chevron-right"></i>
+            <span>CVK Park Bosphorus Hotel Istanbul</span>
+        </nav>
     </div>
 
     <div class="booking-layout">
-        
         <div class="booking-content">
-            
-            <div class="flight-info-section">
-                <div class="flight-title-header">
-                    <h2>@Model.Airline Flight</h2>
-                    <span class="flight-price">$@Model.Price</span>
+            <!-- Flight Header -->
+            <div class="flight-header-section">
+                <div class="title-price-row">
+                    <h2>@Model.Airline A380 Airbus</h2>
+                    <span class="price">R$ @baseFare.ToString("N2")</span>
                 </div>
-                <div class="flight-card">
-                    <div class="flight-card-header">
-                        <h3>@Model.From → @Model.To</h3>
+                
+                <!-- Ida Schedule Card -->
+                <div class="flight-schedule-card">
+                    <div class="card-header">
+                        <h3>Ida Wed, Dec 8</h3>
                         <span class="duration">@Model.Duration</span>
                     </div>
-                    <div class="flight-card-body">
-                        <div class="airline-info">
-                            <div class="airline-logo">
-                                @if (!string.IsNullOrEmpty(Model.Logo))
-                                {
-                                    <img src="@Model.Logo" alt="@Model.Airline">
-                                }
-                                else
-                                {
-                                    <i class="fas fa-plane" style="font-size: 24px; color: #8DD3BB;"></i>
-                                }
+                    <div class="card-content">
+                        <div class="airline-box-bordered">
+                            <div class="logo-box">
+                                <img src="@Model.Logo" alt="@Model.Airline">
                             </div>
-                            <div class="airline-text">
+                            <div class="airline-info">
                                 <h4>@Model.Airline</h4>
-                                <span>@Model.Stops</span>
+                                <span>Airbus A320</span>
                             </div>
                         </div>
-                        <div class="flight-amenities">
-                            <i class="fas fa-plane"></i>
-                            <i class="fas fa-wifi"></i>
-                            <i class="fas fa-stopwatch"></i>
-                            <i class="fas fa-utensils"></i>
-                            <i class="fas fa-wheelchair"></i>
+                        <div class="amenities-row">
+                            <div class="amenity-item"><i class="fas fa-plane"></i></div>
+                            <div class="v-separator"></div>
+                            <div class="amenity-item"><i class="fas fa-wifi"></i></div>
+                            <div class="v-separator"></div>
+                            <div class="amenity-item"><i class="fas fa-stopwatch"></i></div>
+                            <div class="v-separator"></div>
+                            <div class="amenity-item"><i class="fas fa-utensils"></i></div>
+                            <div class="v-separator"></div>
+                            <div class="amenity-item"><i class="fas fa-wheelchair"></i></div>
                         </div>
                     </div>
-                    <div class="flight-timeline">
+                    <div class="timeline-row">
                         <div class="time-point">
                             <span class="time">@Model.Departure</span>
-                            <span class="airport">@Model.From</span>
+                            <span class="airport">@Model.From (@Model.From.Substring(0, Math.Min(3, Model.From.Length)).ToUpper())</span>
                         </div>
-                        <div class="flight-path">
-                            <div class="path-line"></div>
+                        <div class="path-horizontal">
+                            <div class="dot"></div>
+                            <div class="line"></div>
                             <i class="fas fa-plane"></i>
-                            <div class="path-line"></div>
+                            <div class="line"></div>
+                            <div class="dot"></div>
                         </div>
                         <div class="time-point">
                             <span class="time">@Model.Arrival</span>
-                            <span class="airport">@Model.To</span>
+                            <span class="airport">@Model.To (@Model.To.Substring(0, Math.Min(3, Model.To.Length)).ToUpper())</span>
                         </div>
                     </div>
                 </div>
+
+                @if (isVolta)
+                {
+                    <!-- Volta Schedule Card -->
+                    <div class="flight-schedule-card" style="margin-top: 20px;">
+                        <div class="card-header">
+                            <h3>Volta Sat, Dec 11</h3>
+                            <span class="duration">@Model.Duration</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="airline-box-bordered">
+                                <div class="logo-box">
+                                    <img src="@Model.Logo" alt="@Model.Airline">
+                                </div>
+                                <div class="airline-info">
+                                    <h4>@Model.Airline</h4>
+                                    <span>Airbus A320</span>
+                                </div>
+                            </div>
+                            <div class="amenities-row">
+                                <div class="amenity-item"><i class="fas fa-plane"></i></div>
+                                <div class="v-separator"></div>
+                                <div class="amenity-item"><i class="fas fa-wifi"></i></div>
+                                <div class="v-separator"></div>
+                                <div class="amenity-item"><i class="fas fa-stopwatch"></i></div>
+                                <div class="v-separator"></div>
+                                <div class="amenity-item"><i class="fas fa-utensils"></i></div>
+                                <div class="v-separator"></div>
+                                <div class="amenity-item"><i class="fas fa-wheelchair"></i></div>
+                            </div>
+                        </div>
+                        <div class="timeline-row">
+                            <div class="time-point">
+                                <span class="time">@Model.Arrival</span>
+                                <span class="airport">@Model.To (@Model.To.Substring(0, Math.Min(3, Model.To.Length)).ToUpper())</span>
+                            </div>
+                            <div class="path-horizontal">
+                                <div class="dot"></div>
+                                <div class="line"></div>
+                                <i class="fas fa-plane" style="transform: rotate(180deg);"></i>
+                                <div class="line"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <div class="time-point">
+                                <span class="time">@Model.Departure</span>
+                                <span class="airport">@Model.From (@Model.From.Substring(0, Math.Min(3, Model.From.Length)).ToUpper())</span>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
 
-            
-            <div class="payment-options-section">
-                <label class="payment-option-container" onclick="selectPayment('full')">
-                    <div class="payment-option-content">
-                        <h3>Pay in full</h3>
+            <!-- Payment Options -->
+            <div class="payment-options-box">
+                <div class="payment-option selected" id="opt-full" onclick="selectPayment('full')">
+                    <div class="option-text">
+                        <h4>Pay in full</h4>
                         <p>Pay the total and you are all set</p>
                     </div>
-                    <div class="radio-circle selected" id="radio-full">
-                        <div class="inner-dot"></div>
+                    <div class="radio-ui">
+                        <div class="inner"></div>
                     </div>
-                    <input type="radio" name="paymentType" value="full" checked style="display:none;">
-                </label>
-
-                <div class="payment-option-separator"></div>
-
-                <label class="payment-option-container" onclick="selectPayment('part')">
-                    <div class="payment-option-content">
-                        <h3>Pay part now, part later</h3>
-                        <p>Pay $@((total / 2).ToString("F2")) now, and the rest will be automatically charged later. No extra fees.</p>
-                        <a href="#" class="more-info-link">More info</a>
+                </div>
+                <div class="payment-option" id="opt-part" onclick="selectPayment('part')">
+                    <div class="option-text">
+                        <h4>Pay part now, part later</h4>
+                        <p>Pay R$ @((total/2).ToString("N2")) now, and the rest (R$ @((total/2).ToString("N2"))) will be automatically charged later. No extra fees.</p>
+                        <a href="#" class="more-info">More info</a>
                     </div>
-                    <div class="radio-circle" id="radio-part">
-                        <div class="inner-dot"></div>
+                    <div class="radio-ui">
+                        <div class="inner"></div>
                     </div>
-                    <input type="radio" name="paymentType" value="part" style="display:none;">
-                </label>
+                </div>
             </div>
 
-          
+            <!-- Authentication Section -->
+            <form asp-action="Payment" asp-route-id="@Model.Id" asp-route-volta="@(isVolta ? "true" : "false")" method="get" class="auth-booking-section">
+                <h3>Login or Sign up to book</h3>
+                <div class="input-phone-group">
+                    <input type="text" placeholder="Phone Number" required name="phoneNumber">
+                </div>
+                <p class="auth-notice">We'll call or text you to confirm your number. Standard message and data rates apply. <a href="#">Privacy Policy</a></p>
+                <button type="submit" class="btn-continue">Continue</button>
+                
+                <div class="auth-divider">
+                    <div class="line"></div>
+                    <span>Or</span>
+                    <div class="line"></div>
+                </div>
 
-        
+                <div class="social-auth-grid">
+                    <button type="button" class="btn-social"><i class="fab fa-facebook-f"></i></button>
+                    <button type="button" class="btn-social"><img src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png" alt="Google"></button>
+                    <button type="button" class="btn-social"><i class="fab fa-apple"></i></button>
+                </div>
+
+                <button type="button" class="btn-email-auth">
+                    <i class="far fa-envelope"></i> Continue with email
+                </button>
+            </form>
+        </div>
+
+        <!-- Sidebar -->
         <aside class="booking-sidebar">
-            <div class="booking-summary-card">
-                <div class="plane-icon">
-                    <i class="fas fa-plane"></i>
+            <div class="sidebar-summary-card">
+                <div class="summary-header">
+                    <img src="@(string.IsNullOrEmpty(Model.MainImage) ? "/img/flights/A380.jpg" : Model.MainImage)" alt="Flight" class="summary-img">
+                    <div class="summary-info">
+                        <span class="class-label">Economy</span>
+                        <h4>@Model.Airline A380 Airbus</h4>
+                        <div class="rating-box">
+                            <span class="score">@Model.Rating</span>
+                            <span class="text">Very Good</span>
+                            <span class="reviews">@Model.Reviews reviews</span>
+                        </div>
+                    </div>
                 </div>
-                <span class="class-type">Economy</span>
-                <h3 class="airline-title">@Model.Airline</h3>
-                <div class="rating-row">
-                    <span class="rating-score">@Model.Rating</span>
-                    <span class="rating-text">Very Good</span>
-                    <span class="rating-reviews">@Model.Reviews reviews</span>
+                <div class="protection-box">
+                    <p>Your booking is protected by <strong>golobe</strong></p>
                 </div>
-                <div class="protection-text">
-                    Your booking is protected by <strong>Travel</strong>
-                </div>
-                <div class="price-details">
+                <div class="price-details-box">
                     <h4>Price Details</h4>
-                    <div class="price-row">
+                    <div class="price-item">
                         <span>Base Fare</span>
-                        <span>$@baseFare</span>
+                        <span>R$ @baseFare.ToString("N2")</span>
                     </div>
-                    <div class="price-row">
+                    <div class="price-item">
+                        <span>Discount</span>
+                        <span>R$ 0,00</span>
+                    </div>
+                    <div class="price-item">
                         <span>Taxes</span>
-                        <span>$@taxes.ToString("F2")</span>
+                        <span>R$ @taxes.ToString("N2")</span>
                     </div>
-                    <div class="price-row">
+                    <div class="price-item">
                         <span>Service Fee</span>
-                        <span>$@serviceFee</span>
+                        <span>R$ @serviceFee.ToString("N2")</span>
                     </div>
-                    <div class="price-row total">
+                    <div class="price-item total">
                         <span>Total</span>
-                        <span>$@total.ToString("F2")</span>
+                        <span>R$ @total.ToString("N2")</span>
                     </div>
                 </div>
-                <form asp-action="Payment" asp-route-id="" method="post">
-                    <input type="hidden" name="id" value="@Model.Id" />
-                    <button type="submit" class="btn-book-now" style="width: 100%; cursor: pointer;">Confirm Booking</button>
-                </form>
             </div>
         </aside>
     </div>
 </div>
 
 @section Scripts {
-    <script src="~/js/flight-booking.js"></script>
+    <script>
+        function selectPayment(type) {
+            document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+            document.getElementById('opt-' + type).classList.add('selected');
+        }
+    </script>
 }

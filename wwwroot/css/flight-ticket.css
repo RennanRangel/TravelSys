@@ -1,504 +1,309 @@
-/* CSS/flight-ticket.css - Mobile First Refactor */
-@import url('flight-details.css');
+/* flight-ticket.css - Mockup 2173 */
 
-/* =========================================
-   TICKET HEADER
-   ========================================= */
-.ticket-header-section {
-    display: flex;
-    flex-direction: column;
-    /* Mobile: Stacked */
-    align-items: flex-start;
-    gap: 24px;
-    margin-bottom: 32px;
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
-.ticket-title h1 {
-    font-size: 24px;
+/* Header Section */
+.confirmation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 48px;
+}
+
+.header-left h2 {
+    font-size: 32px;
     font-weight: 700;
     margin-bottom: 8px;
-    color: #112211;
 }
 
-.location-info {
+.location-box {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #112211;
-    opacity: 0.75;
     font-size: 14px;
+    opacity: 0.6;
 }
 
-.ticket-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    /* Mobile: Left-aligned */
-    width: 100%;
-    gap: 16px;
+.location-box i {
+    color: #112211;
 }
 
-.ticket-actions .price {
+.header-right {
+    text-align: right;
+}
+
+.header-right .price {
     font-size: 32px;
     font-weight: 700;
     color: #FF8682;
+    display: block;
+    margin-bottom: 16px;
 }
 
-.action-buttons {
+.header-right .actions {
     display: flex;
-    flex-wrap: wrap;
-    /* Allow wrapping on small screens */
     gap: 16px;
-    width: 100%;
+    justify-content: flex-end;
 }
 
-.btn-icon {
+.btn-share {
     width: 48px;
     height: 48px;
     border: 1px solid #8DD3BB;
     background: transparent;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 8px;
     cursor: pointer;
-    color: #112211;
-    transition: all 0.3s;
-}
-
-.btn-icon:hover {
-    background-color: #EBF6F2;
+    font-size: 18px;
 }
 
 .btn-download {
-    padding: 0 32px;
-    height: 48px;
-    background-color: #8DD3BB;
+    background: #8DD3BB;
     border: none;
-    border-radius: 4px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    padding: 0 24px;
+    height: 48px;
+    border-radius: 8px;
     font-weight: 600;
-    color: #112211;
+    font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    flex: 1;
-    /* Stretch on mobile */
-    min-width: 150px;
 }
 
-.btn-download:hover {
-    background-color: #7bc1a8;
-}
-
-/* =========================================
-   BOARDING PASS
-   ========================================= */
-.boarding-pass {
+/* Boarding Pass Container */
+.boarding-pass-container {
     display: flex;
-    flex-direction: column;
-    /* Mobile: Stacked */
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-    margin-bottom: 60px;
-}
-
-.pass-details {
-    flex: 2;
+    gap: 32px;
+    background: #fff;
+    border-radius: 24px;
     padding: 0;
-    border-bottom: 2px dashed #E7E8E9;
-    /* Mobile: Divider at bottom */
-    position: relative;
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+    margin-bottom: 64px;
 }
 
-/* Header */
-.pass-header {
-    background-color: #8DD3BB;
-    padding: 24px 20px;
-    /* Reduced padding on mobile */
+/* Timeline Side */
+.pass-timeline {
+    width: 160px;
+    background: #fafafa;
+    padding: 40px 24px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 1px dashed #E7E8E9;
 }
 
-.pass-header-top {
+.time-block {
+    text-align: center;
+}
+
+.time-block .time {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.time-block .airport {
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+.path-vertical {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    /* Stacked on mobile */
-    gap: 16px;
-    align-items: flex-start;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 0;
 }
 
-.passenger-profile {
+.path-vertical .line {
+    width: 1px;
+    flex: 1;
+    background: #112211;
+    opacity: 0.1;
+    border-left: 1px dotted #112211;
+}
+
+.path-vertical i {
+    font-size: 24px;
+    opacity: 0.2;
+}
+
+/* Main Ticket Body */
+.pass-main {
+    flex: 1;
+    padding: 40px;
+}
+
+.pass-ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    background: rgba(141, 211, 187, 0.4);
+    margin: -40px -40px 40px -40px;
+    padding: 40px;
+}
+
+.passenger-info {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-.passenger-profile img {
+.profile-pic img {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    object-fit: cover;
 }
 
-.profile-text h3 {
-    font-size: 16px;
+.name-id h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.name-id span {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.class-badge {
+    font-size: 14px;
     font-weight: 700;
     color: #112211;
-    margin-bottom: 4px;
 }
 
-.profile-text span {
-    font-size: 12px;
-    color: #112211;
-    opacity: 0.6;
-}
-
-.class-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #112211;
-}
-
-.pass-header-bottom {
-    display: flex;
-    flex-direction: row;
-    /* Keep row for route, maybe wrap if tight */
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 8px;
-    gap: 10px;
-}
-
-.flight-route-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.flight-route-item h2 {
-    font-size: 20px;
-    /* Smaller font on mobile */
-    font-weight: 600;
-    color: #112211;
-}
-
-.flight-route-item span {
-    font-size: 12px;
-    color: #112211;
-    opacity: 0.6;
-}
-
-.flight-route-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    color: #112211;
-    font-size: 20px;
-}
-
-/* Info Grid */
-.pass-info-grid {
+.pass-ticket-details {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* Mobile: 2 columns */
-    gap: 20px;
-    padding: 24px;
-    background-color: #FFFFFF;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
 }
 
-.info-item {
+.detail-item {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.icon-box {
-    width: 32px;
-    height: 32px;
-    background-color: #EBF6F2;
-    border-radius: 4px;
+.icon-circle {
+    width: 40px;
+    height: 40px;
+    background: #fafafa;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #8DD3BB;
-    flex-shrink: 0;
+    font-size: 16px;
 }
 
-.info-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.info-text .label {
+.detail-item .text label {
+    display: block;
     font-size: 12px;
-    color: #112211;
-    opacity: 0.7;
+    opacity: 0.5;
+    margin-bottom: 4px;
 }
 
-.info-text .value {
+.detail-item .text span {
     font-size: 14px;
     font-weight: 600;
-    color: #112211;
 }
 
-/* Footer Section */
-.pass-footer {
-    padding: 0 24px 24px;
+.pass-ticket-footer {
     display: flex;
-    flex-direction: column;
-    /* Stacked on mobile */
-    gap: 20px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: #FFFFFF;
-    margin-top: auto;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+    border-top: 1px solid #E7E8E9;
 }
 
-.flight-code h2 {
-    font-size: 24px;
+.airline-code h2 {
+    font-size: 32px;
     font-weight: 700;
-    color: #112211;
+    line-height: 1;
 }
 
-.flight-code span {
+.airline-code span {
     font-size: 14px;
-    color: #112211;
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
-.barcode {
-    display: flex;
-    align-items: stretch;
-    height: 48px;
-    gap: 3px;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.barcode .bar {
-    background-color: #112211;
+.barcode-area {
+    width: 200px;
+    height: 60px;
+    background: linear-gradient(to right, 
+        #000 2px, transparent 2px, 
+        transparent 5px, #000 5px, 
+        #000 6px, transparent 6px, 
+        transparent 10px, #000 10px, 
+        #000 13px, transparent 13px,
+        transparent 15px, #000 15px,
+        #000 16px, transparent 16px,
+        transparent 20px, #000 20px,
+        #000 23px, transparent 23px,
+        transparent 30px, #000 30px,
+        #000 32px, transparent 32px
+    );
+    background-size: 40px 100%;
 }
 
 /* Map Section */
-.pass-map {
-    width: 100%;
-    height: 200px;
+.pass-map-side {
+    width: 320px;
+    background: #fdfdfd;
+    padding: 40px;
+    border-left: 1px dashed #E7E8E9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-illustration {
     position: relative;
-    background-color: #EBF6F2;
-    min-height: 200px;
-}
-
-.map-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: 240px;
+    background: url('https://www.transparenttextures.com/patterns/gray-dotted-map.png'); /* Fallback pattern */
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-/* =========================================
-   TERMS SECTION
-   ========================================= */
-.terms-section {
-    margin-bottom: 80px;
+/* Terms and Conditions Section */
+.terms-conditions-container {
+    padding-top: 64px;
+    border-top: 1px solid #E7E8E9;
 }
 
-.terms-section h2 {
+.terms-conditions-container h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 48px;
+}
+
+.legal-section h3, 
+.contact-section h3 {
     font-size: 24px;
     font-weight: 700;
-    color: #112211;
+    margin: 32px 0 16px 0;
+}
+
+.legal-section p, 
+.contact-section p {
+    font-size: 14px;
+    line-height: 1.8;
+    opacity: 0.8;
     margin-bottom: 24px;
 }
 
-.terms-section h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: #112211;
-    margin-bottom: 16px;
-    margin-top: 24px;
+.contact-section p {
+    margin-bottom: 8px;
 }
 
-.terms-section ul {
-    list-style: disc;
-    padding-left: 20px;
-    margin-bottom: 24px;
-}
-
-.terms-section ul li {
-    font-size: 14px;
-    color: #112211;
-    opacity: 0.7;
-    margin-bottom: 12px;
-    line-height: 1.6;
-}
-
-.terms-section p {
-    font-size: 14px;
-    color: #112211;
-    opacity: 0.7;
-    margin-bottom: 12px;
-    line-height: 1.6;
-}
-
-.terms-section a {
+.contact-section a {
     color: #FF8682;
     text-decoration: none;
-}
-
-@media (min-width: 576px) {
-    .pass-header-top {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .pass-info-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .pass-footer {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-end;
-    }
-
-    .barcode {
-        width: auto;
-        margin-top: 0;
-    }
-}
-
-@media (min-width: 768px) {
-    .ticket-header-section {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-
-    .ticket-actions {
-        align-items: flex-end;
-        width: auto;
-    }
-
-    .action-buttons {
-        width: auto;
-    }
-
-    .btn-download {
-        flex: none;
-        width: auto;
-    }
-
-    .pass-header {
-        padding: 24px 32px;
-    }
-
-    .flight-route-item h2 {
-        font-size: 24px;
-    }
-
-    .pass-info-grid {
-        grid-template-columns: repeat(4, 1fr);
-        padding: 32px;
-    }
-
-    .pass-footer {
-        padding: 0 32px 32px;
-    }
-}
-
-@media (min-width: 992px) {
-    .boarding-pass {
-        flex-direction: row;
-    }
-
-    .pass-details {
-        border-bottom: none;
-        border-right: 2px dashed #E7E8E9;
-    }
-
-    .pass-map {
-        height: auto;
-        min-height: 300px;
-        flex: 1;
-    }
-}
-
-
-@media (min-width: 1200px) {
-    .pass-info-grid {
-        gap: 32px;
-    }
-}
-
-
-@media (min-width: 1400px) {
-    .boarding-pass {
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-/* Responsive Breakpoints */
-@media (min-width: 576px) {
-    .ticket-card {
-        margin: 20px auto;
-    }
-
-    .pass-info-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 768px) {
-    .ticket-header-section {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .pass-info-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .pass-footer {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-end;
-    }
-}
-
-@media (min-width: 992px) {
-    .boarding-pass {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .pass-details {
-        flex: 2;
-        border-right: 2px dashed #E7E8E9;
-    }
-
-    .pass-map {
-        flex: 1;
-        min-height: auto;
-    }
-}
-
-@media (min-width: 1200px) {
-    .pass-info-grid {
-        gap: 32px;
-    }
-}
-
-@media (min-width: 1400px) {
-    .main-container {
-        max-width: 1320px;
-    }
+    font-weight: 600;
 }

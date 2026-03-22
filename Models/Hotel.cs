@@ -23,9 +23,8 @@ public class Hotel
     
     public string? GalleryImages { get; set; } 
     
-    [Required]
-    [Range(3, 5)]
-    public int Stars { get; set; }
+    // Updated: Stars are no longer required by admin per latest request
+    public int? Stars { get; set; }
     
     [Required]
     [Column(TypeName = "decimal(18,2)")]
@@ -37,6 +36,17 @@ public class Hotel
     public int Reviews { get; set; }
     
     public string? Amenities { get; set; } 
+
+    // New Fields from UI
+    public string? Region { get; set; }
+    public string? BookingMode { get; set; }
+    public string? CheckIn { get; set; }
+    public string? CheckOut { get; set; }
+    public string? ReceptionMode { get; set; }
+    public string? ZipCode { get; set; }
+    public string? Country { get; set; }
+
+    public string Status { get; set; } = "publicada";
 
     [NotMapped]
     public IFormFile? MainImageUpload { get; set; }

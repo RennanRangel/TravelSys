@@ -1,173 +1,225 @@
 @model ProjetoHotelAviao.Models.Hotel
 @{
-    ViewData["Title"] = "Hotel Details - Travel";
+    ViewData["Title"] = Model.Name + " - Hotel Details";
+    
+    // Improved Gallery Image Logic with Hotel specific fallbacks
+    var hotelFallbacks = new[] {
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200", // Grand Lobby
+        "https://images.unsplash.com/photo-1571011272708-34907931336c?w=800", // Pool
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800", // Bed
+        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800", // Bathroom
+        "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800"  // View
+    };
+
+    var mainImg = Model.MainImage;
+    if (string.IsNullOrEmpty(mainImg) || mainImg.Contains("flight") || mainImg.Contains("A380"))
+    {
+        mainImg = hotelFallbacks[0];
+    }
+
+    var galleryImages = new List<string>();
+    if (!string.IsNullOrEmpty(Model.GalleryImages) && !Model.GalleryImages.Contains("[]"))
+    {
+        try { 
+            galleryImages = System.Text.Json.JsonSerializer.Deserialize<List<string>>(Model.GalleryImages) ?? new List<string>(); 
+        } catch { }
+    }
+
+    // Ensure we have 4 images for the small grid
+    for (int i = 0; i < 4; i++) {
+        if (galleryImages.Count <= i || galleryImages[i].Contains("flight") || galleryImages[i].Contains("A380")) {
+            if (galleryImages.Count <= i) galleryImages.Add(hotelFallbacks[i + 1]);
+            else galleryImages[i] = hotelFallbacks[i + 1];
+        }
+    }
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/hotel-details.css">
+    <link rel="stylesheet" href="/css/hotel-details.css" asp-append-version="true">
+    <style>
+        /* Force container to be wide enough for the logic in hotel-details.css */
+        .container {
+            max-width: 1300px !important;
+            width: 100% !important;
+            padding: 0 20px !important;
+        }
+        main.pb-3 {
+            padding-bottom: 0 !important;
+        }
+    </style>
 }
 
-
-<div class="container">
-    
+<div class="main-container">
+    <!-- Breadcrumbs -->
     <div class="breadcrumbs">
-        <a href="@Url.Action("Index", "Hotels")">Hotels</a> <i class="fas fa-chevron-right"></i>
-        <a href="#">@Model.Location</a> <i class="fas fa-chevron-right"></i>
-        <span id="breadcrumbHotelName">@Model.Name</span>
+        <a href="#">Stays</a> <i class="fas fa-chevron-right"></i>
+        <a href="#">Turkey</a> <i class="fas fa-chevron-right"></i>
+        <a href="#">Istanbul</a> <i class="fas fa-chevron-right"></i>
+        <span>@Model.Name</span>
     </div>
 
-    <div class="hotel-title-section">
-        <div class="hotel-info">
-            <div class="title-row">
-                <h1 id="hotelTitle">@Model.Name</h1>
-                <div class="stars" id="hotelStars">
-                    @for (int i = 0; i < Model.Stars; i++)
-                    {
-                        <i class="fas fa-star"></i>
-                    }
-                    <span>@Model.Stars Star Hotel</span>
-                </div>
+    <!-- Hotel Header Section -->
+    <div class="hotel-header">
+        <div class="header-left">
+            <div class="title-stars">
+                <h1>@Model.Name</h1>
+
             </div>
-            <div class="location-row">
+            <div class="location-box">
                 <i class="fas fa-map-marker-alt"></i>
-                <span id="hotelLocation">@Model.Location</span>
+                <span>Gümüssuyu Mah. Inönü Cad. No:8, Istanbul 34437</span>
             </div>
-            <div class="rating-row">
-                <span class="rating-badge">@Model.Rating</span>
-                <span class="rating-text">Very Good</span>
-                <span class="review-count">@Model.Reviews reviews</span>
-            </div>
+
         </div>
-        <div class="hotel-price-action">
-            <div class="price-display">
-                <span class="price" id="hotelPrice">$@Model.Price</span>
+        <div class="header-right">
+            <div class="price-box">
+                <span class="price">$@Model.Price</span>
                 <span class="unit">/night</span>
             </div>
             <div class="action-buttons">
-                <form asp-action="Booking" asp-route-id="" method="post">
+                <button class="btn-icon favorite"><i class="far fa-heart"></i></button>
+                <button class="btn-icon share"><i class="fas fa-share-alt"></i></button>
+                <form asp-action="Booking" asp-controller="Hotels" method="get" style="display:inline;">
                     <input type="hidden" name="id" value="@Model.Id" />
-                    <button type="submit" class="btn-book" style="border: none; cursor: pointer;">Book now</button>
+                    <button type="submit" class="btn-book-now">Book now</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <div class="gallery-grid" id="hotelGallery">
-        @{
-            var galleryImages = new List<string>();
-            if (!string.IsNullOrEmpty(Model.GalleryImages))
-            {
-                try
-                {
-                    galleryImages = System.Text.Json.JsonSerializer.Deserialize<List<string>>(Model.GalleryImages) ?? new List<string>();
-                }
-                catch { }
-            }
-            
-            var placeholders = new List<string>
-            {
-                "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600",
-                "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600",
-                "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=600",
-                "https://images.unsplash.com/photo-1512918760532-3ed0006feb19?w=600"
-            };
-        }
-
-        <div class="gallery-item main-image">
-            @if (!string.IsNullOrEmpty(Model.MainImage))
-            {
-                <img src="@Model.MainImage" alt="Hotel Main View">
-            }
-            else
-            {
-                <div style="width: 100%; height: 100%; background-color: #eee; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-hotel" style="font-size: 64px; color: #ccc;"></i>
+    <!-- Photo Gallery Grid (1+4) -->
+    <div class="hotel-gallery">
+        <div class="gallery-large">
+            <img src="@mainImg" alt="Main View">
+        </div>
+        <div class="gallery-small-grid">
+            @for(int i=0; i<4; i++) {
+                <div class="gallery-small-item @(i == 3 ? "view-all" : "")">
+                    <img src="@galleryImages[i]" alt="Gallery Image @i">
+                    @if(i == 3) {
+                        <button class="btn-view-all">View all photos</button>
+                    }
                 </div>
             }
         </div>
-
-        @for (int i = 0; i < 4; i++)
-        {
-            var imgUrl = (i < galleryImages.Count) ? galleryImages[i] : placeholders[i];
-            var isLast = (i == 3);
-            
-            <div class="gallery-item @(isLast ? "view-all-container" : "")">
-                <img src="@imgUrl" alt="Gallery Image">
-               
-            </div>
-        }
     </div>
 
+    <hr class="section-divider">
+
+    <!-- Overview Section -->
     <section class="overview-section">
         <h2>Overview</h2>
-        <p id="hotelOverview">
-            @if (!string.IsNullOrEmpty(Model.Overview))
+        <p class="description" style="white-space: pre-wrap;">
+            @if (string.IsNullOrEmpty(Model.Overview) || Model.Overview.Trim().ToUpper() == "AAAA")
             {
-                @Model.Overview
+                @:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             }
             else
             {
-                @:No overview available for this hotel.
+                @Model.Overview
             }
         </p>
+        
+        <div class="overview-badges">
 
-        <div class="overview-badges" id="hotelAmenities">
-            <div class="badge">
-                <span class="badge-score">@Model.Rating</span>
-                <div class="badge-text">
-                    <strong>Very good</strong>
-                    <span>@Model.Reviews reviews</span>
-                </div>
+            <div class="badge-item highlight vertical-badge">
+                <img src="/images/Stars.png" alt="Stars" class="amenity-star">
+                <span>Near park</span>
             </div>
-            @if (!string.IsNullOrEmpty(Model.Amenities))
-            {
-                @foreach (var amenity in Model.Amenities.Split(',').Take(4))
-                {
-                    <div class="badge">
-                        <i class="fas fa-check"></i>
-                        <span>@amenity.Trim()</span>
+            <div class="badge-item highlight vertical-badge">
+                <img src="/images/Stars.png" alt="Stars" class="amenity-star">
+                <span>Near nightlife</span>
+            </div>
+            <div class="badge-item highlight vertical-badge">
+                <img src="/images/Stars.png" alt="Stars" class="amenity-star">
+                <span>Near theater</span>
+            </div>
+            <div class="badge-item highlight vertical-badge">
+                <img src="/images/Stars.png" alt="Stars" class="amenity-star">
+                <span>Clean Hotel</span>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Available Rooms -->
+    <section class="rooms-section">
+        <h2>Available Rooms</h2>
+        <div class="rooms-list">
+            @{
+                var roomTypes = new[] {
+                    "Superior room - 1 double bed or 2 single beds",
+                    "Superior room - City view - 1 double bed or 2 single beds",
+                    "Superior room - Sea view - 1 double bed or 2 single beds",
+                    "Superior room - City view - 1 double bed or 2 single beds"
+                };
+            }
+            @for(int i=0; i<4; i++) {
+                var roomPrice = Model.Price + (i * 20);
+                <div class="room-card">
+                    <div class="room-img">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=200" alt="Room Image">
                     </div>
-                }
+                    <div class="room-info">
+                        <h3>@roomTypes[i]</h3>
+                    </div>
+                    <div class="room-actions">
+                        <span class="room-price">$@roomPrice</span>
+                        <a href="@Url.Action("Booking", "Hotels", new { id = Model.Id })" class="btn-book-room">Book now</a>
+                    </div>
+                </div>
             }
         </div>
     </section>
 
+    <hr class="section-divider">
+
+    <!-- Location / Map -->
+    <section class="location-map-section">
+        <div class="section-header">
+            <h2>Location/Map</h2>
+            <button class="btn-view-map">View on google maps</button>
+        </div>
+        <div class="map-placeholder">
+            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200" alt="Map Placeholder" style="width:100%; border-radius:12px;">
+            <div class="map-location-tag">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Gümüssuyu Mah. Inönü Cad. No:8, Istanbul 34437</span>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Amenities Grid -->
     <section class="amenities-section">
         <h2>Amenities</h2>
         <div class="amenities-grid">
             @if (!string.IsNullOrEmpty(Model.Amenities))
             {
-                @foreach (var amenity in Model.Amenities.Split(','))
+                var amenitiesList = Model.Amenities.Split(new[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var item in amenitiesList)
                 {
-                    <div class="amenity-item"><i class="fas fa-check-circle"></i> @amenity.Trim()</div>
+                    <div class="amenity">
+                        <i class="fas fa-check-circle"></i> @item.TrimStart('-', ' ', '*')
+                    </div>
                 }
+            }
+            else
+            {
+                <div class="amenity"><i class="fas fa-swimming-pool"></i> Outdoor pool</div>
+                <div class="amenity"><i class="fas fa-hot-tub"></i> Indoor pool</div>
+                <div class="amenity"><i class="fas fa-dumbbell"></i> Spa and wellness center</div>
+                <div class="amenity"><i class="fas fa-utensils"></i> Restaurant</div>
+                <div class="amenity"><i class="fas fa-concierge-bell"></i> Room service</div>
+                <div class="amenity"><i class="fas fa-dumbbell"></i> Fitness center</div>
+                <div class="amenity"><i class="fas fa-cocktail"></i> Bar/Lounge</div>
+                <div class="amenity"><i class="fas fa-wifi"></i> Free Wi-Fi</div>
+                <div class="amenity"><i class="fas fa-mug-hot"></i> Tea/coffee machine</div>
             }
         </div>
     </section>
 
-    <section class="reviews-section">
-        <div class="reviews-header">
-            <h2>Reviews</h2>
-        </div>
 
-        <div class="rating-summary">
-            <span class="big-score">@Model.Rating</span>
-            <div class="rating-text-group">
-                <span class="status">Very good</span>
-                <span class="count">@Model.Reviews verified reviews</span>
-            </div>
-        </div>
-    </section>
 </div>
-
-
-
-
-@section Scripts {
-    <script src="~/js/favorites-manager.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            FavoritesManager.initButtons();
-        });
-    </script>
-}

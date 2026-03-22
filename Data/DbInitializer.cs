@@ -13,7 +13,7 @@ public static class DbInitializer
         var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         var configuration = serviceProvider.GetRequiredService<IConfiguration>();
 
-        
+        // Roles setup
         string[] roles = { "Admin", "User" };
         foreach (var role in roles)
         {
@@ -79,6 +79,34 @@ public static class DbInitializer
                 await userManager.AddToRoleAsync(adminUser2, "Admin");
                 Console.WriteLine($"Admin2 user created: {admin2Email}");
             }
+        }
+
+        // (Colunas Status já foram injetadas no banco e os registros atualizados)
+
+        // Criar tabela AdminTasks se não existir
+        try {
+            context.Database.ExecuteSqlRaw(@"
+                CREATE TABLE IF NOT EXISTS AdminTasks (
+                    Id INT AUTO_INCREMENT PRIMARY KEY,
+                    Title LONGTEXT NOT NULL,
+                    Description LONGTEXT NULL,
+                    Status LONGTEXT NOT NULL,
+                    Priority LONGTEXT NOT NULL,
+                    AssignedTo LONGTEXT NULL,
+                    CreatedAt DATETIME(6) NOT NULL,
+                    CompletedAt DATETIME(6) NULL
+                );
+            ");
+        } catch { }
+
+        // Adicionar coluna IsRoundTrip em Bookings se não existir
+        try {
+            // Tenta adicionar a coluna. Se já existir, a exceção será ignorada pelo catch.
+            context.Database.ExecuteSqlRaw("ALTER TABLE Bookings ADD COLUMN IsRoundTrip TINYINT(1) NOT NULL DEFAULT 0;");
+            Console.WriteLine(">>> SUCCESS: Added IsRoundTrip column to Bookings via DbInitializer <<<");
+        } catch (Exception ex) {
+            // Provavelmente a coluna já existe
+            Console.WriteLine($">>> INFO: Could not add IsRoundTrip column (might already exist): {ex.Message}");
         }
     }
 }

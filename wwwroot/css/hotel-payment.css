@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+.main-container {
+    max-width: 1240px !important;
+    margin: 0 auto !important;
+    padding: 32px 20px;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    color: #112211;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-bottom: 32px;
+}
+
+.breadcrumbs a {
+    color: #FF8682;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.breadcrumbs i {
+    font-size: 10px;
+    opacity: 0.5;
+}
+
+/* Page Layout */
+.booking-layout {
+    display: grid;
+    grid-template-columns: 1.8fr 1.2fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+@media (max-width: 992px) {
+    .booking-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Summary Box */
+.booking-summary-box {
+    background: #FFFFFF;
+    border: 1px solid #E7E8E9;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+}
+
+.room-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.room-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.room-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: #FF8682;
+    text-align: right;
+}
+
+.room-price span {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.hotel-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 20px;
+    background: #FAFAFA;
+    border: 1px solid #E7E8E9;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.hotel-logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.hotel-info-text h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.hotel-info-text p {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.booking-dates {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid #E7E8E9;
+}
+
+.date-box strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.date-box span {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.date-path {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 32px;
+    opacity: 0.3;
+}
+
+.date-path .line {
+    height: 1px;
+    background: #112211;
+    flex: 1;
+}
+
+/* Payment Plans */
+.payment-plans {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.payment-card {
+    border: 1px solid #E7E8E9;
+    padding: 24px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: #FFF;
+    transition: all 0.2s;
+}
+
+.payment-card.selected {
+    background: #8DD3BB;
+    border-color: #8DD3BB;
+}
+
+.payment-info h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.payment-info p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.radio-circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #112211;
+    border-radius: 50%;
+    position: relative;
+}
+
+.selected .radio-circle::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: #112211;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Card Selection */
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card-item {
+    border: 1px solid #E7E8E9;
+    padding: 24px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: #FFF;
+    transition: all 0.2s;
+}
+
+.card-item.selected {
+    background: #8DD3BB;
+    border-color: #8DD3BB;
+}
+
+.card-info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.card-number {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.card-expiry {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.add-card-placeholder {
+    border: 2px dashed #8DD3BB;
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.add-card-placeholder:hover {
+    background: rgba(141, 211, 187, 0.05);
+}
+
+.add-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #8DD3BB;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8DD3BB;
+    font-size: 20px;
+}
+
+/* Sidebar Summary */
+.summary-sidebar {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.summary-hotel-header {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.summary-image img {
+    width: 121px;
+    height: 121px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.summary-meta {
+    flex: 1;
+}
+
+.summary-meta h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.summary-meta .rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.summary-meta .badge {
+    border: 1px solid #8DD3BB;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.protection-box {
+    padding: 16px 0;
+    border-top: 1px solid #E7E8E9;
+    border-bottom: 1px solid #E7E8E9;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.price-details h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.price-row.total {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #E7E8E9;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.btn-continue {
+    width: 100%;
+    background: #8DD3BB;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-continue:hover {
+    opacity: 0.9;
+}
+
+/* Modal Styles */
+.modal-sistema {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-sistema.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #FFFFFF;
+    padding: 40px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: 28px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.modal-close:hover {
+    opacity: 1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input {
+    padding: 14px;
+    border: 1px solid #79747E;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-submit {
+    width: 100%;
+    background: #8DD3BB;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}

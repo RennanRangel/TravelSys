@@ -1,0 +1,62 @@
+@model ProjetoHotelAviao.Models.AdminTask
+@{
+    var priorityBadge = Model.Priority switch
+    {
+        "alta" => "bg-danger",
+        "urgente" => "bg-warning text-dark",
+        "media" => "bg-info",
+        _ => "bg-secondary"
+    };
+    var priorityLabel = Model.Priority switch
+    {
+        "alta" => "Alta Prioridade",
+        "urgente" => "Urgente",
+        "media" => "Média",
+        _ => "Baixa"
+    };
+    var isCompleted = Model.Status == "concluido";
+}
+
+<div class="admin-card mb-3" style="padding: 15px; @(isCompleted ? "opacity: 0.6;" : "")" data-task-id="@Model.Id">
+    <div class="d-flex justify-content-between align-items-start mb-2">
+        <span class="badge @priorityBadge">@priorityLabel</span>
+        <div class="dropdown">
+            <button class="btn btn-sm p-0 border-0 bg-transparent text-muted" data-bs-toggle="dropdown">
+                <i class="fas fa-ellipsis-h"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                @if (Model.Status != "afazer")
+                {
+                    <li><a class="dropdown-item" href="javascript:void(0)" onclick="moveTask(@Model.Id, 'afazer')"><i class="fas fa-arrow-left me-2"></i>Mover para A Fazer</a></li>
+                }
+                @if (Model.Status != "andamento")
+                {
+                    <li><a class="dropdown-item" href="javascript:void(0)" onclick="moveTask(@Model.Id, 'andamento')"><i class="fas fa-play me-2"></i>Mover para Em Andamento</a></li>
+                }
+                @if (Model.Status != "concluido")
+                {
+                    <li><a class="dropdown-item" href="javascript:void(0)" onclick="moveTask(@Model.Id, 'concluido')"><i class="fas fa-check me-2"></i>Marcar como Concluído</a></li>
+                }
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="javascript:void(0)" onclick="deleteTask(@Model.Id)"><i class="fas fa-trash me-2"></i>Excluir</a></li>
+            </ul>
+        </div>
+    </div>
+    <h6 style="font-weight: 600; @(isCompleted ? "text-decoration: line-through;" : "")">@Model.Title</h6>
+    @if (!string.IsNullOrEmpty(Model.Description))
+    {
+        <p style="font-size: 13px; color: #666; margin-bottom: 15px; @(isCompleted ? "text-decoration: line-through;" : "")">@Model.Description</p>
+    }
+    <div class="d-flex justify-content-between align-items-center">
+        <span style="font-size: 12px; color: #999;">
+            @if (isCompleted && Model.CompletedAt.HasValue)
+            {
+                <i class="fas fa-check text-success"></i> @Model.CompletedAt.Value.ToString("dd MMM")
+            }
+            else
+            {
+                <i class="fas fa-calendar"></i> @Model.CreatedAt.ToString("dd MMM")
+            }
+        </span>
+    </div>
+</div>

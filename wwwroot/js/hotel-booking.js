@@ -1,119 +1,82 @@
-// Payment option selection
-function selectPaymentOption(element) {
-    document.querySelectorAll('.payment-card').forEach(card => {
-        card.classList.remove('selected');
-        const circle = card.querySelector('.radio-circle');
+/**
+ * Gerenciamento de Reserva de Hotel (Simplificado)
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Cache de Elementos
+    const DOM = {
+        paymentCards: document.querySelectorAll('.payment-card'),
+        savedCards: document.querySelectorAll('.saved-card'),
+        btnNovoCartao: document.querySelector('#addNewCardBtn'),
+        modal: document.querySelector('#addCardModal'),
+        fecharModal: document.querySelector('.close-modal'),
+        formAddCartao: document.querySelector('.add-card-form'),
+        formNewsletter: document.querySelector('.newsletter-form')
+    };
+
+    // --- FUNÇÕES DE LÓGICA ---
+
+    const removeSelection = (selector) => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.classList.remove('selected');
+            const circle = el.querySelector('.radio-circle');
+            if (circle) {
+                circle.classList.remove('selected');
+                circle.querySelector('.inner-circle')?.remove();
+            }
+        });
+    };
+
+    const applySelection = (el) => {
+        el.classList.add('selected');
+        const circle = el.querySelector('.radio-circle');
         if (circle) {
-            circle.classList.remove('selected');
-            const inner = circle.querySelector('.inner-circle');
-            if (inner) inner.remove();
+            circle.classList.add('selected');
+            if (!circle.querySelector('.inner-circle')) {
+                const inner = document.createElement('div');
+                inner.className = 'inner-circle';
+                circle.appendChild(inner);
+            }
         }
+        const radio = el.querySelector('input[type="radio"]');
+        if (radio) radio.checked = true;
+    };
+
+    // --- SELEÇÃO DE PAGAMENTO ---
+
+    DOM.paymentCards.forEach(card => {
+        card.addEventListener('click', () => {
+            removeSelection('.payment-card');
+            applySelection(card);
+        });
     });
 
-    element.classList.add('selected');
-    const circle = element.querySelector('.radio-circle');
-    if (circle) {
-        circle.classList.add('selected');
-        if (!circle.querySelector('.inner-circle')) {
-            const innerCircle = document.createElement('div');
-            innerCircle.className = 'inner-circle';
-            circle.appendChild(innerCircle);
-        }
-    }
-
-    const radio = element.querySelector('input[type="radio"]');
-    if (radio) radio.checked = true;
-}
-
-// Card selection
-function selectCard(element) {
-    document.querySelectorAll('.saved-card').forEach(card => {
-        card.classList.remove('selected');
-        const circle = card.querySelector('.radio-circle');
-        if (circle) {
-            circle.classList.remove('selected');
-            const inner = circle.querySelector('.inner-circle');
-            if (inner) inner.remove();
-        }
+    DOM.savedCards.forEach(card => {
+        card.addEventListener('click', () => {
+            removeSelection('.saved-card');
+            applySelection(card);
+        });
     });
 
-    element.classList.add('selected');
-    const circle = element.querySelector('.radio-circle');
-    if (circle) {
-        circle.classList.add('selected');
-        if (!circle.querySelector('.inner-circle')) {
-            const innerCircle = document.createElement('div');
-            innerCircle.className = 'inner-circle';
-            circle.appendChild(innerCircle);
-        }
-    }
-}
+    // --- MODAL E FORMULÁRIO ---
 
-// Modal functionality
-const addNewCardBtn = document.getElementById('addNewCardBtn');
-const modal = document.getElementById('addCardModal');
-const closeModalBtn = document.querySelector('.close-modal');
+    DOM.btnNovoCartao?.addEventListener('click', () => DOM.modal?.classList.add('active'));
+    DOM.fecharModal?.addEventListener('click', () => DOM.modal?.classList.remove('active'));
+    DOM.modal?.addEventListener('click', (e) => { if (e.target === DOM.modal) DOM.modal.classList.remove('active'); });
 
-if (addNewCardBtn) {
-    addNewCardBtn.addEventListener('click', () => {
-        modal.classList.add('active');
-    });
-}
-
-if (closeModalBtn) {
-    closeModalBtn.addEventListener('click', () => {
-        modal.classList.remove('active');
-    });
-}
-
-if (modal) {
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-        }
-    });
-}
-
-// Form submission
-const addCardForm = document.querySelector('.add-card-form');
-if (addCardForm) {
-    addCardForm.addEventListener('submit', (e) => {
+    DOM.formAddCartao?.addEventListener('submit', (e) => {
         e.preventDefault();
-        // Simulate processing
-        const btn = addCardForm.querySelector('.btn-add-card');
-        const originalText = btn.innerText;
-        btn.innerText = 'Processing...';
+        const btn = DOM.formAddCartao.querySelector('.btn-add-card');
+        if (btn) btn.textContent = 'Processando...';
 
         setTimeout(() => {
-            alert('Payment successful!');
+            alert('Pagamento realizado com sucesso!');
             window.location.href = 'hotel-ticket.html';
         }, 1500);
     });
-}
 
-// Newsletter form
-const newsletterForm = document.querySelector('.newsletter-form');
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
+    DOM.formNewsletter?.addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = newsletterForm.querySelector('input[type="email"]').value;
-        if (email) {
-            alert('Thank you for subscribing!');
-            newsletterForm.reset();
-        }
-    });
-}
-
-// Payment card click handlers
-document.querySelectorAll('.payment-card').forEach(card => {
-    card.addEventListener('click', function () {
-        selectPaymentOption(this);
-    });
-});
-
-// Saved card click handlers
-document.querySelectorAll('.saved-card').forEach(card => {
-    card.addEventListener('click', function () {
-        selectCard(this);
+        alert('Obrigado por se inscrever!');
+        DOM.formNewsletter.reset();
     });
 });

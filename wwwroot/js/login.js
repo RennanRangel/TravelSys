@@ -1,60 +1,58 @@
-// Login page carousel functionality
-const images = [
-    'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&h=1600&fit=crop',
-    'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=1600&fit=crop',
-    'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&h=1600&fit=crop'
-];
+/**
+ * Gerenciamento de Login (Carrossel & UI)
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Cache de Elementos
+    const DOM = {
+        image: document.querySelector('.login-right img'),
+        indicators: document.querySelectorAll('.indicator'),
+        togglePassword: document.querySelector('.toggle-password'),
+        passwordInput: document.querySelector('#password')
+    };
 
-let currentImageIndex = 0;
-const imageElement = document.querySelector('.login-right img');
-const indicators = document.querySelectorAll('.indicator');
+    const images = [
+        'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&h=1600&fit=crop',
+        'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=1600&fit=crop',
+        'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&h=1600&fit=crop'
+    ];
 
-if (imageElement && indicators.length > 0) {
-    // Function to change image
-    function changeImage(index) {
-        currentImageIndex = index;
-        imageElement.src = images[currentImageIndex];
+    let currentIndex = 0;
 
-        // Update indicators
-        indicators.forEach((indicator, i) => {
-            if (i === currentImageIndex) {
-                indicator.classList.add('active');
-            } else {
-                indicator.classList.remove('active');
+    // --- CARROSSEL ---
+
+    const changeImage = (index) => {
+        if (!DOM.image) return;
+        currentIndex = index;
+        DOM.image.src = images[currentIndex];
+        
+        DOM.indicators.forEach((ind, i) => {
+            ind.classList.toggle('active', i === currentIndex);
+        });
+    };
+
+    if (DOM.image && DOM.indicators.length > 0) {
+        DOM.indicators.forEach((ind, i) => {
+            ind.addEventListener('click', () => changeImage(i));
+        });
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            changeImage(currentIndex);
+        }, 5000);
+    }
+
+    // --- VISIBILIDADE DA SENHA ---
+
+    if (DOM.togglePassword && DOM.passwordInput) {
+        DOM.togglePassword.addEventListener('click', () => {
+            const isPassword = DOM.passwordInput.type === 'password';
+            DOM.passwordInput.type = isPassword ? 'text' : 'password';
+            
+            const icon = DOM.togglePassword.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-eye', isPassword);
+                icon.classList.toggle('fa-eye-slash', !isPassword);
             }
         });
     }
-
-    // Add click event to indicators
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-            changeImage(index);
-        });
-    });
-
-    // Auto-change image every 5 seconds
-    setInterval(() => {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        changeImage(currentImageIndex);
-    }, 5000);
-}
-
-// Toggle password visibility
-const togglePassword = document.querySelector('.toggle-password');
-const passwordInput = document.getElementById('password');
-
-if (togglePassword && passwordInput) {
-    togglePassword.addEventListener('click', () => {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-
-        const icon = togglePassword.querySelector('i');
-        if (type === 'password') {
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        } else {
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-      }
-    });
-}
+});

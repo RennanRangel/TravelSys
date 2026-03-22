@@ -1,169 +1,111 @@
+/**
+ * Gerenciamento de Detalhes do Hotel (Simplificado)
+ */
 document.addEventListener('DOMContentLoaded', () => {
-    loadHotelDetails();
-    setupAuth();
-});
+    // 1. Cache de Elementos
+    const DOM = {
+        breadcrumbName: document.querySelector('#breadcrumbHotelName'),
+        title: document.querySelector('#hotelTitle'),
+        location: document.querySelector('#hotelLocation'),
+        price: document.querySelector('#hotelPrice'),
+        ratingBadge: document.querySelector('#hotelRatingBadge'),
+        reviewCount: document.querySelector('#hotelReviewCount'),
+        ratingText: document.querySelector('#hotelRatingText'),
+        overview: document.querySelector('#hotelOverview'),
+        stars: document.querySelector('#hotelStars'),
+        gallery: document.querySelector('#hotelGallery'),
+        amenities: document.querySelector('#hotelAmenities'),
+        mapFrame: document.querySelector('#hotelMapFrame'),
+        btnFavorite: document.querySelector('#btnFavorite')
+    };
 
-function loadHotelDetails() {
-    // Get hotel ID from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const hotelId = urlParams.get('id');
+    // --- FUNÇÕES DE LÓGICA ---
 
-    if (!hotelId) {
-        // If no ID, maybe show default or redirect (keeping default behavior for now if needed)
-        // console.warn('No hotel ID provided');
-        return;
-    }
+    const getRatingLabel = (rating) => {
+        const score = parseFloat(rating);
+        if (score >= 4.5) return 'Excelente';
+        if (score >= 4.0) return 'Muito Bom';
+        if (score >= 3.5) return 'Bom';
+        if (score >= 3.0) return 'Regular';
+        return 'Médio';
+    };
 
-    // Get hotels from storage
-    const hotels = JSON.parse(localStorage.getItem('adminHotels')) || [];
-    const hotel = hotels.find(h => h.id === hotelId);
+    const updateUI = (hotel) => {
+        if (!hotel) return;
+        document.title = `${hotel.name} - Golobe`;
+        
+        if (DOM.breadcrumbName) DOM.breadcrumbName.textContent = hotel.name;
+        if (DOM.title) DOM.title.textContent = hotel.name;
+        if (DOM.location) DOM.location.textContent = hotel.location;
+        if (DOM.price) DOM.price.textContent = `$${hotel.price}`;
+        if (DOM.ratingBadge) DOM.ratingBadge.textContent = hotel.rating;
+        if (DOM.reviewCount) DOM.reviewCount.textContent = `${hotel.reviews} reviews`;
+        if (DOM.ratingText) DOM.ratingText.textContent = getRatingLabel(hotel.rating);
+        if (DOM.overview) DOM.overview.textContent = hotel.overview || 'Sem descrição disponível.';
 
-    if (!hotel) {
-        console.error('Hotel not found');
-        return;
-    }
-
-    updateHotelUI(hotel);
-}
-
-function updateHotelUI(hotel) {
-    // Basic Info
-    document.title = `${hotel.name} - Golobe`;
-    document.getElementById('breadcrumbHotelName').textContent = hotel.name;
-    document.getElementById('hotelTitle').textContent = hotel.name;
-    document.getElementById('hotelLocation').textContent = hotel.location;
-    document.getElementById('hotelPrice').textContent = `$${hotel.price}`;
-    document.getElementById('hotelRatingBadge').textContent = hotel.rating;
-    document.getElementById('hotelReviewCount').textContent = `${hotel.reviews} reviews`;
-    document.getElementById('hotelRatingText').textContent = getRatingLabel(hotel.rating);
-    document.getElementById('hotelOverview').textContent = hotel.overview || 'No description available.';
-
-    // Stars
-    const starsContainer = document.getElementById('hotelStars');
-    starsContainer.innerHTML = '';
-    const starCount = parseInt(hotel.stars) || 5;
-    for (let i = 0; i < starCount; i++) {
-        const iStar = document.createElement('i');
-        iStar.className = 'fas fa-star';
-        starsContainer.appendChild(iStar);
-    }
-    const starText = document.createElement('span');
-    starText.textContent = `${starCount} Star Hotel`;
-    starsContainer.appendChild(starText);
-
-    // Gallery
-    const galleryContainer = document.getElementById('hotelGallery');
-    galleryContainer.innerHTML = '';
-
-    // Main Image
-    if (hotel.mainImage) {
-        const mainItem = document.createElement('div');
-        mainItem.className = 'gallery-item main-image';
-        mainItem.innerHTML = `<img src="${hotel.mainImage}" alt="${hotel.name}">`;
-        galleryContainer.appendChild(mainItem);
-    }
-
-    // Gallery Images (up to 4)
-    if (hotel.gallery && hotel.gallery.length > 0) {
-        hotel.gallery.forEach((imgSrc, index) => {
-            if (index < 4) {
-                const item = document.createElement('div');
-                item.className = 'gallery-item';
-                // If it's the last one (4th), add "View all" button style if needed, 
-                // but for now simple grid
-                if (index === 3) {
-                    item.className = 'gallery-item view-all-container';
-                    item.innerHTML = `
-                        <img src="${imgSrc}" alt="Gallery ${index + 1}">
-                        <button class="btn-view-all">View all photos</button>
-                     `;
-                } else {
-                    item.innerHTML = `<img src="${imgSrc}" alt="Gallery ${index + 1}">`;
-                }
-                galleryContainer.appendChild(item);
+        // Estrelas
+        if (DOM.stars) {
+            DOM.stars.innerHTML = '';
+            const count = parseInt(hotel.stars) || 5;
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('i');
+                star.className = 'fas fa-star';
+                DOM.stars.appendChild(star);
             }
-        });
-    }
-
-    // Amenities (Badges in Overview)
-    const amenitiesContainer = document.getElementById('hotelAmenities');
-    amenitiesContainer.innerHTML = '';
-
-    // Add Rating Badge
-    const ratingBadge = document.createElement('div');
-    ratingBadge.className = 'badge';
-    ratingBadge.innerHTML = `
-        <span class="badge-score">${hotel.rating}</span>
-        <div class="badge-text">
-            <strong>${getRatingLabel(hotel.rating)}</strong>
-            <span>${hotel.reviews} reviews</span>
-        </div>
-    `;
-    amenitiesContainer.appendChild(ratingBadge);
-
-    // Add Amenities from text (comma separated)
-    if (hotel.amenities) {
-        const amenitiesList = hotel.amenities.split(',').map(a => a.trim());
-        amenitiesList.forEach(amenity => {
-            const badge = document.createElement('div');
-            badge.className = 'badge';
-
-            // Simple icon mapping
-            let iconClass = 'fas fa-check';
-            const lowerAmenity = amenity.toLowerCase();
-            if (lowerAmenity.includes('pool')) iconClass = 'fas fa-swimming-pool';
-            else if (lowerAmenity.includes('wifi')) iconClass = 'fas fa-wifi';
-            else if (lowerAmenity.includes('spa')) iconClass = 'fas fa-spa';
-            else if (lowerAmenity.includes('gym') || lowerAmenity.includes('fitness')) iconClass = 'fas fa-dumbbell';
-            else if (lowerAmenity.includes('restaurant') || lowerAmenity.includes('food')) iconClass = 'fas fa-utensils';
-            else if (lowerAmenity.includes('bar')) iconClass = 'fas fa-glass-martini-alt';
-            else if (lowerAmenity.includes('parking')) iconClass = 'fas fa-parking';
-            else if (lowerAmenity.includes('coffee') || lowerAmenity.includes('tea')) iconClass = 'fas fa-coffee';
-            else if (lowerAmenity.includes('room service')) iconClass = 'fas fa-concierge-bell';
-
-            badge.innerHTML = `
-                <i class="${iconClass}"></i>
-                <span>${amenity}</span>
-            `;
-            amenitiesContainer.appendChild(badge);
-        });
-    }
-
-    // Map
-    if (hotel.mapUrl) {
-        const mapFrame = document.getElementById('hotelMapFrame');
-        if (mapFrame) {
-            mapFrame.src = hotel.mapUrl;
+            const span = document.createElement('span');
+            span.textContent = `${count} Star Hotel`;
+            DOM.stars.appendChild(span);
         }
+
+        // Galeria
+        if (DOM.gallery) {
+            DOM.gallery.innerHTML = '';
+            if (hotel.mainImage) {
+                const main = document.createElement('div');
+                main.className = 'gallery-item main-image';
+                main.innerHTML = `<img src="${hotel.mainImage}" alt="${hotel.name}">`;
+                DOM.gallery.appendChild(main);
+            }
+            (hotel.gallery || []).slice(0, 4).forEach((img, i) => {
+                const item = document.createElement('div');
+                item.className = i === 3 ? 'gallery-item view-all-container' : 'gallery-item';
+                item.innerHTML = i === 3 ? `<img src="${img}"><button class="btn-view-all">Ver todas</button>` : `<img src="${img}">`;
+                DOM.gallery.appendChild(item);
+            });
+        }
+
+        // Comodidades
+        if (DOM.amenities) {
+            DOM.amenities.innerHTML = `
+                <div class="badge">
+                    <span class="badge-score">${hotel.rating}</span>
+                    <div class="badge-text"><strong>${getRatingLabel(hotel.rating)}</strong><span>${hotel.reviews} reviews</span></div>
+                </div>
+            `;
+            if (hotel.amenities) {
+                hotel.amenities.split(',').forEach(amenity => {
+                    const badge = document.createElement('div');
+                    badge.className = 'badge';
+                    badge.innerHTML = `<i class="fas fa-check"></i> <span>${amenity.trim()}</span>`;
+                    DOM.amenities.appendChild(badge);
+                });
+            }
+        }
+
+        if (DOM.mapFrame && hotel.mapUrl) DOM.mapFrame.src = hotel.mapUrl;
+    };
+
+    // --- INICIALIZAÇÃO ---
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    if (id) {
+        const hotels = JSON.parse(localStorage.getItem('adminHotels')) || [];
+        const hotel = hotels.find(h => h.id === id);
+        if (hotel) updateUI(hotel);
     }
 
-    // Update Favorite Button
-    const btnFavorite = document.getElementById('btnFavorite');
-    if (btnFavorite) {
-        btnFavorite.setAttribute('data-id', hotel.id);
-        btnFavorite.setAttribute('data-name', hotel.name);
-        btnFavorite.setAttribute('data-location', hotel.location);
-        btnFavorite.setAttribute('data-price', hotel.price);
-        btnFavorite.setAttribute('data-rating', hotel.rating);
-        btnFavorite.setAttribute('data-image', hotel.mainImage || '');
-    }
-}
-
-function getRatingLabel(rating) {
-    const score = parseFloat(rating);
-    if (score >= 4.5) return 'Excellent';
-    if (score >= 4.0) return 'Very Good';
-    if (score >= 3.5) return 'Good';
-    if (score >= 3.0) return 'Average';
-    return 'Fair';
-}
-
-function setupAuth() {
-    // Check if auth.js functions are available
-    if (typeof updateHeader === 'function') {
-        updateHeader();
-    }
-    if (typeof updateProfileDropdown === 'function') {
-        updateProfileDropdown();
-    }
-}
+    // Auth sync
+    if (typeof updateHeader === 'function') updateHeader();
+    if (typeof updateProfileDropdown === 'function') updateProfileDropdown();
+});

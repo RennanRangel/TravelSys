@@ -18,18 +18,21 @@
 <body>
     <div class="login-container">
         <div class="login-left">
-            <a href="@Url.Action("Index", "Home")" class="back-btn">
-                <i class="fas fa-chevron-left"></i> Back
-            </a>
             <div class="login-content">
-                <div class="logo">
-                    <span class="logo-text">Travel<i class="fas fa-plane-departure"></i></span>
+                <div class="login-header">
+                    <a href="@Url.Action("Index", "Home")" class="back-btn">
+                        <i class="fas fa-chevron-left"></i> Back
+                    </a>
+                    <div class="logo">
+                        <span class="logo-text">Travel<i class="fas fa-plane-departure"></i></span>
+                    </div>
                 </div>
 
                 <h1>Login</h1>
                 <p class="subtitle">Login to access your Travel account</p>
 
                 <form class="login-form" method="post" action="@Url.Action("Login", "Account")">
+                    @Html.AntiForgeryToken()
                     @if (!ViewData.ModelState.IsValid)
                     {
                         <div style="color: red; margin-bottom: 15px;">

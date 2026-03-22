@@ -1,24 +1,30 @@
-// Download button functionality
-const downloadBtn = document.querySelector('.btn-download');
-if (downloadBtn) {
-    downloadBtn.addEventListener('click', () => {
-        alert('Downloading ticket...');
-        // In a real app, this would trigger a PDF download
-    });
-}
+/**
+ * Gerenciamento de Bilhete de Hotel (Simplificado)
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Cache de Elementos
+    const DOM = {
+        btnDownload: document.querySelector('.btn-download'),
+        btnShare: document.querySelector('.btn-icon')
+    };
 
-// Share button functionality
-const shareBtn = document.querySelector('.btn-icon');
-if (shareBtn) {
-    shareBtn.addEventListener('click', () => {
+    // --- DOWNLOAD ---
+
+    DOM.btnDownload?.addEventListener('click', () => {
+        alert('Baixando reserva do hotel...');
+    });
+
+    // --- COMPARTILHAMENTO ---
+
+    DOM.btnShare?.addEventListener('click', () => {
         if (navigator.share) {
             navigator.share({
-                title: 'Hotel Booking - CVK Park Bosphorus Hotel',
-                text: 'Check out my hotel booking!',
+                title: 'Reserva de Hotel - CVK Park Bosphorus',
+                text: 'Confira minha reserva!',
                 url: window.location.href
             }).catch(console.error);
         } else {
-            alert('Share URL copied to clipboard!');
+            alert('URL copiada para a área de transferência!');
         }
     });
-}
+});

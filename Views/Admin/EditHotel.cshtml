@@ -1,186 +1,441 @@
 @model ProjetoHotelAviao.Models.Hotel
-
 @{
-    ViewData["Title"] = "Edit Hotel - Admin Panel";
+    ViewData["Title"] = "Editar Hotel: " + Model.Name;
+    Layout = "_AdminLayout";
 }
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/admin.css">
-}
-
-<div class="container" style="margin-top: 120px; margin-bottom: 60px;">
-    <div class="admin-header" style="margin-bottom: 40px;">
-        <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 8px;">
-            <i class="fas fa-edit" style="color: #8DD3BB;"></i> Edit Hotel
-        </h1>
-        <p style="color: #112211; opacity: 0.7;">Update hotel information for @Model.Name</p>
+<div class="mgmt-creation-container">
+    <!-- Sidebar Stepper -->
+    <div class="mgmt-stepper-sidebar">
+        <div class="stepper-section-title">QUAL É O HOTEL?</div>
+        <a href="#section-detalhes" class="stepper-item active">Detalhes do hotel</a>
+        <a href="#section-localizacao" class="stepper-item">Localização</a>
+        <a href="#section-horarios" class="stepper-item">Horários e Estadia</a>
+        <a href="#section-descricao" class="stepper-item">Descrição e Comodidades</a>
+        
+        <div class="stepper-section-title">GALERIA E VALORES</div>
+        <a href="#section-valores" class="stepper-item">Valores e Preço</a>
+        <a href="#section-imagens" class="stepper-item">Identidade Visual e Fotos</a>
     </div>
 
-    <div class="features-section">
-        <form asp-action="UpdateHotel" class="admin-form editing-mode" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <!-- Main Content Form -->
+    <div class="mgmt-creation-content-wrapper">
+        <form asp-action="UpdateHotel" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="MainImage" />
+            <input type="hidden" asp-for="GalleryImages" />
 
-            <div class="form-grid">
-                
-                <div class="form-section-group">
-                    <h3><i class="fas fa-info-circle"></i> Basic Information</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label asp-for="Name"><i class="fas fa-hotel"></i> Hotel Name *</label>
-                            <input asp-for="Name" required placeholder="e.g., Grand Hotel">
-                            <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="mgmt-creation-content">
+                <div class="creation-header">
+                    <h2>Editar dados do seu hotel</h2>
+                </div>
+
+                <!-- Seção: Detalhes -->
+                <div id="section-detalhes" class="creation-form-section active">
+                    <div class="admin-form-group">
+                        <label>Dê um nome para o seu hotel * <i class="fas fa-circle-info" title="Use o nome oficial completo"></i></label>
+                        <input asp-for="Name" class="admin-input" placeholder="Ex: Hilton Dubai Palm" required>
+                        <div class="form-tip">
+                            <i class="fas fa-wand-magic-sparkles"></i> Dica: evite siglas, abreviações e juntar palavras. Dê preferência a nomes que estejam de acordo com a marca.
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Type"><i class="fas fa-building"></i> Property Type</label>
-                            <select asp-for="Type">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label>Qual o tipo de propriedade? *</label>
+                        <div class="admin-select-wrapper">
+                            <select asp-for="Type" class="admin-input admin-input-select" required>
+                                <option value="" disabled>Digite e selecione uma opção</option>
                                 <option value="Hotel">Hotel</option>
-                                <option value="Motel">Motel</option>
                                 <option value="Resort">Resort</option>
+                                <option value="Hostel">Hostel</option>
                             </select>
-                            <span asp-validation-for="Type" class="text-danger"></span>
                         </div>
                     </div>
-                </div>
 
-                
-                <div class="form-section-group">
-                    <h3><i class="fas fa-map-marker-alt"></i> Location Information</h3>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label asp-for="Location"><i class="fas fa-location-arrow"></i> Location *</label>
-                            <input asp-for="Location" required placeholder="e.g., Istanbul, Turkey">
-                            <span asp-validation-for="Location" class="text-danger"></span>
-                        </div>
-                    </div>
-                
-                </div>
-
-                
-                <div class="form-section-group">
-                    <h3><i class="fas fa-align-left"></i> Description</h3>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label asp-for="Overview"><i class="fas fa-file-alt"></i> Overview</label>
-                            <textarea asp-for="Overview" rows="4" placeholder="Enter hotel description..."></textarea>
-                            <span asp-validation-for="Overview" class="text-danger"></span>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="form-section-group">
-                    <h3><i class="fas fa-star"></i> Pricing & Rating</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label asp-for="Stars"><i class="fas fa-star"></i> Stars *</label>
-                            <select asp-for="Stars" required>
-                                <option value="3">3 Stars</option>
-                                <option value="4">4 Stars</option>
-                                <option value="5">5 Stars</option>
+                    <div class="admin-form-group">
+                        <label>Área de localização? *</label>
+                        <div class="admin-select-wrapper">
+                            <select asp-for="Region" class="admin-input admin-input-select" required>
+                                <option value="" disabled>Selecione a região</option>
+                                <option value="Centro">Centro</option>
+                                <option value="Beira Mar">Beira Mar</option>
+                                <option value="Aeroporto">Aeroporto</option>
                             </select>
-                            <span asp-validation-for="Stars" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Price"><i class="fas fa-dollar-sign"></i> Price ($) *</label>
-                            <input asp-for="Price" type="number" required min="0" step="1" placeholder="e.g., 200">
-                            <span asp-validation-for="Price" class="text-danger"></span>
                         </div>
                     </div>
-                    <div class="form-row">
-                         <div class="form-group">
-                            <label asp-for="Rating"><i class="fas fa-star-half-alt"></i> Rating (0-5) *</label>
-                            <input asp-for="Rating" type="number" required min="0" max="5" step="0.1" placeholder="e.g., 4.8">
-                            <span asp-validation-for="Rating" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Reviews"><i class="fas fa-comments"></i> Number of Reviews *</label>
-                            <input asp-for="Reviews" type="number" required min="0" placeholder="e.g., 250">
-                            <span asp-validation-for="Reviews" class="text-danger"></span>
-                        </div>
+
+                    <div class="switch-container">
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="switch-label">Hotel também com acessibilidade para PcD <i class="fas fa-circle-info" title="Indica se o hotel possui quartos e áreas adaptadas"></i></span>
+                    </div>
+
+                    <div class="section-footer-actions">
+                        <a asp-action="GestaoHospedagens" class="btn-sair">Sair</a>
+                        <button type="button" class="btn-continuar next-step">Continuar</button>
                     </div>
                 </div>
 
-                
-                <div class="form-section-group">
-                    <h3><i class="fas fa-images"></i> Visual Details</h3>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label asp-for="MainImage"><i class="fas fa-image"></i> Main Image URL (or paste image)</label>
-                            <div class="input-group">
-                                <input asp-for="MainImage" class="magic-paste-target" data-target-file="MainImageUpload" placeholder="Paste image here or enter URL">
-                                <input asp-for="MainImageUpload" type="file" class="form-control d-none" accept="image/*">
-                                <button type="button" class="btn btn-secondary btn-sm" onclick="this.previousElementSibling.click()"><i class="fas fa-upload"></i></button>
-                            </div>
-                            <span asp-validation-for="MainImage" class="text-danger"></span>
+                <!-- Seção: Localização -->
+                <div id="section-localizacao" class="creation-form-section">
+                    <div class="creation-header d-flex justify-content-between align-items-center">
+                        <h2>Localização do Estabelecimento</h2>
+                        <div class="creation-header-actions">
+                            <button type="button" class="header-action-btn" title="Traduzir"><i class="fas fa-globe"></i></button>
+                            <button type="button" class="header-action-btn" title="Excluir"><i class="fas fa-trash-can"></i></button>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label><i class="fas fa-images"></i> Gallery Images</label>
-                            <input type="hidden" asp-for="GalleryImages" />
-                            
-                            
-                            <div class="mb-3">
-                                <label class="form-label small text-muted">Add new images</label>
-                                <input asp-for="GalleryImagesUpload" type="file" multiple class="form-control" accept="image/*" />
-                            </div>
 
-                            
-                            @if (!string.IsNullOrEmpty(Model.GalleryImages))
-                            {
-                                <div class="mt-3">
-                                    <label class="form-label small text-muted">Current Gallery (Select to delete)</label>
-                                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                                        @{
-                                            var gallery = new List<string>();
-                                            try {
-                                                gallery = System.Text.Json.JsonSerializer.Deserialize<List<string>>(Model.GalleryImages) ?? new List<string>();
-                                            } catch {}
-                                        }
-                                        @foreach(var img in gallery)
-                                        {
-                                            <div style="position: relative; text-align: center; border: 1px solid #ddd; padding: 5px; border-radius: 8px;">
-                                                <img src="@img" style="height: 100px; width: 100px; object-fit: cover; border-radius: 4px; display: block; margin-bottom: 5px;" />
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" name="ImagesToDelete" value="@img" id="del_@img.GetHashCode()">
-                                                    <label class="form-check-label text-danger small" for="del_@img.GetHashCode()">Delete</label>
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
+                    <div class="mt-4">
+                        <div class="section-sub-title">Estrutura de Propriedade</div>
+                        <div class="section-description">Informe a categoria estrutural do seu hotel</div>
+                        <div class="admin-form-group">
+                            <input asp-for="Type" class="admin-input" placeholder="Ex: Complexo Hoteleiro de Luxo" required>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <div class="section-sub-title">Modo de Reserva</div>
+                        <div class="admin-radio-group">
+                            <label class="admin-radio-item">
+                                <input type="radio" asp-for="BookingMode" value="Instant" required>
+                                Confirmação Instantânea
+                            </label>
+                            <label class="admin-radio-item">
+                                <input type="radio" asp-for="BookingMode" value="Request" required>
+                                Sob Consulta
+                            </label>
+                            <label class="admin-radio-item">
+                                <input type="radio" asp-for="BookingMode" value="Waitlist" required>
+                                Lista de Espera
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <div class="section-sub-title">Endereço do Hotel</div>
+                        <div class="section-description">
+                            A divulgação do hotel em portais globais (Ex: Booking) só será possível caso este hotel tenha um endereço associado. O poder de atração de hóspedes pode aumentar significativamente quando a localização é precisa.
+                        </div>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-7 admin-form-group">
+                                <label>País *</label>
+                                <div class="admin-select-wrapper">
+                                    <select asp-for="Country" class="admin-input admin-input-select" required>
+                                        <option value="" disabled>Selecione uma opção</option>
+                                        <option value="Brasil">Brasil</option>
+                                        <option value="Estados Unidos">Estados Unidos</option>
+                                        <option value="Emirados Árabes">Emirados Árabes</option>
+                                        <option value="França">França</option>
+                                    </select>
                                 </div>
-                            }
+                            </div>
+                            <div class="col-md-5 admin-form-group">
+                                <label>CEP / Código Postal</label>
+                                <input asp-for="ZipCode" class="admin-input" placeholder="Ex: 00000-000" required>
+                                <a href="#" class="form-tip mt-2 d-inline-block" style="color: #0030BF; text-decoration: none;">Não sei o CEP, como posso encontrar?</a>
+                            </div>
                         </div>
+
+                        <div class="mt-4 admin-form-group">
+                            <label>Endereço Completo *</label>
+                            <input asp-for="Location" class="admin-input" placeholder="Ex: Palm Jumeirah, Dubai" required>
+                        </div>
+                    </div>
+
+                    <div class="section-footer-actions justify-content-end gap-3 mt-5">
+                        <button type="submit" class="btn-save-exit d-flex align-items-center">Salvar e sair</button>
+                        <button type="button" class="btn-voltar prev-step">Voltar</button>
+                        <button type="button" class="btn-update-continue next-step">Atualizar e continuar</button>
                     </div>
                 </div>
 
-                
-                <div class="form-section-group">
-                    <h3><i class="fas fa-concierge-bell"></i> Amenities</h3>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label asp-for="Amenities"><i class="fas fa-list-ul"></i> Amenities (comma-separated)</label>
-                            <textarea asp-for="Amenities" rows="3" placeholder="e.g., Free WiFi, Pool, Spa, Restaurant, Gym, Bar"></textarea>
-                            <span asp-validation-for="Amenities" class="text-danger"></span>
+                <!-- Seção: Horários -->
+                <div id="section-horarios" class="creation-form-section">
+                    <div class="creation-header d-flex justify-content-between align-items-center">
+                        <h2>Horários de Estadia</h2>
+                        <div class="creation-header-actions">
+                            <button type="button" class="header-action-btn" title="Traduzir"><i class="fas fa-globe"></i></button>
+                            <button type="button" class="header-action-btn" title="Excluir"><i class="fas fa-trash-can"></i></button>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="form-actions">
-                <button type="submit" class="btn-submit">
-                    <i class="fas fa-save"></i> Save Changes
-                </button>
-                <a asp-action="Index" class="btn-cancel">
-                    <i class="fas fa-times"></i> Cancel
-                </a>
+                    <div class="mt-4">
+                        <div class="section-sub-title">Políticas de Check-in e Check-out</div>
+                        <div class="section-description">Defina os horários padrão para entrada e saída de hóspedes</div>
+                        <div class="row g-4">
+                            <div class="col-md-6 admin-form-group">
+                                <label>Horário de Check-in * <i class="fas fa-clock text-muted ms-1"></i></label>
+                                <input asp-for="CheckIn" class="admin-input" placeholder="Ex: 02:00 PM" required>
+                            </div>
+                            <div class="col-md-6 admin-form-group">
+                                <label>Horário de Check-out * <i class="fas fa-clock text-muted ms-1"></i></label>
+                                <input asp-for="CheckOut" class="admin-input" placeholder="Ex: 11:00 AM" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <div class="section-sub-title">Disponibilidade da Recepção</div>
+                        <div class="section-description">Informe o período de funcionamento da recepção física</div>
+                        <div class="admin-radio-group">
+                            <label class="admin-radio-item">
+                                <input type="radio" asp-for="ReceptionMode" value="24h" required>
+                                Recepção 24 Horas
+                            </label>
+                            <label class="admin-radio-item">
+                                <input type="radio" asp-for="ReceptionMode" value="Limited" required>
+                                Horário Limitado
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section-footer-actions justify-content-end gap-3 mt-5">
+                        <button type="submit" class="btn-save-exit d-flex align-items-center">Salvar e sair</button>
+                        <button type="button" class="btn-voltar prev-step">Voltar</button>
+                        <button type="button" class="btn-update-continue next-step">Atualizar e continuar</button>
+                    </div>
+                </div>
+
+                <!-- Seção: Descrição e Comodidades -->
+                <div id="section-descricao" class="creation-form-section">
+                    <div class="creation-header">
+                        <h2>Descreva e detalhe aqui o seu estabelecimento <i class="fas fa-circle-info" style="font-size: 16px; color: #666; cursor: help;"></i></h2>
+                    </div>
+
+                    <div class="ai-assistant-banner">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                        <div class="ai-assistant-text">
+                            Você pode usar a <strong>IA de Suporte</strong>, nossa inteligência artificial, para te ajudar a descrever o seu hotel! Peça sugestões para a visão geral e comodidades e edite como quiser. Assim, você ganha tempo e recebe sugestões baseadas em todo aprendizado do sistema. Ah, e não se preocupe, nenhum conteúdo já salvo será apagado.
+                        </div>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label>Descreva sobre o hotel e aproveite para falar sobre a história, cultura e equipe. *</label>
+                        <div class="rich-editor-container">
+                            <div class="editor-toolbar">
+                                <select class="toolbar-select"><option>Normal</option></select>
+                                <div class="toolbar-group">
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-bold"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-italic"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-underline"></i></button>
+                                </div>
+                                <div class="toolbar-group">
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-image"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-list-ul"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-list-ol"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-remove-format"></i></button>
+                                </div>
+                            </div>
+                            <div class="editor-content-area">
+                                <textarea asp-for="Overview" class="editor-textarea" placeholder="Descreva brevemente o seu hotel, sua localização estratégica, etc..." required>@((string.IsNullOrEmpty(Model.Overview) || Model.Overview == "Descreva brevemente o seu hotel, sua localização estratégica, etc...") ? "O nosso hotel é uma excelente opção para quem busca conforto e sofisticação no coração da cidade. Oferecemos quartos modernos, serviço de primeira classe e uma localização estratégica próxima aos principais pontos turísticos. Seja para viagens de negócios ou lazer, garantimos uma estadia inesquecível com atendimento personalizado." : Model.Overview)</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-group mt-5">
+                        <label>Descreva as comodidades e serviços. Cite também as experiências que se espera oferecer aos hóspedes. *</label>
+                        <div class="rich-editor-container">
+                            <div class="editor-toolbar">
+                                <select class="toolbar-select"><option>Normal</option></select>
+                                <div class="toolbar-group">
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-bold"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-italic"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-underline"></i></button>
+                                </div>
+                                <div class="toolbar-group">
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-image"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-list-ul"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-list-ol"></i></button>
+                                    <button type="button" class="toolbar-btn"><i class="fas fa-remove-format"></i></button>
+                                </div>
+                            </div>
+                            <div class="editor-content-area">
+                                <textarea asp-for="Amenities" class="editor-textarea" placeholder="Ex: Piscina infinita, Spa de luxo, Gastronomia premiada..." required>@((string.IsNullOrEmpty(Model.Amenities) || Model.Amenities == "Ex: Piscina infinita, Spa de luxo, Gastronomia premiada...") ? "- Piscina infinita com vista panorâmica\n- Spa de luxo e Centro de Bem-Estar\n- Academia 24h com equipamentos de ponta\n- Restaurante de Gastronomia Premiada\n- Wi-Fi de alta velocidade em todas as áreas\n- Serviço de Quarto 24h e Concierge" : Model.Amenities)</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-footer-actions">
+                        <button type="button" class="btn-sair prev-step">Voltar</button>
+                        <button type="button" class="btn-continuar next-step">Continuar</button>
+                    </div>
+                </div>
+
+                <!-- Seção: Valores -->
+                <div id="section-valores" class="creation-form-section">
+                    <div class="creation-header d-flex justify-content-between align-items-center">
+                        <h2>Valores e Classificação</h2>
+                        <div class="creation-header-actions">
+                            <button type="button" class="header-action-btn" title="Traduzir"><i class="fas fa-globe"></i></button>
+                            <button type="button" class="header-action-btn" title="Excluir"><i class="fas fa-trash-can"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="section-sub-title">Preço da Diária</div>
+                        <div class="section-description">Defina o valor base por noite para uma acomodação standard</div>
+                        <div class="admin-form-group">
+                            <label>Preço por Noite (R$) *</label>
+                            <input asp-for="Price" type="number" class="admin-input" placeholder="Ex: 450.00" required>
+                        </div>
+                    </div>
+
+
+                    
+                     <div class="mt-4">
+                        <div class="section-sub-title">Status de Publicação</div>
+                        <div class="admin-form-group">
+                            <label>Status *</label>
+                             <div class="admin-select-wrapper">
+                                <select asp-for="Status" class="admin-input admin-input-select" required>
+                                    <option value="rascunho">Rascunho</option>
+                                    <option value="aprovacao">Aprovação</option>
+                                    <option value="aprovada">Aprovada</option>
+                                    <option value="reprovada">Reprovada</option>
+                                    <option value="publicada">Publicada</option>
+                                    <option value="congelada">Congelada</option>
+                                    <option value="encerrada">Encerrada</option>
+                                    <option value="cancelada">Cancelada</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+
+                    <div class="section-footer-actions justify-content-end gap-3 mt-5">
+                        <button type="submit" class="btn-save-exit d-flex align-items-center">Salvar e sair</button>
+                        <button type="button" class="btn-voltar prev-step">Voltar</button>
+                        <button type="button" class="btn-update-continue next-step">Atualizar e continuar</button>
+                    </div>
+                </div>
+
+                <!-- Seção: Imagens -->
+                <div id="section-imagens" class="creation-form-section">
+                    <div class="creation-header d-flex justify-content-between align-items-center">
+                        <h2>Identidade Visual e Fotos</h2>
+                        <div class="creation-header-actions">
+                            <button type="button" class="header-action-btn" title="Traduzir"><i class="fas fa-globe"></i></button>
+                            <button type="button" class="header-action-btn" title="Excluir"><i class="fas fa-trash-can"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="section-sub-title">Capa do Hotel</div>
+                        <div class="section-description">Esta imagem será o destaque principal na página de detalhes do hotel</div>
+                        @if (!string.IsNullOrEmpty(Model.MainImage)) {
+                            <div class="mb-3">
+                                <img src="@Model.MainImage" height="150" style="object-fit:cover; border-radius: 8px;"/>
+                                <p class="text-muted mt-1" style="font-size: 13px;">Imagem Atual</p>
+                            </div>
+                        }
+                        <div class="admin-file-upload-container">
+                            <label class="admin-file-upload-label">
+                                <i class="fas fa-image upload-icon"></i>
+                                <span class="upload-text">Clique para alterar a imagem de capa (opcional)</span>
+                                <span class="upload-hint">Recomendamos imagens de paisagem (16:9) em alta definição.</span>
+                                <input name="MainImageUpload" type="file" class="admin-file-input" onchange="updateFileUpload(this)">
+                            </label>
+                            <div class="filename-display"><i class="fas fa-file-image me-1"></i> <span class="name-text"></span></div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <div class="section-sub-title">Galeria de Destaques</div>
+                        <div class="section-description">Adicione novas fotos ou mantenha as existentes</div>
+                        <div class="admin-file-upload-container">
+                            <label class="admin-file-upload-label">
+                                <i class="fas fa-images upload-icon"></i>
+                                <span class="upload-text">Clique ou arraste novas fotos para adicionar à galeria</span>
+                                <span class="upload-hint">Selecione até 7 imagens.</span>
+                                <input name="GalleryImagesUpload" type="file" multiple class="admin-file-input" onchange="updateFileUpload(this)">
+                            </label>
+                            <div class="filename-display"><i class="fas fa-images me-1"></i> <span class="name-text"></span></div>
+                        </div>
+                    </div>
+
+                    <div class="section-footer-actions justify-content-end gap-3 mt-5">
+                        <button type="submit" class="btn-save-exit d-flex align-items-center">Salvar e sair</button>
+                        <button type="button" class="btn-voltar prev-step">Voltar</button>
+                        <button type="submit" class="btn-update-continue">Salvar Alterações</button>
+                    </div>
+                </div>
+
             </div>
         </form>
     </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="~/js/admin-upload.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.updateFileUpload = function(input) {
+                const container = input.closest('.admin-file-upload-container');
+                const display = container.querySelector('.filename-display');
+                const textSpan = display.querySelector('.name-text');
+                
+                if (input.files && input.files.length > 0) {
+                    if (input.files.length === 1) {
+                        textSpan.textContent = input.files[0].name;
+                    } else {
+                        textSpan.textContent = `${input.files.length} arquivos selecionados`;
+                    }
+                    display.style.display = 'block';
+                } else {
+                    display.style.display = 'none';
+                }
+            };
+
+            const sections = document.querySelectorAll('.creation-form-section');
+            const stepperItems = document.querySelectorAll('.stepper-item');
+            const nextButtons = document.querySelectorAll('.next-step');
+            const prevButtons = document.querySelectorAll('.prev-step');
+            let currentStep = 0;
+
+            function updateUI() {
+                sections.forEach((s, i) => {
+                    s.classList.toggle('active', i === currentStep);
+                });
+
+                stepperItems.forEach((item, i) => {
+                    item.classList.toggle('active', i === currentStep);
+                });
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            nextButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (currentStep < sections.length - 1) {
+                        currentStep++;
+                        updateUI();
+                    }
+                });
+            });
+
+            prevButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (currentStep > 0) {
+                        currentStep--;
+                        updateUI();
+                    }
+                });
+            });
+
+            stepperItems.forEach((item, i) => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (i <= currentStep || i > currentStep) {
+                       currentStep = i;
+                       updateUI();
+                    }
+                });
+            });
+        });
+    </script>
 }

@@ -1,0 +1,143 @@
+@model ProjetoHotelAviao.Models.ViewModels.AdminViewModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Gestão de Hospedagens";
+}
+
+<div class="mgmt-header">
+    <h1>Gestão de Hospedagens</h1>
+    <button class="btn btn-sm btn-outline-secondary" onclick="window.history.back()"><i class="fas fa-arrow-left"></i> Voltar</button>
+</div>
+
+<div class="mgmt-metrics-grid">
+    <div class="metric-mini-card">
+        <div class="metric-mini-content">
+            <span class="label">Total de hotéis</span>
+            <span class="value">@Model.Hotels.Count</span>
+        </div>
+        <a href="#" class="ver-link">Ver todos</a>
+    </div>
+
+    <div class="metric-mini-card">
+        <div class="metric-mini-content">
+            <span class="label">Preço Médio</span>
+            <span class="value">R$ @(Model.Hotels.Any() ? Model.Hotels.Average(h => h.Price).ToString("N0") : "0")</span>
+        </div>
+    </div>
+    <div class="metric-mini-card">
+        <div class="metric-mini-content">
+            <span class="label">Capacidade</span>
+            <span class="value">ALTA</span>
+        </div>
+    </div>
+</div>
+
+<div class="mgmt-container">
+    <div class="mgmt-action-bar">
+        <div class="mgmt-search-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" class="mgmt-search-input" placeholder="Buscar hotel por nome ou localização">
+        </div>
+        <div class="mgmt-buttons">
+            <div class="dropdown">
+                <button class="btn-mgmt-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="btnAcoesMassa">
+                    <i class="fas fa-list-check"></i> Ações em massa
+                </button>
+                <ul class="dropdown-menu" style="border-radius: 12px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 8px;">
+                    <li><button class="dropdown-item text-danger d-flex align-items-center gap-2" onclick="deleteSelected('hotel')"><i class="fas fa-trash"></i> Excluir Selecionados</button></li>
+                </ul>
+            </div>
+            
+            <div class="dropdown">
+                <button class="btn-mgmt-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                    <i class="fas fa-filter"></i> Filtros
+                </button>
+                <div class="dropdown-menu p-4 dropdown-menu-end" style="width: 320px; border-radius: 12px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: visible;">
+                    <div class="mb-3">
+                        <label class="form-label text-muted" style="font-size: 13px; font-weight: 500;">Preço Máximo da Diária</label>
+                        <input type="range" class="form-range mt-2" min="0" max="10000" value="10000" step="100" id="filterPrice" oninput="document.getElementById('priceVal').innerText = this.value">
+                        <div class="d-flex justify-content-between text-muted mt-2" style="font-size: 12px;">
+                            <span>R$ 0</span>
+                            <span>R$ <span id="priceVal">10000</span></span>
+                        </div>
+                    </div>
+                    <div style="padding-top: 10px;">
+                        <button class="btn btn-primary w-100" style="border-radius: 8px; font-size: 13px; padding: 12px;" onclick="applyFilters()">Aplicar Filtro</button>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn-mgmt-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-plus"></i> Novo Hotel
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" style="border-radius: 12px; border: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 8px;">
+                    <li>
+                        <a class="dropdown-item p-2 px-3 d-flex align-items-center gap-2" asp-action="CreateHotel" style="border-radius: 8px;">
+                            <i class="fas fa-file-lines text-muted"></i> Padrão
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="mgmt-status-filters">
+        <label class="status-filter-item"><input type="radio" name="status-filter" value="all"> Tudo <span class="count">(@Model.Hotels.Count)</span></label>
+        <label class="status-filter-item"><input type="radio" name="status-filter" value="publicada" checked> Publicada <span class="count">(@Model.Hotels.Count(h => h.Status?.ToLower() == "publicada"))</span></label>
+        <label class="status-filter-item"><input type="radio" name="status-filter" value="cancelada"> Cancelada <span class="count">(@Model.Hotels.Count(h => h.Status?.ToLower() == "cancelada"))</span></label>
+    </div>
+
+    <table class="mgmt-table">
+        <thead>
+            <tr>
+                <th style="width: 40px;"><input type="checkbox" id="selectAllCheckbox"></th>
+                <th>Hotel</th>
+                <th>Localização</th>
+
+                <th>Preço/Noite</th>
+                <th>Status</th>
+                <th style="text-align: right;">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hotel in Model.Hotels)
+            {
+                <tr data-status="@((hotel.Status ?? "publicada").ToLower())">
+                    <td><input type="checkbox" class="row-checkbox" value="@hotel.Id"></td>
+                    <td>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="@hotel.MainImage" style="width: 40px; height: 40px; object-fit: cover; border-radius: 8px;">
+                            <div>
+                                <div style="font-weight: 600;">@hotel.Name</div>
+                                <div style="font-size: 11px; color: var(--admin-text-muted);">@hotel.Type</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="font-size: 13px;">@hotel.Location</div>
+                    </td>
+
+                    <td data-price="@hotel.Price.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)">
+                        <div style="font-weight: 600; color: #112211;">R$ @hotel.Price.ToString("N2")</div>
+                    </td>
+                    <td>
+                        <span class="mgmt-status-badge badge-blue">@(hotel.Status ?? "Publicada")</span>
+                    </td>
+                    <td>
+                        <div class="mgmt-actions-cell">
+                            <a asp-action="EditHotel" asp-route-id="@hotel.Id" class="mgmt-icon-btn"><i class="fas fa-edit"></i></a>
+                            <form asp-action="DeleteHotel" method="post" onsubmit="return confirm('Excluir este hotel?')">
+                                <input type="hidden" name="id" value="@hotel.Id" />
+                                <button type="submit" class="mgmt-icon-btn" style="color: #D93025;"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/admin-management.js"></script>
+}

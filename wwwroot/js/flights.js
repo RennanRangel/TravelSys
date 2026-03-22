@@ -1,39 +1,40 @@
-// Password toggle functionality
-document.addEventListener('DOMContentLoaded', function () {
-    // Tab switching
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
-            tabBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
+/**
+ * Gerenciamento de Página de Voos (Simplificado)
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Cache de Elementos
+    const DOM = {
+        tabBtns: document.querySelectorAll('.tab-btn'),
+        searchForm: document.querySelector('.search-form'),
+        newsletterForm: document.querySelector('.newsletter-form'),
+        markers: document.querySelectorAll('.location-marker')
+    };
+
+    // --- ABAS ---
+
+    DOM.tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            DOM.tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
         });
     });
 
-    // Form submission
-    const searchForm = document.querySelector('.search-form');
-    if (searchForm) {
-        searchForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            // Here you would typically handle the form submission
-            console.log('Search form submitted');
-        });
-    }
+    // --- FORMULÁRIOS ---
 
-    // Newsletter form
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            console.log('Newsletter subscription:', email);
-            alert('Thank you for subscribing!');
-            this.reset();
-        });
-    }
+    DOM.searchForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log('Busca de voos submetida');
+    });
 
-    // Location markers animation
-    const markers = document.querySelectorAll('.location-marker');
-    markers.forEach((marker, index) => {
+    DOM.newsletterForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Obrigado por se inscrever!');
+        DOM.newsletterForm.reset();
+    });
+
+    // --- ANIMAÇÃO DE MARCADORES ---
+
+    DOM.markers.forEach((marker, i) => {
         setTimeout(() => {
             marker.style.opacity = '0';
             marker.style.transform = 'scale(0)';
@@ -42,6 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 marker.style.opacity = '1';
                 marker.style.transform = 'scale(1)';
             }, 100);
-        }, index * 200);
+        }, i * 200);
     });
 });

@@ -32,4 +32,6 @@ public class Booking
     public string? TicketNumber { get; set; }
     public string? Gate { get; set; }
     public string? Seat { get; set; }
+    
+    public bool IsRoundTrip { get; set; }
 }

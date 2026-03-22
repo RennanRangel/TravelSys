@@ -17,6 +17,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
     public DbSet<Booking> Bookings { get; set; }
     public DbSet<HotelBooking> HotelBookings { get; set; }
     public DbSet<UserCard> UserCards { get; set; }
+    public DbSet<AdminTask> AdminTasks { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

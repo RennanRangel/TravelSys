@@ -1,36 +1,35 @@
-// JS/home.js
-
+/**
+ * Lógica da Página Inicial (Simplificado)
+ */
 document.addEventListener('DOMContentLoaded', () => {
-    // Search Form Navigation
-    const showPlacesBtn = document.querySelector('.btn-show-places');
+    // 1. Cache de Elementos
+    const DOM = {
+        btnShowPlaces: document.querySelector('.btn-show-places'),
+        bookBtns: document.querySelectorAll('.btn-book, .btn-book-white'),
+        newsletterForm: document.querySelector('.newsletter-form')
+    };
 
-    if (showPlacesBtn) {
-        showPlacesBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Assuming this button is for "Stays" as per the design context (bed icon in destination)
-            // But it could be context dependent. For now, linking to hotel-listing.
-            window.location.href = 'hotel-listing.html';
-        });
-    }
+    // --- NAVEGAÇÃO ---
 
-    // Book Flight Buttons
-    const bookButtons = document.querySelectorAll('.btn-book, .btn-book-white');
-    bookButtons.forEach(btn => {
+    DOM.btnShowPlaces?.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = 'hotel-listing.html';
+    });
+
+    DOM.bookBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             window.location.href = 'flight-booking.html';
         });
     });
 
-    // Newsletter Subscription
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = newsletterForm.querySelector('input').value;
-            if (email) {
-                alert(`Thank you for subscribing with ${email}!`);
-                newsletterForm.reset();
-            }
-        });
-    }
+    // --- NEWSLETTER ---
+
+    DOM.newsletterForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = DOM.newsletterForm.querySelector('input')?.value;
+        if (email) {
+            alert(`Obrigado: ${email}`);
+            DOM.newsletterForm.reset();
+        }
+    });
 });

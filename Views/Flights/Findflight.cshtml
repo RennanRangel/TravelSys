@@ -1,0 +1,186 @@
+@{
+    ViewData["Title"] = "Find Flights - Travel";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Findflight.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/flights.css" asp-append-version="true">
+    <style>
+        /* Allow landing components to go full-width by overriding the layout container */
+        .container { 
+            max-width: 100% !important; 
+            padding-left: 0 !important; 
+            padding-right: 0 !important; 
+        }
+        main {
+            padding-bottom: 0 !important;
+        }
+    </style>
+}
+
+<div class="flights-landing">
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1440&h=537&fit=crop" alt="Flight Hero" class="img-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Make your travel wishlist, we'll do the rest</h1>
+                <p>Special offers to suit your plan</p>
+            </div>
+            <div class="search-container">
+                <div class="search-card">
+                    <h2>Where are you flying?</h2>
+                    <div class="search-form">
+                        <form asp-controller="Flights" asp-action="Listing" method="get">
+                            <partial name="_FlightSearchForm" />
+                            
+                            <div class="form-footer">
+                                <a href="#" class="promo-link">
+                                    <i class="fas fa-plus"></i> Add Promo Code
+                                </a>
+                                <button type="submit" class="btn-show-flights">
+                                    <i class="fas fa-paper-plane"></i> Show Flights
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Let's Go Places Together -->
+    <section class="map-section">
+        <div class="section-header">
+            <div class="section-header-text">
+                <h2>Let's go places together</h2>
+                <p>Discover the latest offers and news and start planning your next trip with us.</p>
+            </div>
+            <a href="#" class="see-all">See All</a>
+        </div>
+        <div class="map-container">
+            <div class="map-background">
+                <!-- Location Markers (Mock as in image) -->
+                <div class="location-marker" style="top: 30%; left: 20%;">
+                    <div class="marker-popup">
+                        <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=100" alt="James Blue">
+                        <div class="marker-info">
+                            <span class="marker-title">James Blue</span>
+                            <span class="marker-subtitle">Boarding Pass #123</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-marker" style="top: 60%; left: 40%;">
+                    <div class="marker-popup">
+                        <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=100" alt="Sarah Green">
+                        <div class="marker-info">
+                            <span class="marker-title">Sarah Green</span>
+                            <span class="marker-subtitle">Boarding Pass #456</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-marker" style="top: 40%; left: 70%;">
+                    <div class="marker-popup">
+                        <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=100" alt="Alex White">
+                        <div class="marker-info">
+                            <span class="marker-title">Alex White</span>
+                            <span class="marker-subtitle">Boarding Pass #789</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fall into travel - Grid Layout -->
+    <section class="travel-section">
+        <div class="section-header">
+            <div class="section-header-text">
+                <h2>Fall into travel</h2>
+                <p>Going somewhere to celebrate this season? Whether you're going home or somewhere to roam, we've got the travel tools to get you to your destination.</p>
+            </div>
+            <a href="#" class="btn-see-all">See All</a>
+        </div>
+        <div class="travel-grid">
+            <div class="travel-card" style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800');">
+                <div class="card-overlay">
+                    <div class="card-content">
+                        <div class="card-main">
+                            <h3 class="card-title">Melbourne</h3>
+                            <p class="card-subtitle">An amazing journey</p>
+                        </div>
+                        <span class="card-price">$ 700</span>
+                    </div>
+                    <a href="@Url.Action("Listing", "Flights", new { route = "Melbourne" })" class="btn-book" style="text-decoration: none; text-align: center;">Book Flight</a>
+                </div>
+            </div>
+            <div class="travel-card" style="background-image: url('https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=800');">
+                <div class="card-overlay">
+                    <div class="card-content">
+                        <div class="card-main">
+                            <h3 class="card-title">Paris</h3>
+                            <p class="card-subtitle">A Paris Adventure</p>
+                        </div>
+                        <span class="card-price">$ 600</span>
+                    </div>
+                    <a href="@Url.Action("Listing", "Flights", new { route = "Paris" })" class="btn-book" style="text-decoration: none; text-align: center;">Book Flight</a>
+                </div>
+            </div>
+            <div class="travel-card" style="background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800');">
+                <div class="card-overlay">
+                    <div class="card-content">
+                        <div class="card-main">
+                            <h3 class="card-title">London</h3>
+                            <p class="card-subtitle">London eye adventure</p>
+                        </div>
+                        <span class="card-price">$ 350</span>
+                    </div>
+                    <a href="@Url.Action("Listing", "Flights", new { route = "London" })" class="btn-book" style="text-decoration: none; text-align: center;">Book Flight</a>
+                </div>
+            </div>
+            <div class="travel-card" style="background-image: url('https://images.unsplash.com/photo-1548546738-8509cb246ed3?w=800');">
+                <div class="card-overlay">
+                    <div class="card-content">
+                        <div class="card-main">
+                            <h3 class="card-title">Columbia</h3>
+                            <p class="card-subtitle">Amazing streets</p>
+                        </div>
+                        <span class="card-price">$ 700</span>
+                    </div>
+                    <a href="@Url.Action("Listing", "Flights", new { route = "Columbia" })" class="btn-book" style="text-decoration: none; text-align: center;">Book Flight</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fall into travel -->
+    <section class="travel-section">
+        <div class="section-header">
+            <div class="section-header-text">
+                <h2>Fall into travel</h2>
+                <p>Going somewhere to celebrate this season? Whether you're going home or somewhere to roam, we've got the travel tools to get you to your destination.</p>
+            </div>
+            <a href="#" class="btn-see-all">See All</a>
+        </div>
+        <div class="travel-featured-grid">
+            <div class="featured-card">
+                <div class="featured-badge">From <strong>$700</strong></div>
+                <div class="featured-info">
+                    <h3>Backpacking Sri Lanka</h3>
+                    <p>Traveling is a unique experience as it's the best way to unplug from the pushes and pulls of daily life. It helps us to forget about our problems, frustrations, and fears at home. During our journey, we experience life in different ways. We explore new places, cultures, cuisines, traditions, and ways of living.</p>
+                </div>
+                <button class="btn-book-featured">Book Flight</button>
+            </div>
+            <div class="secondary-grid">
+                <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Sri Lanka 1">
+                <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Sri Lanka 2">
+                <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Sri Lanka 3">
+                <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Sri Lanka 4">
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <script src="~/js/flights.js"></script>
+}

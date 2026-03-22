@@ -98,23 +98,43 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    padding: 16px 0;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
     font-size: 16px;
+    font-weight: 600;
     color: #112211;
     cursor: pointer;
-    padding: 8px 0;
     position: relative;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    opacity: 1;
 }
 
 .tab-btn.active::after {
     content: '';
     position: absolute;
-    bottom: -17px;
+    bottom: -16px;
     left: 0;
     width: 100%;
     height: 4px;
     background-color: #8DD3BB;
+}
+
+.promo-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #112211 !important;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.promo-link i {
+    font-size: 12px;
 }
 
 .search-form {

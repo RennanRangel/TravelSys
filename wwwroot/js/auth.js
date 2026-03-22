@@ -1,154 +1,117 @@
-// Auth utility functions
+/**
+ * Utilitários de Autenticação (Arquitetura Simplificada)
+ * Mantém funções globais para compatibilidade com o projeto.
+ */
 
-// Check if user is logged in
-function isLoggedIn() {
-    const userData = localStorage.getItem('userData');
-    if (!userData) return false;
-
+// 1. Verificação de Login
+const isLoggedIn = () => {
     try {
-        const user = JSON.parse(userData);
-        return user.loggedIn === true;
+        const userData = localStorage.getItem('userData');
+        if (!userData) return false;
+        return JSON.parse(userData).loggedIn === true;
     } catch (e) {
         return false;
     }
-}
+};
 
-// Get user data
-function getUserData() {
-    const userData = localStorage.getItem('userData');
-    if (!userData) return null;
-
+// 2. Recuperação de Dados
+const getUserData = () => {
     try {
-        return JSON.parse(userData);
+        const userData = localStorage.getItem('userData');
+        return userData ? JSON.parse(userData) : null;
     } catch (e) {
         return null;
     }
-}
+};
 
-// Check if user is admin
-function isAdmin() {
-    const userData = getUserData();
-    if (!userData || !userData.loggedIn) return false;
+// 3. Verificação Admin
+const isAdmin = () => {
+    const user = getUserData();
+    return user?.loggedIn && user.email === 'admin@gmail.com';
+};
 
-    // Admin credentials
-    const adminEmail = 'admin@gmail.com';
-
-    return userData.email === adminEmail;
-}
-
-// Logout function
-function logout() {
+// 4. Logout
+const logout = () => {
     localStorage.removeItem('userData');
     window.location.href = '/Account/Login';
-}
+};
 
-// Update header based on login status
-function updateHeader() {
-    const userData = getUserData();
+// 5. Atualização de Cabeçalho (DOM Cache Local)
+const updateHeader = () => {
     const headerActions = document.querySelector('.header-actions');
-
     if (!headerActions) return;
 
-    if (userData && userData.loggedIn) {
-        // User is logged in - show name and logout button
-        const displayName = userData.firstName && userData.lastName
-            ? `${userData.firstName} ${userData.lastName}`
-            : userData.email;
+    const user = getUserData();
+    if (user?.loggedIn) {
+        const displayName = (user.firstName && user.lastName) 
+            ? `${user.firstName} ${user.lastName}` 
+            : user.email;
 
         headerActions.innerHTML = `
             <div class="user-info">
                 <span class="user-email">${displayName}</span>
-                <button onclick="logout()" class="btn-logout">Logout</button>
+                <button onclick="logout()" class="btn-logout">Sair</button>
             </div>
         `;
     } else {
-        // User is not logged in - show login and signup buttons
         headerActions.innerHTML = `
             <a href="/Account/Login" class="login-link">Login</a>
-            <a href="/Account/Signup" class="signup-btn">Sign up</a>
+            <a href="/Account/Signup" class="signup-btn">Cadastrar</a>
         `;
     }
-}
+};
 
-// Update profile dropdown elements
-function updateProfileDropdown() {
-    const userData = getUserData();
+// 6. Atualização de Dropdown
+const updateProfileDropdown = () => {
+    const user = getUserData();
+    if (!user?.loggedIn) return;
 
-    if (!userData || !userData.loggedIn) return;
+    const shortName = (user.firstName && user.lastName)
+        ? `${user.firstName} ${user.lastName.charAt(0)}.`
+        : 'Usuário';
 
-    // Format: "FirstName L."
-    const shortName = userData.firstName && userData.lastName
-        ? `${userData.firstName} ${userData.lastName.charAt(0)}.`
-        : 'User';
+    const fullName = (user.firstName && user.lastName)
+        ? `${user.firstName} ${user.lastName}.`
+        : user.email;
 
-    // Format: "FirstName LastName."
-    const fullName = userData.firstName && userData.lastName
-        ? `${userData.firstName} ${userData.lastName}.`
-        : userData.email;
+    const DOM = {
+        profileSpan: document.querySelector('.user-profile span'),
+        headerName: document.querySelector('.dropdown-header h4'),
+        menu: document.querySelector('.profile-dropdown .dropdown-menu')
+    };
 
-    // Update user profile span (John D.)
-    const userProfileSpan = document.querySelector('.user-profile span');
-    if (userProfileSpan) {
-        userProfileSpan.textContent = shortName;
+    if (DOM.profileSpan) DOM.profileSpan.textContent = shortName;
+    if (DOM.headerName) DOM.headerName.textContent = fullName;
+
+    if (isAdmin() && DOM.menu) {
+        const existingAdminLink = DOM.menu.querySelector('a[href="/Admin"]');
+        if (!existingAdminLink) {
+            const adminLi = document.createElement('li');
+            adminLi.innerHTML = '<a href="/Admin"><i class="fas fa-user-shield"></i> Painel Admin</a>';
+            DOM.menu.insertBefore(adminLi, DOM.menu.firstChild);
+        }
     }
+};
 
-    // Update dropdown header h4 (John Doe.)
-    const dropdownHeaderName = document.querySelector('.dropdown-header h4');
-    if (dropdownHeaderName) {
-        dropdownHeaderName.textContent = fullName;
-    }
+// 7. Proteção de Páginas
+const protectPage = () => {
+    if (!isLoggedIn()) window.location.href = '/Account/Login';
+};
 
-    // Add Admin Panel link if user is admin
-    if (isAdmin()) {
-        addAdminPanelLink();
-    }
-}
-
-// Add Admin Panel link to dropdown menu
-function addAdminPanelLink() {
-    // Find the first dropdown menu (the one with My account, Payments, Settings)
-    const firstDropdownMenu = document.querySelector('.profile-dropdown .dropdown-menu');
-
-    if (!firstDropdownMenu) return;
-
-    // Check if admin link already exists
-    const existingAdminLink = firstDropdownMenu.querySelector('a[href="/Admin"]');
-    if (existingAdminLink) return;
-
-    // Create admin panel link
-    const adminLi = document.createElement('li');
-    adminLi.innerHTML = '<a href="/Admin"><i class="fas fa-user-shield"></i> Admin Panel</a>';
-
-    // Add it as the first item in the menu
-    firstDropdownMenu.insertBefore(adminLi, firstDropdownMenu.firstChild);
-}
-
-
-// Protect page - redirect to login if not logged in
-function protectPage() {
+const protectAdminPage = () => {
     if (!isLoggedIn()) {
-        window.location.href = '/Account/Login';
-    }
-}
-
-// Protect admin page - redirect to login if not admin
-function protectAdminPage() {
-    if (!isLoggedIn()) {
-        alert('Please login to access the admin panel');
+        alert('Por favor, faça login para acessar o painel admin');
         window.location.href = '/Account/Login';
         return;
     }
-
     if (!isAdmin()) {
-        alert('Access denied. Admin privileges required.');
+        alert('Acesso negado. Privilégios de admin necessários.');
         window.location.href = '/';
-        return;
     }
-}
+};
 
-// Initialize on page load
+// 8. Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     updateHeader();
     updateProfileDropdown();
 });
-

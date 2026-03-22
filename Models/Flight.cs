@@ -47,6 +47,19 @@ public class Flight
 
     public string? TripType { get; set; }
 
+    public string? FlightClasses { get; set; }
+
+    [Column(TypeName = "decimal(18,2)")]
+    public decimal? EconomyPrice { get; set; }
+
+    [Column(TypeName = "decimal(18,2)")]
+    public decimal? BusinessPrice { get; set; }
+
+    [Column(TypeName = "decimal(18,2)")]
+    public decimal? FirstClassPrice { get; set; }
+
+    public string Status { get; set; } = "publicada";
+
     [NotMapped]
     public IFormFile? LogoUpload { get; set; }
 

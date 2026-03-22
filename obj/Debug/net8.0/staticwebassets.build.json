@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wn251ERiWYaEMEfcBISbRQ9wymdhBkiQVW4QmvQ4LP0=",
+  "Hash": "ZHYagMn2zv1A77oqclNM6kaZeH6aEqiRhaUOXh90LMU=",
   "Source": "Projeto-Hotel-Aviao",
   "BasePath": "_content/Projeto-Hotel-Aviao",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Projeto-Hotel-Aviao\\wwwroot",
       "Source": "Projeto-Hotel-Aviao",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\_Layout.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\_Layout.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/_Layout.css",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\css\\_Layout.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\account.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\account.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/account.css",
       "AssetKind": "All",
@@ -55,10 +55,29 @@
       "OriginalItemSpec": "wwwroot\\css\\account.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\admin.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\admin-dashboard.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "css/admin-dashboard.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\admin-dashboard.css"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\admin.css",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/admin.css",
       "AssetKind": "All",
@@ -74,10 +93,67 @@
       "OriginalItemSpec": "wwwroot\\css\\admin.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\flight-booking.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\autenticacao.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "css/autenticacao.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\autenticacao.css"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\Findflight.css",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "css/Findflight.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Findflight.css"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\Findstays.css",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "css/Findstays.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Findstays.css"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\flight-booking.css",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/flight-booking.css",
       "AssetKind": "All",
@@ -93,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\css\\flight-booking.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\flight-details.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\flight-details.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/flight-details.css",
       "AssetKind": "All",
@@ -112,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\css\\flight-details.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\flight-payment.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\flight-payment.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/flight-payment.css",
       "AssetKind": "All",
@@ -131,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\css\\flight-payment.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\flight-ticket.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\flight-ticket.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/flight-ticket.css",
       "AssetKind": "All",
@@ -150,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\css\\flight-ticket.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\flights-listing.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\flights-listing.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/flights-listing.css",
       "AssetKind": "All",
@@ -169,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\css\\flights-listing.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\flights.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\flights.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/flights.css",
       "AssetKind": "All",
@@ -188,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\css\\flights.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\forgot-password.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\forgot-password.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/forgot-password.css",
       "AssetKind": "All",
@@ -207,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\css\\forgot-password.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\home.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\home.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/home.css",
       "AssetKind": "All",
@@ -226,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\css\\home.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\hotel-booking.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\hotel-booking.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/hotel-booking.css",
       "AssetKind": "All",
@@ -245,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\css\\hotel-booking.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\hotel-details.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\hotel-details.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/hotel-details.css",
       "AssetKind": "All",
@@ -264,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\css\\hotel-details.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\hotel-listing.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\hotel-listing.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/hotel-listing.css",
       "AssetKind": "All",
@@ -283,10 +359,29 @@
       "OriginalItemSpec": "wwwroot\\css\\hotel-listing.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\hotel-ticket.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\hotel-payment.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "css/hotel-payment.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\hotel-payment.css"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\hotel-ticket.css",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/hotel-ticket.css",
       "AssetKind": "All",
@@ -302,10 +397,29 @@
       "OriginalItemSpec": "wwwroot\\css\\hotel-ticket.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\login.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\hotels.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "css/hotels.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\hotels.css"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\login.css",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/login.css",
       "AssetKind": "All",
@@ -321,48 +435,10 @@
       "OriginalItemSpec": "wwwroot\\css\\login.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\myReservationHotels.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\signup.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
-      "BasePath": "_content/Projeto-Hotel-Aviao",
-      "RelativePath": "css/myReservationHotels.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\myReservationHotels.css"
-    },
-    {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\mytickets.css",
-      "SourceId": "Projeto-Hotel-Aviao",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
-      "BasePath": "_content/Projeto-Hotel-Aviao",
-      "RelativePath": "css/mytickets.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\mytickets.css"
-    },
-    {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\signup.css",
-      "SourceId": "Projeto-Hotel-Aviao",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/signup.css",
       "AssetKind": "All",
@@ -378,10 +454,10 @@
       "OriginalItemSpec": "wwwroot\\css\\signup.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\site.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -397,10 +473,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\css\\style.css",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\style.css",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "css/style.css",
       "AssetKind": "All",
@@ -416,10 +492,10 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\baku.avif",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\baku.avif",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/baku.avif",
       "AssetKind": "All",
@@ -435,10 +511,10 @@
       "OriginalItemSpec": "wwwroot\\images\\baku.avif"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\baku.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\baku.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/baku.webp",
       "AssetKind": "All",
@@ -454,10 +530,10 @@
       "OriginalItemSpec": "wwwroot\\images\\baku.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\dubai.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\dubai.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/dubai.webp",
       "AssetKind": "All",
@@ -473,10 +549,10 @@
       "OriginalItemSpec": "wwwroot\\images\\dubai.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\emirates.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\emirates.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/emirates.jpg",
       "AssetKind": "All",
@@ -492,10 +568,29 @@
       "OriginalItemSpec": "wwwroot\\images\\emirates.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Frame 186.png",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Frame 181.png",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "images/Frame 181.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Frame 181.png"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Frame 186.png",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/Frame 186.png",
       "AssetKind": "All",
@@ -511,10 +606,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Frame 186.png"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Frame 187.png",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Frame 187.png",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/Frame 187.png",
       "AssetKind": "All",
@@ -530,10 +625,29 @@
       "OriginalItemSpec": "wwwroot\\images\\Frame 187.png"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Frame36.png",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Frame 2608705.png",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "images/Frame 2608705.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Frame 2608705.png"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Frame36.png",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/Frame36.png",
       "AssetKind": "All",
@@ -549,10 +663,29 @@
       "OriginalItemSpec": "wwwroot\\images\\Frame36.png"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\londres.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Hotel Search.png",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "images/Hotel Search.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Hotel Search.png"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\londres.jpg",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/londres.jpg",
       "AssetKind": "All",
@@ -568,10 +701,10 @@
       "OriginalItemSpec": "wwwroot\\images\\londres.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\male.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\male.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/male.webp",
       "AssetKind": "All",
@@ -587,10 +720,10 @@
       "OriginalItemSpec": "wwwroot\\images\\male.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\map-placeholder.svg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\map-placeholder.svg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/map-placeholder.svg",
       "AssetKind": "All",
@@ -606,10 +739,10 @@
       "OriginalItemSpec": "wwwroot\\images\\map-placeholder.svg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\newyork.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\newyork.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/newyork.jpg",
       "AssetKind": "All",
@@ -625,10 +758,10 @@
       "OriginalItemSpec": "wwwroot\\images\\newyork.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\paris.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\paris.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/paris.webp",
       "AssetKind": "All",
@@ -644,10 +777,10 @@
       "OriginalItemSpec": "wwwroot\\images\\paris.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\praia-skin.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\praia-skin.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/praia-skin.webp",
       "AssetKind": "All",
@@ -663,10 +796,10 @@
       "OriginalItemSpec": "wwwroot\\images\\praia-skin.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Rectangle 3.png",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Rectangle 3.png",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/Rectangle 3.png",
       "AssetKind": "All",
@@ -682,10 +815,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Rectangle 3.png"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Rectangle 31.png",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Rectangle 31.png",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/Rectangle 31.png",
       "AssetKind": "All",
@@ -701,10 +834,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Rectangle 31.png"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\sri-lanka-1.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\sri-lanka-1.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/sri-lanka-1.webp",
       "AssetKind": "All",
@@ -720,10 +853,10 @@
       "OriginalItemSpec": "wwwroot\\images\\sri-lanka-1.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\sri-lanka-2.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\sri-lanka-2.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/sri-lanka-2.webp",
       "AssetKind": "All",
@@ -739,10 +872,10 @@
       "OriginalItemSpec": "wwwroot\\images\\sri-lanka-2.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\sri-lanka-3.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\sri-lanka-3.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/sri-lanka-3.webp",
       "AssetKind": "All",
@@ -758,10 +891,29 @@
       "OriginalItemSpec": "wwwroot\\images\\sri-lanka-3.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Sydney.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Stars.png",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "images/Stars.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Stars.png"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Sydney.jpg",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/Sydney.jpg",
       "AssetKind": "All",
@@ -777,10 +929,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Sydney.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\tokyo.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\tokyo.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/tokyo.webp",
       "AssetKind": "All",
@@ -796,10 +948,10 @@
       "OriginalItemSpec": "wwwroot\\images\\tokyo.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\Turkey.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Turkey.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/Turkey.webp",
       "AssetKind": "All",
@@ -815,10 +967,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Turkey.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\0313b1e0-03e0-4bd9-9c9f-4e639918f2f6_2024_Nitro_option_01_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\0313b1e0-03e0-4bd9-9c9f-4e639918f2f6_2024_Nitro_option_01_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/0313b1e0-03e0-4bd9-9c9f-4e639918f2f6_2024_Nitro_option_01_3840x2400.jpg",
       "AssetKind": "All",
@@ -834,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\0313b1e0-03e0-4bd9-9c9f-4e639918f2f6_2024_Nitro_option_01_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\058b26f3-d626-461b-bd0d-be96a17ca3ef_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\058b26f3-d626-461b-bd0d-be96a17ca3ef_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/058b26f3-d626-461b-bd0d-be96a17ca3ef_Img-aviao.webp",
       "AssetKind": "All",
@@ -853,10 +1005,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\058b26f3-d626-461b-bd0d-be96a17ca3ef_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\09742ad6-f6d8-42b9-845d-21129f0bfa96_2024_Nitro_Default_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\09742ad6-f6d8-42b9-845d-21129f0bfa96_2024_Nitro_Default_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/09742ad6-f6d8-42b9-845d-21129f0bfa96_2024_Nitro_Default_3840x2400.jpg",
       "AssetKind": "All",
@@ -872,10 +1024,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\09742ad6-f6d8-42b9-845d-21129f0bfa96_2024_Nitro_Default_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\0ec73294-0d7c-43d1-8ab9-ebfe6860252e_2024_Nitro_Default_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\0ec73294-0d7c-43d1-8ab9-ebfe6860252e_2024_Nitro_Default_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/0ec73294-0d7c-43d1-8ab9-ebfe6860252e_2024_Nitro_Default_3840x2400.jpg",
       "AssetKind": "All",
@@ -891,10 +1043,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\0ec73294-0d7c-43d1-8ab9-ebfe6860252e_2024_Nitro_Default_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\13181c0e-d89f-4fa7-8943-141ee70842e8_2024_Nitro_option_01_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\13181c0e-d89f-4fa7-8943-141ee70842e8_2024_Nitro_option_01_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/13181c0e-d89f-4fa7-8943-141ee70842e8_2024_Nitro_option_01_3840x2400.jpg",
       "AssetKind": "All",
@@ -910,10 +1062,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\13181c0e-d89f-4fa7-8943-141ee70842e8_2024_Nitro_option_01_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\1dcb78f1-8491-469d-8043-54e6db6decfe_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\1dcb78f1-8491-469d-8043-54e6db6decfe_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/1dcb78f1-8491-469d-8043-54e6db6decfe_Img-aviao.webp",
       "AssetKind": "All",
@@ -929,10 +1081,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\1dcb78f1-8491-469d-8043-54e6db6decfe_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\2905063b-bed7-44df-9914-48fabc8eec15_2024_Nitro_option_01_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\2905063b-bed7-44df-9914-48fabc8eec15_2024_Nitro_option_01_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/2905063b-bed7-44df-9914-48fabc8eec15_2024_Nitro_option_01_3840x2400.jpg",
       "AssetKind": "All",
@@ -948,10 +1100,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\2905063b-bed7-44df-9914-48fabc8eec15_2024_Nitro_option_01_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\29482978-4c88-4fb9-be5a-750646713667_2024_Nitro_Default_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\29482978-4c88-4fb9-be5a-750646713667_2024_Nitro_Default_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/29482978-4c88-4fb9-be5a-750646713667_2024_Nitro_Default_3840x2400.jpg",
       "AssetKind": "All",
@@ -967,10 +1119,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\29482978-4c88-4fb9-be5a-750646713667_2024_Nitro_Default_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\3aac4876-38a2-455c-827d-56b734938d95_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\3aac4876-38a2-455c-827d-56b734938d95_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/3aac4876-38a2-455c-827d-56b734938d95_Img-aviao.webp",
       "AssetKind": "All",
@@ -986,10 +1138,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\3aac4876-38a2-455c-827d-56b734938d95_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\42e0aef6-04cc-4067-a52a-f6066429561a_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\42e0aef6-04cc-4067-a52a-f6066429561a_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/42e0aef6-04cc-4067-a52a-f6066429561a_Img-aviao.webp",
       "AssetKind": "All",
@@ -1005,10 +1157,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\42e0aef6-04cc-4067-a52a-f6066429561a_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\441e202b-196f-478f-b09c-42a0a505aeb5_2024_Nitro_Default_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\441e202b-196f-478f-b09c-42a0a505aeb5_2024_Nitro_Default_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/441e202b-196f-478f-b09c-42a0a505aeb5_2024_Nitro_Default_3840x2400.jpg",
       "AssetKind": "All",
@@ -1024,10 +1176,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\441e202b-196f-478f-b09c-42a0a505aeb5_2024_Nitro_Default_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\4d9f139d-1e09-49cc-8dc3-09c0beeadb22_2024_Nitro_option_02_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\4d9f139d-1e09-49cc-8dc3-09c0beeadb22_2024_Nitro_option_02_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/4d9f139d-1e09-49cc-8dc3-09c0beeadb22_2024_Nitro_option_02_3840x2400.jpg",
       "AssetKind": "All",
@@ -1043,10 +1195,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\4d9f139d-1e09-49cc-8dc3-09c0beeadb22_2024_Nitro_option_02_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\4e998899-d522-464e-a025-12afb6697abd_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\4e998899-d522-464e-a025-12afb6697abd_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/4e998899-d522-464e-a025-12afb6697abd_Img-aviao.webp",
       "AssetKind": "All",
@@ -1062,10 +1214,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\4e998899-d522-464e-a025-12afb6697abd_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\565251b2-1bf4-44fc-b1f9-f16f696b00b5_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\565251b2-1bf4-44fc-b1f9-f16f696b00b5_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/565251b2-1bf4-44fc-b1f9-f16f696b00b5_Img-aviao.webp",
       "AssetKind": "All",
@@ -1081,10 +1233,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\565251b2-1bf4-44fc-b1f9-f16f696b00b5_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\6000c558-0912-457a-a652-b621b96c9e66_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\6000c558-0912-457a-a652-b621b96c9e66_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/6000c558-0912-457a-a652-b621b96c9e66_Img-aviao.webp",
       "AssetKind": "All",
@@ -1100,10 +1252,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\6000c558-0912-457a-a652-b621b96c9e66_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\605043d9-6895-474f-8e1f-48793788e9de_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\605043d9-6895-474f-8e1f-48793788e9de_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/605043d9-6895-474f-8e1f-48793788e9de_Img-aviao.webp",
       "AssetKind": "All",
@@ -1119,10 +1271,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\605043d9-6895-474f-8e1f-48793788e9de_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\60786dcb-e4ee-43c0-9ee9-6931fd4a55fc_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\60786dcb-e4ee-43c0-9ee9-6931fd4a55fc_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/60786dcb-e4ee-43c0-9ee9-6931fd4a55fc_Img-aviao.webp",
       "AssetKind": "All",
@@ -1138,10 +1290,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\60786dcb-e4ee-43c0-9ee9-6931fd4a55fc_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\65d4448e-30d2-4d12-b75a-6a6e9b1e7113_2024_Nitro_Default_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\65d4448e-30d2-4d12-b75a-6a6e9b1e7113_2024_Nitro_Default_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/65d4448e-30d2-4d12-b75a-6a6e9b1e7113_2024_Nitro_Default_3840x2400.jpg",
       "AssetKind": "All",
@@ -1157,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\65d4448e-30d2-4d12-b75a-6a6e9b1e7113_2024_Nitro_Default_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\67b53cd5-2ef7-4743-bff8-b140cd80f98e_2024_Nitro_option_01_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\67b53cd5-2ef7-4743-bff8-b140cd80f98e_2024_Nitro_option_01_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/67b53cd5-2ef7-4743-bff8-b140cd80f98e_2024_Nitro_option_01_3840x2400.jpg",
       "AssetKind": "All",
@@ -1176,10 +1328,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\67b53cd5-2ef7-4743-bff8-b140cd80f98e_2024_Nitro_option_01_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\74ccfbb8-20f1-468b-a095-413952978acc_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\74ccfbb8-20f1-468b-a095-413952978acc_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/74ccfbb8-20f1-468b-a095-413952978acc_Img-aviao.webp",
       "AssetKind": "All",
@@ -1195,10 +1347,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\74ccfbb8-20f1-468b-a095-413952978acc_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\78f21593-2cbc-4787-ba1d-5bf5330e9bc0_2024_Nitro_option_01_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\78f21593-2cbc-4787-ba1d-5bf5330e9bc0_2024_Nitro_option_01_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/78f21593-2cbc-4787-ba1d-5bf5330e9bc0_2024_Nitro_option_01_3840x2400.jpg",
       "AssetKind": "All",
@@ -1214,10 +1366,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\78f21593-2cbc-4787-ba1d-5bf5330e9bc0_2024_Nitro_option_01_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\7a3d5e15-941a-4924-94fd-5f3314617890_2024_Nitro_option_02_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\7a3d5e15-941a-4924-94fd-5f3314617890_2024_Nitro_option_02_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/7a3d5e15-941a-4924-94fd-5f3314617890_2024_Nitro_option_02_3840x2400.jpg",
       "AssetKind": "All",
@@ -1233,10 +1385,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\7a3d5e15-941a-4924-94fd-5f3314617890_2024_Nitro_option_02_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\835c4df5-c38d-49ec-b5bc-4e3b32a0c01b_134087294382169685.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\835c4df5-c38d-49ec-b5bc-4e3b32a0c01b_134087294382169685.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/835c4df5-c38d-49ec-b5bc-4e3b32a0c01b_134087294382169685.jpg",
       "AssetKind": "All",
@@ -1252,10 +1404,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\835c4df5-c38d-49ec-b5bc-4e3b32a0c01b_134087294382169685.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\8475c824-2979-48d3-bfb9-908a21568924_2024_Nitro_option_01_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\8475c824-2979-48d3-bfb9-908a21568924_2024_Nitro_option_01_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/8475c824-2979-48d3-bfb9-908a21568924_2024_Nitro_option_01_3840x2400.jpg",
       "AssetKind": "All",
@@ -1271,10 +1423,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\8475c824-2979-48d3-bfb9-908a21568924_2024_Nitro_option_01_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\8fbb87ee-9dc6-4ca3-82b9-bc9bdba5f6f5_134089977118816177.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\8fbb87ee-9dc6-4ca3-82b9-bc9bdba5f6f5_134089977118816177.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/8fbb87ee-9dc6-4ca3-82b9-bc9bdba5f6f5_134089977118816177.jpg",
       "AssetKind": "All",
@@ -1290,10 +1442,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\8fbb87ee-9dc6-4ca3-82b9-bc9bdba5f6f5_134089977118816177.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\94bb1473-fc11-4416-b7f5-e8803c6bf3df_2024_Nitro_option_02_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\94bb1473-fc11-4416-b7f5-e8803c6bf3df_2024_Nitro_option_02_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/94bb1473-fc11-4416-b7f5-e8803c6bf3df_2024_Nitro_option_02_3840x2400.jpg",
       "AssetKind": "All",
@@ -1309,10 +1461,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\94bb1473-fc11-4416-b7f5-e8803c6bf3df_2024_Nitro_option_02_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\9b100c1b-4179-4f84-ab92-4fbb2cf28cbe_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\9b100c1b-4179-4f84-ab92-4fbb2cf28cbe_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/9b100c1b-4179-4f84-ab92-4fbb2cf28cbe_Img-aviao.webp",
       "AssetKind": "All",
@@ -1328,10 +1480,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\9b100c1b-4179-4f84-ab92-4fbb2cf28cbe_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\9b494d36-a567-4bc5-bbfa-5ae5d77414fa_2024_Nitro_option_01_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\9b494d36-a567-4bc5-bbfa-5ae5d77414fa_2024_Nitro_option_01_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/9b494d36-a567-4bc5-bbfa-5ae5d77414fa_2024_Nitro_option_01_3840x2400.jpg",
       "AssetKind": "All",
@@ -1347,10 +1499,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\9b494d36-a567-4bc5-bbfa-5ae5d77414fa_2024_Nitro_option_01_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\9e9181eb-d4f6-44ff-a3b2-fc4b9d411f28_2024_Nitro_option_01_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\9e9181eb-d4f6-44ff-a3b2-fc4b9d411f28_2024_Nitro_option_01_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/9e9181eb-d4f6-44ff-a3b2-fc4b9d411f28_2024_Nitro_option_01_3840x2400.jpg",
       "AssetKind": "All",
@@ -1366,10 +1518,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\9e9181eb-d4f6-44ff-a3b2-fc4b9d411f28_2024_Nitro_option_01_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\a038fc5c-62c9-42e0-9b55-1c7f95f49bd9_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\a038fc5c-62c9-42e0-9b55-1c7f95f49bd9_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/a038fc5c-62c9-42e0-9b55-1c7f95f49bd9_Img-aviao.webp",
       "AssetKind": "All",
@@ -1385,10 +1537,29 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\a038fc5c-62c9-42e0-9b55-1c7f95f49bd9_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\ab96d1cd-6495-4c49-8c38-dda9682fabdc_2024_Nitro_option_02_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\a6264b88-f96c-4a2e-84ee-80ea103b9076_761890_21.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "images/uploads/a6264b88-f96c-4a2e-84ee-80ea103b9076_761890_21.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\a6264b88-f96c-4a2e-84ee-80ea103b9076_761890_21.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\ab96d1cd-6495-4c49-8c38-dda9682fabdc_2024_Nitro_option_02_3840x2400.jpg",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/ab96d1cd-6495-4c49-8c38-dda9682fabdc_2024_Nitro_option_02_3840x2400.jpg",
       "AssetKind": "All",
@@ -1404,10 +1575,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\ab96d1cd-6495-4c49-8c38-dda9682fabdc_2024_Nitro_option_02_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\b06e23da-05d3-437d-9d08-e6ea1e4bf183_2024_Nitro_option_02_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\b06e23da-05d3-437d-9d08-e6ea1e4bf183_2024_Nitro_option_02_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/b06e23da-05d3-437d-9d08-e6ea1e4bf183_2024_Nitro_option_02_3840x2400.jpg",
       "AssetKind": "All",
@@ -1423,10 +1594,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\b06e23da-05d3-437d-9d08-e6ea1e4bf183_2024_Nitro_option_02_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\b27163ad-db1e-47e5-ac00-7ed96af364d3_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\b27163ad-db1e-47e5-ac00-7ed96af364d3_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/b27163ad-db1e-47e5-ac00-7ed96af364d3_Img-aviao.webp",
       "AssetKind": "All",
@@ -1442,10 +1613,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\b27163ad-db1e-47e5-ac00-7ed96af364d3_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\b9b0d664-5b76-4fe8-a461-a20cde23d0bc_2024_Nitro_Default_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\b9b0d664-5b76-4fe8-a461-a20cde23d0bc_2024_Nitro_Default_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/b9b0d664-5b76-4fe8-a461-a20cde23d0bc_2024_Nitro_Default_3840x2400.jpg",
       "AssetKind": "All",
@@ -1461,10 +1632,29 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\b9b0d664-5b76-4fe8-a461-a20cde23d0bc_2024_Nitro_Default_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\baae3fe6-e094-44b9-826f-0c397520695d_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\b9e5d98b-867c-4097-93dd-77fe0b578e74_2024_Nitro_Default_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "images/uploads/b9e5d98b-867c-4097-93dd-77fe0b578e74_2024_Nitro_Default_3840x2400.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\b9e5d98b-867c-4097-93dd-77fe0b578e74_2024_Nitro_Default_3840x2400.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\baae3fe6-e094-44b9-826f-0c397520695d_Img-aviao.webp",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/baae3fe6-e094-44b9-826f-0c397520695d_Img-aviao.webp",
       "AssetKind": "All",
@@ -1480,10 +1670,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\baae3fe6-e094-44b9-826f-0c397520695d_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\baebbaf8-9166-4b31-a0dc-51e7d6e2db88_2024_Nitro_option_02_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\baebbaf8-9166-4b31-a0dc-51e7d6e2db88_2024_Nitro_option_02_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/baebbaf8-9166-4b31-a0dc-51e7d6e2db88_2024_Nitro_option_02_3840x2400.jpg",
       "AssetKind": "All",
@@ -1499,10 +1689,29 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\baebbaf8-9166-4b31-a0dc-51e7d6e2db88_2024_Nitro_option_02_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\bf52aaad-bc45-4553-b9ed-e06bb883aec1_2024_Nitro_option_01_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\be1acdda-1964-426f-b86f-3de313b982b3_2024_Nitro_option_01_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "images/uploads/be1acdda-1964-426f-b86f-3de313b982b3_2024_Nitro_option_01_3840x2400.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\be1acdda-1964-426f-b86f-3de313b982b3_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\bf52aaad-bc45-4553-b9ed-e06bb883aec1_2024_Nitro_option_01_3840x2400.jpg",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/bf52aaad-bc45-4553-b9ed-e06bb883aec1_2024_Nitro_option_01_3840x2400.jpg",
       "AssetKind": "All",
@@ -1518,10 +1727,29 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\bf52aaad-bc45-4553-b9ed-e06bb883aec1_2024_Nitro_option_01_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\c3d04ea7-8bb4-4c26-9fc6-a3a0557f8fb5_2024_Nitro_option_02_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\c3c018d6-3cbd-4d28-a6a0-92e0ac3f9a79_2024_Nitro_Default_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "images/uploads/c3c018d6-3cbd-4d28-a6a0-92e0ac3f9a79_2024_Nitro_Default_3840x2400.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\c3c018d6-3cbd-4d28-a6a0-92e0ac3f9a79_2024_Nitro_Default_3840x2400.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\c3d04ea7-8bb4-4c26-9fc6-a3a0557f8fb5_2024_Nitro_option_02_3840x2400.jpg",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/c3d04ea7-8bb4-4c26-9fc6-a3a0557f8fb5_2024_Nitro_option_02_3840x2400.jpg",
       "AssetKind": "All",
@@ -1537,10 +1765,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\c3d04ea7-8bb4-4c26-9fc6-a3a0557f8fb5_2024_Nitro_option_02_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\c6dec1fc-64ae-4e2e-8195-7bc5b7ce2b64_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\c6dec1fc-64ae-4e2e-8195-7bc5b7ce2b64_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/c6dec1fc-64ae-4e2e-8195-7bc5b7ce2b64_Img-aviao.webp",
       "AssetKind": "All",
@@ -1556,10 +1784,29 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\c6dec1fc-64ae-4e2e-8195-7bc5b7ce2b64_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\cd190a0c-e7e8-4fb2-aad3-25c053217bc5_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\cac4fd5a-e3d8-4b39-8262-17e3d4722b1a_134099026391087125.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "images/uploads/cac4fd5a-e3d8-4b39-8262-17e3d4722b1a_134099026391087125.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\cac4fd5a-e3d8-4b39-8262-17e3d4722b1a_134099026391087125.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\cd190a0c-e7e8-4fb2-aad3-25c053217bc5_Img-aviao.webp",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/cd190a0c-e7e8-4fb2-aad3-25c053217bc5_Img-aviao.webp",
       "AssetKind": "All",
@@ -1575,10 +1822,29 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\cd190a0c-e7e8-4fb2-aad3-25c053217bc5_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\d7f7b284-c10e-4d79-b5d3-ad31bc130580_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\d1ce17d4-583c-441d-9ab3-51d0d905e7c2_134099026391087125.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "images/uploads/d1ce17d4-583c-441d-9ab3-51d0d905e7c2_134099026391087125.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\d1ce17d4-583c-441d-9ab3-51d0d905e7c2_134099026391087125.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\d7f7b284-c10e-4d79-b5d3-ad31bc130580_Img-aviao.webp",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/d7f7b284-c10e-4d79-b5d3-ad31bc130580_Img-aviao.webp",
       "AssetKind": "All",
@@ -1594,10 +1860,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\d7f7b284-c10e-4d79-b5d3-ad31bc130580_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\da5ad802-d614-48af-a21f-0f53e8fcbedd_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\da5ad802-d614-48af-a21f-0f53e8fcbedd_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/da5ad802-d614-48af-a21f-0f53e8fcbedd_Img-aviao.webp",
       "AssetKind": "All",
@@ -1613,10 +1879,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\da5ad802-d614-48af-a21f-0f53e8fcbedd_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\db2075ad-4e0f-4cbf-991d-f90ebfdde81f_2024_Nitro_option_02_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\db2075ad-4e0f-4cbf-991d-f90ebfdde81f_2024_Nitro_option_02_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/db2075ad-4e0f-4cbf-991d-f90ebfdde81f_2024_Nitro_option_02_3840x2400.jpg",
       "AssetKind": "All",
@@ -1632,10 +1898,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\db2075ad-4e0f-4cbf-991d-f90ebfdde81f_2024_Nitro_option_02_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\e1bf638e-ecbc-448e-b916-017771008737_2024_Nitro_Default_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\e1bf638e-ecbc-448e-b916-017771008737_2024_Nitro_Default_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/e1bf638e-ecbc-448e-b916-017771008737_2024_Nitro_Default_3840x2400.jpg",
       "AssetKind": "All",
@@ -1651,10 +1917,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\e1bf638e-ecbc-448e-b916-017771008737_2024_Nitro_Default_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\e45f4a44-9359-4c48-8664-077565ecb24b_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\e45f4a44-9359-4c48-8664-077565ecb24b_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/e45f4a44-9359-4c48-8664-077565ecb24b_Img-aviao.webp",
       "AssetKind": "All",
@@ -1670,10 +1936,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\e45f4a44-9359-4c48-8664-077565ecb24b_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\e58d3290-353a-452f-9130-01d5e79a6763_2024_Nitro_option_01_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\e58d3290-353a-452f-9130-01d5e79a6763_2024_Nitro_option_01_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/e58d3290-353a-452f-9130-01d5e79a6763_2024_Nitro_option_01_3840x2400.jpg",
       "AssetKind": "All",
@@ -1689,10 +1955,29 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\e58d3290-353a-452f-9130-01d5e79a6763_2024_Nitro_option_01_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\e6e43dd5-7a1f-48a9-bd96-394aa8e9b99e_2024_Nitro_Default_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\e6e0f21a-43c2-4799-83ec-b09d31ebcb45_2024_Nitro_option_01_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "images/uploads/e6e0f21a-43c2-4799-83ec-b09d31ebcb45_2024_Nitro_option_01_3840x2400.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\e6e0f21a-43c2-4799-83ec-b09d31ebcb45_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\e6e43dd5-7a1f-48a9-bd96-394aa8e9b99e_2024_Nitro_Default_3840x2400.jpg",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/e6e43dd5-7a1f-48a9-bd96-394aa8e9b99e_2024_Nitro_Default_3840x2400.jpg",
       "AssetKind": "All",
@@ -1708,10 +1993,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\e6e43dd5-7a1f-48a9-bd96-394aa8e9b99e_2024_Nitro_Default_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\e8d27451-d559-4122-a1c5-ec39d8bed156_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\e8d27451-d559-4122-a1c5-ec39d8bed156_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/e8d27451-d559-4122-a1c5-ec39d8bed156_Img-aviao.webp",
       "AssetKind": "All",
@@ -1727,10 +2012,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\e8d27451-d559-4122-a1c5-ec39d8bed156_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\ea3b7c22-a98d-490b-a504-7d59487510f9_2024_Nitro_Default_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\ea3b7c22-a98d-490b-a504-7d59487510f9_2024_Nitro_Default_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/ea3b7c22-a98d-490b-a504-7d59487510f9_2024_Nitro_Default_3840x2400.jpg",
       "AssetKind": "All",
@@ -1746,10 +2031,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\ea3b7c22-a98d-490b-a504-7d59487510f9_2024_Nitro_Default_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\f91958f5-8030-49a0-8b7b-3c7d1284b3a4_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\f91958f5-8030-49a0-8b7b-3c7d1284b3a4_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/f91958f5-8030-49a0-8b7b-3c7d1284b3a4_Img-aviao.webp",
       "AssetKind": "All",
@@ -1765,10 +2050,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\f91958f5-8030-49a0-8b7b-3c7d1284b3a4_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\f952f4a7-2d75-44bf-8c89-b0dcd26b7f12_2024_Nitro_option_02_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\f952f4a7-2d75-44bf-8c89-b0dcd26b7f12_2024_Nitro_option_02_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/f952f4a7-2d75-44bf-8c89-b0dcd26b7f12_2024_Nitro_option_02_3840x2400.jpg",
       "AssetKind": "All",
@@ -1784,10 +2069,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\f952f4a7-2d75-44bf-8c89-b0dcd26b7f12_2024_Nitro_option_02_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\fb7eab7f-61b1-417b-b1e8-4834a95cd968_2024_Nitro_option_02_3840x2400.jpg",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\fb7eab7f-61b1-417b-b1e8-4834a95cd968_2024_Nitro_option_02_3840x2400.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/fb7eab7f-61b1-417b-b1e8-4834a95cd968_2024_Nitro_option_02_3840x2400.jpg",
       "AssetKind": "All",
@@ -1803,10 +2088,29 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\fb7eab7f-61b1-417b-b1e8-4834a95cd968_2024_Nitro_option_02_3840x2400.jpg"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\fc15743b-cb34-45ec-a9d7-607edb2c195c_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\fbc2faf9-f89e-414b-8391-fb365986fdb7_134118596559468408.jpg",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "images/uploads/fbc2faf9-f89e-414b-8391-fb365986fdb7_134118596559468408.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\fbc2faf9-f89e-414b-8391-fb365986fdb7_134118596559468408.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\fc15743b-cb34-45ec-a9d7-607edb2c195c_Img-aviao.webp",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/fc15743b-cb34-45ec-a9d7-607edb2c195c_Img-aviao.webp",
       "AssetKind": "All",
@@ -1822,10 +2126,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\fc15743b-cb34-45ec-a9d7-607edb2c195c_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\images\\uploads\\fdfd68dc-44d4-4485-a2c4-5a78995b9cc2_Img-aviao.webp",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\fdfd68dc-44d4-4485-a2c4-5a78995b9cc2_Img-aviao.webp",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "images/uploads/fdfd68dc-44d4-4485-a2c4-5a78995b9cc2_Img-aviao.webp",
       "AssetKind": "All",
@@ -1841,10 +2145,10 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\fdfd68dc-44d4-4485-a2c4-5a78995b9cc2_Img-aviao.webp"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\account.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\account.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/account.js",
       "AssetKind": "All",
@@ -1860,10 +2164,29 @@
       "OriginalItemSpec": "wwwroot\\js\\account.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\admin-upload.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\admin-management.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "js/admin-management.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\admin-management.js"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\admin-upload.js",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/admin-upload.js",
       "AssetKind": "All",
@@ -1879,10 +2202,10 @@
       "OriginalItemSpec": "wwwroot\\js\\admin-upload.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\admin.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\admin.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/admin.js",
       "AssetKind": "All",
@@ -1898,10 +2221,10 @@
       "OriginalItemSpec": "wwwroot\\js\\admin.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\auth.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\auth.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/auth.js",
       "AssetKind": "All",
@@ -1917,10 +2240,10 @@
       "OriginalItemSpec": "wwwroot\\js\\auth.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\flight-booking.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\flight-booking.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/flight-booking.js",
       "AssetKind": "All",
@@ -1936,10 +2259,10 @@
       "OriginalItemSpec": "wwwroot\\js\\flight-booking.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\flight-details.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\flight-details.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/flight-details.js",
       "AssetKind": "All",
@@ -1955,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\js\\flight-details.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\flight-payment.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\flight-payment.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/flight-payment.js",
       "AssetKind": "All",
@@ -1974,10 +2297,10 @@
       "OriginalItemSpec": "wwwroot\\js\\flight-payment.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\flight-ticket.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\flight-ticket.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/flight-ticket.js",
       "AssetKind": "All",
@@ -1993,10 +2316,10 @@
       "OriginalItemSpec": "wwwroot\\js\\flight-ticket.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\flights-listing.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\flights-listing.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/flights-listing.js",
       "AssetKind": "All",
@@ -2012,10 +2335,10 @@
       "OriginalItemSpec": "wwwroot\\js\\flights-listing.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\flights.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\flights.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/flights.js",
       "AssetKind": "All",
@@ -2031,10 +2354,10 @@
       "OriginalItemSpec": "wwwroot\\js\\flights.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\home.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\home.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/home.js",
       "AssetKind": "All",
@@ -2050,10 +2373,10 @@
       "OriginalItemSpec": "wwwroot\\js\\home.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\hotel-booking.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\hotel-booking.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/hotel-booking.js",
       "AssetKind": "All",
@@ -2069,10 +2392,10 @@
       "OriginalItemSpec": "wwwroot\\js\\hotel-booking.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\hotel-details.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\hotel-details.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/hotel-details.js",
       "AssetKind": "All",
@@ -2088,10 +2411,10 @@
       "OriginalItemSpec": "wwwroot\\js\\hotel-details.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\hotel-listing.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\hotel-listing.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/hotel-listing.js",
       "AssetKind": "All",
@@ -2107,10 +2430,29 @@
       "OriginalItemSpec": "wwwroot\\js\\hotel-listing.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\hotel-ticket.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\hotel-payment.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
+      "BasePath": "_content/Projeto-Hotel-Aviao",
+      "RelativePath": "js/hotel-payment.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\hotel-payment.js"
+    },
+    {
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\hotel-ticket.js",
+      "SourceId": "Projeto-Hotel-Aviao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/hotel-ticket.js",
       "AssetKind": "All",
@@ -2126,10 +2468,10 @@
       "OriginalItemSpec": "wwwroot\\js\\hotel-ticket.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\login.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\login.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/login.js",
       "AssetKind": "All",
@@ -2145,10 +2487,10 @@
       "OriginalItemSpec": "wwwroot\\js\\login.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\script.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\script.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/script.js",
       "AssetKind": "All",
@@ -2164,10 +2506,10 @@
       "OriginalItemSpec": "wwwroot\\js\\script.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\signup.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\signup.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/signup.js",
       "AssetKind": "All",
@@ -2183,10 +2525,10 @@
       "OriginalItemSpec": "wwwroot\\js\\signup.js"
     },
     {
-      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\site.js",
       "SourceId": "Projeto-Hotel-Aviao",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos Back-End\\Projetos em Csharp\\RazorPage\\Projeto-Hotel-Aviao\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\",
       "BasePath": "_content/Projeto-Hotel-Aviao",
       "RelativePath": "js/site.js",
       "AssetKind": "All",

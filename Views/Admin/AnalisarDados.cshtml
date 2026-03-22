@@ -1,0 +1,64 @@
+@model ProjetoHotelAviao.Models.ViewModels.AdminViewModel
+@{
+    ViewData["Title"] = "Analisar Dados";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mgmt-header mb-4">
+    <div>
+        <h1 style="font-size: 24px; font-weight: 700; color: #112211; margin-bottom: 4px;">Análise de Dados</h1>
+        <p style="color: var(--admin-text-muted); font-size: 14px; margin: 0;">Acompanhe o desempenho das suas viagens e hospedagens ao longo do tempo.</p>
+    </div>
+    <div class="d-flex gap-3 align-items-center">
+        <button class="btn-mgmt-secondary"><i class="fas fa-calendar-alt"></i> Últimos 30 dias</button>
+        <button class="btn-mgmt-primary"><i class="fas fa-download"></i> Exportar PDF</button>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="label">Receita Total</div>
+            <div class="value">@Model.TotalRevenue.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</div>
+            <div class="trend up"><i class="fas fa-arrow-up"></i> +12.5% vs último mês</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="label">Novas Reservas</div>
+            <div class="value">@Model.TotalBookings</div>
+            <div class="trend up"><i class="fas fa-arrow-up"></i> +5.2% vs último mês</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="label">Taxa de Conversão</div>
+            <div class="value">@Model.ConversionRate%</div>
+            <div class="trend down"><i class="fas fa-arrow-down"></i> -1.1% vs último mês</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card">
+            <div class="label">Usuários Ativos</div>
+            <div class="value">@Model.ActiveUsers</div>
+            <div class="trend up"><i class="fas fa-arrow-up"></i> +18.4% vs último mês</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-8">
+        <div class="admin-card text-center d-flex flex-column align-items-center justify-content-center" style="padding: 40px; min-height: 400px;">
+            <i class="fas fa-chart-bar" style="font-size: 48px; color: #8DD3BB; margin-bottom: 20px;"></i>
+            <h4>Evolução de Receitas</h4>
+            <p class="text-muted">Espaço reservado para o gráfico principal de receitas</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="admin-card text-center d-flex flex-column align-items-center justify-content-center" style="padding: 40px; height: 100%; min-height: 400px;">
+            <i class="fas fa-chart-pie" style="font-size: 48px; color: #8DD3BB; margin-bottom: 20px;"></i>
+            <h4>Visitas por Destino</h4>
+            <p class="text-muted">Espaço reservado para o gráfico de destinos mais populares</p>
+        </div>
+    </div>
+</div>

@@ -18,6 +18,7 @@ public class CardsController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddCard(string cardNumber, string expiryDate, string cvc, string nameOnCard, string country, bool saveCard, string returnUrl)
     {
         if (!saveCard)
@@ -59,6 +60,7 @@ public class CardsController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteCard(int id, string returnUrl)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

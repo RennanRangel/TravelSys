@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin TravelSys</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="~/css/admin-dashboard.css" asp-append-version="true">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body class="admin-body">
+
+<div class="admin-wrapper">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="admin-logo">
+            Travel<i class="fas fa-plane-departure"></i>
+        </div>
+        <nav class="admin-nav" style="flex: 1;">
+            <a asp-controller="Admin" asp-action="Index" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")">
+                <i class="fas fa-home"></i> Visão Geral
+            </a>
+            <a asp-controller="Admin" asp-action="GestaoViagens" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "GestaoViagens" ? "active" : "")">
+                <i class="fas fa-plane-departure"></i> Gestão de Viagens
+            </a>
+            <a asp-controller="Admin" asp-action="GestaoHospedagens" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "GestaoHospedagens" ? "active" : "")">
+                <i class="fas fa-bed"></i> Gestão de Hospedagens
+            </a>
+            <a asp-controller="Admin" asp-action="AnalisarDados" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "AnalisarDados" ? "active" : "")">
+                <i class="fas fa-chart-line"></i> Analisar Dados
+            </a>
+            <a asp-controller="Admin" asp-action="Relatorios" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "Relatorios" ? "active" : "")">
+                <i class="fas fa-file-alt"></i> Relatórios
+            </a>
+            <a asp-controller="Admin" asp-action="GerenciarTarefas" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "GerenciarTarefas" ? "active" : "")">
+                <i class="fas fa-list-check"></i> Gerenciar Tarefas
+            </a>
+        </nav>
+        
+        <div style="padding-top: 20px; border-top: 1px solid #E7E8E9; margin-top: auto;">
+            <a href="/" class="admin-nav-item">
+                <i class="fas fa-external-link-alt"></i> Back to Site
+            </a>
+            <form asp-controller="Account" asp-action="Logout" method="post" style="margin: 0;">
+                <button type="submit" class="admin-nav-item w-100 border-0 bg-transparent text-start">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Topbar -->
+        <header class="admin-topbar">
+            <div class="breadcrumb-area">
+                <span style="color: var(--admin-text-muted);">Pages</span> / <strong>@ViewData["Title"]</strong>
+            </div>
+            <div class="admin-user-info">
+                <div class="user-text text-end">
+                    <div style="font-weight: 600; font-size: 14px;">Administrator</div>
+                    <div style="font-size: 12px; color: var(--admin-text-muted);">@User.Identity?.Name</div>
+                </div>
+                <img src="https://ui-avatars.com/api/?name=@(User.Identity?.Name ?? "Admin")&background=8DD3BB&color=fff" alt="Admin" class="admin-user-avatar">
+            </div>
+        </header>
+
+        @RenderBody()
+    </main>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

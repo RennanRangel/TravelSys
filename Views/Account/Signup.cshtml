@@ -28,14 +28,20 @@
 
         <div class="signup-right">
             <div class="signup-content">
-                <div class="logo">
-                    <span class="logo-text">g<i class="fas fa-plane-departure"></i>lobe</span>
+                <div class="signup-header">
+                    <a href="@Url.Action("Login", "Account")" class="back-btn">
+                        <i class="fas fa-chevron-left"></i> Back to login
+                    </a>
+                    <div class="logo">
+                        <span class="logo-text">Travel<i class="fas fa-plane-departure"></i></span>
+                    </div>
                 </div>
 
                 <h1>Sign up</h1>
                 <p class="subtitle">Let's get you all set up so you can access your personal account.</p>
 
                 <form class="signup-form" method="post" action="@Url.Action("Signup", "Account")">
+                    @Html.AntiForgeryToken()
                     @if (!ViewData.ModelState.IsValid)
                     {
                         <div style="color: red; margin-bottom: 15px;">

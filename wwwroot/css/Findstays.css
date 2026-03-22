@@ -1,0 +1,433 @@
+/* Findstays.css - Landing page styles for Hotel search */
+
+.hero {
+    min-height: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    position: relative;
+    overflow: visible;
+    margin-top: -20px;
+}
+
+.hero-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    justify-content: flex-end;
+    padding-bottom: 80px;
+}
+
+.img-hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 32px;
+    z-index: 3;
+}
+
+.hero-content h1 {
+    font-size: 45px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 20px;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.search-container {
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: -420px;
+}
+
+.search-card {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    padding: 32px;
+    width: 100%;
+}
+
+.search-card h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #112211;
+    margin-bottom: 32px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    position: relative;
+    border: 1px solid #BDC3C7;
+    border-radius: 4px;
+    padding: 12px 16px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    transition: border-color 0.3s;
+}
+
+.form-group:focus-within {
+    border-color: #8DD3BB;
+}
+
+.form-group label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background-color: #FFFFFF;
+    padding: 0 4px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #112211;
+}
+
+.form-group input,
+.form-group select {
+    border: none;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #112211;
+    width: 100%;
+    padding: 0;
+    outline: none;
+    height: 100%;
+}
+
+.input-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.input-with-icon i {
+    font-size: 18px;
+    color: #112211;
+}
+
+.input-with-icon .right-icon {
+    margin-left: auto;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+}
+
+.promo-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none !important;
+    color: #112211 !important;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.promo-link i {
+    font-size: 12px;
+}
+
+.btn-show-places {
+    padding: 12px 32px;
+    background-color: #8DD3BB;
+    color: #112211;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.btn-show-places:hover {
+    background-color: #7bc1a8;
+}
+
+/* Sections */
+.section-header {
+    text-align: left;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.section-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #112211;
+    margin-bottom: 16px;
+}
+
+.section-header p {
+    font-size: 16px;
+    color: #112211;
+    opacity: 0.7;
+    max-width: 600px;
+    margin: 0;
+}
+
+.btn-see-all {
+    padding: 10px 24px;
+    border: 1px solid #8DD3BB;
+    border-radius: 4px;
+    color: #112211;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s;
+    background: transparent;
+}
+
+.btn-see-all:hover {
+    background-color: #8DD3BB;
+}
+
+/* Recent Searches specific */
+.recent-searches {
+    max-width: 1200px;
+    margin: 220px auto 80px;
+    padding: 0 40px;
+}
+
+.recent-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.recent-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+/* Travel Grid - 4 Column Layout */
+.travel-section {
+    max-width: 1400px;
+    margin: 80px auto;
+    padding: 0 40px;
+}
+
+.travel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.travel-card {
+    height: 420px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.travel-card:hover {
+    transform: translateY(-8px);
+}
+
+.card-overlay {
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+}
+
+.card-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.card-subtitle {
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 4px 0 0 0;
+}
+
+.card-price {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.btn-book {
+    width: 100%;
+    padding: 12px;
+    background-color: #8DD3BB;
+    color: #112211;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-book:hover {
+    background-color: #7bc1a8;
+}
+
+/* Travel Grid - Featured Layout */
+.travel-featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.featured-card {
+    background-color: #8DD3BB;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 500px;
+}
+
+.featured-badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: #FFFFFF;
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #112211;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.featured-badge strong {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.featured-info {
+    margin-top: 24px;
+    flex-grow: 1;
+}
+
+.featured-info h3 {
+    font-size: 40px;
+    font-weight: 700;
+    color: #112211;
+    margin-bottom: 24px;
+    max-width: 300px;
+    line-height: 1.2;
+}
+
+.featured-info p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #112211;
+    opacity: 0.8;
+}
+
+.btn-book-featured {
+    width: 100%;
+    padding: 16px;
+    background-color: #FFFFFF;
+    color: #112211;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 32px;
+    transition: background-color 0.3s;
+}
+
+.btn-book-featured:hover {
+    background-color: #f8f8f8;
+}
+
+.secondary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+}
+
+.secondary-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    min-height: 240px;
+}
+
+

@@ -1,191 +1,93 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Load user data from localStorage
-    loadUserData();
+/**
+ * Gerenciamento de Detalhes de Voo (Simplificado)
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Cache de Elementos
+    const DOM = {
+        title: document.querySelector('.title-info h1'),
+        location: document.querySelector('.location-info span'),
+        price: document.querySelector('.price-actions .price'),
+        ratingBadge: document.querySelector('.rating-info .badge'),
+        reviews: document.querySelector('.rating-info .reviews'),
+        heroImage: document.querySelector('.hero-image'),
+        gallery: document.querySelector('.features-gallery'),
+        policies: document.querySelector('.policies-grid'),
+        returnCards: document.querySelectorAll('.return-flight-card'),
+        favoriteBtns: document.querySelectorAll('.btn-favorites, .btn-icon'),
+        classChecks: document.querySelectorAll('.class-options input[type="checkbox"]'),
+        newsletterForm: document.querySelector('.newsletter-form'),
+        bookBtn: document.querySelector('.btn-book')
+    };
 
-    // Load Flight Details
-    loadFlightDetails();
+    // --- FUNÇÕES DE LÓGICA ---
 
-    // Event Listeners
-    setupEventListeners();
-});
+    const updateUI = (flight) => {
+        if (!flight) return;
+        if (DOM.title) DOM.title.textContent = `${flight.airline} ${flight.stops === 'non stop' ? 'Voo Direto' : flight.stops}`;
+        if (DOM.location) DOM.location.textContent = `${flight.from} para ${flight.to}`;
+        if (DOM.price) DOM.price.textContent = `$${flight.price}`;
+        if (DOM.ratingBadge) DOM.ratingBadge.textContent = flight.rating;
+        if (DOM.reviews) DOM.reviews.textContent = `${flight.reviews} reviews`;
+        if (DOM.heroImage && flight.mainImage) DOM.heroImage.src = flight.mainImage;
 
-function loadUserData() {
-    const userData = JSON.parse(localStorage.getItem('userData'));
-
-    if (userData) {
-        // Update all user name displays
-        const userNameElements = document.querySelectorAll('.user-profile span');
-        userNameElements.forEach(element => {
-            if (element.textContent.includes('John D.')) {
-                const firstName = userData.firstName || 'User';
-                const lastNameInitial = userData.lastName ? userData.lastName.charAt(0) + '.' : '';
-                element.textContent = `${firstName} ${lastNameInitial}`;
-            }
-        });
-
-        // Update dropdown header
-        const dropdownName = document.querySelector('.user-info h4');
-        if (dropdownName && dropdownName.textContent.includes('John Doe')) {
-            const fullName = `${userData.firstName || 'User'} ${userData.lastName || ''}`.trim();
-            dropdownName.textContent = fullName + '.';
+        if (DOM.gallery && flight.gallery) {
+            DOM.gallery.innerHTML = flight.gallery.map(url => `<img src="${url}" alt="Recurso" onclick="window.open('${url}', '_blank')">`).join('');
         }
-    }
-}
 
-function loadFlightDetails() {
-    // Get Flight ID from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const flightId = urlParams.get('id');
-    console.log('Loading Flight Details for ID:', flightId);
-
-    if (!flightId) {
-        console.warn('No flight ID found in URL');
-        return;
-    }
-
-    // Get flights from storage
-    const flights = JSON.parse(localStorage.getItem('adminFlights')) || [];
-    console.log('All flights in storage:', flights);
-
-    const flight = flights.find(f => f.id === flightId);
-    console.log('Found flight:', flight);
-
-    if (flight) {
-        updateFlightUI(flight);
-    } else {
-        console.error('Flight not found in storage!');
-        alert('Flight not found!');
-    }
-}
-
-function updateFlightUI(flight) {
-    console.log('Updating UI with flight data:', flight);
-
-    // 1. Basic Info
-    document.querySelector('.title-info h1').textContent = `${flight.airline} ${flight.stops === 'non stop' ? 'Direct Flight' : flight.stops}`;
-    document.querySelector('.location-info span').textContent = `${flight.from} to ${flight.to}`;
-
-    // Price
-    const priceElement = document.querySelector('.price-actions .price');
-    if (priceElement) priceElement.textContent = `$${flight.price}`;
-
-    // Rating
-    const badgeElement = document.querySelector('.rating-info .badge');
-    if (badgeElement) badgeElement.textContent = flight.rating;
-
-    const reviewsElement = document.querySelector('.rating-info .reviews');
-    if (reviewsElement) reviewsElement.textContent = `${flight.reviews} reviews`;
-
-    // 2. Main Image (Hero)
-    if (flight.mainImage) {
-        const heroImage = document.querySelector('.hero-image');
-        if (heroImage) heroImage.src = flight.mainImage;
-    }
-
-    // 3. Gallery Images
-    if (flight.gallery && flight.gallery.length > 0) {
-        const galleryContainer = document.querySelector('.features-gallery');
-        if (galleryContainer) {
-            galleryContainer.innerHTML = flight.gallery.map(url =>
-                `<img src="${url}" alt="Flight Feature" onclick="window.open('${url}', '_blank')">`
-            ).join('');
-        }
-    }
-
-    // 4. Policies
-    if (flight.policies) {
-        const policiesContainer = document.querySelector('.policies-grid');
-        if (policiesContainer) {
-            // Split policies by new line
-            const policiesList = flight.policies.split('\n').filter(p => p.trim() !== '');
-
-            policiesContainer.innerHTML = policiesList.map(policy => `
-                <div class="policy-item">
-                    <i class="fas fa-check-circle" style="color: #8DD3BB;"></i>
-                    <span>${policy}</span>
-                </div>
+        if (DOM.policies && flight.policies) {
+            DOM.policies.innerHTML = flight.policies.split('\n').filter(p => p.trim()).map(p => `
+                <div class="policy-item"><i class="fas fa-check-circle" style="color: #8DD3BB;"></i><span>${p}</span></div>
             `).join('');
         }
+
+        DOM.returnCards.forEach(card => {
+            const name = card.querySelector('.airline-name h4');
+            const logo = card.querySelector('.airline-logo-box img');
+            const times = card.querySelectorAll('.time');
+            if (name) name.textContent = flight.airline;
+            if (logo && flight.logo) logo.src = flight.logo;
+            if (times.length >= 2) {
+                times[0].textContent = flight.departure;
+                times[1].textContent = flight.arrival;
+            }
+        });
+    };
+
+    // --- INICIALIZAÇÃO ---
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    if (id) {
+        const flights = JSON.parse(localStorage.getItem('adminFlights')) || [];
+        const flight = flights.find(f => f.id === id);
+        if (flight) updateUI(flight);
     }
 
-    // 5. Update Return Flights (Optional - using same flight data for demo)
-    updateReturnFlights(flight);
-}
-
-function updateReturnFlights(flight) {
-    // Update the return flight cards to match the airline and times
-    const returnCards = document.querySelectorAll('.return-flight-card');
-    returnCards.forEach(card => {
-        const airlineName = card.querySelector('.airline-name h4');
-        if (airlineName) airlineName.textContent = flight.airline;
-
-        // Update logo if available
-        const logoImg = card.querySelector('.airline-logo-box img');
-        if (logoImg && flight.logo) logoImg.src = flight.logo;
-
-        // Update times
-        const times = card.querySelectorAll('.time');
-        if (times.length >= 2) {
-            times[0].textContent = flight.departure;
-            times[1].textContent = flight.arrival;
-        }
-
-        // Update duration
-        const duration = card.querySelector('.flight-duration');
-        if (duration) duration.textContent = flight.duration;
-    });
-}
-
-function setupEventListeners() {
-    // Favorites button toggle
-    const favoriteButtons = document.querySelectorAll('.btn-favorites, .btn-icon');
-    favoriteButtons.forEach(btn => {
-        btn.addEventListener('click', function () {
-            const icon = this.querySelector('i');
-            if (icon && (icon.classList.contains('fa-heart'))) {
-                if (icon.classList.contains('far')) {
-                    icon.classList.remove('far');
-                    icon.classList.add('fas');
-                    icon.style.color = '#FF8682';
-                } else {
-                    icon.classList.remove('fas');
-                    icon.classList.add('far');
-                    icon.style.color = '';
-                }
+    // Favoritos
+    DOM.favoriteBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const icon = btn.querySelector('i.fa-heart');
+            if (icon) {
+                const isActive = icon.classList.contains('fas');
+                icon.classList.toggle('fas', !isActive);
+                icon.classList.toggle('far', isActive);
+                icon.style.color = isActive ? '' : '#FF8682';
             }
         });
     });
 
-    // Class selection checkboxes
-    const classCheckboxes = document.querySelectorAll('.class-options input[type="checkbox"]');
-    classCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function () {
-            if (this.checked) {
-                classCheckboxes.forEach(cb => {
-                    if (cb !== this) cb.checked = false;
-                });
-            }
+    // Classe de Voo
+    DOM.classChecks.forEach(check => {
+        check.addEventListener('change', () => {
+            if (check.checked) DOM.classChecks.forEach(c => { if (c !== check) c.checked = false; });
         });
     });
 
-    // Newsletter form
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            if (email) {
-                alert('Thank you for subscribing!');
-                this.reset();
-            }
-        });
-    }
+    DOM.newsletterForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Obrigado por se inscrever!');
+        DOM.newsletterForm.reset();
+    });
 
-    // Book now button
-    const bookBtn = document.querySelector('.btn-book');
-    if (bookBtn) {
-        bookBtn.addEventListener('click', function () {
-            window.location.href = 'flight-booking.html';
-        });
-    }
-}
+    DOM.bookBtn?.addEventListener('click', () => window.location.href = 'flight-booking.html');
+});

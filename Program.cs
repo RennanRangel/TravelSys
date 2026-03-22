@@ -51,13 +51,16 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
+app.UseDeveloperExceptionPage();
+/*
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
+    app.UseHttpsRedirection();
 }
+*/
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -75,6 +78,53 @@ app.MapControllerRoute(
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
+
+    // FORCED DB FIX
+    Console.WriteLine(">>> STARTING FORCED DB FIX <<<");
+    try {
+        using (var conn = new MySqlConnector.MySqlConnection(mySqlConnection))
+        {
+            await conn.OpenAsync();
+            string[] cols = { "Region", "BookingMode", "CheckIn", "CheckOut", "ReceptionMode", "ZipCode", "Country" };
+            foreach (var c in cols)
+            {
+                try { 
+                    using var cmd = new MySqlConnector.MySqlCommand($"ALTER TABLE Hotels ADD COLUMN {c} LONGTEXT NULL", conn);
+                    await cmd.ExecuteNonQueryAsync(); 
+                    Console.WriteLine($"> Successfully added column: {c}");
+                } catch { /* likely exists */ }
+            }
+            try { 
+                using var cmd = new MySqlConnector.MySqlCommand("ALTER TABLE Hotels MODIFY COLUMN Stars INT NULL", conn);
+                await cmd.ExecuteNonQueryAsync(); 
+                Console.WriteLine("> Successfully modified Stars column.");
+            } catch { }
+
+            // FORECED FLIGHTS DB FIX
+            string[] flightColsText = { "FlightClasses" };
+            foreach (var c in flightColsText)
+            {
+                try { 
+                    using var cmd = new MySqlConnector.MySqlCommand($"ALTER TABLE Flights ADD COLUMN {c} LONGTEXT NULL", conn);
+                    await cmd.ExecuteNonQueryAsync(); 
+                    Console.WriteLine($"> Successfully added column: {c}");
+                } catch { /* likely exists */ }
+            }
+            string[] flightColsDecimal = { "EconomyPrice", "BusinessPrice", "FirstClassPrice" };
+            foreach (var c in flightColsDecimal)
+            {
+                try { 
+                    using var cmd = new MySqlConnector.MySqlCommand($"ALTER TABLE Flights ADD COLUMN {c} DECIMAL(18,2) NULL", conn);
+                    await cmd.ExecuteNonQueryAsync(); 
+                    Console.WriteLine($"> Successfully added column: {c}");
+                } catch { /* likely exists */ }
+            }
+            }
+        } catch (Exception ex) {
+            Console.WriteLine($">>> DB FIX FAILED: {ex.Message}");
+        }
+        Console.WriteLine(">>> FINISHED FORCED DB FIX <<<");
+
     await DbInitializer.Initialize(services);
 }
 
