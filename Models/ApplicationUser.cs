@@ -11,11 +11,14 @@ public class ApplicationUser : IdentityUser
     
     public string? LastName { get; set; }
     
-    public string? Phone { get; set; }
     
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     
   
     public bool IsBCryptPassword { get; set; } = false;
     public string? ProfilePicture { get; set; }
+    
+    public string? Address { get; set; }
+    
+    public DateTime? DateOfBirth { get; set; }
 }

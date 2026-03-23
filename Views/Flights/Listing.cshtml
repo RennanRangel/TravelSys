@@ -170,7 +170,7 @@
             </div>
 
             
-            <main class="content">
+        <div class="results-content">
         
         <div class="sorting-header">
             <div class="sorting-tabs">
@@ -247,7 +247,7 @@
                             <div class="info-header-row">
 
                                 <div class="price-capsule">
-                                    <span class="price-hint">starting from</span>
+                                    <span class="price-hint">starting from @flight.Airline</span>
                                     <span class="price-total" id="price-@cid">R$ @flight.Price.ToString("N2")</span>
                                 </div>
                             </div>
@@ -259,7 +259,6 @@
                                         <input type="checkbox" checked data-price="@flight.Price" data-card="@cid" onchange="updateCardPrice('@cid')">
                                         <div class="time-slot">
                                             <span class="flight-time-range">@flight.Departure - @flight.Arrival</span>
-                                            <span class="airline-name-sub">@flight.Airline</span>
                                         </div>
                                     </div>
                                     <div class="row-middle">
@@ -285,7 +284,6 @@
                                         <input type="checkbox" data-price="@flight.Price" data-card="@cid" onchange="updateCardPrice('@cid')">
                                         <div class="time-slot">
                                             <span class="flight-time-range">@flight.Arrival - @flight.Departure</span>
-                                            <span class="airline-name-sub">@flight.Airline</span>
                                         </div>
                                     </div>
                                     <div class="row-middle">
@@ -355,5 +353,4 @@
 @section Scripts {
     <script src="~/js/flights-listing.js"></script>
     <script src="~/js/favorites-manager.js"></script>
-}
 }

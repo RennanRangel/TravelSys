@@ -10,6 +10,7 @@
 }
 
 <div class="account-profile-container">
+    @Html.AntiForgeryToken()
     <!-- Profile Header with Cover and Avatar -->
     <div class="profile-hero-section">
         <div class="profile-cover">
@@ -39,70 +40,73 @@
     </div>
 
     <!-- Account Details Tab -->
-    <div class="tab-content-panel @(ViewBag.ActiveTab == "account" ? "active" : "d-none")" id="account-tab">
+    <div class="tab-content-panel @(ViewBag.ActiveTab == "account" ? "active" : "")" id="account-tab">
         <div class="content-header">
             <h2>Account</h2>
         </div>
         
         <div class="account-details-card">
             <!-- Row: Name -->
-            <div class="detail-row">
+            <div class="detail-row" data-field="name">
                 <div class="info-group">
                     <label>Name</label>
-                    <div class="value">@(user.FirstName ?? "Not set") @(user.LastName ?? "")</div>
+                    <div class="value-display">@(string.IsNullOrEmpty(user.FirstName) ? "Not set" : user.FirstName) @(user.LastName ?? "")</div>
+                    <div class="edit-inputs d-none">
+                        <input type="text" class="edit-input first-name" value="@user.FirstName" placeholder="First Name">
+                        <input type="text" class="edit-input last-name" value="@user.LastName" placeholder="Last Name">
+                    </div>
                 </div>
-                <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
+                <div class="action-buttons-edit">
+                    <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
+                    <div class="edit-actions d-none">
+                        <button class="btn-save-inline">Save</button>
+                        <button class="btn-cancel-inline">Cancel</button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Row: Email -->
-            <div class="detail-row">
+            <!-- Row: Email (Email is usually sensitive, let's keep it as is or handle separately, user screenshot shows 'Change' but typically requires confirmation) -->
+            <div class="detail-row" data-field="email">
                 <div class="info-group">
                     <label>Email</label>
-                    <div class="value">@user.Email</div>
+                    <div class="value-display">@user.Email</div>
+                    <div class="edit-inputs d-none">
+                        <input type="email" class="edit-input user-email" value="@user.Email" placeholder="New Email">
+                    </div>
                 </div>
-                <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
+                <div class="action-buttons-edit">
+                    <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
+                    <div class="edit-actions d-none">
+                        <button class="btn-save-inline">Save</button>
+                        <button class="btn-cancel-inline">Cancel</button>
+                    </div>
+                </div>
             </div>
 
             <!-- Row: Password -->
-            <div class="detail-row">
+            <div class="detail-row" data-field="password">
                 <div class="info-group">
                     <label>Password</label>
-                    <div class="value">************</div>
+                    <div class="value-display">************</div>
+                    <div class="edit-inputs d-none">
+                        <input type="password" class="edit-input current-password" placeholder="Current Password">
+                        <input type="password" class="edit-input new-password" placeholder="New Password">
+                    </div>
                 </div>
-                <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
+                <div class="action-buttons-edit">
+                    <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
+                    <div class="edit-actions d-none">
+                        <button class="btn-save-inline">Save</button>
+                        <button class="btn-cancel-inline">Cancel</button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Row: Phone -->
-            <div class="detail-row">
-                <div class="info-group">
-                    <label>Phone number</label>
-                    <div class="value">@(user.PhoneNumber ?? "+1 000-000-0000")</div>
-                </div>
-                <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
-            </div>
-
-            <!-- Row: Address -->
-            <div class="detail-row">
-                <div class="info-group">
-                    <label>Address</label>
-                    <div class="value">St 32 main downtown, Los Angeles, California, USA</div>
-                </div>
-                <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
-            </div>
-
-            <!-- Row: Date of birth -->
-            <div class="detail-row">
-                <div class="info-group">
-                    <label>Date of birth</label>
-                    <div class="value">01-01-1992</div>
-                </div>
-                <button class="btn-change"><i class="fas fa-edit"></i> Change</button>
-            </div>
         </div>
     </div>
 
     <!-- Tickets/Bookings Tab -->
-    <div class="tab-content-panel @(ViewBag.ActiveTab == "bookings" ? "active" : "d-none")" id="bookings-tab">
+    <div class="tab-content-panel @(ViewBag.ActiveTab == "bookings" ? "active" : "")" id="bookings-tab">
         <div class="header-with-filter">
             <h2>Tickets/Bookings</h2>
             <div class="filter-dropdown">
@@ -179,7 +183,13 @@
 
                         <div class="ticket-actions-right">
                             <a href="/Flights/Ticket/@booking.Id" class="btn-download-ticket">Download Ticket</a>
-                            <button class="btn-goto-detail"><i class="fas fa-chevron-right"></i></button>
+                            <div class="booking-options-dropdown">
+                                <button class="btn-options-toggle"><i class="fas fa-ellipsis-v"></i></button>
+                                <div class="options-menu d-none">
+                                    <a href="/Flights/Details/@booking.FlightId" class="option-item"><i class="fas fa-info-circle"></i> View Details</a>
+                                    <button class="option-item btn-delete-booking-ajax" data-type="flight" data-id="@booking.Id"><i class="fas fa-trash-alt"></i> Excluir Compra</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 }
@@ -193,7 +203,7 @@
         </div>
 
         <!-- Stay Bookings List -->
-        <div class="ticket-list-container d-none" id="stays-list">
+        <div class="ticket-list-container" id="stays-list">
             @if (Model.StayBookings.Any())
             {
                 @foreach (var booking in Model.StayBookings)
@@ -246,7 +256,13 @@
 
                         <div class="ticket-actions-right">
                             <a href="/Hotels/Ticket/@booking.Id" class="btn-download-ticket">Download Ticket</a>
-                            <button class="btn-goto-detail"><i class="fas fa-chevron-right"></i></button>
+                            <div class="booking-options-dropdown">
+                                <button class="btn-options-toggle"><i class="fas fa-ellipsis-v"></i></button>
+                                <div class="options-menu d-none">
+                                    <a href="/Hotels/Details/@booking.HotelId" class="option-item"><i class="fas fa-info-circle"></i> View Details</a>
+                                    <button class="option-item btn-delete-booking-ajax" data-type="stay" data-id="@booking.Id"><i class="fas fa-trash-alt"></i> Excluir Compra</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 }
@@ -261,7 +277,7 @@
     </div>
 
     <!-- Payment Methods Tab -->
-    <div class="tab-content-panel @(ViewBag.ActiveTab == "payments" ? "active" : "d-none")" id="payment-tab">
+    <div class="tab-content-panel @(ViewBag.ActiveTab == "payments" ? "active" : "")" id="payment-tab">
         <div class="content-header">
             <h2>Payment methods</h2>
         </div>

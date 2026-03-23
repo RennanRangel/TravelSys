@@ -151,7 +151,7 @@ public class AccountController : Controller
             Email = email,
             FirstName = firstName,
             LastName = lastName,
-            Phone = phone,
+            PhoneNumber = phone,
             CreatedAt = DateTime.UtcNow,
             IsBCryptPassword = false
         };
@@ -282,4 +282,102 @@ public class AccountController : Controller
 
         return RedirectToAction("Index", "Home");
     }
+
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> UpdateProfile([FromBody] ProfileUpdateModel model)
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null) return Json(new { success = false, message = "User not found" });
+
+        bool basicModified = false;
+        if (model.FirstName != null && user.FirstName != model.FirstName) { user.FirstName = model.FirstName; basicModified = true; }
+        if (model.LastName != null && user.LastName != model.LastName) { user.LastName = model.LastName; basicModified = true; }
+        if (model.PhoneNumber != null && user.PhoneNumber != model.PhoneNumber) { user.PhoneNumber = model.PhoneNumber; basicModified = true; }
+        if (model.Address != null && user.Address != model.Address) { user.Address = model.Address; basicModified = true; }
+
+        if (basicModified)
+        {
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded) return Json(new { success = false, message = string.Join(", ", result.Errors.Select(e => e.Description)) });
+            user = await _userManager.FindByIdAsync(user.Id);
+        }
+
+        // Handle Email Change
+        if (!string.IsNullOrEmpty(model.Email) && model.Email != user.Email)
+        {
+            var emailExists = await _userManager.FindByEmailAsync(model.Email);
+            if (emailExists != null) return Json(new { success = false, message = "Email already in use." });
+            
+            var emailResult = await _userManager.SetEmailAsync(user, model.Email);
+            if (!emailResult.Succeeded) return Json(new { success = false, message = "Failed to update email." });
+
+            await _userManager.SetUserNameAsync(user, model.Email);
+            // Reload user
+            user = await _userManager.FindByIdAsync(user.Id);
+        }
+
+        // Handle Password Change
+        if (!string.IsNullOrEmpty(model.NewPassword))
+        {
+            if (string.IsNullOrEmpty(model.CurrentPassword))
+                return Json(new { success = false, message = "Current password is required to change password." });
+
+            var passResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+            if (!passResult.Succeeded)
+                return Json(new { success = false, message = string.Join(", ", passResult.Errors.Select(e => e.Description)) });
+        }
+
+        return Json(new { success = true });
+    }
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> DeleteFlightBooking(int id)
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null) return Json(new { success = false, message = "User not found" });
+
+        var booking = await _context.Bookings.FindAsync(id);
+        if (booking == null) return Json(new { success = false, message = "Booking not found" });
+
+        if (booking.UserId != user.Id && booking.UserEmail != user.Email)
+            return Json(new { success = false, message = "Unauthorized" });
+
+        _context.Bookings.Remove(booking);
+        await _context.SaveChangesAsync();
+
+        return Json(new { success = true });
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> DeleteStayBooking(int id)
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null) return Json(new { success = false, message = "User not found" });
+
+        var booking = await _context.HotelBookings.FindAsync(id);
+        if (booking == null) return Json(new { success = false, message = "Booking not found" });
+
+        if (booking.UserId != user.Id && booking.UserEmail != user.Email)
+            return Json(new { success = false, message = "Unauthorized" });
+
+        _context.HotelBookings.Remove(booking);
+        await _context.SaveChangesAsync();
+
+        return Json(new { success = true });
+    }
+}
+
+public class ProfileUpdateModel
+{
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
+    public string? PhoneNumber { get; set; }
+    public string? Address { get; set; }
+    public string? DateOfBirth { get; set; }
+    public string? Email { get; set; }
+    public string? CurrentPassword { get; set; }
+    public string? NewPassword { get; set; }
 }

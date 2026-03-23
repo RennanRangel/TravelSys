@@ -13,7 +13,10 @@ public static class DbInitializer
         var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         var configuration = serviceProvider.GetRequiredService<IConfiguration>();
 
-        // Roles setup
+        // 1. Repairs / Schema Maintenance (MUST BE FIRST)
+        await EnsureSchemaRepair(context);
+
+        // 2. Roles setup
         string[] roles = { "Admin", "User" };
         foreach (var role in roles)
         {
@@ -36,7 +39,7 @@ public static class DbInitializer
                 Email = adminEmail,
                 FirstName = "Admin",
                 LastName = "User",
-                Phone = "1234567890",
+                PhoneNumber = "1234567890",
                 CreatedAt = DateTime.UtcNow,
                 EmailConfirmed = true,
                 IsBCryptPassword = false
@@ -67,7 +70,7 @@ public static class DbInitializer
                 Email = admin2Email,
                 FirstName = "Admin2",
                 LastName = "User",
-                Phone = "1234567891",
+                PhoneNumber = "1234567891",
                 CreatedAt = DateTime.UtcNow,
                 EmailConfirmed = true,
                 IsBCryptPassword = false
@@ -81,32 +84,114 @@ public static class DbInitializer
             }
         }
 
-        // (Colunas Status já foram injetadas no banco e os registros atualizados)
+    }
 
-        // Criar tabela AdminTasks se não existir
-        try {
-            context.Database.ExecuteSqlRaw(@"
-                CREATE TABLE IF NOT EXISTS AdminTasks (
-                    Id INT AUTO_INCREMENT PRIMARY KEY,
-                    Title LONGTEXT NOT NULL,
-                    Description LONGTEXT NULL,
-                    Status LONGTEXT NOT NULL,
-                    Priority LONGTEXT NOT NULL,
-                    AssignedTo LONGTEXT NULL,
-                    CreatedAt DATETIME(6) NOT NULL,
-                    CompletedAt DATETIME(6) NULL
-                );
-            ");
-        } catch { }
+    private static async Task EnsureSchemaRepair(ApplicationDbContext context)
+    {
+        var conn = (MySqlConnector.MySqlConnection)context.Database.GetDbConnection();
+        if (conn.State != System.Data.ConnectionState.Open) await conn.OpenAsync();
 
-        // Adicionar coluna IsRoundTrip em Bookings se não existir
-        try {
-            // Tenta adicionar a coluna. Se já existir, a exceção será ignorada pelo catch.
-            context.Database.ExecuteSqlRaw("ALTER TABLE Bookings ADD COLUMN IsRoundTrip TINYINT(1) NOT NULL DEFAULT 0;");
-            Console.WriteLine(">>> SUCCESS: Added IsRoundTrip column to Bookings via DbInitializer <<<");
-        } catch (Exception ex) {
-            // Provavelmente a coluna já existe
-            Console.WriteLine($">>> INFO: Could not add IsRoundTrip column (might already exist): {ex.Message}");
+        try 
+        {
+            // 1. Repair HOTELS
+            var hotelCols = new (string Name, string Type)[] { 
+                ("Region", "LONGTEXT NULL"), ("BookingMode", "LONGTEXT NULL"), 
+                ("CheckIn", "LONGTEXT NULL"), ("CheckOut", "LONGTEXT NULL"), 
+                ("ReceptionMode", "LONGTEXT NULL"), ("ZipCode", "LONGTEXT NULL"), 
+                ("Country", "LONGTEXT NULL"), ("Status", "VARCHAR(50) DEFAULT 'publicada'"), 
+                ("Type", "LONGTEXT NULL"), ("Overview", "LONGTEXT NULL"), 
+                ("MapUrl", "LONGTEXT NULL"), ("GalleryImages", "LONGTEXT NULL"), 
+                ("MainImage", "LONGTEXT NULL"), ("IsAccessible", "TINYINT(1) DEFAULT 0") 
+            };
+            foreach (var col in hotelCols) await EnsureColumn(conn, "Hotels", col.Name, col.Type);
+            await ExecuteManual(conn, "ALTER TABLE Hotels MODIFY COLUMN Stars INT NULL");
+
+            // 2. Repair FLIGHTS
+            var flightCols = new (string Name, string Type)[] { 
+                ("MainImage", "LONGTEXT NULL"), ("GalleryImages", "LONGTEXT NULL"), 
+                ("Policies", "LONGTEXT NULL"), ("Amenities", "LONGTEXT NULL"), 
+                ("TripType", "LONGTEXT NULL"), ("FlightClasses", "LONGTEXT NULL"), 
+                ("Status", "VARCHAR(50) DEFAULT 'publicada'"), ("Logo", "LONGTEXT NULL"), 
+                ("Terminal", "LONGTEXT NULL"), ("Frequency", "LONGTEXT NULL"), 
+                ("IsAccessible", "TINYINT(1) DEFAULT 0"),
+                ("EconomyPrice", "DECIMAL(18,2) NULL"), ("BusinessPrice", "DECIMAL(18,2) NULL"), 
+                ("FirstClassPrice", "DECIMAL(18,2) NULL")
+            };
+            foreach (var col in flightCols) await EnsureColumn(conn, "Flights", col.Name, col.Type);
+
+            // 3. Repair BOOKINGS
+            var bookingCols = new (string Name, string Type)[] { 
+                ("Gate", "LONGTEXT NULL"), ("Seat", "LONGTEXT NULL"), 
+                ("TicketNumber", "LONGTEXT NULL"), ("UserName", "LONGTEXT NULL"), 
+                ("PaymentType", "LONGTEXT NULL"), ("Status", "LONGTEXT NULL"), 
+                ("FlightClass", "LONGTEXT NULL"), ("IsRoundTrip", "TINYINT(1) NOT NULL DEFAULT 0") 
+            };
+            foreach (var col in bookingCols) await EnsureColumn(conn, "Bookings", col.Name, col.Type);
+
+            // 4. Repair HOTELBOOKINGS
+            var hbCols = new (string Name, string Type)[] { 
+                ("UserName", "LONGTEXT NULL"), ("RoomType", "LONGTEXT NULL"), 
+                ("PaymentType", "LONGTEXT NULL"), ("ReservationNumber", "LONGTEXT NULL"), 
+                ("Status", "LONGTEXT NULL") 
+            };
+            foreach (var col in hbCols) await EnsureColumn(conn, "HotelBookings", col.Name, col.Type);
+
+            // 5. Repair USERCARDS
+            await EnsureColumn(conn, "UserCards", "CardType", "LONGTEXT NULL");
+
+            // 6. Repair ASPNETUSERS
+            var userCols = new (string Name, string Type)[] { 
+                ("FirstName", "LONGTEXT NULL"), ("LastName", "LONGTEXT NULL"), 
+                ("PhoneNumber", "LONGTEXT NULL"), ("IsBCryptPassword", "TINYINT(1) DEFAULT 0"), 
+                ("ProfilePicture", "LONGTEXT NULL"),
+                ("Address", "LONGTEXT NULL"),
+                ("DateOfBirth", "DATETIME(6) NULL")
+            };
+            foreach (var col in userCols) await EnsureColumn(conn, "AspNetUsers", col.Name, col.Type);
+            await EnsureColumn(conn, "AspNetUsers", "CreatedAt", "DATETIME(6) DEFAULT CURRENT_TIMESTAMP(6)");
+
+            // 7. Repair ADMINTASKS
+            // Tabela já criada via CREATE TABLE IF NOT EXISTS anteriormente ou pode ser reforçada aqui
+            var taskCols = new (string Name, string Type)[] { 
+                ("Title", "LONGTEXT NOT NULL"), ("Description", "LONGTEXT NULL"), 
+                ("Status", "LONGTEXT NOT NULL"), ("Priority", "LONGTEXT NOT NULL"), 
+                ("AssignedTo", "LONGTEXT NULL") 
+            };
+            foreach (var col in taskCols) await EnsureColumn(conn, "AdminTasks", col.Name, col.Type);
+
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($">>> CRITICAL DB REPAIR ERROR: {ex.Message}");
+        }
+    }
+
+    private static async Task EnsureColumn(MySqlConnector.MySqlConnection conn, string table, string column, string type)
+    {
+        try 
+        {
+            using var cmdCheck = new MySqlConnector.MySqlCommand(
+                $"SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '{table}' AND column_name = '{column}' AND table_schema = DATABASE();", conn);
+            
+            var count = Convert.ToInt32(await cmdCheck.ExecuteScalarAsync());
+            if (count == 0)
+            {
+                using var cmdAdd = new MySqlConnector.MySqlCommand($"ALTER TABLE {table} ADD COLUMN {column} {type};", conn);
+                await cmdAdd.ExecuteNonQueryAsync();
+                Console.WriteLine($">>> DB REPAIR: Added {column} to {table} <<<");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($">>> DB REPAIR WARNING: Could not ensure column {column} in {table}: {ex.Message}");
+        }
+    }
+
+    private static async Task ExecuteManual(MySqlConnector.MySqlConnection conn, string sql)
+    {
+        try {
+            using var cmd = new MySqlConnector.MySqlCommand(sql, conn);
+            await cmd.ExecuteNonQueryAsync();
+        } catch { }
     }
 }

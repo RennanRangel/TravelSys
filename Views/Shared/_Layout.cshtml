@@ -13,9 +13,9 @@
 </head>
 <body>
     <header>
-     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow py-4">
+     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow py-3">
     <div class="container-fluid align-items-center">
-        <a class="navbar-brand me-4" asp-area="" asp-controller="Home" asp-action="Index">
+        <a class="navbar-brand me-5" asp-area="" asp-controller="Home" asp-action="Index">
             <span class="navbar-brand-text">Travel<i class="fas fa-plane-departure navbar-brand-icon"></i></span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -24,7 +24,7 @@
         </button>
         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between align-items-center">
             <ul class="navbar-nav me-auto align-items-center">
-                <li class="nav-item">
+                <li class="nav-item me-3">
                     <a class="nav-link site-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Flights" ? "active" : "")" asp-area="" asp-controller="Flights" asp-action="Index">
                         <i class="fas fa-plane"></i> <span class="nav-text">Find Flight</span>
                     </a>
@@ -69,6 +69,16 @@
                                 <div class="item-left"><i class="fas fa-credit-card"></i> Payments</div>
                                 <i class="fas fa-chevron-right chevron-right"></i>
                             </a>
+
+                            <div class="dropdown-divider-premium"></div>
+
+                            <form asp-controller="Account" asp-action="DeleteAccount" method="post" id="deleteAccountForm" style="display:none;">
+                                @Html.AntiForgeryToken()
+                            </form>
+                            <a class="dropdown-item-premium text-danger" href="javascript:void(0)" onclick="confirmDeleteAccount()">
+                                <div class="item-left"><i class="fas fa-trash-alt"></i> Excluir Conta</div>
+                                <i class="fas fa-chevron-right chevron-right"></i>
+                            </a>
                             
                             <form asp-controller="Account" asp-action="Logout" method="post" class="logout-form">
                                 <button type="submit" class="dropdown-item-premium">
@@ -93,11 +103,9 @@
     </header>
     
   
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main">
+        @RenderBody()
+    </main>
 
     <footer class="border-top footer text-muted">
         <div class="container">

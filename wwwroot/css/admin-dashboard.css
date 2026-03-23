@@ -472,13 +472,11 @@ body.admin-body {
 
 /* Charts Refactor */
 .chart-container {
-    padding: 40px;
+    padding: 24px;
     min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: var(--admin-card-shadow);
 }
 
 .chart-placeholder-icon {

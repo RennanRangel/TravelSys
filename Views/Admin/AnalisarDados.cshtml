@@ -48,17 +48,126 @@
 
 <div class="row g-4">
     <div class="col-md-8">
-        <div class="admin-card chart-container">
-            <i class="fas fa-chart-bar chart-placeholder-icon"></i>
-            <h4>Evolução de Receitas</h4>
-            <p class="text-muted">Espaço reservado para o gráfico principal de receitas</p>
+        <div class="admin-card chart-container shadow-sm p-4">
+            <h4 class="mb-4">Evolução de Receitas</h4>
+            <div style="height: 300px; width: 100%;">
+                <canvas id="revenueChart"></canvas>
+            </div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="admin-card chart-container">
-            <i class="fas fa-chart-pie chart-placeholder-icon"></i>
-            <h4>Visitas por Destino</h4>
-            <p class="text-muted">Espaço reservado para o gráfico de destinos mais populares</p>
+        <div class="admin-card chart-container shadow-sm p-4">
+            <h4 class="mb-4">Visitas por Destino</h4>
+            <div style="height: 300px; width: 100%;">
+                <canvas id="destinationChart"></canvas>
+            </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Admin Dashboard: Initializing Charts...');
+            
+            // Utility to safely get data from Model
+            const revenueData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.RevenueByMonth));
+            const destinationData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.BookingsByDestination));
+
+            console.log('Revenue Data:', revenueData);
+            console.log('Destination Data:', destinationData);
+
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js failed to load!');
+                return;
+            }
+
+            // Revenue Chart
+            const revenueCanvas = document.getElementById('revenueChart');
+            if (revenueCanvas) {
+                const revenueCtx = revenueCanvas.getContext('2d');
+                const labels = revenueData.map(r => r.Month);
+                const values = revenueData.map(r => r.Revenue);
+
+                new Chart(revenueCtx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Receita (R$)',
+                            data: values,
+                            borderColor: '#8DD3BB',
+                            backgroundColor: 'rgba(141, 211, 187, 0.2)',
+                            fill: true,
+                            tension: 0.4,
+                            borderWidth: 3,
+                            pointBackgroundColor: '#8DD3BB',
+                            pointRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: { color: 'rgba(0,0,0,0.05)' },
+                                ticks: {
+                                    callback: function(value) {
+                                        return 'R$ ' + value.toLocaleString('pt-BR');
+                                    }
+                                }
+                            },
+                            x: {
+                                grid: { display: false }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Destination Chart
+            const destCanvas = document.getElementById('destinationChart');
+            if (destCanvas) {
+                const destCtx = destCanvas.getContext('2d');
+                const labels = destinationData.map(d => d.Destination);
+                const values = destinationData.map(d => d.Count);
+
+                new Chart(destCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: values,
+                            backgroundColor: [
+                                '#8DD3BB',
+                                '#FF8682',
+                                '#112211',
+                                '#FFD700',
+                                '#4169E1'
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    usePointStyle: true,
+                                    padding: 20
+                                }
+                            }
+                        },
+                        cutout: '70%'
+                    }
+                });
+            }
+        });
+    </script>
+}

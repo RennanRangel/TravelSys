@@ -137,12 +137,50 @@ public class AdminController : Controller
             conversionRate = Math.Round((decimal)totalBookings / usersCount * 100, 1);
         }
 
+        // Chart Data: Revenue by Month (last 6 months)
+        var last6Months = Enumerable.Range(0, 6)
+            .Select(i => DateTime.Now.AddMonths(-i))
+            .OrderBy(d => d)
+            .ToList();
+
+        var revenueByMonth = new List<RevenueDataPoint>();
+        var flightBookings = await _context.Bookings.ToListAsync();
+        var hotelBookings = await _context.HotelBookings.ToListAsync();
+
+        foreach (var monthDate in last6Months)
+        {
+            var monthRevenue = flightBookings
+                .Where(b => b.BookingDate.Month == monthDate.Month && b.BookingDate.Year == monthDate.Year)
+                .Sum(b => b.TotalPrice) +
+                hotelBookings
+                .Where(b => b.BookingDate.Month == monthDate.Month && b.BookingDate.Year == monthDate.Year)
+                .Sum(b => b.TotalPrice);
+
+            revenueByMonth.Add(new RevenueDataPoint 
+            { 
+                Month = monthDate.ToString("MMM", new System.Globalization.CultureInfo("pt-BR")), 
+                Revenue = monthRevenue 
+            });
+        }
+
+        // Chart Data: Bookings by Destination (Top 5)
+        var bookingsByDestination = await _context.Bookings
+            .Include(b => b.Flight)
+            .Where(b => b.Flight != null)
+            .GroupBy(b => b.Flight!.To)
+            .Select(g => new DestinationDataPoint { Destination = g.Key, Count = g.Count() })
+            .OrderByDescending(d => d.Count)
+            .Take(5)
+            .ToListAsync();
+
         var viewModel = new AdminViewModel
         {
             TotalBookings = totalBookings,
             TotalRevenue = totalRevenue,
             ActiveUsers = usersCount,
-            ConversionRate = conversionRate
+            ConversionRate = conversionRate,
+            RevenueByMonth = revenueByMonth,
+            BookingsByDestination = bookingsByDestination
         };
 
         return View(viewModel);

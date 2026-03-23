@@ -10,22 +10,22 @@
     color: #FFFFFF;
     position: relative;
     overflow: visible;
-    margin-top: -20px;
+    margin-top: 00px;
 }
 
 .hero-container {
-    max-width: 1200px;
+    max-width: 1232px;
     width: 100%;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 24px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     position: relative;
     z-index: 2;
     height: 100%;
-    justify-content: flex-end;
-    padding-bottom: 80px;
+    justify-content: center; /* Center content vertically */
+    padding-top: 120px;
 }
 
 .img-hero {
@@ -63,8 +63,8 @@
 .search-container {
     width: 100%;
     position: relative;
-    margin-top: 20px;
-    margin-bottom: -420px;
+    margin-top: 60px; /* More space from title */
+    margin-bottom: -460px; /* Pull content up further */
 }
 
 .search-card {

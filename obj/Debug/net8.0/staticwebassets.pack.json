@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\admin-dashboard.css"
     },
     {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\admin-tasks.css",
+      "PackagePath": "staticwebassets\\css\\admin-tasks.css"
+    },
+    {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\admin.css",
       "PackagePath": "staticwebassets\\css\\admin.css"
     },
@@ -83,6 +87,10 @@
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\hotels.css",
       "PackagePath": "staticwebassets\\css\\hotels.css"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\layout-overrides.css",
+      "PackagePath": "staticwebassets\\css\\layout-overrides.css"
     },
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\css\\login.css",
@@ -205,6 +213,10 @@
       "PackagePath": "staticwebassets\\images\\uploads\\058b26f3-d626-461b-bd0d-be96a17ca3ef_Img-aviao.webp"
     },
     {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\07262381-30f5-44a3-9812-4f92ec7986dd_2024_Nitro_option_02_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\07262381-30f5-44a3-9812-4f92ec7986dd_2024_Nitro_option_02_3840x2400.jpg"
+    },
+    {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\09742ad6-f6d8-42b9-845d-21129f0bfa96_2024_Nitro_Default_3840x2400.jpg",
       "PackagePath": "staticwebassets\\images\\uploads\\09742ad6-f6d8-42b9-845d-21129f0bfa96_2024_Nitro_Default_3840x2400.jpg"
     },
@@ -219,6 +231,10 @@
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\1dcb78f1-8491-469d-8043-54e6db6decfe_Img-aviao.webp",
       "PackagePath": "staticwebassets\\images\\uploads\\1dcb78f1-8491-469d-8043-54e6db6decfe_Img-aviao.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\2771eaa9-3b73-428d-9740-9899c6bce00a_2024_Nitro_option_02_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\2771eaa9-3b73-428d-9740-9899c6bce00a_2024_Nitro_option_02_3840x2400.jpg"
     },
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\2905063b-bed7-44df-9914-48fabc8eec15_2024_Nitro_option_01_3840x2400.jpg",
@@ -401,6 +417,10 @@
       "PackagePath": "staticwebassets\\images\\uploads\\e58d3290-353a-452f-9130-01d5e79a6763_2024_Nitro_option_01_3840x2400.jpg"
     },
     {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\e6279315-3741-4c86-9268-cd78cd86ba10_2024_Nitro_option_01_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\e6279315-3741-4c86-9268-cd78cd86ba10_2024_Nitro_option_01_3840x2400.jpg"
+    },
+    {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\e6e0f21a-43c2-4799-83ec-b09d31ebcb45_2024_Nitro_option_01_3840x2400.jpg",
       "PackagePath": "staticwebassets\\images\\uploads\\e6e0f21a-43c2-4799-83ec-b09d31ebcb45_2024_Nitro_option_01_3840x2400.jpg"
     },
@@ -415,6 +435,10 @@
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\ea3b7c22-a98d-490b-a504-7d59487510f9_2024_Nitro_Default_3840x2400.jpg",
       "PackagePath": "staticwebassets\\images\\uploads\\ea3b7c22-a98d-490b-a504-7d59487510f9_2024_Nitro_Default_3840x2400.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\ec73d292-c8a3-4d6e-a549-4fa8f792bb2f_2024_Nitro_option_01_3840x2400.jpg",
+      "PackagePath": "staticwebassets\\images\\uploads\\ec73d292-c8a3-4d6e-a549-4fa8f792bb2f_2024_Nitro_option_01_3840x2400.jpg"
     },
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\f91958f5-8030-49a0-8b7b-3c7d1284b3a4_Img-aviao.webp",
@@ -449,6 +473,14 @@
       "PackagePath": "staticwebassets\\js\\admin-management.js"
     },
     {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\admin-stepper.js",
+      "PackagePath": "staticwebassets\\js\\admin-stepper.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\admin-tasks.js",
+      "PackagePath": "staticwebassets\\js\\admin-tasks.js"
+    },
+    {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\admin-upload.js",
       "PackagePath": "staticwebassets\\js\\admin-upload.js"
     },
@@ -459,6 +491,10 @@
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\auth.js",
       "PackagePath": "staticwebassets\\js\\auth.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\favorites-manager.js",
+      "PackagePath": "staticwebassets\\js\\favorites-manager.js"
     },
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\flight-booking.js",

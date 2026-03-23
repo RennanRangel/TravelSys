@@ -500,9 +500,9 @@ body {
 
 /* Policies */
 .policies-section {
-    background-color: rgba(68, 220, 167, 0.15);
-    border-radius: 12px;
-    padding: 24px;
+    background-color: #f1fcf8; /* Light green background */
+    border-radius: 16px;
+    padding: 32px;
     margin-bottom: 32px;
 }
 
@@ -546,10 +546,11 @@ body {
 }
 
 .info-item-box {
-    background: #f9fafb;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
+    background: #def7ee; /* Slightly darker green than the section background */
+    padding: 20px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
 .info-item-label {

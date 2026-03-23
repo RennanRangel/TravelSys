@@ -1,24 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-
-}
 
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #FAFBFC;
     color: #112211;
     line-height: 1.6;
-    display: flex;
-    flex-direction: column;
 }
 
 .header {
@@ -357,7 +342,6 @@ body {
 html,
 body {
     width: 100%;
-    min-height: 100vh;
     overflow-x: hidden;
     margin: 0;
 }
@@ -670,6 +654,8 @@ body {
     gap: 8px;
     font-size: 14px;
     color: #112211;
+    margin-top: 32px;
+    margin-bottom: 32px;
 }
 
 .results-info span {
@@ -1353,7 +1339,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin: 40px 0;
+    margin: 270px 0 60px;
     width: 100%;
 }
 

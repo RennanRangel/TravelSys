@@ -23,4 +23,20 @@ public class AdminViewModel
     public IFormFile? FlightLogoUpload { get; set; }
     public IFormFile? FlightMainImageUpload { get; set; }
     public IFormFile? HotelMainImageUpload { get; set; }
+
+    // Chart Data
+    public List<RevenueDataPoint> RevenueByMonth { get; set; } = new();
+    public List<DestinationDataPoint> BookingsByDestination { get; set; } = new();
+}
+
+public class RevenueDataPoint
+{
+    public string Month { get; set; } = string.Empty;
+    public decimal Revenue { get; set; }
+}
+
+public class DestinationDataPoint
+{
+    public string Destination { get; set; } = string.Empty;
+    public int Count { get; set; }
 }

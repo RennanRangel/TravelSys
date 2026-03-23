@@ -9,6 +9,9 @@ body .site-nav-link {
     color: #112211;
     font-weight: 600;
     transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Spacing between icon and text */
 }
 
 body .navbar .site-nav-link.active,
