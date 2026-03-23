@@ -126,3 +126,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+function applySort(order) {
+    const sortInput = document.getElementById('sortOrderInput');
+    const filterForm = document.getElementById('filterForm');
+    if (sortInput && filterForm) {
+        sortInput.value = order;
+        filterForm.submit();
+    }
+}
+
+function updateCardPrice(cardId) {
+    const card = document.getElementById(cardId);
+    if (!card) return;
+
+    const checkboxes = card.querySelectorAll('.itinerary-row input[type="checkbox"]');
+    const cbArr = Array.from(checkboxes);
+    
+    // Se todos estiverem desmarcados, marca o primeiro (Ida) por padrão
+    if (cbArr.length > 0 && cbArr.every(cb => !cb.checked)) {
+        cbArr[0].checked = true;
+    }
+
+    let total = 0;
+    let ida = false, volta = false;
+    if (cbArr[0]) ida = cbArr[0].checked;
+    if (cbArr[1]) volta = cbArr[1].checked;
+
+    cbArr.forEach(cb => {
+        if (cb.checked) {
+            total += parseFloat(cb.dataset.price) || 0;
+        }
+    });
+
+    const priceEl = document.getElementById('price-' + cardId);
+    if (priceEl) {
+        priceEl.textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
+    }
+
+    const link = document.getElementById('link-' + cardId);
+    if (link) {
+        const base = link.href.split('?')[0];
+        link.href = base + '?ida=' + ida + '&volta=' + volta;
+    }
+}

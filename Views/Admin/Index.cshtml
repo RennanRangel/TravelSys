@@ -11,7 +11,7 @@
             <h1>Desenvolva sua plataforma com controle e insights refinados!</h1>
             <p>Bem-vindo de volta, Administrador. Aqui está um resumo do desempenho da sua rede de viagens.</p>
         </div>
-        <div class="hero-illustration" style="position: absolute; right: 48px; top: 50%; transform: translateY(-50%); opacity: 0.2; font-size: 120px;">
+        <div class="hero-illustration">
             <i class="fas fa-home"></i>
         </div>
     </section>
@@ -22,27 +22,27 @@
         <div class="special-card">
             <div class="special-card-header">
                 <h3>Reservas do dia</h3>
-                <i class="fas fa-pen" style="color: var(--admin-primary); font-size: 14px; cursor: pointer;"></i>
+                <i class="fas fa-pen edit-icon-mini"></i>
             </div>
             <div class="illustration-area">
                 <div class="calendar-mockup">
                     <i class="fas fa-calendar-alt"></i>
                 </div>
-                <p class="fw-bold" style="font-size: 18px; color: #1F2937;">Você não possui<br>reservas agendadas</p>
+                <p class="fw-bold card-empty-text">Você não possui<br>reservas agendadas</p>
             </div>
         </div>
 
         <!-- Card 2: Selo de Feedback -->
         <div class="special-card">
             <div class="special-card-header">
-                <div class="indicator-icon" style="background: var(--admin-primary); color: white;">
+                <div class="indicator-icon indicator-accent">
                     <i class="fas fa-certificate"></i>
                 </div>
                 <h3>Selo de Feedback</h3>
             </div>
-            <p class="fw-bold" style="font-size: 16px; margin-bottom: 8px;">Acompanhe os indicadores dos seus serviços e garanta seu Selo de Excelência!</p>
-            <p style="font-size: 14px; color: var(--admin-text-muted); line-height: 1.5;">
-                Com o Selo, sua empresa se torna referência, atrai os melhores viajantes e mostra que a qualidade é prioridade. <a href="#" style="color: var(--admin-primary); text-decoration: none; font-weight: 600;">Conheça os novos critérios</a>
+            <p class="fw-bold card-secondary-title">Acompanhe os indicadores dos seus serviços e garanta seu Selo de Excelência!</p>
+            <p class="card-body-text">
+                Com o Selo, sua empresa se torna referência, atrai os melhores viajantes e mostra que a qualidade é prioridade. <a href="#" class="link-premium">Conheça os novos critérios</a>
             </p>
             
             <div class="indicator-row">
@@ -53,7 +53,7 @@
                     <div class="indicator-text">
                         <div>98.5% dos voos</div>
                         <div>com feedback positivo</div>
-                        <a href="#" style="font-size: 11px; color: var(--admin-primary); text-decoration: none; font-weight: 600;">Ver detalhes</a>
+                        <a href="#" class="link-mini">Ver detalhes</a>
                     </div>
                 </div>
                 <div class="indicator-box">
@@ -73,8 +73,5 @@
 
 
 @section Scripts {
-<script>
-    // Minimal dashboard scripts if any required later
-</script>
-<script src="~/js/admin-upload.js"></script>
+    <script src="~/js/admin-upload.js"></script>
 }

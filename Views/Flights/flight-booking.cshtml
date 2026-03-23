@@ -84,7 +84,7 @@
                 @if (isVolta)
                 {
                     <!-- Volta Schedule Card -->
-                    <div class="flight-schedule-card" style="margin-top: 20px;">
+                    <div class="flight-schedule-card schedule-card-margin">
                         <div class="card-header">
                             <h3>Volta Sat, Dec 11</h3>
                             <span class="duration">@Model.Duration</span>
@@ -119,7 +119,7 @@
                             <div class="path-horizontal">
                                 <div class="dot"></div>
                                 <div class="line"></div>
-                                <i class="fas fa-plane" style="transform: rotate(180deg);"></i>
+                                <i class="fas fa-plane plane-icon-rotated"></i>
                                 <div class="line"></div>
                                 <div class="dot"></div>
                             </div>
@@ -159,6 +159,7 @@
             <form asp-action="Payment" asp-route-id="@Model.Id" asp-route-volta="@(isVolta ? "true" : "false")" method="get" class="auth-booking-section">
                 <h3>Login or Sign up to book</h3>
                 <div class="input-phone-group">
+                    <input type="hidden" name="flightClass" value="@ViewBag.FlightClass" />
                     <input type="text" placeholder="Phone Number" required name="phoneNumber">
                 </div>
                 <p class="auth-notice">We'll call or text you to confirm your number. Standard message and data rates apply. <a href="#">Privacy Policy</a></p>
@@ -188,7 +189,7 @@
                 <div class="summary-header">
                     <img src="@(string.IsNullOrEmpty(Model.MainImage) ? "/img/flights/A380.jpg" : Model.MainImage)" alt="Flight" class="summary-img">
                     <div class="summary-info">
-                        <span class="class-label">Economy</span>
+                        <span class="class-label">@(ViewBag.FlightClass ?? "Economy")</span>
                         <h4>@Model.Airline A380 Airbus</h4>
                         <div class="rating-box">
                             <span class="score">@Model.Rating</span>

@@ -91,3 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     DOM.bookBtn?.addEventListener('click', () => window.location.href = 'flight-booking.html');
 });
+
+function updateFlightPrice(val, name, className) {
+    const priceDisplay = document.getElementById('flight-price-display');
+    const titleDisplay = document.getElementById('features-title-display');
+    const classInput = document.getElementById('flightClassInput');
+    
+    if (priceDisplay) priceDisplay.innerHTML = 'R$ ' + parseFloat(val).toFixed(2);
+    if (titleDisplay) titleDisplay.innerHTML = name;
+    if (classInput) classInput.value = className;
+}

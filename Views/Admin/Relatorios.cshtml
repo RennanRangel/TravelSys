@@ -15,8 +15,8 @@
 
 <div class="mgmt-header mb-4">
     <div>
-        <h1 style="font-size: 24px; font-weight: 700; color: #112211; margin-bottom: 4px;">Relatórios</h1>
-        <p style="color: var(--admin-text-muted); font-size: 14px; margin: 0;">Gere, visualize e baixe relatórios detalhados sobre o sistema.</p>
+        <h1 class="mgmt-title">Relatórios</h1>
+        <p class="mgmt-subtitle">Gere, visualize e baixe relatórios detalhados sobre o sistema.</p>
     </div>
     <div class="d-flex gap-3 align-items-center">
     </div>
@@ -60,43 +60,43 @@
                     <th>Tipo</th>
                     <th>Dados</th>
                     <th>Receita</th>
-                    <th style="text-align: right;">Exportar</th>
+                    <th class="text-end">Exportar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>
-                        <div style="font-weight: 600; color: #112211;">Relatório Financeiro Completo</div>
-                        <div style="font-size: 12px; color: #666;">Inclui todas as reservas de voos e hotéis com valores e status.</div>
+                        <div class="report-name">Relatório Financeiro Completo</div>
+                        <div class="report-desc">Inclui todas as reservas de voos e hotéis com valores e status.</div>
                     </td>
                     <td><span class="badge bg-light text-dark">Financeiro</span></td>
                     <td>@totalReservas reservas</td>
                     <td>@totalRevenue.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
-                    <td style="text-align: right;">
+                    <td class="text-end">
                         <a asp-controller="Admin" asp-action="ExportFinanceiro" class="btn btn-sm btn-outline-primary"><i class="fas fa-download"></i> CSV</a>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div style="font-weight: 600; color: #112211;">Desempenho de Hotéis</div>
-                        <div style="font-size: 12px; color: #666;">Lista todos os hotéis com quantidade de reservas e receita gerada.</div>
+                        <div class="report-name">Desempenho de Hotéis</div>
+                        <div class="report-desc">Lista todos os hotéis com quantidade de reservas e receita gerada.</div>
                     </td>
                     <td><span class="badge bg-light text-dark">Operacional</span></td>
                     <td>@totalHotels hotéis · @totalHotelBookings reservas</td>
                     <td>@hotelRevenue.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
-                    <td style="text-align: right;">
+                    <td class="text-end">
                         <a asp-controller="Admin" asp-action="ExportHoteis" class="btn btn-sm btn-outline-primary"><i class="fas fa-download"></i> CSV</a>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div style="font-weight: 600; color: #112211;">Desempenho de Voos</div>
-                        <div style="font-size: 12px; color: #666;">Lista todos os voos com quantidade de reservas e receita gerada.</div>
+                        <div class="report-name">Desempenho de Voos</div>
+                        <div class="report-desc">Lista todos os voos com quantidade de reservas e receita gerada.</div>
                     </td>
                     <td><span class="badge bg-light text-dark">Operacional</span></td>
                     <td>@totalFlights voos · @totalFlightBookings reservas</td>
                     <td>@flightRevenue.ToString("C", new System.Globalization.CultureInfo("pt-BR"))</td>
-                    <td style="text-align: right;">
+                    <td class="text-end">
                         <a asp-controller="Admin" asp-action="ExportVoos" class="btn btn-sm btn-outline-primary"><i class="fas fa-download"></i> CSV</a>
                     </td>
                 </tr>

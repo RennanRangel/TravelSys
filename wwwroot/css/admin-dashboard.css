@@ -50,7 +50,18 @@ body.admin-body {
 .admin-nav {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
+    flex: 1;
+}
+
+.admin-sidebar-footer {
+    padding-top: 20px;
+    border-top: 1px solid #E7E8E9;
+    margin-top: auto;
+}
+
+.admin-logout-form {
+    margin: 0;
 }
 
 .admin-nav-item {
@@ -203,6 +214,279 @@ body.admin-body {
     border-collapse: collapse;
 }
 
+.logout-header .user-info {
+    text-align: right;
+    margin-right: 12px;
+}
+
+/* Task Card Refactor */
+.task-card {
+    padding: 15px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #E7E8E9;
+    transition: all 0.3s ease;
+}
+
+.task-card-completed {
+    opacity: 0.6;
+}
+
+.task-title {
+    font-weight: 600;
+    color: #112211;
+    margin-bottom: 4px;
+}
+
+.task-title-completed {
+    text-decoration: line-through;
+}
+
+.task-desc {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.task-desc-completed {
+    text-decoration: line-through;
+}
+
+.task-meta {
+    font-size: 12px;
+    color: #999;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Management Views Utility */
+.mgmt-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #112211;
+    margin-bottom: 4px;
+}
+
+.mgmt-subtitle {
+    color: var(--admin-text-muted);
+    font-size: 14px;
+    margin: 0;
+}
+
+.text-end {
+    text-align: right;
+}
+
+.report-name {
+    font-weight: 600;
+    color: #112211;
+}
+
+.report-desc {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Overview Refactor */
+.admin-hero .hero-illustration {
+     position: absolute;
+     right: 48px;
+     top: 50%;
+     transform: translateY(-50%);
+     opacity: 0.2;
+     font-size: 120px;
+}
+
+.edit-icon-mini {
+    color: var(--admin-primary);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.card-empty-text {
+    font-size: 18px;
+    color: #1F2937;
+}
+
+.indicator-accent {
+    background: var(--admin-primary);
+    color: white;
+}
+
+.card-secondary-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.card-body-text {
+    font-size: 14px;
+    color: var(--admin-text-muted);
+    line-height: 1.5;
+}
+
+.link-premium {
+    color: var(--admin-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-premium:hover {
+    text-decoration: underline;
+}
+
+.link-mini {
+    font-size: 11px;
+    color: var(--admin-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Management Views Refactor */
+.mgmt-dropdown-menu {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 8px;
+}
+
+.mgmt-filter-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--admin-text-muted);
+}
+
+.mgmt-filter-info {
+    font-size: 11px;
+    color: var(--admin-text-muted);
+}
+
+.mgmt-primary-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.mgmt-primary-img-hotel {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.mgmt-main-text {
+    font-weight: 600;
+    color: #112211;
+}
+
+.mgmt-id-text {
+    font-size: 11px;
+    color: var(--admin-text-muted);
+}
+
+.mgmt-route-text {
+    font-weight: 500;
+}
+
+.mgmt-sub-text {
+    font-size: 11px;
+    color: var(--admin-text-muted);
+}
+
+.mgmt-time-text {
+    font-size: 13px;
+}
+
+.mgmt-price-text {
+    font-weight: 600;
+    color: #112211;
+}
+
+.mgmt-delete-btn {
+    color: #D93025;
+}
+
+/* Kanban & Modals Refactor */
+.kanban-col {
+    background: #F4F5F6;
+    box-shadow: none;
+    padding: 24px;
+    border-radius: 16px;
+}
+
+.kanban-title {
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.kanban-drop-zone {
+    min-height: 120px;
+}
+
+.admin-modal-content {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.admin-modal-header {
+    border-bottom: 1px solid #F5F6F7;
+    padding: 24px;
+}
+
+.admin-modal-title {
+    font-weight: 700;
+    color: #112211;
+}
+
+.admin-modal-body {
+    padding: 24px;
+}
+
+.admin-modal-footer {
+    border-top: 1px solid #F5F6F7;
+    padding: 24px;
+}
+
+.admin-form-label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #112211;
+}
+
+.admin-form-input {
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #E7E8E9;
+}
+
+.admin-form-input:focus {
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 4px rgba(141, 62, 235, 0.1);
+}
+
+/* Charts Refactor */
+.chart-container {
+    padding: 40px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.chart-placeholder-icon {
+    font-size: 48px;
+    color: #8DD3BB;
+    margin-bottom: 20px;
+}
+
 .admin-table th {
     text-align: left;
     padding: 12px;
@@ -229,6 +513,10 @@ body.admin-body {
     background: rgba(76, 175, 80, 0.1);
     color: #4CAF50;
 }
+
+.w-320 { width: 320px; }
+.overflow-visible { overflow: visible; }
+.d-none { display: none; }
 
 /* Tabs Logic inside Dashboard */
 .admin-content-tabs {
@@ -708,12 +996,12 @@ body.admin-body {
     margin-top: 0;
 }
 
-.stepper-item {
+.admin-stepper-container .stepper-item {
     display: block;
     padding: 10px 16px;
     font-size: 14px;
     color: #444;
-    text-decoration: none !important;
+    text-decoration: none;
     border-radius: 8px;
     margin-bottom: 4px;
     transition: all 0.2s;
@@ -831,8 +1119,18 @@ body.admin-body {
     gap: 4px;
 }
 
-.form-tip i {
+.breadcrumb-label {
+    color: var(--admin-text-muted);
+}
+
+.admin-user-title {
+    font-weight: 600;
     font-size: 14px;
+}
+
+.admin-user-subtitle {
+    font-size: 12px;
+    color: var(--admin-text-muted);
 }
 
 .admin-form-group label i {
@@ -860,10 +1158,10 @@ body.admin-body {
     font-size: 12px;
 }
 
-.admin-input-select {
+.admin-stepper-container .admin-input-select {
     appearance: none;
     background-color: #fff;
-    padding-right: 40px !important;
+    padding-right: 40px;
 }
 
 /* Toggle Switch */
@@ -926,7 +1224,7 @@ input:checked + .slider:before {
 }
 
 /* Buttons refinement */
-.btn-sair {
+.admin-stepper-container .btn-sair {
     height: 44px;
     padding: 0 32px;
     border: 1px solid #D1D5DB;
@@ -938,7 +1236,7 @@ input:checked + .slider:before {
     align-items: center;
     justify-content: center;
     transition: background 0.2s;
-    text-decoration: none !important;
+    text-decoration: none;
 }
 
 .btn-continuar {
@@ -955,9 +1253,10 @@ input:checked + .slider:before {
     transition: opacity 0.2s;
 }
 
-.btn-continuar:disabled, .btn-continuar.disabled {
+.admin-stepper-container .btn-continuar:disabled, 
+.admin-stepper-container .btn-continuar.disabled {
     background: #E5E7EB;
-    color: #9CA3AF !important;
+    color: #9CA3AF;
     cursor: not-allowed;
 }
 
@@ -1177,7 +1476,7 @@ input:checked + .slider:before {
 }
 
 /* Special Footer Buttons */
-.btn-save-exit {
+.admin-stepper-container .btn-save-exit {
     height: 44px;
     padding: 0 24px;
     border: 1px solid #E34F1A;
@@ -1186,7 +1485,7 @@ input:checked + .slider:before {
     border-radius: 12px;
     font-weight: 600;
     transition: all 0.2s;
-    text-decoration: none !important;
+    text-decoration: none;
 }
 
 .btn-save-exit:hover {

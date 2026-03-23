@@ -111,15 +111,16 @@ public class HotelsController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Booking(int id)
+    public async Task<IActionResult> Booking(int id, string? roomType)
     {
         var hotel = await _context.Hotels.FindAsync(id);
         if (hotel == null) return NotFound();
+        ViewBag.RoomType = roomType;
         return View("hotel-booking", hotel);
     }
 
     [HttpGet]
-    public async Task<IActionResult> Payment(int id)
+    public async Task<IActionResult> Payment(int id, string? roomType)
     {
         var hotel = await _context.Hotels.FindAsync(id);
         if (hotel == null) return NotFound();
@@ -129,12 +130,13 @@ public class HotelsController : Controller
             .Where(c => c.UserId == userId)
             .ToListAsync();
 
+        ViewBag.RoomType = roomType;
         return View("hotel-payment", hotel);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> CompletePayment(int hotelId, string paymentType, int nights = 1)
+    public async Task<IActionResult> CompletePayment(int hotelId, string paymentType, int nights = 1, string? roomType = null)
     {
         var hotel = await _context.Hotels.FindAsync(hotelId);
         if (hotel == null) return NotFound();
@@ -160,7 +162,7 @@ public class HotelsController : Controller
             CheckIn = checkIn,
             CheckOut = checkIn.AddDays(nights),
             Nights = nights,
-            RoomType = "Standard Room",
+            RoomType = roomType ?? "Standard Room",
             PaymentType = paymentType ?? "full",
             TotalPrice = total,
             Status = "Confirmed",

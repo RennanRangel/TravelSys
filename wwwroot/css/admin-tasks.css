@@ -1,0 +1,22 @@
+/**
+ * Kanban/Task Management Specific Styles
+ */
+.kanban-drop-zone.drag-over {
+    background: rgba(141, 211, 187, 0.15);
+    border: 2px dashed #8DD3BB;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.admin-card[draggable="true"] {
+    cursor: grab;
+}
+
+.admin-card[draggable="true"]:active {
+    cursor: grabbing;
+}
+
+.admin-card.dragging {
+    opacity: 0.4;
+    transform: rotate(2deg);
+}

@@ -10,8 +10,8 @@
 
 <div class="mgmt-header mb-4">
     <div>
-        <h1 style="font-size: 24px; font-weight: 700; color: #112211; margin-bottom: 4px;">Gerenciar Tarefas</h1>
-        <p style="color: var(--admin-text-muted); font-size: 14px; margin: 0;">Administre o fluxo de trabalho e ordens de prioridade internas.</p>
+        <h1 class="mgmt-title">Gerenciar Tarefas</h1>
+        <p class="mgmt-subtitle">Administre o fluxo de trabalho e ordens de prioridade internas.</p>
     </div>
     <div class="d-flex gap-3 align-items-center">
         <button class="btn-mgmt-primary" onclick="openNewTaskModal()"><i class="fas fa-plus"></i> Nova Tarefa</button>
@@ -21,9 +21,9 @@
 <div class="row g-4">
     <!-- Coluna A Fazer -->
     <div class="col-md-4">
-        <div class="admin-card" style="background: #F4F5F6; box-shadow: none;">
-            <h5 style="font-weight: 600; margin-bottom: 20px;"><i class="fas fa-clock text-warning"></i> A Fazer (<span id="count-afazer">@afazer.Count</span>)</h5>
-            <div id="col-afazer" class="kanban-drop-zone" data-status="afazer" style="min-height: 120px;">
+        <div class="admin-card kanban-col">
+            <h5 class="kanban-title"><i class="fas fa-clock text-warning"></i> A Fazer (<span id="count-afazer">@afazer.Count</span>)</h5>
+            <div id="col-afazer" class="kanban-drop-zone" data-status="afazer">
                 @foreach (var task in afazer)
                 {
                     @await Html.PartialAsync("_TaskCard", task)
@@ -34,9 +34,9 @@
 
     <!-- Coluna Em Andamento -->
     <div class="col-md-4">
-        <div class="admin-card" style="background: #F4F5F6; box-shadow: none;">
-            <h5 style="font-weight: 600; margin-bottom: 20px;"><i class="fas fa-play-circle text-primary"></i> Em Andamento (<span id="count-andamento">@andamento.Count</span>)</h5>
-            <div id="col-andamento" class="kanban-drop-zone" data-status="andamento" style="min-height: 120px;">
+        <div class="admin-card kanban-col">
+            <h5 class="kanban-title"><i class="fas fa-play-circle text-primary"></i> Em Andamento (<span id="count-andamento">@andamento.Count</span>)</h5>
+            <div id="col-andamento" class="kanban-drop-zone" data-status="andamento">
                 @foreach (var task in andamento)
                 {
                     @await Html.PartialAsync("_TaskCard", task)
@@ -47,9 +47,9 @@
 
     <!-- Coluna Concluído -->
     <div class="col-md-4">
-        <div class="admin-card" style="background: #F4F5F6; box-shadow: none;">
-            <h5 style="font-weight: 600; margin-bottom: 20px;"><i class="fas fa-check-circle text-success"></i> Concluído (<span id="count-concluido">@concluido.Count</span>)</h5>
-            <div id="col-concluido" class="kanban-drop-zone" data-status="concluido" style="min-height: 120px;">
+        <div class="admin-card kanban-col">
+            <h5 class="kanban-title"><i class="fas fa-check-circle text-success"></i> Concluído (<span id="count-concluido">@concluido.Count</span>)</h5>
+            <div id="col-concluido" class="kanban-drop-zone" data-status="concluido">
                 @foreach (var task in concluido)
                 {
                     @await Html.PartialAsync("_TaskCard", task)
@@ -62,24 +62,24 @@
 <!-- Modal Nova Tarefa -->
 <div class="modal fade" id="newTaskModal" tabindex="-1">
     <div class="modal-dialog">
-        <div class="modal-content" style="border-radius: 16px; border: none;">
-            <div class="modal-header" style="border-bottom: 1px solid #F5F6F7; padding: 24px;">
-                <h5 class="modal-title" style="font-weight: 700;">Nova Tarefa</h5>
+        <div class="modal-content admin-modal-content">
+            <div class="modal-header admin-modal-header">
+                <h5 class="modal-title admin-modal-title">Nova Tarefa</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <div class="modal-body" style="padding: 24px;">
+            <div class="modal-body admin-modal-body">
                 <div class="mb-3">
-                    <label class="form-label" style="font-weight: 600; font-size: 14px;">Título</label>
-                    <input type="text" class="form-control" id="taskTitle" placeholder="Ex: Revisar tarifas do hotel" style="border-radius: 10px; padding: 12px;">
+                    <label class="form-label admin-form-label">Título</label>
+                    <input type="text" class="form-control admin-form-input" id="taskTitle" placeholder="Ex: Revisar tarifas do hotel">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" style="font-weight: 600; font-size: 14px;">Descrição</label>
-                    <textarea class="form-control" id="taskDescription" rows="3" placeholder="Descreva a tarefa..." style="border-radius: 10px; padding: 12px;"></textarea>
+                    <label class="form-label admin-form-label">Descrição</label>
+                    <textarea class="form-control admin-form-input" id="taskDescription" rows="3" placeholder="Descreva a tarefa..."></textarea>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label class="form-label" style="font-weight: 600; font-size: 14px;">Prioridade</label>
-                        <select class="form-select" id="taskPriority" style="border-radius: 10px; padding: 12px;">
+                        <label class="form-label admin-form-label">Prioridade</label>
+                        <select class="form-select admin-form-input" id="taskPriority">
                             <option value="baixa">Baixa</option>
                             <option value="media" selected>Média</option>
                             <option value="alta">Alta</option>
@@ -87,15 +87,15 @@
                         </select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label" style="font-weight: 600; font-size: 14px;">Coluna</label>
-                        <select class="form-select" id="taskStatus" style="border-radius: 10px; padding: 12px;">
+                        <label class="form-label admin-form-label">Coluna</label>
+                        <select class="form-select admin-form-input" id="taskStatus">
                             <option value="afazer" selected>A Fazer</option>
                             <option value="andamento">Em Andamento</option>
                         </select>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer" style="border-top: 1px solid #F5F6F7; padding: 24px;">
+            <div class="modal-footer admin-modal-footer">
                 <button type="button" class="btn-mgmt-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn-mgmt-primary" onclick="createTask()">Criar Tarefa</button>
             </div>
@@ -104,128 +104,6 @@
 </div>
 
 @section Scripts {
-<style>
-    .kanban-drop-zone.drag-over {
-        background: rgba(141, 211, 187, 0.15);
-        border: 2px dashed #8DD3BB;
-        border-radius: 12px;
-        transition: all 0.2s ease;
-    }
-    .admin-card[draggable="true"] {
-        cursor: grab;
-    }
-    .admin-card[draggable="true"]:active {
-        cursor: grabbing;
-    }
-    .admin-card.dragging {
-        opacity: 0.4;
-        transform: rotate(2deg);
-    }
-</style>
-<script>
-    // ===== Drag and Drop =====
-    document.addEventListener('DOMContentLoaded', function() {
-        // Tornar os cards arrastáveis
-        document.querySelectorAll('.kanban-drop-zone .admin-card').forEach(card => {
-            card.setAttribute('draggable', 'true');
-
-            card.addEventListener('dragstart', function(e) {
-                e.dataTransfer.setData('text/plain', this.dataset.taskId);
-                this.classList.add('dragging');
-            });
-
-            card.addEventListener('dragend', function() {
-                this.classList.remove('dragging');
-            });
-        });
-
-        // Configurar as zonas de drop
-        document.querySelectorAll('.kanban-drop-zone').forEach(zone => {
-            zone.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                this.classList.add('drag-over');
-            });
-
-            zone.addEventListener('dragleave', function() {
-                this.classList.remove('drag-over');
-            });
-
-            zone.addEventListener('drop', async function(e) {
-                e.preventDefault();
-                this.classList.remove('drag-over');
-
-                const taskId = parseInt(e.dataTransfer.getData('text/plain'));
-                const newStatus = this.dataset.status;
-
-                if (!taskId || !newStatus) return;
-
-                const response = await fetch('/Admin/UpdateTaskStatus', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ id: taskId, status: newStatus })
-                });
-
-                if (response.ok) {
-                    location.reload();
-                }
-            });
-        });
-    });
-
-    // ===== Modal, CRUD =====
-    function openNewTaskModal() {
-        var modal = new bootstrap.Modal(document.getElementById('newTaskModal'));
-        modal.show();
-    }
-
-    async function createTask() {
-        const title = document.getElementById('taskTitle').value.trim();
-        const description = document.getElementById('taskDescription').value.trim();
-        const priority = document.getElementById('taskPriority').value;
-        const status = document.getElementById('taskStatus').value;
-
-        if (!title) {
-            alert('Por favor, informe o título da tarefa.');
-            return;
-        }
-
-        const response = await fetch('/Admin/CreateTask', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, description, priority, status })
-        });
-
-        if (response.ok) {
-            location.reload();
-        } else {
-            alert('Erro ao criar tarefa.');
-        }
-    }
-
-    async function moveTask(id, newStatus) {
-        const response = await fetch('/Admin/UpdateTaskStatus', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id, status: newStatus })
-        });
-
-        if (response.ok) {
-            location.reload();
-        }
-    }
-
-    async function deleteTask(id) {
-        if (!confirm('Deseja realmente excluir esta tarefa?')) return;
-
-        const response = await fetch('/Admin/DeleteTask', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id })
-        });
-
-        if (response.ok) {
-            location.reload();
-        }
-    }
-</script>
+    <link rel="stylesheet" href="~/css/admin-tasks.css" asp-append-version="true">
+    <script src="~/js/admin-tasks.js"></script>
 }

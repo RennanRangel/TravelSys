@@ -84,3 +84,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     DOM.formFinal?.addEventListener('submit', handleSubmissao);
 });
+
+function selectPlan(type) {
+    document.querySelectorAll('.plan-option').forEach(opt => opt.classList.remove('selected'));
+    const planEl = document.getElementById('plan-' + type);
+    if (planEl) planEl.classList.add('selected');
+    const paymentTypeInput = document.getElementById('paymentTypeInput');
+    if (paymentTypeInput) paymentTypeInput.value = type;
+}
+
+function openAddCardModal() {
+    const modal = document.getElementById('addCardModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeAddCardModal() {
+    const modal = document.getElementById('addCardModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}

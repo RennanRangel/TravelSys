@@ -471,3 +471,27 @@
     font-size: 16px;
     font-weight: 700;
 }
+
+.booking-dates-noborder {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding: 24px 0 0 0;
+}
+
+.date-box-right {
+    text-align: right;
+}
+
+.summary-hotel-name {
+    opacity: 0.6;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.sidebar-form-margin {
+    margin-top: 32px;
+}
+
+.btn-no-bottom-margin {
+    margin-bottom: 0;
+}

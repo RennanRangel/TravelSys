@@ -153,6 +153,16 @@ h1 {
     position: relative;
 }
 
+.validation-errors {
+    color: #FF8682;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.validation-errors p {
+    margin-bottom: 5px;
+}
+
 .form-group label {
     position: absolute;
     top: -10px;

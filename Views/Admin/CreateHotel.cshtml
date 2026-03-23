@@ -62,7 +62,7 @@
 
                     <div class="switch-container">
                         <label class="switch">
-                            <input type="checkbox">
+                            <input type="checkbox" asp-for="NewHotel.IsAccessible">
                             <span class="slider"></span>
                         </label>
                         <span class="switch-label">Hotel também com acessibilidade para PcD <i class="fas fa-circle-info" title="Indica se o hotel possui quartos e áreas adaptadas"></i></span>
@@ -132,7 +132,7 @@
                             <div class="col-md-5 admin-form-group">
                                 <label>CEP / Código Postal</label>
                                 <input asp-for="NewHotel.ZipCode" class="admin-input" placeholder="Ex: 00000-000" required>
-                                <a href="#" class="form-tip mt-2 d-inline-block" style="color: #0030BF; text-decoration: none;">Não sei o CEP, como posso encontrar?</a>
+                                <a href="#" class="form-tip mt-2 d-inline-block link-info-blue">Não sei o CEP, como posso encontrar?</a>
                             </div>
                         </div>
 
@@ -199,7 +199,7 @@
                 <!-- Seção: Descrição e Comodidades -->
                 <div id="section-descricao" class="creation-form-section">
                     <div class="creation-header">
-                        <h2>Descreva e detalhe aqui o seu estabelecimento <i class="fas fa-circle-info" style="font-size: 16px; color: #666; cursor: help;"></i></h2>
+                        <h2>Descreva e detalhe aqui o seu estabelecimento <i class="fas fa-circle-info info-icon-sm"></i></h2>
                     </div>
 
                     <div class="ai-assistant-banner">
@@ -344,70 +344,5 @@
 </div>
 
 @section Scripts {
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            window.updateFileUpload = function(input) {
-                const container = input.closest('.admin-file-upload-container');
-                const display = container.querySelector('.filename-display');
-                const textSpan = display.querySelector('.name-text');
-                
-                if (input.files && input.files.length > 0) {
-                    if (input.files.length === 1) {
-                        textSpan.textContent = input.files[0].name;
-                    } else {
-                        textSpan.textContent = `${input.files.length} arquivos selecionados`;
-                    }
-                    display.style.display = 'block';
-                } else {
-                    display.style.display = 'none';
-                }
-            };
-
-            const sections = document.querySelectorAll('.creation-form-section');
-            const stepperItems = document.querySelectorAll('.stepper-item');
-            const nextButtons = document.querySelectorAll('.next-step');
-            const prevButtons = document.querySelectorAll('.prev-step');
-            let currentStep = 0;
-
-            function updateUI() {
-                sections.forEach((s, i) => {
-                    s.classList.toggle('active', i === currentStep);
-                });
-
-                stepperItems.forEach((item, i) => {
-                    item.classList.toggle('active', i === currentStep);
-                });
-
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-
-            nextButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (currentStep < sections.length - 1) {
-                        currentStep++;
-                        updateUI();
-                    }
-                });
-            });
-
-            prevButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (currentStep > 0) {
-                        currentStep--;
-                        updateUI();
-                    }
-                });
-            });
-
-            stepperItems.forEach((item, i) => {
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (i <= currentStep) {
-                       currentStep = i;
-                       updateUI();
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="~/js/admin-stepper.js"></script>
 }

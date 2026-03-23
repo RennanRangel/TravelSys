@@ -24,8 +24,6 @@
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="Logo" />
             <input type="hidden" asp-for="MainImage" />
-            <input type="hidden" asp-for="Rating" />
-            <input type="hidden" asp-for="Reviews" />
             <input type="hidden" asp-for="GalleryImages" />
 
             <div class="mgmt-creation-content">
@@ -47,15 +45,15 @@
                         <label>Quais as classes do voo disponíveis? *</label>
                         <div class="d-flex gap-4 mt-2">
                             <label class="custom-checkbox d-flex align-items-center gap-2">
-                                <input type="checkbox" id="chkEconomy" value="Economica" onchange="togglePriceFields()" @(Model.FlightClasses != null && Model.FlightClasses.Contains("Economica") ? "checked" : "") style="width: 20px; height: 20px;">
+                                <input type="checkbox" id="chkEconomy" value="Economica" onchange="togglePriceFields()" @(Model.FlightClasses != null && Model.FlightClasses.Contains("Economica") ? "checked" : "") class="chk-large">
                                 <span>Econômica</span>
                             </label>
                             <label class="custom-checkbox d-flex align-items-center gap-2">
-                                <input type="checkbox" id="chkBusiness" value="Executiva" onchange="togglePriceFields()" @(Model.FlightClasses != null && Model.FlightClasses.Contains("Executiva") ? "checked" : "") style="width: 20px; height: 20px;">
+                                <input type="checkbox" id="chkBusiness" value="Executiva" onchange="togglePriceFields()" @(Model.FlightClasses != null && Model.FlightClasses.Contains("Executiva") ? "checked" : "") class="chk-large">
                                 <span>Executiva</span>
                             </label>
                             <label class="custom-checkbox d-flex align-items-center gap-2">
-                                <input type="checkbox" id="chkFirstClass" value="Primeira Classe" onchange="togglePriceFields()" @(Model.FlightClasses != null && Model.FlightClasses.Contains("Primeira Classe") ? "checked" : "") style="width: 20px; height: 20px;">
+                                <input type="checkbox" id="chkFirstClass" value="Primeira Classe" onchange="togglePriceFields()" @(Model.FlightClasses != null && Model.FlightClasses.Contains("Primeira Classe") ? "checked" : "") class="chk-large">
                                 <span>Primeira Classe</span>
                             </label>
                         </div>
@@ -65,11 +63,11 @@
                     <div class="admin-form-group">
                         <label>Qual o terminal de embarque? *</label>
                         <div class="admin-select-wrapper">
-                            <select class="admin-input admin-input-select">
+                            <select asp-for="Terminal" class="admin-input admin-input-select" required>
                                 <option value="" disabled selected>Selecione o terminal</option>
-                                <option value="T1">Terminal 1</option>
-                                <option value="T2">Terminal 2</option>
-                                <option value="T3">Terminal 3</option>
+                                <option value="T1" selected="@(Model.Terminal == "T1")">Terminal 1</option>
+                                <option value="T2" selected="@(Model.Terminal == "T2")">Terminal 2</option>
+                                <option value="T3" selected="@(Model.Terminal == "T3")">Terminal 3</option>
                             </select>
                         </div>
                     </div>
@@ -87,7 +85,7 @@
 
                     <div class="switch-container">
                         <label class="switch">
-                            <input type="checkbox">
+                            <input type="checkbox" asp-for="IsAccessible">
                             <span class="slider"></span>
                         </label>
                         <span class="switch-label">Voo com assistência para PCD <i class="fas fa-circle-info" title="Indica se o voo possui suporte especial"></i></span>
@@ -162,7 +160,7 @@
                             <div class="col-md-5 admin-form-group">
                                 <label>Código IATA / Aeroporto</label>
                                 <input asp-for="To" class="admin-input" placeholder="Ex: DXB" required>
-                                <a href="#" class="form-tip mt-2 d-inline-block" style="color: #0030BF; text-decoration: none;">Não sei o código, como posso encontrar?</a>
+                                <a href="#" class="form-tip mt-2 d-inline-block link-info-blue">Não sei o código, como posso encontrar?</a>
                             </div>
                         </div>
                     </div>
@@ -204,15 +202,15 @@
                         <div class="section-description">Selecione com que frequência este voo opera</div>
                         <div class="admin-radio-group">
                             <label class="admin-radio-item">
-                                <input type="radio" name="flight_frequency" value="daily" checked required>
+                                <input type="radio" asp-for="Frequency" value="daily" checked required>
                                 Diário
                             </label>
                             <label class="admin-radio-item">
-                                <input type="radio" name="flight_frequency" value="weekly" required>
+                                <input type="radio" asp-for="Frequency" value="weekly" required>
                                 Semanal
                             </label>
                             <label class="admin-radio-item">
-                                <input type="radio" name="flight_frequency" value="custom" required>
+                                <input type="radio" asp-for="Frequency" value="custom" required>
                                 Personalizado
                             </label>
                         </div>
@@ -228,7 +226,7 @@
                 <!-- Seção: Descrição e Políticas -->
                 <div id="section-descricao" class="creation-form-section">
                     <div class="creation-header">
-                        <h2>Descreva e detalhe aqui as informações do seu voo <i class="fas fa-circle-info" style="font-size: 16px; color: #666; cursor: help;"></i></h2>
+                        <h2>Descreva e detalhe aqui as informações do seu voo <i class="fas fa-circle-info info-icon-sm"></i></h2>
                     </div>
 
                     <div class="ai-assistant-banner">
@@ -305,8 +303,8 @@
                         <div class="section-description">Selecione o logotipo oficial da companhia para este voo</div>
                         @if (!string.IsNullOrEmpty(Model.Logo)) {
                             <div class="mb-3">
-                                <img src="@Model.Logo" height="50" style="object-fit:contain; border-radius: 4px;"/>
-                                <p class="text-muted mt-1" style="font-size: 13px;">Logo Atual</p>
+                                <img src="@Model.Logo" height="50" class="obj-fit-contain br-4"/>
+                                <p class="text-muted mt-1 mgmt-time-text">Logo Atual</p>
                             </div>
                         }
                         <div class="admin-file-upload-container">
@@ -325,8 +323,8 @@
                         <div class="section-description">Esta imagem será o cartão de visitas lateral no portal de busca (opcional alterar)</div>
                         @if (!string.IsNullOrEmpty(Model.MainImage)) {
                             <div class="mb-3">
-                                <img src="@Model.MainImage" height="150" style="object-fit:cover; border-radius: 8px;"/>
-                                <p class="text-muted mt-1" style="font-size: 13px;">Capa Atual</p>
+                                <img src="@Model.MainImage" height="150" class="obj-fit-cover br-8"/>
+                                <p class="text-muted mt-1 mgmt-time-text">Capa Atual</p>
                             </div>
                         }
                         <div class="admin-file-upload-container">
@@ -357,21 +355,21 @@
                         </div>
                     </div>
 
-                    <div class="mt-4" id="price-economy-container" style="display: @(Model.FlightClasses != null && Model.FlightClasses.Contains("Economica") ? "block" : "none");">
+                    <div class="mt-4 @(Model.FlightClasses != null && Model.FlightClasses.Contains("Economica") ? "" : "d-none")" id="price-economy-container">
                         <div class="section-sub-title">Preço - Classe Econômica</div>
                         <div class="admin-form-group">
                             <label>Preço (R$) *</label>
                             <input asp-for="EconomyPrice" type="number" step="0.01" class="admin-input" placeholder="Ex: 1200.00">
                         </div>
                     </div>
-                    <div class="mt-4" id="price-business-container" style="display: @(Model.FlightClasses != null && Model.FlightClasses.Contains("Executiva") ? "block" : "none");">
+                    <div class="mt-4 @(Model.FlightClasses != null && Model.FlightClasses.Contains("Executiva") ? "" : "d-none")" id="price-business-container">
                         <div class="section-sub-title">Preço - Classe Executiva</div>
                         <div class="admin-form-group">
                             <label>Preço (R$) *</label>
                             <input asp-for="BusinessPrice" type="number" step="0.01" class="admin-input" placeholder="Ex: 3500.00">
                         </div>
                     </div>
-                    <div class="mt-4" id="price-firstclass-container" style="display: @(Model.FlightClasses != null && Model.FlightClasses.Contains("Primeira Classe") ? "block" : "none");">
+                    <div class="mt-4 @(Model.FlightClasses != null && Model.FlightClasses.Contains("Primeira Classe") ? "" : "d-none")" id="price-firstclass-container">
                         <div class="section-sub-title">Preço - Primeira Classe</div>
                         <div class="admin-form-group">
                             <label>Preço (R$) *</label>
@@ -417,121 +415,5 @@
 </div>
 
 @section Scripts {
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            window.updateFileUpload = function(input) {
-                const container = input.closest('.admin-file-upload-container');
-                const display = container.querySelector('.filename-display');
-                const textSpan = display.querySelector('.name-text');
-                
-                if (input.files && input.files.length > 0) {
-                    textSpan.textContent = input.files[0].name;
-                    display.style.display = 'block';
-                } else {
-                    display.style.display = 'none';
-                }
-            };
-
-            const sections = document.querySelectorAll('.creation-form-section');
-            const stepperItems = document.querySelectorAll('.stepper-item');
-            const nextButtons = document.querySelectorAll('.next-step');
-            const prevButtons = document.querySelectorAll('.prev-step');
-            let currentStep = 0;
-
-            function updateUI() {
-                sections.forEach((s, i) => {
-                    s.classList.toggle('active', i === currentStep);
-                });
-
-                stepperItems.forEach((item, i) => {
-                    item.classList.toggle('active', i === currentStep);
-                });
-
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-
-            nextButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (currentStep < sections.length - 1) {
-                        currentStep++;
-                        updateUI();
-                    }
-                });
-            });
-
-            prevButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (currentStep > 0) {
-                        currentStep--;
-                        updateUI();
-                    }
-                });
-            });
-
-            stepperItems.forEach((item, i) => {
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (i <= currentStep || i > currentStep) {
-                       currentStep = i;
-                       updateUI();
-                    }
-                });
-            });
-
-            document.addEventListener('invalid', function(e) {
-                const section = e.target.closest('.creation-form-section');
-                if (section) {
-                    const sectionsArray = Array.from(sections);
-                    const idx = sectionsArray.indexOf(section);
-                    if (idx !== -1 && idx !== currentStep) {
-                        currentStep = idx;
-                        updateUI();
-                        setTimeout(() => e.target.reportValidity(), 50);
-                    }
-                }
-            }, true);
-
-            window.togglePriceFields = function() {
-                const chkEco = document.getElementById('chkEconomy');
-                const chkBus = document.getElementById('chkBusiness');
-                const chkFir = document.getElementById('chkFirstClass');
-                
-                const eco = chkEco ? chkEco.checked : false;
-                const bus = chkBus ? chkBus.checked : false;
-                const fir = chkFir ? chkFir.checked : false;
-                
-                const contEco = document.getElementById('price-economy-container');
-                const contBus = document.getElementById('price-business-container');
-                const contFir = document.getElementById('price-firstclass-container');
-                
-                if (contEco) {
-                    contEco.style.display = eco ? 'block' : 'none';
-                    const inp = document.querySelector('[name="EconomyPrice"]');
-                    if (inp) inp.required = eco;
-                }
-                if (contBus) {
-                    contBus.style.display = bus ? 'block' : 'none';
-                    const inp = document.querySelector('[name="BusinessPrice"]');
-                    if (inp) inp.required = bus;
-                }
-                if (contFir) {
-                    contFir.style.display = fir ? 'block' : 'none';
-                    const inp = document.querySelector('[name="FirstClassPrice"]');
-                    if (inp) inp.required = fir;
-                }
-                
-                const classes = [];
-                if (eco) classes.push(chkEco.value);
-                if (bus) classes.push(chkBus.value);
-                if (fir) classes.push(chkFir.value);
-                
-                const hiddenInput = document.getElementById('FlightClasses');
-                if (hiddenInput) {
-                    hiddenInput.value = classes.join(',');
-                }
-            };
-            
-            togglePriceFields();
-        });
-    </script>
+    <script src="~/js/admin-stepper.js"></script>
 }

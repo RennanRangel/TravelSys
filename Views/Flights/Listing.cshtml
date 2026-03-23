@@ -118,7 +118,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px; background-color: #8DD3BB; border: none; color: #112211;">Apply Filters</button>
+            <button type="submit" class="btn btn-primary btn-apply-filters">Apply Filters</button>
         </form>
     </aside>
 
@@ -141,7 +141,7 @@
                                         }
                                     }
                                 </datalist>
-                                <i class="fas fa-exchange-alt swap-icon" style="cursor: pointer;" onclick="document.querySelector('input[name=\'route\']').value = '';"></i>
+                                <i class="fas fa-exchange-alt swap-icon" onclick="document.querySelector('input[name=\'route\']').value = '';"></i>
                             </div>
                         </div>
                         <div class="search-field">
@@ -223,12 +223,7 @@
             </div>
         </div>
 
-        <script>
-            function applySort(order) {
-                document.getElementById('sortOrderInput').value = order;
-                document.getElementById('filterForm').submit();
-            }
-        </script>
+
 
         <div class="flight-cards">
             @if (!Model.Any())
@@ -272,7 +267,13 @@
                                     </div>
                                     <div class="row-right">
                                         <span class="duration-text">@flight.Duration</span>
-                                        <span class="route-code">@flight.From-@flight.To</span>
+                                        <div class="route-details route-details-inline">
+                                            <span class="route-code">@flight.From-@flight.To</span>
+                                            @if (!string.IsNullOrEmpty(flight.Terminal))
+                                            {
+                                                <span class="terminal-info terminal-info-inline">Terminal @flight.Terminal</span>
+                                            }
+                                        </div>
                                     </div>
                                 </div>
 
@@ -310,7 +311,7 @@
                 cardIndex++;
             }
         </div>
-            <div class="pagination-container" style="display: flex; justify-content: center; gap: 8px; margin: 40px 0; width: 100%;">
+            <div class="pagination-container pagination-container-inline">
                 @{
                     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
                     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
@@ -328,24 +329,21 @@
                 }
 
                 <a href="@GetPaginationUrl(Model.PageIndex - 1)"
-                   class="btn btn-default @prevDisabled"
-                   style="padding: 10px 20px; border: 1px solid #E7E8E9; border-radius: 4px; text-decoration: none; color: #112211; display: flex; align-items: center; justify-content: center; min-width: 100px; @(!Model.HasPreviousPage ? "opacity: 0.5; pointer-events: none;" : "")">
+                   class="pagination-link-premium @prevDisabled">
                     Previous
                 </a>
 
                 @for (int i = 1; i <= Model.TotalPages; i++)
                 {
-                    var activeClass = i == Model.PageIndex ? "background-color: #8DD3BB; border-color: #8DD3BB; color: #112211;" : "background-color: #FFFFFF; color: #112211;";
+                    var activeClass = i == Model.PageIndex ? "active" : "";
                     <a href="@GetPaginationUrl(i)"
-                       class="btn btn-default"
-                       style="padding: 10px; border: 1px solid #E7E8E9; border-radius: 4px; text-decoration: none; min-width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; @activeClass">
+                       class="pagination-number-premium @activeClass">
                         @i
                     </a>
                 }
 
                 <a href="@GetPaginationUrl(Model.PageIndex + 1)"
-                   class="btn btn-default @nextDisabled"
-                   style="padding: 10px 20px; border: 1px solid #E7E8E9; border-radius: 4px; text-decoration: none; color: #112211; display: flex; align-items: center; justify-content: center; min-width: 100px; @(!Model.HasNextPage ? "opacity: 0.5; pointer-events: none;" : "")">
+                   class="pagination-link-premium @nextDisabled">
                     Next
                 </a>
             </div>
@@ -357,41 +355,5 @@
 @section Scripts {
     <script src="~/js/flights-listing.js"></script>
     <script src="~/js/favorites-manager.js"></script>
-    <script>
-        function updateCardPrice(cardId) {
-            const card = document.getElementById(cardId);
-            const checkboxes = card.querySelectorAll('.itinerary-row input[type="checkbox"]');
-            
-            const cbArr = Array.from(checkboxes);
-            // Se todos estiverem desmarcados, marca o primeiro (Ida) por padrão
-            if (cbArr.length > 0 && cbArr.every(cb => !cb.checked)) {
-                cbArr[0].checked = true;
-            }
-
-            let total = 0;
-            let ida = false, volta = false;
-            if (cbArr[0]) ida = cbArr[0].checked;
-            if (cbArr[1]) volta = cbArr[1].checked;
-
-            cbArr.forEach(cb => {
-                if (cb.checked) {
-                    total += parseFloat(cb.dataset.price) || 0;
-                }
-            });
-            const priceEl = document.getElementById('price-' + cardId);
-            if (priceEl) {
-                priceEl.textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
-            }
-
-            const link = document.getElementById('link-' + cardId);
-            if (link) {
-                const base = link.href.split('?')[0];
-                link.href = base + '?ida=' + ida + '&volta=' + volta;
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            FavoritesManager.initButtons();
-        });
-    </script>
+}
 }

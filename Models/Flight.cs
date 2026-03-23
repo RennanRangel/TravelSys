@@ -57,7 +57,9 @@ public class Flight
 
     [Column(TypeName = "decimal(18,2)")]
     public decimal? FirstClassPrice { get; set; }
-
+    public bool IsAccessible { get; set; }
+    public string? Terminal { get; set; }
+    public string? Frequency { get; set; }
     public string Status { get; set; } = "publicada";
 
     [NotMapped]

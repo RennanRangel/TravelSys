@@ -50,6 +50,14 @@
     padding: 24px;
 }
 
+.schedule-card-margin {
+    margin-top: 20px;
+}
+
+.plane-icon-rotated {
+    transform: rotate(180deg);
+}
+
 /* Payment Plan Section */
 .payment-plan-section {
     display: flex;

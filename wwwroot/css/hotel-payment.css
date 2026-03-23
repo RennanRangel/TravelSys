@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
-.main-container {
-    max-width: 1240px !important;
-    margin: 0 auto !important;
+body .payment-container {
+    max-width: 1240px;
+    margin: 0 auto;
     padding: 32px 20px;
     font-family: 'Montserrat', 'Inter', sans-serif;
     color: #112211;
@@ -72,6 +72,42 @@
     text-align: right;
 }
 
+.room-.date-box-right {
+    text-align: right;
+}
+
+.booking-dates-checkout {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding: 24px 0 0 0;
+}
+
+.payment-card-icon {
+    font-size: 32px;
+    color: #112211;
+}
+
+.summary-hotel-name {
+    opacity: 0.6;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.summary-booking-form {
+    margin-top: 32px;
+}
+
+.btn-confirm-booking {
+    margin-bottom: 0;
+}
+
+.modal-title-margin {
+    margin-bottom: 24px;
+}
+
+.btn-add-card-full {
+    width: 100%;
+}
 .room-price span {
     font-size: 14px;
     opacity: 0.6;

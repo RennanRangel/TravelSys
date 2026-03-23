@@ -1,15 +1,15 @@
 @model dynamic
 
-<section class="hero full-width">
+<section class="hero full-width hero-wrapper">
     <img src="@Model.BackgroundImage" alt="Hero Image" class="img-hero">
     <div class="hero-container">
-        <div class="hero-content" style="text-align: left; width: 100%; margin-bottom: 32px; z-index: 3;">
-            <h1 style="font-size: 45px; font-weight: 700; color: #FFFFFF; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">@Model.HeroTitle</h1>
-            <p style="font-size: 20px; font-weight: 600; color: #FFFFFF; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">@Model.HeroSubtitle</p>
+        <div class="hero-content">
+            <h1>@Model.HeroTitle</h1>
+            <p>@Model.HeroSubtitle</p>
         </div>
         <div class="search-container">
             <div class="search-card">
-                <h2 style="font-size: 20px; font-weight: 700; color: #112211; margin-bottom: 32px;">@Model.Title</h2>
+                <h2>@Model.Title</h2>
                 <div class="search-form">
                     <form asp-controller="@Model.Controller" asp-action="@Model.Action" method="get">
                         @{

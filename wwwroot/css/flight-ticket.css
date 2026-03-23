@@ -251,6 +251,17 @@
     background-size: 40px 100%;
 }
 
+.bar-1 { width: 1px; }
+.bar-2 { width: 2px; }
+.bar-3 { width: 3px; }
+.bar-4 { width: 4px; }
+.bar-5 { width: 5px; }
+
+.map-plane-icon {
+    font-size: 48px;
+    color: #8DD3BB;
+}
+
 /* Map Section */
 .pass-map-side {
     width: 320px;
@@ -260,6 +271,34 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.pass-label-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+    border-radius: 0 16px 16px 0;
+    width: 80px;
+    border-left: 1px dashed #E7E8E9;
+}
+
+.pass-label-text {
+    transform: rotate(90deg);
+    font-size: 40px;
+    white-space: nowrap;
+    font-weight: 700;
+}
+
+.pass-label-ida { color: #8DD3BB; }
+.pass-label-volta { color: #FF8682; }
+
+.boarding-pass-margin {
+    margin-top: 40px;
+}
+
+.plane-icon-rotated {
+    transform: rotate(180deg);
 }
 
 .map-illustration {

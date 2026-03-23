@@ -34,4 +34,5 @@ public class Booking
     public string? Seat { get; set; }
     
     public bool IsRoundTrip { get; set; }
+    public string? FlightClass { get; set; }
 }

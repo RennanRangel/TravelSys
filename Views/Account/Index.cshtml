@@ -39,7 +39,7 @@
     </div>
 
     <!-- Account Details Tab -->
-    <div class="tab-content-panel @(ViewBag.ActiveTab == "account" ? "active" : "")" id="account-tab" style="@(ViewBag.ActiveTab == "account" ? "" : "display: none;")">
+    <div class="tab-content-panel @(ViewBag.ActiveTab == "account" ? "active" : "d-none")" id="account-tab">
         <div class="content-header">
             <h2>Account</h2>
         </div>
@@ -102,7 +102,7 @@
     </div>
 
     <!-- Tickets/Bookings Tab -->
-    <div class="tab-content-panel @(ViewBag.ActiveTab == "bookings" ? "active" : "")" id="bookings-tab" style="@(ViewBag.ActiveTab == "bookings" ? "" : "display: none;")">
+    <div class="tab-content-panel @(ViewBag.ActiveTab == "bookings" ? "active" : "d-none")" id="bookings-tab">
         <div class="header-with-filter">
             <h2>Tickets/Bookings</h2>
             <div class="filter-dropdown">
@@ -193,7 +193,7 @@
         </div>
 
         <!-- Stay Bookings List -->
-        <div class="ticket-list-container" id="stays-list" style="display: none;">
+        <div class="ticket-list-container d-none" id="stays-list">
             @if (Model.StayBookings.Any())
             {
                 @foreach (var booking in Model.StayBookings)
@@ -204,9 +204,9 @@
                                 <img src="@booking.Hotel?.MainImage" alt="@booking.Hotel?.Name">
                             </div>
                             <div class="route-time-box">
-                                <div class="time-point" style="min-width: 150px;">
+                                <div class="time-point stay-name-min-width">
                                     <span class="city-code">@booking.Hotel?.Name</span>
-                                    <span class="time-val" style="font-size: 16px;">@booking.RoomType</span>
+                                    <span class="time-val room-type-font-size">@booking.RoomType</span>
                                 </div>
                             </div>
                             
@@ -261,7 +261,7 @@
     </div>
 
     <!-- Payment Methods Tab -->
-    <div class="tab-content-panel @(ViewBag.ActiveTab == "payments" ? "active" : "")" id="payment-tab" style="@(ViewBag.ActiveTab == "payments" ? "" : "display: none;")">
+    <div class="tab-content-panel @(ViewBag.ActiveTab == "payments" ? "active" : "d-none")" id="payment-tab">
         <div class="content-header">
             <h2>Payment methods</h2>
         </div>
@@ -322,7 +322,7 @@
     </div>
 
     <!-- Add New Card Modal -->
-    <div class="modal-overlay" id="add-card-modal" style="display: none;">
+    <div class="modal-overlay d-none" id="add-card-modal">
         <div class="modal-card-content">
             <button class="close-modal" id="close-add-card">&times;</button>
             <h2 class="modal-title">Add a new Card</h2>
@@ -384,60 +384,5 @@
 </div>
 
 @section Scripts {
-    <script>
-        // Main Tab switching
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-content-panel').forEach(p => p.style.display = 'none');
-                
-                btn.classList.add('active');
-                const targetId = btn.getAttribute('data-target');
-                document.getElementById(targetId).style.display = 'block';
-            });
-        });
-
-        // Sub-tab switching for Flights/Stays
-        document.querySelectorAll('.sub-tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.ticket-list-container').forEach(l => l.style.display = 'none');
-                
-                btn.classList.add('active');
-                const targetId = btn.getAttribute('data-subtarget');
-                document.getElementById(targetId).style.display = 'flex';
-            });
-        });
-
-        // Modal Logic
-        const addCardModal = document.getElementById('add-card-modal');
-        const openModalBtn = document.getElementById('open-add-card');
-        const closeModalBtn = document.getElementById('close-add-card');
-
-        openModalBtn.addEventListener('click', () => {
-            addCardModal.style.display = 'flex';
-            setTimeout(() => addCardModal.classList.add('active'), 10);
-        });
-
-        closeModalBtn.addEventListener('click', () => {
-            addCardModal.classList.remove('active');
-            setTimeout(() => addCardModal.style.display = 'none', 300);
-        });
-
-        // Close on overlay click
-        addCardModal.addEventListener('click', (e) => {
-            if (e.target === addCardModal) {
-                closeModalBtn.click();
-            }
-        });
-
-        // Handle URL Hash for direct tab access (Legacy fallback)
-        window.addEventListener('load', () => {
-            const hash = window.location.hash;
-            if (hash === '#payments' && '@ViewBag.ActiveTab' !== 'payments') {
-                const btn = document.querySelector('.tab-btn[data-target="payment-tab"]');
-                if (btn) btn.click();
-            }
-        });
-    </script>
+    <script src="~/js/account.js"></script>
 }

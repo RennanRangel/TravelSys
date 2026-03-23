@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
-.main-container {
-    max-width: 1240px !important;
-    margin: 0 auto !important;
+body .ticket-container {
+    max-width: 1240px;
+    margin: 0 auto;
     padding: 32px 20px;
     font-family: 'Montserrat', 'Inter', sans-serif;
     color: #112211;
@@ -17,16 +17,16 @@
     margin-bottom: 32px;
 }
 
-.breadcrumbs a {
-    color: #FF8682 !important;
-    text-decoration: none !important;
+body .ticket-container .nav-link-back {
+    color: #FF8682;
+    text-decoration: none;
     font-weight: 500;
     transition: opacity 0.2s;
 }
 
-.breadcrumbs a:hover {
+body .ticket-container .nav-link-back:hover {
     opacity: 0.8;
-    text-decoration: underline !important;
+    text-decoration: underline;
 }
 
 .breadcrumbs span {
@@ -253,6 +253,39 @@
 
 .hotel-branding {
     text-align: center;
+}
+
+.ticket-actions-right {
+    text-align: right;
+}
+
+.barcode-container {
+    margin-top: 10px;
+}
+
+.barcode-image-full {
+    width: 100%;
+    max-width: 400px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.branding-label-top {
+    letter-spacing: 4px;
+    font-size: 10px;
+    opacity: 0.6;
+    margin-bottom: 8px;
+}
+
+.branding-label-bottom {
+    letter-spacing: 2px;
+    font-size: 12px;
+    opacity: 0.6;
+    margin-top: 8px;
+}
+
+.help-link-color {
+    color: #FF8682;
 }
 
 .hotel-branding h2 {

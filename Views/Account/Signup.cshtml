@@ -44,7 +44,7 @@
                     @Html.AntiForgeryToken()
                     @if (!ViewData.ModelState.IsValid)
                     {
-                        <div style="color: red; margin-bottom: 15px;">
+                        <div class="validation-errors">
                             @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
                             {
                                 <p>@error.ErrorMessage</p>

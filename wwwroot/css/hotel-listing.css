@@ -1237,3 +1237,21 @@ body {
         max-width: 1320px;
     }
 }
+
+/* =========================================
+   GENERIC UTILITY CLASSES
+   ========================================= */
+.btn-apply-filters {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #8DD3BB;
+    border: none;
+    color: #112211;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-apply-filters:hover {
+    background-color: #7bc1a8;
+}

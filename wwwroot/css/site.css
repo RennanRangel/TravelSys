@@ -5,13 +5,69 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-.site-nav-link {
-    color: #112211 !important;
+body .site-nav-link {
+    color: #112211;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
-.site-nav-link.active,
-.site-nav-link:hover {
-    color: #8DD3BB !important;
+body .navbar .site-nav-link.active,
+body .navbar .site-nav-link:hover {
+    color: #8DD3BB;
+}
+
+/* Hero Component Styles (Common for Landing Pages) */
+.hero-wrapper .hero-content {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 32px;
+    z-index: 3;
+}
+
+.hero-wrapper .hero-content h1 {
+    font-size: 45px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-wrapper .hero-content p {
+    font-size: 20px;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.hero-wrapper .search-card h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #112211;
+    margin-bottom: 32px;
+}
+
+/* Navbar & Logo Styles */
+.navbar-brand-text {
+    font-weight: 700;
+    color: #112211;
+}
+
+.navbar-brand-icon {
+    color: #8DD3BB;
+    font-size: 0.8em;
+    margin-left: 2px;
+}
+
+body .navbar .nav-link-premium {
+    font-weight: 600;
+}
+
+.user-avatar-nav {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+body .navbar .btn-signup-nav {
+    border-radius: 8px;
 }

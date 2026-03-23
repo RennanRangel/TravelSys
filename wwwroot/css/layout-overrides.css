@@ -1,0 +1,28 @@
+/**
+ * Layout Overrides for Specific Pages
+ * Targets pages by ID to override default Bootstrap/Layout container behaviors
+ */
+
+/* Find Stays Landing Page */
+body #hotels-findstays .container,
+body #flights-findflight .container {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+body #hotels-findstays main,
+body #flights-findflight main {
+    padding-bottom: 0;
+}
+
+/* Hotel Details Page */
+body #hotel-details .container {
+    max-width: 1300px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+body #hotel-details main.pb-3 {
+    padding-bottom: 0;
+}

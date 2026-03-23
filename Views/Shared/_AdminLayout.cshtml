@@ -18,7 +18,7 @@
         <div class="admin-logo">
             Travel<i class="fas fa-plane-departure"></i>
         </div>
-        <nav class="admin-nav" style="flex: 1;">
+        <nav class="admin-nav">
             <a asp-controller="Admin" asp-action="Index" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")">
                 <i class="fas fa-home"></i> Visão Geral
             </a>
@@ -39,11 +39,11 @@
             </a>
         </nav>
         
-        <div style="padding-top: 20px; border-top: 1px solid #E7E8E9; margin-top: auto;">
+        <div class="admin-sidebar-footer">
             <a href="/" class="admin-nav-item">
                 <i class="fas fa-external-link-alt"></i> Back to Site
             </a>
-            <form asp-controller="Account" asp-action="Logout" method="post" style="margin: 0;">
+            <form asp-controller="Account" asp-action="Logout" method="post" class="admin-logout-form">
                 <button type="submit" class="admin-nav-item w-100 border-0 bg-transparent text-start">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
@@ -56,12 +56,12 @@
         <!-- Topbar -->
         <header class="admin-topbar">
             <div class="breadcrumb-area">
-                <span style="color: var(--admin-text-muted);">Pages</span> / <strong>@ViewData["Title"]</strong>
+                <span class="breadcrumb-label">Pages</span> / <strong>@ViewData["Title"]</strong>
             </div>
             <div class="admin-user-info">
                 <div class="user-text text-end">
-                    <div style="font-weight: 600; font-size: 14px;">Administrator</div>
-                    <div style="font-size: 12px; color: var(--admin-text-muted);">@User.Identity?.Name</div>
+                    <div class="admin-user-title">Administrator</div>
+                    <div class="admin-user-subtitle">@User.Identity?.Name</div>
                 </div>
                 <img src="https://ui-avatars.com/api/?name=@(User.Identity?.Name ?? "Admin")&background=8DD3BB&color=fff" alt="Admin" class="admin-user-avatar">
             </div>

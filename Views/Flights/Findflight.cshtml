@@ -5,20 +5,9 @@
 @section Styles {
     <link rel="stylesheet" href="~/css/Findflight.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/flights.css" asp-append-version="true">
-    <style>
-        /* Allow landing components to go full-width by overriding the layout container */
-        .container { 
-            max-width: 100% !important; 
-            padding-left: 0 !important; 
-            padding-right: 0 !important; 
-        }
-        main {
-            padding-bottom: 0 !important;
-        }
-    </style>
 }
 
-<div class="flights-landing">
+<div id="flights-findflight" class="flights-landing">
     <!-- Hero Section -->
     <section class="hero">
         <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1440&h=537&fit=crop" alt="Flight Hero" class="img-hero">
@@ -61,7 +50,7 @@
         <div class="map-container">
             <div class="map-background">
                 <!-- Location Markers (Mock as in image) -->
-                <div class="location-marker" style="top: 30%; left: 20%;">
+                <div class="location-marker marker-1">
                     <div class="marker-popup">
                         <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=100" alt="James Blue">
                         <div class="marker-info">
@@ -70,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="location-marker" style="top: 60%; left: 40%;">
+                <div class="location-marker marker-2">
                     <div class="marker-popup">
                         <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=100" alt="Sarah Green">
                         <div class="marker-info">
@@ -79,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="location-marker" style="top: 40%; left: 70%;">
+                <div class="location-marker marker-3">
                     <div class="marker-popup">
                         <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=100" alt="Alex White">
                         <div class="marker-info">
@@ -102,7 +91,7 @@
             <a href="#" class="btn-see-all">See All</a>
         </div>
         <div class="travel-grid">
-            <div class="travel-card" style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800');">
+            <div class="travel-card travel-card-melbourne">
                 <div class="card-overlay">
                     <div class="card-content">
                         <div class="card-main">
@@ -111,10 +100,10 @@
                         </div>
                         <span class="card-price">$ 700</span>
                     </div>
-                    <a href="@Url.Action("Listing", "Flights", new { route = "Melbourne" })" class="btn-book" style="text-decoration: none; text-align: center;">Book Flight</a>
+                    <a href="@Url.Action("Listing", "Flights", new { route = "Melbourne" })" class="btn-book">Book Flight</a>
                 </div>
             </div>
-            <div class="travel-card" style="background-image: url('https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=800');">
+            <div class="travel-card travel-card-paris">
                 <div class="card-overlay">
                     <div class="card-content">
                         <div class="card-main">
@@ -123,10 +112,10 @@
                         </div>
                         <span class="card-price">$ 600</span>
                     </div>
-                    <a href="@Url.Action("Listing", "Flights", new { route = "Paris" })" class="btn-book" style="text-decoration: none; text-align: center;">Book Flight</a>
+                    <a href="@Url.Action("Listing", "Flights", new { route = "Paris" })" class="btn-book">Book Flight</a>
                 </div>
             </div>
-            <div class="travel-card" style="background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800');">
+            <div class="travel-card travel-card-london">
                 <div class="card-overlay">
                     <div class="card-content">
                         <div class="card-main">
@@ -135,10 +124,10 @@
                         </div>
                         <span class="card-price">$ 350</span>
                     </div>
-                    <a href="@Url.Action("Listing", "Flights", new { route = "London" })" class="btn-book" style="text-decoration: none; text-align: center;">Book Flight</a>
+                    <a href="@Url.Action("Listing", "Flights", new { route = "London" })" class="btn-book">Book Flight</a>
                 </div>
             </div>
-            <div class="travel-card" style="background-image: url('https://images.unsplash.com/photo-1548546738-8509cb246ed3?w=800');">
+            <div class="travel-card travel-card-columbia">
                 <div class="card-overlay">
                     <div class="card-content">
                         <div class="card-main">
@@ -147,7 +136,7 @@
                         </div>
                         <span class="card-price">$ 700</span>
                     </div>
-                    <a href="@Url.Action("Listing", "Flights", new { route = "Columbia" })" class="btn-book" style="text-decoration: none; text-align: center;">Book Flight</a>
+                    <a href="@Url.Action("Listing", "Flights", new { route = "Columbia" })" class="btn-book">Book Flight</a>
                 </div>
             </div>
         </div>

@@ -20,7 +20,7 @@
             <h1>@hotel?.Name</h1>
             <p class="location"><i class="fas fa-map-marker-alt"></i> @hotel?.Location</p>
         </div>
-        <div class="ticket-actions-wrap" style="text-align: right;">
+        <div class="ticket-actions-wrap ticket-actions-right">
             <div class="price-tag">$@Model.TotalPrice.ToString("F0")</div>
             <div class="ticket-actions">
                 <button class="btn-action-icon"><i class="fas fa-share-alt"></i></button>
@@ -86,10 +86,10 @@
             <div class="ticket-barcode-section">
                 <span>RESERVATION CODE</span>
                 <h4>@Model.ReservationNumber</h4>
-                <div class="barcode-wrap" style="margin-top: 10px;">
+                <div class="barcode-wrap barcode-container">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Barcode_EAN8_example.svg/1200px-Barcode_EAN8_example.svg.png" 
                          alt="Barcode" 
-                         style="width: 100%; max-width: 400px; height: 60px; object-fit: cover;">
+                         class="barcode-image-full">
                 </div>
             </div>
         </div>
@@ -97,9 +97,9 @@
         <!-- Right Panel: Branding -->
         <div class="ticket-right">
             <div class="hotel-branding">
-                <p style="letter-spacing: 4px; font-size: 10px; opacity: 0.6; margin-bottom: 8px;">HOTEL BRAND</p>
+                <p class="branding-label-top">HOTEL BRAND</p>
                 <h2>@hotel?.Name.Split(' ')[0]</h2>
-                <p style="letter-spacing: 2px; font-size: 12px; opacity: 0.6; margin-top: 8px;">ISTANBUL</p>
+                <p class="branding-label-bottom">ISTANBUL</p>
             </div>
         </div>
     </div>
@@ -125,7 +125,7 @@
                 P.O. Box 22550<br>
                 Doha, State of Qatar
             </p>
-            <p>Further contact details can be found at <a href="#" style="color: #FF8682;">golobe.com/help</a></p>
+            <p>Further contact details can be found at <a href="#" class="help-link-color">golobe.com/help</a></p>
         </div>
     </section>
 </div>

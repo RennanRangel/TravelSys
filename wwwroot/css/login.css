@@ -98,6 +98,16 @@ h1 {
     margin-bottom: 24px;
 }
 
+.validation-errors {
+    color: #FF8682;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.validation-errors p {
+    margin-bottom: 5px;
+}
+
 .form-group label {
     display: block;
     font-size: 14px;

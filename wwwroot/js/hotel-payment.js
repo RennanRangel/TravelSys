@@ -88,3 +88,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     DOM.formFinalizar?.addEventListener('submit', handleSubmissao);
 });
+
+function updatePayment(type, amount) {
+    document.querySelectorAll('.payment-card').forEach(card => card.classList.remove('selected'));
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('selected');
+    }
+    const paymentTypeInput = document.getElementById('selectedPaymentType');
+    if (paymentTypeInput) paymentTypeInput.value = type;
+    const totalDisplay = document.getElementById('totalPriceDisplay');
+    if (totalDisplay) totalDisplay.textContent = '$' + amount.toFixed(2);
+}
+
+function selectCard(element) {
+    document.querySelectorAll('.card-item').forEach(card => card.classList.remove('selected'));
+    if (element) element.classList.add('selected');
+}
+
+function toggleModal(show) {
+    const modal = document.getElementById('addCardModal');
+    if (modal) {
+        modal.classList.toggle('active', show);
+    }
+}

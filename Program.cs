@@ -79,51 +79,125 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
 
-    // FORCED DB FIX
-    Console.WriteLine(">>> STARTING FORCED DB FIX <<<");
+    // FORCED DB FIX - Comprehensive Repair
+    Console.WriteLine(">>> STARTING COMPREHENSIVE DB REPAIR <<<");
     try {
         using (var conn = new MySqlConnector.MySqlConnection(mySqlConnection))
         {
             await conn.OpenAsync();
-            string[] cols = { "Region", "BookingMode", "CheckIn", "CheckOut", "ReceptionMode", "ZipCode", "Country" };
-            foreach (var c in cols)
+            
+            // 1. Repair HOTELS
+            string[] hotelCols = { 
+                "Region", "BookingMode", "CheckIn", "CheckOut", "ReceptionMode", 
+                "ZipCode", "Country", "Status", "Type", "Overview", "MapUrl", 
+                "GalleryImages", "MainImage", "IsAccessible" 
+            };
+            foreach (var c in hotelCols)
             {
                 try { 
-                    using var cmd = new MySqlConnector.MySqlCommand($"ALTER TABLE Hotels ADD COLUMN {c} LONGTEXT NULL", conn);
+                    string type = (c == "Status") ? "VARCHAR(50) DEFAULT 'publicada'" : 
+                                 (c == "IsAccessible") ? "TINYINT(1) DEFAULT 0" : "LONGTEXT NULL";
+                    using var cmd = new MySqlConnector.MySqlCommand($"ALTER TABLE Hotels ADD COLUMN {c} {type}", conn);
                     await cmd.ExecuteNonQueryAsync(); 
-                    Console.WriteLine($"> Successfully added column: {c}");
-                } catch { /* likely exists */ }
+                    Console.WriteLine($"> Hotels: Added {c}");
+                } catch { }
             }
             try { 
                 using var cmd = new MySqlConnector.MySqlCommand("ALTER TABLE Hotels MODIFY COLUMN Stars INT NULL", conn);
                 await cmd.ExecuteNonQueryAsync(); 
-                Console.WriteLine("> Successfully modified Stars column.");
             } catch { }
 
-            // FORECED FLIGHTS DB FIX
-            string[] flightColsText = { "FlightClasses" };
-            foreach (var c in flightColsText)
+            // 2. Repair FLIGHTS
+            string[] flightCols = { 
+                "MainImage", "GalleryImages", "Policies", "Amenities", "TripType", 
+                "FlightClasses", "Status", "Logo", "Terminal", "Frequency", "IsAccessible" 
+            };
+            foreach (var c in flightCols)
             {
                 try { 
-                    using var cmd = new MySqlConnector.MySqlCommand($"ALTER TABLE Flights ADD COLUMN {c} LONGTEXT NULL", conn);
+                    string type = (c == "Status") ? "VARCHAR(50) DEFAULT 'publicada'" : 
+                                 (c == "IsAccessible") ? "TINYINT(1) DEFAULT 0" : "LONGTEXT NULL";
+                    using var cmd = new MySqlConnector.MySqlCommand($"ALTER TABLE Flights ADD COLUMN {c} {type}", conn);
                     await cmd.ExecuteNonQueryAsync(); 
-                    Console.WriteLine($"> Successfully added column: {c}");
-                } catch { /* likely exists */ }
+                    Console.WriteLine($"> Flights: Added {c}");
+                } catch { }
             }
-            string[] flightColsDecimal = { "EconomyPrice", "BusinessPrice", "FirstClassPrice" };
-            foreach (var c in flightColsDecimal)
+            string[] flightDecimals = { "EconomyPrice", "BusinessPrice", "FirstClassPrice" };
+            foreach (var c in flightDecimals)
             {
                 try { 
                     using var cmd = new MySqlConnector.MySqlCommand($"ALTER TABLE Flights ADD COLUMN {c} DECIMAL(18,2) NULL", conn);
                     await cmd.ExecuteNonQueryAsync(); 
-                    Console.WriteLine($"> Successfully added column: {c}");
-                } catch { /* likely exists */ }
+                    Console.WriteLine($"> Flights: Added decimal {c}");
+                } catch { }
             }
+
+            // 3. Repair BOOKINGS
+            string[] bookingCols = { "Gate", "Seat", "TicketNumber", "UserName", "PaymentType", "Status", "FlightClass" };
+            foreach (var c in bookingCols)
+            {
+                try { 
+                    using var cmd = new MySqlConnector.MySqlCommand($"ALTER TABLE Bookings ADD COLUMN {c} LONGTEXT NULL", conn);
+                    await cmd.ExecuteNonQueryAsync(); 
+                    Console.WriteLine($"> Bookings: Added {c}");
+                } catch { }
             }
-        } catch (Exception ex) {
-            Console.WriteLine($">>> DB FIX FAILED: {ex.Message}");
+            try { 
+                using var cmd = new MySqlConnector.MySqlCommand("ALTER TABLE Bookings ADD COLUMN IsRoundTrip TINYINT(1) DEFAULT 0", conn);
+                await cmd.ExecuteNonQueryAsync(); 
+                Console.WriteLine($"> Bookings: Added IsRoundTrip");
+            } catch { }
+
+            // 4. Repair HOTELBOOKINGS
+            string[] hotelBookingCols = { "UserName", "RoomType", "PaymentType", "ReservationNumber", "Status" };
+            foreach (var c in hotelBookingCols)
+            {
+                try { 
+                    using var cmd = new MySqlConnector.MySqlCommand($"ALTER TABLE HotelBookings ADD COLUMN {c} LONGTEXT NULL", conn);
+                    await cmd.ExecuteNonQueryAsync(); 
+                    Console.WriteLine($"> HotelBookings: Added {c}");
+                } catch { }
+            }
+
+            // 5. Repair USERCARDS
+            try { 
+                using var cmd = new MySqlConnector.MySqlCommand("ALTER TABLE UserCards ADD COLUMN CardType LONGTEXT NULL", conn);
+                await cmd.ExecuteNonQueryAsync(); 
+                Console.WriteLine($"> UserCards: Added CardType");
+            } catch { }
+
+            // 6. Repair ASPNETUSERS (ApplicationUser)
+            string[] userCols = { "FirstName", "LastName", "Phone", "IsBCryptPassword", "ProfilePicture" };
+            foreach (var c in userCols)
+            {
+                try { 
+                    string type = (c == "IsBCryptPassword") ? "TINYINT(1) DEFAULT 0" : "LONGTEXT NULL";
+                    using var cmd = new MySqlConnector.MySqlCommand($"ALTER TABLE AspNetUsers ADD COLUMN {c} {type}", conn);
+                    await cmd.ExecuteNonQueryAsync(); 
+                    Console.WriteLine($"> AspNetUsers: Added {c}");
+                } catch { }
+            }
+            try { 
+                using var cmd = new MySqlConnector.MySqlCommand("ALTER TABLE AspNetUsers ADD COLUMN CreatedAt DATETIME(6) DEFAULT CURRENT_TIMESTAMP(6)", conn);
+                await cmd.ExecuteNonQueryAsync(); 
+                Console.WriteLine($"> AspNetUsers: Added CreatedAt");
+            } catch { }
+
+            // 7. Repair ADMINTASKS
+            string[] adminTaskCols = { "Title", "Description", "Status", "Priority", "AssignedTo" };
+            foreach (var c in adminTaskCols)
+            {
+                try { 
+                    using var cmd = new MySqlConnector.MySqlCommand($"ALTER TABLE AdminTasks ADD COLUMN {c} LONGTEXT NULL", conn);
+                    await cmd.ExecuteNonQueryAsync(); 
+                    Console.WriteLine($"> AdminTasks: Added {c}");
+                } catch { }
+            }
         }
-        Console.WriteLine(">>> FINISHED FORCED DB FIX <<<");
+    } catch (Exception ex) {
+        Console.WriteLine($">>>> DB REPAIR ERROR: {ex.Message}");
+    }
+    Console.WriteLine(">>> FINISHED COMPREHENSIVE DB REPAIR <<<");
 
     await DbInitializer.Initialize(services);
 }

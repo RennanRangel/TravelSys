@@ -244,15 +244,15 @@ main {
 }
 
 /* Premium User Dropdown */
-.dropdown-menu-user {
-    width: 320px !important;
-    padding: 0 !important;
-    border: none !important;
-    border-radius: 16px !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1) !important;
-    margin-top: 15px !important;
+body .navbar .dropdown-menu-user {
+    width: 320px;
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    margin-top: 15px;
     overflow: hidden;
-    background: #fff !important;
+    background: #fff;
 }
 
 .dropdown-user-header {
@@ -262,15 +262,15 @@ main {
     gap: 16px;
 }
 
-.user-avatar-menu {
-    width: 60px !important;
-    height: 60px !important;
-    border-radius: 50% !important;
+body .navbar .user-avatar-menu {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     object-fit: cover;
 }
 
-.user-text-info h4 {
-    font-size: 15px !important;
+body .navbar .user-text-info h4 {
+    font-size: 15px;
     font-weight: 700;
     margin: 0;
     max-width: 200px;
@@ -290,24 +290,24 @@ main {
     margin: 0;
 }
 
-.dropdown-item-premium {
+body .navbar .dropdown-item-premium {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 24px !important;
-    color: #112211 !important;
-    text-decoration: none !important;
-    font-weight: 500 !important;
+    padding: 16px 24px;
+    color: #112211;
+    text-decoration: none;
+    font-weight: 500;
     transition: background 0.2s;
-    border: none !important;
-    background: transparent !important;
+    border: none;
+    background: transparent;
     width: 100%;
     text-align: left;
     cursor: pointer;
 }
 
-.dropdown-item-premium:hover {
-    background: rgba(141, 211, 187, 0.1) !important;
+body .navbar .dropdown-item-premium:hover {
+    background: rgba(141, 211, 187, 0.1);
 }
 
 .item-left {
@@ -327,6 +327,6 @@ main {
     opacity: 0.3;
 }
 
-.logout-form button {
-    border-top: 1px solid #f0f0f0 !important;
+body .navbar .logout-form button {
+    border-top: 1px solid #f0f0f0;
 }

@@ -97,7 +97,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px; background-color: #8DD3BB; border: none; color: #112211;">Apply Filters</button>
+            <button type="submit" class="btn btn-primary btn-apply-filters">Apply Filters</button>
         </form>
     </aside>
 
@@ -185,17 +185,7 @@
             </div>
         </div>
         
-        <script>
-            function applyPropertyType(type) {
-                var current = document.getElementById('propertyTypeInput').value;
-                if (current === type) {
-                     document.getElementById('propertyTypeInput').value = ""; // Toggle off to show all
-                } else {
-                     document.getElementById('propertyTypeInput').value = type;
-                }
-                document.getElementById('filterForm').submit();
-            }
-        </script>
+
 
         <div class="hotel-cards">
             @if (!Model.Any())
@@ -212,8 +202,8 @@
                         @if(!string.IsNullOrEmpty(hotel.MainImage)) {
                             <img src="@hotel.MainImage" alt="@hotel.Name">
                         } else {
-                            <div style="width: 100%; height: 200px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-hotel" style="font-size: 48px; color: #ccc;"></i>
+                            <div class="hotel-image-placeholder">
+                                <i class="fas fa-hotel hotel-placeholder-icon"></i>
                             </div>
                         }
                     </div>
@@ -224,7 +214,12 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span>@hotel.Location</span>
                             </div>
-
+                            @if (hotel.IsAccessible)
+                            {
+                                <div class="accessibility-tag accessibility-tag-inline">
+                                    <i class="fas fa-wheelchair"></i> PCD Friendly
+                                </div>
+                            }
                         </div>
                         <div class="hotel-price-section">
                             <p class="price-label">starting from</p>
@@ -283,9 +278,5 @@
 @section Scripts {
     <script src="~/js/hotel-listing.js"></script>
     <script src="~/js/favorites-manager.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            FavoritesManager.initButtons();
-        });
-    </script>
+}
 }

@@ -293,8 +293,30 @@
 }
 
 .badge-item.highlight.vertical-badge .amenity-star {
-    width: 28px;
+    width: 20px;
     height: auto;
+}
+
+.accessibility-badge-details {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    color: #0369a1;
+    font-weight: 500;
+}
+
+.form-inline-block {
+    display: inline;
+}
+
+.description-pre {
+    white-space: pre-wrap;
+}
+
+.map-img-fluid {
+    width: 100%;
+    border-radius: 12px;
 }
 
 .badge-item.highlight.vertical-badge span {

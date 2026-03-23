@@ -128,7 +128,7 @@ body {
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    color: #112211 !important;
+    color: #112211;
     font-weight: 600;
     font-size: 14px;
 }
@@ -370,6 +370,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    text-decoration: none;
 }
 
 /* Reviews */

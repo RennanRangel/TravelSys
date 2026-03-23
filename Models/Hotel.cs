@@ -45,7 +45,10 @@ public class Hotel
     public string? ReceptionMode { get; set; }
     public string? ZipCode { get; set; }
     public string? Country { get; set; }
-
+    public decimal? FirstClassPrice { get; set; }
+    public bool IsAccessible { get; set; }
+    public string? Terminal { get; set; }
+    public string? Frequency { get; set; }
     public string Status { get; set; } = "publicada";
 
     [NotMapped]

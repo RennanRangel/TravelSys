@@ -92,6 +92,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     DOM.searchBtn?.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log('Busca de hotéis iniciada');
     });
 });
+
+function applyPropertyType(type) {
+    const propertyTypeInput = document.getElementById('propertyTypeInput');
+    const filterForm = document.getElementById('filterForm');
+    if (propertyTypeInput && filterForm) {
+        var current = propertyTypeInput.value;
+        if (current === type) {
+            propertyTypeInput.value = ""; // Toggle off to show all
+        } else {
+            propertyTypeInput.value = type;
+        }
+        filterForm.submit();
+    }
+}

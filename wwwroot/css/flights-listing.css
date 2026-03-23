@@ -1334,11 +1334,75 @@ body {
     flex: 1;
 }
 
+.swap-icon {
+    cursor: pointer;
+}
+
+.route-details-inline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.terminal-info-inline {
+    font-size: 11px;
+    color: #6b7280;
+}
+
+.pagination-container-inline {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 40px 0;
+    width: 100%;
+}
+
+.pagination-link-premium {
+    padding: 10px 20px;
+    border: 1px solid #E7E8E9;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #112211;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    transition: all 0.2s;
+}
+
+.pagination-link-premium.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.pagination-number-premium {
+    padding: 10px;
+    border: 1px solid #E7E8E9;
+    border-radius: 4px;
+    text-decoration: none;
+    min-width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    background-color: #FFFFFF;
+    color: #112211;
+}
+
+.pagination-number-premium.active {
+    background-color: #8DD3BB;
+    border-color: #8DD3BB;
+}
+
+.pagination-number-premium:hover:not(.active) {
+    background-color: #f3f4f6;
+}
 .row-left input[type="checkbox"] {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    border: 1.5px solid #D7D9DB !important;
+    border: 1.5px solid #D7D9DB;
     border-radius: 4px;
 }
 
@@ -1468,4 +1532,22 @@ body {
     .row-middle, .row-right {
         text-align: center;
     }
+}
+
+/* =========================================
+   GENERIC UTILITY CLASSES
+   ========================================= */
+.btn-apply-filters {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #8DD3BB;
+    border: none;
+    color: #112211;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-apply-filters:hover {
+    background-color: #7bc1a8;
 }

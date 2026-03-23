@@ -35,11 +35,12 @@
             <div class="price" id="flight-price-display">R$ @displayPrice.ToString("0.00")</div>
             <div class="action-buttons">
                
-                <form asp-action="Booking" asp-route-id="@Model.Id" method="get" style="flex: 1; display: flex;">
+                <form asp-action="Booking" asp-route-id="@Model.Id" method="get" class="book-form-flex">
                     @{
                         bool isVoltaSelected = multiplier == 2;
                     }
                     <input type="hidden" name="volta" value="@(isVoltaSelected ? "true" : "false")" />
+                    <input type="hidden" name="flightClass" id="flightClassInput" value="Economica" />
                     <button type="submit" class="btn-book">Book now</button>
                 </form>
             </div>
@@ -54,8 +55,8 @@
         }
         else
         {
-            <div style="width: 100%; height: 400px; background-color: #eee; display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-plane" style="font-size: 64px; color: #ccc;"></i>
+            <div class="hero-placeholder">
+                <i class="fas fa-plane hero-placeholder-icon"></i>
             </div>
         }
     </div>
@@ -69,7 +70,7 @@
                 @if (Model.EconomyPrice.HasValue)
                 {
                     <label class="checkbox-option">
-                        <input type="radio" name="flight-class" value="@Model.EconomyPrice.Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)" @(firstChecked ? "checked" : "") onchange="updateFlightPrice(this.value, 'Economy Features')">
+                        <input type="radio" name="flight-class" value="@Model.EconomyPrice.Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)" @(firstChecked ? "checked" : "") onchange="updateFlightPrice(this.value, 'Economy Features', 'Economica')">
                         <span>Econômica</span>
                     </label>
                     firstChecked = false;
@@ -77,7 +78,7 @@
                 @if (Model.BusinessPrice.HasValue)
                 {
                     <label class="checkbox-option">
-                        <input type="radio" name="flight-class" value="@Model.BusinessPrice.Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)" @(firstChecked ? "checked" : "") onchange="updateFlightPrice(this.value, 'Business Features')">
+                        <input type="radio" name="flight-class" value="@Model.BusinessPrice.Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)" @(firstChecked ? "checked" : "") onchange="updateFlightPrice(this.value, 'Business Features', 'Executiva')">
                         <span>Executiva</span>
                     </label>
                     firstChecked = false;
@@ -85,19 +86,14 @@
                 @if (Model.FirstClassPrice.HasValue)
                 {
                     <label class="checkbox-option">
-                        <input type="radio" name="flight-class" value="@Model.FirstClassPrice.Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)" @(firstChecked ? "checked" : "") onchange="updateFlightPrice(this.value, 'First Class Features')">
+                        <input type="radio" name="flight-class" value="@Model.FirstClassPrice.Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)" @(firstChecked ? "checked" : "") onchange="updateFlightPrice(this.value, 'First Class Features', 'Primeira Classe')">
                         <span>Primeira Classe</span>
                     </label>
                     firstChecked = false; /* firstChecked logic completes */
                 }
             </div>
             
-            <script>
-                function updateFlightPrice(val, name) {
-                    document.getElementById('flight-price-display').innerHTML = 'R$ ' + parseFloat(val).toFixed(2);
-                    document.getElementById('features-title-display').innerHTML = name;
-                }
-            </script>
+
         </div>
         <div class="features-gallery">
             <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=300" alt="Cockpit">
@@ -111,27 +107,29 @@
         </div>
     </div>
 
-    @if (!string.IsNullOrEmpty(Model.Amenities))
-    {
-        <div class="policies-section amenities-description-section">
-            <h3>Serviços de Bordo & Entretenimento</h3>
-            <div style="color: #4B5563; font-size: 15px; line-height: 1.6;">
-                @foreach (var line in Model.Amenities.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    var text = line.Trim();
-                    if (text.StartsWith("-")) {
-                        text = text.Substring(1).Trim();
-                        <div style="display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start;">
-                            <i class="fas fa-check" style="color: #8DD3BB; margin-top: 4px;"></i>
-                            <span>@text</span>
-                        </div>
-                    } else {
-                        <p style="margin-bottom: 12px;">@text</p>
-                    }
-                }
+    
+
+    <div class="policies-section additional-info-section">
+        <h3>Informações Adicionais</h3>
+        <div class="info-grid-details">
+            <div class="info-item-box">
+                <span class="info-item-label">Terminal</span>
+                <span class="info-item-value">@(string.IsNullOrEmpty(Model.Terminal) ? "Não informado" : Model.Terminal)</span>
+            </div>
+            <div class="info-item-box">
+                <span class="info-item-label">Frequência</span>
+                <span class="info-item-value">@(string.IsNullOrEmpty(Model.Frequency) ? "Diário" : Model.Frequency)</span>
+            </div>
+            <div class="info-item-box">
+                <span class="info-item-label">Acessibilidade (PCD)</span>
+                <span class="info-item-value">@(Model.IsAccessible ? "Sim, assistência disponível" : "Não informado")</span>
+            </div>
+            <div class="info-item-box">
+                <span class="info-item-label">Status do Voo</span>
+                <span class="info-item-value @(Model.Status == "Active" ? "status-active" : "status-inactive")">@(Model.Status ?? "Ativo")</span>
             </div>
         </div>
-    }
+    </div>
 
     <div class="policies-section">
         <h3>@Model.Airline Policies</h3>
@@ -141,14 +139,14 @@
                 @foreach (var block in Model.Policies.Split(new[] { "\r\n\r\n", "\n\n" }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     var lines = block.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-                    <div class="policy-item" style="flex-direction: column; align-items: flex-start; gap: 8px;">
-                        <div class="policy-title" style="display: flex; align-items: center; gap: 8px; font-weight: bold;">
+                    <div class="policy-item policy-item-column">
+                        <div class="policy-title policy-title-bold">
                             <i class="fas fa-stopwatch"></i>
                             <span>@lines[0]</span>
                         </div>
                         @if (lines.Length > 1) 
                         {
-                            <span style="color: #555; padding-left: 28px;">
+                            <span class="policy-content-text">
                                 @Html.Raw(string.Join("<br/>", lines.Skip(1)))
                             </span>
                         }
@@ -221,7 +219,7 @@
         @if (showVolta)
         {
         <!-- Return Flight -->
-        <div class="return-flight-card" style="margin-top: 24px;">
+        <div class="return-flight-card schedule-card-margin">
             <div class="flight-header">
                 <h3>Return Sat, Dec 11</h3>
                 <span class="flight-duration">@Model.Duration</span>
@@ -256,7 +254,7 @@
                 <div class="flight-path-horizontal">
                     <div class="path-dot"></div>
                     <div class="path-line"></div>
-                    <i class="fas fa-plane" style="transform: rotate(180deg);"></i>
+                    <i class="fas fa-plane plane-icon-rotated"></i>
                     <div class="path-line"></div>
                     <div class="path-dot"></div>
                 </div>
@@ -275,9 +273,6 @@
 
 @section Scripts {
     <script src="~/js/favorites-manager.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            FavoritesManager.initButtons();
-        });
-    </script>
+    <script src="~/js/flight-details.js"></script>
+}
 }

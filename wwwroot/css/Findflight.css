@@ -155,8 +155,8 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    text-decoration: none !important;
-    color: #112211 !important;
+    text-decoration: none;
+    color: #112211;
     font-weight: 600;
     font-size: 14px;
 }
@@ -265,6 +265,10 @@
     position: absolute;
     z-index: 5;
 }
+
+.marker-1 { top: 30%; left: 20%; }
+.marker-2 { top: 60%; left: 40%; }
+.marker-3 { top: 40%; left: 70%; }
 
 .marker-popup {
     background: #FFFFFF;
@@ -430,6 +434,11 @@
     transform: translateY(-8px);
 }
 
+.travel-card-melbourne { background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800'); }
+.travel-card-paris { background-image: url('https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=800'); }
+.travel-card-london { background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800'); }
+.travel-card-columbia { background-image: url('https://images.unsplash.com/photo-1548546738-8509cb246ed3?w=800'); }
+
 .card-overlay {
     background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
     padding: 24px;
@@ -484,6 +493,8 @@
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-decoration: none;
+    text-align: center;
 }
 
 .btn-book:hover {

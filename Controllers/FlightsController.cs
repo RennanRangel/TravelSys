@@ -100,15 +100,16 @@ public class FlightsController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Booking(int id)
+    public async Task<IActionResult> Booking(int id, string? flightClass)
     {
         var flight = await _context.Flights.FindAsync(id);
         if (flight == null) return NotFound();
+        ViewBag.FlightClass = flightClass;
         return View("flight-booking", flight);
     }
 
     [HttpGet]
-    public async Task<IActionResult> Payment(int? id, bool volta = false)
+    public async Task<IActionResult> Payment(int? id, bool volta = false, string? flightClass = null)
     {
         string? formId = HttpContext.Request.HasFormContentType ? HttpContext.Request.Form["id"].ToString() : null;
         int flightId = id ?? (int.TryParse(formId, out int parsedId) ? parsedId : 0);
@@ -121,12 +122,13 @@ public class FlightsController : Controller
         ViewBag.UserCards = await _context.UserCards.Where(c => c.UserId == userId).ToListAsync();
 
         ViewBag.Volta = volta;
+        ViewBag.FlightClass = flightClass;
         return View("flight-payment", flight);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> CompletePayment(int flightId, string paymentType, bool volta = false)
+    public async Task<IActionResult> CompletePayment(int flightId, string paymentType, bool volta = false, string? flightClass = null)
     {
         var flight = await _context.Flights.FindAsync(flightId);
         if (flight == null) return NotFound();
@@ -151,6 +153,7 @@ public class FlightsController : Controller
             PaymentType = paymentType ?? "full",
             TotalPrice = total,
             Status = "Confirmed",
+            FlightClass = flightClass,
             TicketNumber = $"TKT{DateTime.Now:yyyyMMdd}{flightId:D4}{new Random().Next(1000, 9999)}",
             Gate = $"A{(flightId % 20) + 1}",
             Seat = $"{(flightId % 30) + 1}A",

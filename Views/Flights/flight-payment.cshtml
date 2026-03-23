@@ -33,6 +33,7 @@
                 <input type="hidden" name="flightId" value="@Model.Id" />
                 <input type="hidden" name="paymentType" id="paymentTypeInput" value="full" />
                 <input type="hidden" name="volta" value="@(isVolta ? "true" : "false")" />
+                <input type="hidden" name="flightClass" value="@ViewBag.FlightClass" />
 
                 <!-- Flight Header Section -->
                 <div class="flight-header-section">
@@ -90,7 +91,7 @@
                     @if (isVolta)
                     {
                         <!-- Volta Schedule Card -->
-                        <div class="flight-schedule-card" style="margin-top: 20px;">
+                        <div class="flight-schedule-card schedule-card-margin">
                             <div class="card-header">
                                 <h3>Volta Sat, Dec 11</h3>
                                 <span class="duration">@Model.Duration</span>
@@ -124,7 +125,7 @@
                                 </div>
                                 <div class="path-horizontal">
                                     <div class="line"></div>
-                                    <i class="fas fa-plane" style="transform: rotate(180deg);"></i>
+                                    <i class="fas fa-plane plane-icon-rotated"></i>
                                     <div class="line"></div>
                                 </div>
                                 <div class="time-point">
@@ -196,7 +197,7 @@
                 <div class="summary-header">
                     <img src="@(string.IsNullOrEmpty(Model.MainImage) ? "/img/flights/A380.jpg" : Model.MainImage)" alt="Flight" class="summary-img">
                     <div class="summary-info">
-                        <span class="class-label">Economy</span>
+                        <span class="class-label">@(ViewBag.FlightClass ?? "Economy")</span>
                         <h4>@Model.Airline A380 Airbus</h4>
                         <div class="rating-box">
                             <span class="score">@Model.Rating</span>
@@ -295,19 +296,5 @@
 </div>
 
 @section Scripts {
-    <script>
-        function selectPlan(type) {
-            document.querySelectorAll('.plan-option').forEach(opt => opt.classList.remove('selected'));
-            document.getElementById('plan-' + type).classList.add('selected');
-            document.getElementById('paymentTypeInput').value = type;
-        }
-        function openAddCardModal() {
-            document.getElementById('addCardModal').classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scroll
-        }
-        function closeAddCardModal() {
-            document.getElementById('addCardModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    </script>
+    <script src="~/js/flight-payment.js"></script>
 }

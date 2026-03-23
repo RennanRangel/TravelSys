@@ -33,7 +33,7 @@
         <div class="booking-content">
             <div class="booking-summary-box">
                 <div class="room-header">
-                    <h1>Superior room - 1 double bed or 2 twin beds</h1>
+                    <h1>@(ViewBag.RoomType ?? "Superior room - 1 double bed or 2 twin beds")</h1>
                     <div class="room-price">
                         $@Model.Price<span>/night</span>
                     </div>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
 
-                <div class="booking-dates" style="border-bottom:none; margin-bottom:0; padding: 24px 0 0 0;">
+                <div class="booking-dates booking-dates-noborder">
                     <div class="date-box">
                         <strong>Thursday, Dec 8</strong>
                         <span>Check-In</span>
@@ -59,7 +59,7 @@
                         <i class="fas fa-hotel"></i>
                         <div class="line"></div>
                     </div>
-                    <div class="date-box" style="text-align: right;">
+                    <div class="date-box date-box-right">
                         <strong>Friday, Dec 9</strong>
                         <span>Check-Out</span>
                     </div>
@@ -114,8 +114,8 @@
                     <img src="@hotelImg" alt="Room">
                 </div>
                 <div class="summary-meta">
-                    <p style="opacity:0.6; font-size:12px; margin-bottom:4px;">CVK Park Bosphorus...</p>
-                    <h3>Superior room - 1 double bed or 2 twin beds</h3>
+                    <p class="summary-hotel-name">@Model.Name</p>
+                    <h3>@(ViewBag.RoomType ?? "Superior room - 1 double bed or 2 twin beds")</h3>
                     <div class="rating">
                         <span class="badge">@Model.Rating</span>
                         <span class="label">Very Good</span>
@@ -152,19 +152,15 @@
                 </div>
             </div>
 
-            <form asp-action="Payment" asp-controller="Hotels" method="get" style="margin-top:32px;">
+            <form asp-action="Payment" asp-controller="Hotels" method="get" class="sidebar-form-margin">
                 <input type="hidden" name="id" value="@Model.Id" />
-                <button type="submit" class="btn-continue" style="margin-bottom:0;">Continue to Payment</button>
+                <input type="hidden" name="roomType" value="@ViewBag.RoomType" />
+                <button type="submit" class="btn-continue btn-no-bottom-margin">Continue to Payment</button>
             </form>
         </aside>
     </div>
 </div>
 
 @section Scripts {
-    <script>
-        function selectPayment(element, type) {
-            document.querySelectorAll('.payment-card').forEach(card => card.classList.remove('selected'));
-            element.classList.add('selected');
-        }
-    </script>
+    <script src="~/js/hotel-booking.js"></script>
 }

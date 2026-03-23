@@ -342,6 +342,14 @@
     min-width: 250px;
 }
 
+.stay-name-min-width {
+    min-width: 150px;
+}
+
+.room-type-font-size {
+    font-size: 16px;
+}
+
 .time-point {
     text-align: left;
 }
@@ -590,8 +598,8 @@ hr.ticket-sep {
     .tabs-nav {
         flex-direction: column;
     }
-    .tab-btn {
-        border-right: none !important;
+    .account-profile-container .tab-btn {
+        border-right: none;
         border-bottom: 1px solid #E7E8E9;
     }
     .profile-hero-section {
@@ -782,3 +790,5 @@ hr.ticket-sep {
         gap: 0;
     }
 }
+
+.d-none { display: none; }

@@ -35,7 +35,7 @@
         <div class="booking-content">
             <div class="booking-summary-box">
                 <div class="room-header">
-                    <h1>Superior room - 1 double bed or 2 twin beds</h1>
+                    <h1>@(ViewBag.RoomType ?? "Superior room - 1 double bed or 2 twin beds")</h1>
                     <div class="room-price">
                         $@Model.Price<span>/night</span>
                     </div>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                <div class="booking-dates" style="border-bottom:none; margin-bottom:0; padding: 24px 0 0 0;">
+                <div class="booking-dates booking-dates-checkout">
                     <div class="date-box">
                         <strong>Thursday, Dec 8</strong>
                         <span>Check-In</span>
@@ -61,7 +61,7 @@
                         <i class="fas fa-hotel"></i>
                         <div class="line"></div>
                     </div>
-                    <div class="date-box" style="text-align: right;">
+                    <div class="date-box date-box-right">
                         <strong>Friday, Dec 9</strong>
                         <span>Check-Out</span>
                     </div>
@@ -92,7 +92,7 @@
                     {
                         <div class="card-item @(card == userCards.First() ? "selected" : "")" onclick="selectCard(this)">
                             <div class="card-info">
-                                <i class="fab fa-cc-@(card.CardType.ToLower())" style="font-size: 32px; color: #112211;"></i>
+                                <i class="fab fa-cc-@(card.CardType.ToLower()) payment-card-icon"></i>
                                 <span class="card-number">**** @card.CardNumber.Substring(Math.Max(0, card.CardNumber.Length - 4))</span>
                                 <span class="card-expiry">@card.ExpiryDate</span>
                             </div>
@@ -129,8 +129,8 @@
                     <img src="@hotelImg" alt="Room">
                 </div>
                 <div class="summary-meta">
-                    <p style="opacity:0.6; font-size:12px; margin-bottom:4px;">CVK Park Bosphorus...</p>
-                    <h3>Superior room - 1 double bed or 2 twin beds</h3>
+                    <p class="summary-hotel-name">@Model.Name</p>
+                    <h3>@(ViewBag.RoomType ?? "Superior room - 1 double bed or 2 twin beds")</h3>
                     <div class="rating">
                         <span class="badge">@Model.Rating</span>
                         <span class="label">Very Good</span>
@@ -167,10 +167,11 @@
                 </div>
             </div>
 
-            <form asp-action="CompletePayment" asp-controller="Hotels" method="post" style="margin-top:32px;">
+            <form asp-action="CompletePayment" asp-controller="Hotels" method="post" class="summary-booking-form">
                 <input type="hidden" name="hotelId" value="@Model.Id" />
                 <input type="hidden" name="paymentType" id="selectedPaymentType" value="full" />
-                <button type="submit" class="btn-continue" style="margin-bottom:0;">Confirm Booking</button>
+                <input type="hidden" name="roomType" value="@ViewBag.RoomType" />
+                <button type="submit" class="btn-continue btn-confirm-booking">Confirm Booking</button>
             </form>
         </aside>
     </div>
@@ -180,7 +181,7 @@
 <div class="modal-sistema" id="addCardModal">
     <div class="modal-content">
         <span class="modal-close" onclick="toggleModal(false)">&times;</span>
-        <h2 style="margin-bottom:24px;">Add a new Card</h2>
+        <h2 class="modal-title-margin">Add a new Card</h2>
         <form asp-controller="Cards" asp-action="AddCard" method="post">
             <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
             <div class="form-group">
@@ -201,27 +202,11 @@
                 <label>Name on Card</label>
                 <input type="text" name="nameOnCard" required>
             </div>
-            <button type="submit" class="btn-submit" style="width:100%;">Add Card</button>
+            <button type="submit" class="btn-submit btn-add-card-full">Add Card</button>
         </form>
     </div>
 </div>
 
 @section Scripts {
-    <script>
-        function updatePayment(type, amount) {
-            document.querySelectorAll('.payment-card').forEach(card => card.classList.remove('selected'));
-            event.currentTarget.classList.add('selected');
-            document.getElementById('selectedPaymentType').value = type;
-            document.getElementById('totalPriceDisplay').textContent = '$' + amount.toFixed(2);
-        }
-
-        function selectCard(element) {
-            document.querySelectorAll('.card-item').forEach(card => card.classList.remove('selected'));
-            element.classList.add('selected');
-        }
-
-        function toggleModal(show) {
-            document.getElementById('addCardModal').classList.toggle('active', show);
-        }
-    </script>
+    <script src="~/js/hotel-payment.js"></script>
 }

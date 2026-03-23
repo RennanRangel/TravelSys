@@ -17,4 +17,5 @@ public class ApplicationUser : IdentityUser
     
   
     public bool IsBCryptPassword { get; set; } = false;
+    public string? ProfilePicture { get; set; }
 }

@@ -80,3 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
         DOM.formNewsletter.reset();
     });
 });
+
+function selectPayment(element, type) {
+    document.querySelectorAll('.payment-card').forEach(card => card.classList.remove('selected'));
+    if (element) element.classList.add('selected');
+}

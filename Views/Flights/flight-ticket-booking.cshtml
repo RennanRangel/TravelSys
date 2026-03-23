@@ -116,15 +116,15 @@
         </div>
 
         <!-- IDA/LABEL Side -->
-        <div class="pass-map-side" style="display: flex; align-items: center; justify-content: center; background: #fafafa; border-radius: 0 16px 16px 0;">
-             <h2 style="transform: rotate(90deg); color: #8DD3BB; font-size: 40px; white-space: nowrap;">IDA</h2>
+        <div class="pass-label-side">
+             <h2 class="pass-label-text pass-label-ida">IDA</h2>
         </div>
     </div>
 
     @if (Model.IsRoundTrip)
     {
         <!-- Boarding Pass Section - Volta -->
-        <div class="boarding-pass-container" style="margin-top: 40px;">
+        <div class="boarding-pass-container boarding-pass-margin">
             <!-- Vertical Timeline Side -->
             <div class="pass-timeline">
                 <div class="time-block top">
@@ -133,7 +133,7 @@
                 </div>
                 <div class="path-vertical">
                     <div class="line"></div>
-                    <i class="fas fa-plane" style="transform: rotate(180deg);"></i>
+                    <i class="fas fa-plane plane-icon-rotated"></i>
                     <div class="line"></div>
                 </div>
                 <div class="time-block bottom">
@@ -202,8 +202,8 @@
             </div>
 
             <!-- VOLTA/LABEL Side -->
-            <div class="pass-map-side" style="display: flex; align-items: center; justify-content: center; background: #fafafa; border-radius: 0 16px 16px 0;">
-                <h2 style="transform: rotate(90deg); color: #FF8682; font-size: 40px; white-space: nowrap;">VOLTA</h2>
+            <div class="pass-label-side">
+                <h2 class="pass-label-text pass-label-volta">VOLTA</h2>
             </div>
         </div>
     }

@@ -542,7 +542,7 @@ public class AdminController : Controller
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> UpdateFlight(int id, [Bind("Id,Airline,Logo,From,To,Departure,Arrival,Duration,Stops,Price,MainImage,Policies,Amenities,GalleryImages,LogoUpload,MainImageUpload,GalleryImagesUpload,ImagesToDelete,TripType,FlightClasses,EconomyPrice,BusinessPrice,FirstClassPrice,Status")] Flight flight)
+    public async Task<IActionResult> UpdateFlight(int id, [Bind("Id,Airline,Logo,From,To,Departure,Arrival,Duration,Stops,Price,MainImage,Policies,Amenities,GalleryImages,LogoUpload,MainImageUpload,GalleryImagesUpload,ImagesToDelete,TripType,FlightClasses,EconomyPrice,BusinessPrice,FirstClassPrice,Status,IsAccessible,Terminal,Frequency")] Flight flight)
     {
         if (id != flight.Id)
         {
@@ -686,7 +686,7 @@ public class AdminController : Controller
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> UpdateHotel(int id, [Bind("Id,Name,Type,Location,Overview,MapUrl,MainImage,GalleryImages,Price,Amenities,Region,BookingMode,CheckIn,CheckOut,ReceptionMode,ZipCode,Country,MainImageUpload,GalleryImagesUpload,ImagesToDelete")] Hotel hotel)
+    public async Task<IActionResult> UpdateHotel(int id, [Bind("Id,Name,Type,Location,Overview,MapUrl,MainImage,GalleryImages,Price,Amenities,Region,BookingMode,CheckIn,CheckOut,ReceptionMode,ZipCode,Country,MainImageUpload,GalleryImagesUpload,ImagesToDelete,IsAccessible")] Hotel hotel)
     {
         if (id != hotel.Id)
         {

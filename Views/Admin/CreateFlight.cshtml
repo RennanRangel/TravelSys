@@ -41,15 +41,15 @@
                         <label>Quais as classes do voo disponíveis? *</label>
                         <div class="d-flex gap-4 mt-2">
                             <label class="custom-checkbox d-flex align-items-center gap-2">
-                                <input type="checkbox" id="chkEconomy" value="Economica" onchange="togglePriceFields()" checked style="width: 20px; height: 20px;">
+                                <input type="checkbox" id="chkEconomy" value="Economica" onchange="togglePriceFields()" checked class="chk-large">
                                 <span>Econômica</span>
                             </label>
                             <label class="custom-checkbox d-flex align-items-center gap-2">
-                                <input type="checkbox" id="chkBusiness" value="Executiva" onchange="togglePriceFields()" style="width: 20px; height: 20px;">
+                                <input type="checkbox" id="chkBusiness" value="Executiva" onchange="togglePriceFields()" class="chk-large">
                                 <span>Executiva</span>
                             </label>
                             <label class="custom-checkbox d-flex align-items-center gap-2">
-                                <input type="checkbox" id="chkFirstClass" value="Primeira Classe" onchange="togglePriceFields()" style="width: 20px; height: 20px;">
+                                <input type="checkbox" id="chkFirstClass" value="Primeira Classe" onchange="togglePriceFields()" class="chk-large">
                                 <span>Primeira Classe</span>
                             </label>
                         </div>
@@ -59,7 +59,7 @@
                     <div class="admin-form-group">
                         <label>Qual o terminal de embarque? *</label>
                         <div class="admin-select-wrapper">
-                            <select class="admin-input admin-input-select" required>
+                            <select asp-for="NewFlight.Terminal" class="admin-input admin-input-select" required>
                                 <option value="" disabled selected>Selecione o terminal</option>
                                 <option value="T1">Terminal 1</option>
                                 <option value="T2">Terminal 2</option>
@@ -81,7 +81,7 @@
 
                     <div class="switch-container">
                         <label class="switch">
-                            <input type="checkbox">
+                            <input type="checkbox" asp-for="NewFlight.IsAccessible">
                             <span class="slider"></span>
                         </label>
                         <span class="switch-label">Voo com assistência para PCD <i class="fas fa-circle-info" title="Indica se o voo possui suporte especial"></i></span>
@@ -151,7 +151,7 @@
                             <div class="col-md-5 admin-form-group">
                                 <label>Código IATA / Aeroporto</label>
                                 <input asp-for="NewFlight.To" class="admin-input" placeholder="Ex: DXB" required>
-                                <a href="#" class="form-tip mt-2 d-inline-block" style="color: #0030BF; text-decoration: none;">Não sei o código, como posso encontrar?</a>
+                                <a href="#" class="form-tip mt-2 d-inline-block link-info-blue">Não sei o código, como posso encontrar?</a>
                             </div>
                         </div>
 
@@ -198,15 +198,15 @@
                         <div class="section-description">Selecione com que frequência este voo opera</div>
                         <div class="admin-radio-group">
                             <label class="admin-radio-item">
-                                <input type="radio" name="flight_frequency" value="daily" checked required>
+                                <input type="radio" asp-for="NewFlight.Frequency" value="daily" checked required>
                                 Diário
                             </label>
                             <label class="admin-radio-item">
-                                <input type="radio" name="flight_frequency" value="weekly" required>
+                                <input type="radio" asp-for="NewFlight.Frequency" value="weekly" required>
                                 Semanal
                             </label>
                             <label class="admin-radio-item">
-                                <input type="radio" name="flight_frequency" value="custom" required>
+                                <input type="radio" asp-for="NewFlight.Frequency" value="custom" required>
                                 Personalizado
                             </label>
                         </div>
@@ -222,7 +222,7 @@
                 <!-- Seção: Descrição e Políticas -->
                 <div id="section-descricao" class="creation-form-section">
                     <div class="creation-header">
-                        <h2>Descreva e detalhe aqui as informações do seu voo <i class="fas fa-circle-info" style="font-size: 16px; color: #666; cursor: help;"></i></h2>
+                        <h2>Descreva e detalhe aqui as informações do seu voo <i class="fas fa-circle-info info-icon-sm"></i></h2>
                     </div>
 
                     <div class="ai-assistant-banner">
@@ -356,14 +356,14 @@
                             <input asp-for="NewFlight.EconomyPrice" type="number" step="0.01" class="admin-input" placeholder="Ex: 1200.00" required>
                         </div>
                     </div>
-                    <div class="mt-4" id="price-business-container" style="display: none;">
+                    <div class="mt-4 d-none" id="price-business-container">
                         <div class="section-sub-title">Preço - Classe Executiva</div>
                         <div class="admin-form-group">
                             <label>Preço (R$) *</label>
                             <input asp-for="NewFlight.BusinessPrice" type="number" step="0.01" class="admin-input" placeholder="Ex: 3500.00">
                         </div>
                     </div>
-                    <div class="mt-4" id="price-firstclass-container" style="display: none;">
+                    <div class="mt-4 d-none" id="price-firstclass-container">
                         <div class="section-sub-title">Preço - Primeira Classe</div>
                         <div class="admin-form-group">
                             <label>Preço (R$) *</label>
@@ -406,131 +406,5 @@
 </div>
 
 @section Scripts {
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            window.updateFileUpload = function(input) {
-                const container = input.closest('.admin-file-upload-container');
-                const display = container.querySelector('.filename-display');
-                const textSpan = display.querySelector('.name-text');
-                
-                if (input.files && input.files.length > 0) {
-                    textSpan.textContent = input.files[0].name;
-                    display.style.display = 'block';
-                } else {
-                    display.style.display = 'none';
-                }
-            };
-
-            const sections = document.querySelectorAll('.creation-form-section');
-            const stepperItems = document.querySelectorAll('.stepper-item');
-            const nextButtons = document.querySelectorAll('.next-step');
-            const prevButtons = document.querySelectorAll('.prev-step');
-            let currentStep = 0;
-
-            function updateUI() {
-                sections.forEach((s, i) => {
-                    s.classList.toggle('active', i === currentStep);
-                });
-
-                stepperItems.forEach((item, i) => {
-                    item.classList.toggle('active', i === currentStep);
-                    // Also update href to prevent jumping or just use currentstep
-                });
-
-                // Scroll to top of form
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-
-            nextButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Basic validation could go here
-                    if (currentStep < sections.length - 1) {
-                        currentStep++;
-                        updateUI();
-                    }
-                });
-            });
-
-            prevButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (currentStep > 0) {
-                        currentStep--;
-                        updateUI();
-                    }
-                });
-            });
-
-            document.addEventListener('invalid', function(e) {
-                const section = e.target.closest('.creation-form-section');
-                if (section) {
-                    const sectionsArray = Array.from(sections);
-                    const index = sectionsArray.indexOf(section);
-                    if (index !== -1 && index !== currentStep) {
-                        e.preventDefault();
-                        currentStep = index;
-                        updateUI();
-                        setTimeout(() => e.target.reportValidity(), 50);
-                    }
-                }
-            }, true);
-
-            // Stepper click behavior
-            stepperItems.forEach((item, i) => {
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (i <= currentStep) { // Only allow going back or to current
-                       currentStep = i;
-                       updateUI();
-                    }
-                });
-            });
-
-            // Initialize multi-class UI logic
-            window.togglePriceFields = function() {
-                const chkEco = document.getElementById('chkEconomy');
-                const chkBus = document.getElementById('chkBusiness');
-                const chkFir = document.getElementById('chkFirstClass');
-                
-                const eco = chkEco ? chkEco.checked : false;
-                const bus = chkBus ? chkBus.checked : false;
-                const fir = chkFir ? chkFir.checked : false;
-                
-                const contEco = document.getElementById('price-economy-container');
-                const contBus = document.getElementById('price-business-container');
-                const contFir = document.getElementById('price-firstclass-container');
-                
-                if (contEco) {
-                    contEco.style.display = eco ? 'block' : 'none';
-                    const inp = document.querySelector('[name="NewFlight.EconomyPrice"]');
-                    if (inp) inp.required = eco;
-                }
-                if (contBus) {
-                    contBus.style.display = bus ? 'block' : 'none';
-                    const inp = document.querySelector('[name="NewFlight.BusinessPrice"]');
-                    if (inp) inp.required = bus;
-                }
-                if (contFir) {
-                    contFir.style.display = fir ? 'block' : 'none';
-                    const inp = document.querySelector('[name="NewFlight.FirstClassPrice"]');
-                    if (inp) inp.required = fir;
-                }
-                
-                const classes = [];
-                if (eco) classes.push(chkEco.value);
-                if (bus) classes.push(chkBus.value);
-                if (fir) classes.push(chkFir.value);
-                
-                const hiddenInput = document.getElementById('FlightClasses');
-                if (hiddenInput) {
-                    hiddenInput.value = classes.join(',');
-                }
-            };
-            
-            // Initialization
-            togglePriceFields();
-
-            // Assuming RichTextEditor is a custom class/function you have defined elsewhere
-            // new RichTextEditor(document.querySelector('.editor-container'));
-        });
-    </script>
+    <script src="~/js/admin-stepper.js"></script>
 }
