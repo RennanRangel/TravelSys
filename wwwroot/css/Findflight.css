@@ -13,10 +13,10 @@
 }
 
 .hero-container {
-    max-width: 1400px;
+    max-width: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 150px; /* Increased padding to shift right */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -26,6 +26,8 @@
     justify-content: flex-end;
     padding-bottom: 80px;
 }
+
+
 
 .img-hero {
     position: absolute;
@@ -195,6 +197,7 @@
     align-items: flex-end;
 }
 
+
 .section-header h2 {
     font-size: 32px;
     font-weight: 700;
@@ -209,6 +212,7 @@
     max-width: 600px;
     margin: 0;
 }
+
 
 .btn-see-all {
     padding: 10px 24px;
@@ -228,10 +232,20 @@
 
 /* Travel Grid - Featured Layout */
 .travel-section {
-    max-width: 1400px;
-    margin: 80px auto;
-    padding: 0 40px;
+    max-width: 100%;
+    margin: 80px 0;
+    padding: 0 150px; /* Increased padding to shift right */
 }
+
+
+/* Headers align directly with the grid/hero (no offset) */
+.travel-section .section-header-text {
+    padding-left: 0; 
+}
+
+
+
+
 
 /* Full width section */
 
@@ -244,10 +258,12 @@
 }
 
 .map-section .section-header {
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto 48px;
-    padding: 0 40px;
+    padding: 0 150px; /* Increased padding to shift right */
 }
+
+
 
 .map-container {
     width: 100%;
@@ -335,9 +351,15 @@
 .travel-featured-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 32px;
+    gap: 32px;
+    height: 500px;
+    overflow: hidden;
 }
+
+
+
+
+
 
 .featured-card {
     background-color: #8DD3BB;
@@ -345,9 +367,11 @@
     padding: 24px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     position: relative;
-    min-height: 500px;
+    height: 100%;
 }
+
 
 .featured-badge {
     position: absolute;
@@ -371,28 +395,37 @@
 
 .featured-info {
     margin-top: 24px;
-    flex-grow: 1;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
 }
 
+
 .featured-info h3 {
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 700;
     color: #112211;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     max-width: 300px;
     line-height: 1.2;
 }
 
+
 .featured-info p {
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13px;
+    line-height: 1.5;
     color: #112211;
     opacity: 0.8;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
+
 
 .btn-book-featured {
     width: 100%;
-    padding: 16px;
+    padding: 14px;
     background-color: #FFFFFF;
     color: #112211;
     border: none;
@@ -401,9 +434,14 @@
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 32px;
+    margin-top: auto;
+    flex-shrink: 0;
     transition: background-color 0.3s;
+    text-decoration: none;
+    text-align: center;
+    display: block;
 }
+
 
 .btn-book-featured:hover {
     background-color: #f8f8f8;
@@ -411,30 +449,42 @@
 
 .secondary-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: minmax(0, 1fr);
     gap: 24px;
+    height: 100%;
 }
+
 
 .secondary-grid img {
     width: 100%;
     height: 100%;
+    min-height: 0;
+    min-width: 0;
     object-fit: cover;
     border-radius: 12px;
-    min-height: 240px;
 }
 
-/* Travel Grid - 4 Column Layout */
+
+
 .travel-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr); /* Equal columns */
+    gap: 40px; 
     margin-top: 32px;
+    width: 100%; /* Force grid to fill container */
 }
 
+
+
+
+
 .travel-card {
-    height: 420px;
-    border-radius: 16px;
+    height: 520px; 
+    width: 100%; /* Force exact width of the grid column */
+    min-width: 0; 
+    border-radius: 24px;
+    flex-shrink: 0; /* Never shrink */
     overflow: hidden;
     position: relative;
     background-size: cover;
@@ -442,8 +492,31 @@
     transition: transform 0.3s;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
+
+/* Gigantic background title style */
+.bg-title {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    font-size: 80px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    pointer-events: none;
+    letter-spacing: -2px;
+    line-height: 1;
+    z-index: 1;
+    overflow: hidden; /* Prevent text from pushing width */
+    white-space: nowrap;
+    text-overflow: clip;
+}
+
+
 
 .travel-card:hover {
     transform: translateY(-8px);
@@ -466,13 +539,17 @@
 }
 
 .card-overlay {
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
     padding: 24px;
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex-direction: row; /* Align text and button horizontally */
+    justify-content: space-between;
+    align-items: flex-end;
     width: 100%;
+    position: relative;
+    z-index: 2;
 }
+
 
 .card-content {
     display: flex;
@@ -495,34 +572,105 @@
 }
 
 .card-subtitle {
-    font-size: 14px;
-    opacity: 0.8;
+    font-size: 13px;
+    opacity: 0.9;
     margin: 4px 0 0 0;
     color: #FFFFFF;
-}
-
-.card-price {
-    font-size: 24px;
-    font-weight: 700;
-    color: #FFFFFF;
+    max-width: 200px; /* Prevent text from hitting button */
 }
 
 .btn-book {
-    width: 100%;
-    padding: 12px;
-    background-color: #8DD3BB;
-    color: #112211;
-    border: none;
-    border-radius: 4px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    border: 1.5px solid #FFFFFF;
+    border-radius: 30px; /* Pill shape */
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
     text-decoration: none;
-    text-align: center;
+    white-space: nowrap;
 }
 
 .btn-book:hover {
-    background-color: #7bc1a8;
+    background-color: #FFFFFF;
+    color: #112211;
+}
+
+
+
+/* Global Destinations Section Alignment */
+#global-destinations-section {
+    padding: 60px 150px; /* Standardized to 150px */
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+
+/* Ensure the header text within this section doesn't have extra double padding */
+#global-destinations-section .section-header {
+    width: 100%;
+    padding: 0; 
+}
+
+.ticker-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+    margin-top: 24px;
+}
+
+
+.ticker-card {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.ticker-card .card-title {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.ticker-card .card-price {
+    color: #8DD3BB;
+}
+
+.ticker-card .card-subtitle {
+    opacity: 1;
+    font-weight: 500;
+}
+
+
+@media (max-width: 768px) {
+    .ticker-card {
+        width: 100%;
+    }
+}
+
+/* GLOBAL FIX: Force See All Button Style in all section headers */
+#flights-findflight .section-header .btn-see-all {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 24px;
+    border: 1px solid #8DD3BB;
+    border-radius: 4px;
+    color: #112211;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    height: fit-content;
+    background: transparent;
+}
+
+#flights-findflight .section-header .btn-see-all:hover {
+    background-color: #8DD3BB;
+    color: #FFFFFF;
 }

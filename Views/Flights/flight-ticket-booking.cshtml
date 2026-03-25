@@ -85,9 +85,10 @@
                     <div class="icon-circle"><i class="far fa-clock"></i></div>
                     <div class="text">
                         <label>Flight time</label>
-                        <span>@flight.Departure</span>
+                        <span>@(flight?.Departure ?? "--:--")</span>
                     </div>
                 </div>
+
                 <div class="detail-item">
                     <div class="icon-circle"><i class="fas fa-door-open"></i></div>
                     <div class="text">
@@ -107,8 +108,9 @@
             <div class="pass-ticket-footer">
                 <div class="airline-code">
                     <h2>EK</h2>
-                    <span>@flight.Airline</span>
+                    <span>@(flight?.Airline ?? "Unknown")</span>
                 </div>
+
                 <div class="barcode-area">
                     <div class="barcode-img"></div>
                 </div>
@@ -128,18 +130,20 @@
             <!-- Vertical Timeline Side -->
             <div class="pass-timeline">
                 <div class="time-block top">
-                    <span class="time">@flight.Arrival</span>
-                    <span class="airport">@flight.To (@flight.To?.Substring(0, Math.Min(3, flight.To.Length)).ToUpper())</span>
+                    <span class="time">@(flight?.Arrival ?? "--:--")</span>
+                    <span class="airport">@flight?.To (@(flight?.To?.Substring(0, Math.Min(3, flight.To.Length)).ToUpper() ?? "UNK"))</span>
                 </div>
+
                 <div class="path-vertical">
                     <div class="line"></div>
                     <i class="fas fa-plane plane-icon-rotated"></i>
                     <div class="line"></div>
                 </div>
                 <div class="time-block bottom">
-                    <span class="time">@flight.Departure</span>
-                    <span class="airport">@flight.From (@flight.From?.Substring(0, Math.Min(3, flight.From.Length)).ToUpper())</span>
+                    <span class="time">@(flight?.Departure ?? "--:--")</span>
+                    <span class="airport">@flight?.From (@(flight?.From?.Substring(0, Math.Min(3, flight.From.Length)).ToUpper() ?? "UNK"))</span>
                 </div>
+
             </div>
 
             <!-- Main Ticket Body -->
@@ -151,8 +155,9 @@
                         </div>
                         <div class="name-id">
                             <h3>@(Model.UserName ?? "John Doe")</h3>
-                            <span>Boarding Pass N°@Model.TicketNumber.Substring(Model.TicketNumber.Length - 4)V</span>
+                            <span>Boarding Pass N°@(Model.TicketNumber?.Length >= 4 ? Model.TicketNumber.Substring(Model.TicketNumber.Length - 4) : "0000")V</span>
                         </div>
+
                     </div>
                     <div class="class-badge">
                         <span>Business Class</span>
@@ -171,9 +176,10 @@
                         <div class="icon-circle"><i class="far fa-clock"></i></div>
                         <div class="text">
                             <label>Flight time</label>
-                            <span>@flight.Departure</span>
+                            <span>@(flight?.Departure ?? "--:--")</span>
                         </div>
                     </div>
+
                     <div class="detail-item">
                         <div class="icon-circle"><i class="fas fa-door-open"></i></div>
                         <div class="text">
@@ -193,8 +199,9 @@
                 <div class="pass-ticket-footer">
                     <div class="airline-code">
                         <h2>EK</h2>
-                        <span>@flight.Airline</span>
+                        <span>@(flight?.Airline ?? "Unknown")</span>
                     </div>
+
                     <div class="barcode-area">
                         <div class="barcode-img"></div>
                     </div>

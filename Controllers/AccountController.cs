@@ -316,7 +316,9 @@ public class AccountController : Controller
             await _userManager.SetUserNameAsync(user, model.Email);
             // Reload user
             user = await _userManager.FindByIdAsync(user.Id);
+            if (user == null) return Json(new { success = false, message = "User not found after update." });
         }
+
 
         // Handle Password Change
         if (!string.IsNullOrEmpty(model.NewPassword))
@@ -324,7 +326,9 @@ public class AccountController : Controller
             if (string.IsNullOrEmpty(model.CurrentPassword))
                 return Json(new { success = false, message = "Current password is required to change password." });
 
+            if (user == null) return Json(new { success = false, message = "User not found." });
             var passResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+
             if (!passResult.Succeeded)
                 return Json(new { success = false, message = string.Join(", ", passResult.Errors.Select(e => e.Description)) });
         }

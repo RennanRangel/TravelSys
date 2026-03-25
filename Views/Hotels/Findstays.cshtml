@@ -1,3 +1,4 @@
+@model IEnumerable<ProjetoHotelAviao.Models.Hotel>
 @{
     ViewData["Title"] = "Find Stays - Travel";
 }
@@ -10,7 +11,7 @@
 <div id="hotels-findstays" class="landing-page">
     <!-- Hero Section -->
     <section class="hero">
-        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&h=900&fit=crop" alt="Hotel Hero" class="img-hero">
+        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&h=900&fit=crop" id="hotel-hero-img" alt="Hotel Hero" class="img-hero">
         <div class="hero-container">
             <div class="hero-content">
                 <h1>Make your travel wishlist, we'll do the rest</h1>
@@ -46,39 +47,56 @@
             </div>
         </div>
         <div class="recent-grid">
-            <div class="recent-card">
-                <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=200" alt="Istanbul">
-                <div class="recent-info">
-                    <h3>Istanbul, Turkey</h3>
-                    <p>325 places</p>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var hotel in Model)
+                {
+                    <div class="recent-card" onclick="window.location.href='@Url.Action("Details", "Hotels", new { id = hotel.Id })'">
+                        <img src="@hotel.MainImage" alt="@hotel.Name" onerror="this.src='/images/placeholder.jpg'" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                        <div class="recent-info">
+                            <h3>@hotel.Name</h3>
+                            <p>@hotel.Location</p>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="recent-card">
+                    <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=200" alt="Istanbul">
+                    <div class="recent-info">
+                        <h3>Istanbul, Turkey</h3>
+                        <p>325 places</p>
+                    </div>
                 </div>
-            </div>
-            <div class="recent-card">
-                <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=200" alt="Sydney">
-                <div class="recent-info">
-                    <h3>Sydney, Australia</h3>
-                    <p>325 places</p>
+                <div class="recent-card">
+                    <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=200" alt="Sydney">
+                    <div class="recent-info">
+                        <h3>Sydney, Australia</h3>
+                        <p>325 places</p>
+                    </div>
                 </div>
-            </div>
-            <div class="recent-card">
-                <img src="https://imgs.search.brave.com/7rlQVSwjTyohf2bLBALmPPlP9O_ER7VtRWSwtiAbh60/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvODc4/NTE3Njc0L3Bob3Rv/L3ZpZXctb2YtYmFr/dS5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9ZGVsbWRzeU1q/MU1UYWo0S1Z0SG9I/d3A1NjlsTnRBeDZJ/N2V6WWVEeFBHWT0" alt="Baku">
-                <div class="recent-info">
-                    <h3>Baku, Azerbaijan</h3>
-                    <p>325 places</p>
+                <div class="recent-card">
+                    <img src="https://imgs.search.brave.com/7rlQVSwjTyohf2bLBALmPPlP9O_ER7VtRWSwtiAbh60/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvODc4/NTE3Njc0L3Bob3Rv/L3ZpZXctb2YtYmFr/dS5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9ZGVsbWRzeU1q/MU1UYWo0S1Z0SG9I/d3A1NjlsTnRBeDZJ/N2V6WWVEeFBHWT0" alt="Baku">
+                    <div class="recent-info">
+                        <h3>Baku, Azerbaijan</h3>
+                        <p>325 places</p>
+                    </div>
                 </div>
-            </div>
-            <div class="recent-card">
-                <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=200" alt="Male">
-                <div class="recent-info">
-                    <h3>Malé, Maldives</h3>
-                    <p>325 places</p>
+                <div class="recent-card">
+                    <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=200" alt="Male">
+                    <div class="recent-info">
+                        <h3>Malé, Maldives</h3>
+                        <p>325 places</p>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </section>
 
-    <!-- Fall into travel -->
-    <section class="travel-section">
+    <!-- Fall into travel - Dynamic Ticker -->
+    <section class="travel-section" id="global-destinations-section">
+
         <div class="section-header">
             <div class="section-header-text">
                 <h2>Fall into travel</h2>
@@ -87,55 +105,43 @@
             <a href="#" class="btn-see-all">See All</a>
         </div>
         <div class="travel-grid">
-            <div class="travel-card travel-card-melbourne">
+            <!-- Card 0 -->
+            <div id="ticker-card-0" class="travel-card ticker-card">
+                <h2 class="bg-title" id="bg-title-0">MELBOURNE</h2>
                 <div class="card-overlay">
-                    <div class="card-content">
-                        <div class="card-main">
-                            <h3 class="card-title">Melbourne</h3>
-                            <p class="card-subtitle">An amazing journey</p>
-                        </div>
-                        <span class="card-price">$ 700</span>
+                    <div class="card-info">
+                        <h3 class="card-title" id="ticker-country-0">Melbourne</h3>
+                        <p class="card-subtitle" id="ticker-capital-0">An amazing journey</p>
                     </div>
-                    <button class="btn-book">Book a Hotel</button>
+                    <a href="#" id="ticker-link-0" class="btn-book">Book a Hotel</a>
                 </div>
             </div>
-            <div class="travel-card travel-card-paris">
+
+            <!-- Card 1 -->
+            <div id="ticker-card-1" class="travel-card ticker-card">
+                <h2 class="bg-title" id="bg-title-1">PARIS</h2>
                 <div class="card-overlay">
-                    <div class="card-content">
-                        <div class="card-main">
-                            <h3 class="card-title">Paris</h3>
-                            <p class="card-subtitle">A Paris Adventure</p>
-                        </div>
-                        <span class="card-price">$ 600</span>
+                    <div class="card-info">
+                        <h3 class="card-title" id="ticker-country-1">Paris</h3>
+                        <p class="card-subtitle" id="ticker-capital-1">A Paris Adventure</p>
                     </div>
-                    <button class="btn-book">Book a Hotel</button>
+                    <a href="#" id="ticker-link-1" class="btn-book">Book a Hotel</a>
                 </div>
             </div>
-            <div class="travel-card travel-card-london">
+
+            <!-- Card 2 -->
+            <div id="ticker-card-2" class="travel-card ticker-card">
+                <h2 class="bg-title" id="bg-title-2">LONDON</h2>
                 <div class="card-overlay">
-                    <div class="card-content">
-                        <div class="card-main">
-                            <h3 class="card-title">London</h3>
-                            <p class="card-subtitle">London eye adventure</p>
-                        </div>
-                        <span class="card-price">$ 350</span>
+                    <div class="card-info">
+                        <h3 class="card-title" id="ticker-country-2">London</h3>
+                        <p class="card-subtitle" id="ticker-capital-2">London eye adventure</p>
                     </div>
-                    <button class="btn-book">Book a Hotel</button>
-                </div>
-            </div>
-            <div class="travel-card travel-card-columbia">
-                <div class="card-overlay">
-                    <div class="card-content">
-                        <div class="card-main">
-                            <h3 class="card-title">Columbia</h3>
-                            <p class="card-subtitle">Amazing streets</p>
-                        </div>
-                        <span class="card-price">$ 700</span>
-                    </div>
-                    <button class="btn-book">Book a Hotel</button>
+                    <a href="#" id="ticker-link-2" class="btn-book">Book a Hotel</a>
                 </div>
             </div>
         </div>
+
     </section>
 
     <!-- Featured Sri Lanka Section -->
@@ -149,18 +155,16 @@
         </div>
         <div class="travel-featured-grid">
             <div class="featured-card">
-                <div class="featured-badge">From <strong>$700</strong></div>
+                <div class="featured-badge">From <strong id="bp-price">$700</strong></div>
                 <div class="featured-info">
-                    <h3>Backpacking Sri Lanka</h3>
-                    <p>Traveling is a unique experience as it's the best way to unplug from the pushes and pulls of daily life. It helps us to forget about our problems, frustrations, and fears at home. During our journey, we experience life in different ways. We explore new places, cultures, cuisines, traditions, and ways of living.</p>
+                    <h3 id="bp-title">Backpacking Sri Lanka</h3>
+                    <p id="bp-description">Traveling is a unique experience as it's the best way to unplug from the pushes and pulls of daily life. It helps us to forget about our problems, frustrations, and fears at home. During our journey, we experience life in different ways. We explore new places, cultures, cuisines, traditions, and ways of living.</p>
                 </div>
-                <button class="btn-book-featured">Book Flight</button>
+                <a href="#" id="bp-link" class="btn-book-featured">Book Hotel</a>
             </div>
             <div class="secondary-grid">
-                <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Sri Lanka 1">
-                <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Sri Lanka 2">
-                <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Sri Lanka 3">
-                <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Sri Lanka 4">
+                <img id="bp-img-0" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Sri Lanka 1">
+                <img id="bp-img-1" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Sri Lanka 2">
             </div>
         </div>
     </section>

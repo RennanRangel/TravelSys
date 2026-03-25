@@ -92,57 +92,6 @@ body {
     background-color: #8DD3BB;
 }
 
-.travel-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-}
-
-.travel-card {
-    height: 420px;
-    border-radius: 16px;
-    overflow: hidden;
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.travel-card:hover {
-    transform: translateY(-8px);
-}
-
-.card-overlay {
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-    padding: 24px;
-    width: 100%;
-}
-
-.card-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    color: #FFFFFF;
-    margin-bottom: 16px;
-}
-
-.card-title { font-size: 24px; font-weight: 700; margin: 0; }
-.card-subtitle { font-size: 14px; opacity: 0.8; }
-.card-price { font-size: 24px; font-weight: 700; }
-
-.btn-book {
-    width: 100%;
-    padding: 12px;
-    background-color: #8DD3BB;
-    color: #112211;
-    border: none;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-}
 
 .travel-section-alt {
     max-width: 1200px;

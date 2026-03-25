@@ -258,39 +258,47 @@
 
 .travel-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr); /* Equal columns */
+    gap: 40px; 
     margin-top: 32px;
+    width: 100%; /* Force grid to fill container */
 }
 
 .travel-card {
-    height: 420px;
-    border-radius: 12px;
+    height: 520px; 
+    width: 100%; /* Force exact width of the grid column */
+    min-width: 0; 
+    border-radius: 24px;
+    flex-shrink: 0; /* Never shrink */
+    overflow: hidden;
+    position: relative;
     background-size: cover;
     background-position: center;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
     transition: transform 0.3s;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
-.travel-card-melbourne {
-    background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800');
-}
-
-.travel-card-paris {
-    background-image: url('https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=800');
-}
-
-.travel-card-london {
-    background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800');
-}
-
-.travel-card-columbia {
-    background-image: url('https://images.unsplash.com/photo-1548546738-8509cb246ed3?w=800');
+/* Gigantic background title style */
+.bg-title {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    font-size: 80px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    pointer-events: none;
+    letter-spacing: -2px;
+    line-height: 1;
+    z-index: 1;
+    overflow: hidden; /* Prevent text from pushing width */
+    white-space: nowrap;
+    text-overflow: clip;
 }
 
 .travel-card:hover {
@@ -298,13 +306,17 @@
 }
 
 .card-overlay {
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
     padding: 24px;
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex-direction: row; /* Align text and button horizontally */
+    justify-content: space-between;
+    align-items: flex-end;
     width: 100%;
+    position: relative;
+    z-index: 2;
 }
+
 
 .card-content {
     display: flex;
@@ -323,43 +335,90 @@
     font-size: 24px;
     font-weight: 700;
     margin: 0;
+    color: #FFFFFF;
 }
 
 .card-subtitle {
-    font-size: 14px;
-    opacity: 0.8;
+    font-size: 13px;
+    opacity: 0.9;
     margin: 4px 0 0 0;
-}
-
-.card-price {
-    font-size: 24px;
-    font-weight: 700;
+    color: #FFFFFF;
+    max-width: 200px; /* Prevent text from hitting button */
 }
 
 .btn-book {
-    width: 100%;
-    padding: 12px;
-    background-color: #8DD3BB;
-    color: #112211;
-    border: none;
-    border-radius: 4px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+    border: 1.5px solid #FFFFFF;
+    border-radius: 30px; /* Pill shape */
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
 .btn-book:hover {
-    background-color: #7bc1a8;
+    background-color: #FFFFFF;
+    color: #112211;
+}
+
+
+
+/* Global Destinations Section Alignment */
+#global-destinations-section {
+    padding: 60px 0; /* Changed from 150px to fit Findstays' padding structure */
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+
+/* Ensure the header text within this section doesn't have extra double padding */
+#global-destinations-section .section-header {
+    width: 100%;
+    padding: 0; 
+}
+
+.ticker-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+    margin-top: 24px;
+}
+
+
+.ticker-card {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.ticker-card .card-title {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.ticker-card .card-price {
+    color: #8DD3BB;
+}
+
+.ticker-card .card-subtitle {
+    opacity: 1;
+    font-weight: 500;
 }
 
 /* Travel Grid - Featured Layout */
 .travel-featured-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 32px;
+    gap: 32px;
+    height: 500px;
+    overflow: hidden;
 }
 
 .featured-card {
@@ -368,8 +427,9 @@
     padding: 24px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     position: relative;
-    min-height: 500px;
+    height: 100%;
 }
 
 .featured-badge {
@@ -394,28 +454,35 @@
 
 .featured-info {
     margin-top: 24px;
-    flex-grow: 1;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .featured-info h3 {
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 700;
     color: #112211;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     max-width: 300px;
     line-height: 1.2;
 }
 
 .featured-info p {
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13px;
+    line-height: 1.5;
     color: #112211;
     opacity: 0.8;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .btn-book-featured {
     width: 100%;
-    padding: 16px;
+    padding: 14px;
     background-color: #FFFFFF;
     color: #112211;
     border: none;
@@ -424,8 +491,12 @@
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 32px;
+    margin-top: auto;
+    flex-shrink: 0;
     transition: background-color 0.3s;
+    text-decoration: none;
+    text-align: center;
+    display: block;
 }
 
 .btn-book-featured:hover {
@@ -434,17 +505,20 @@
 
 .secondary-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: minmax(0, 1fr);
     gap: 24px;
+    height: 100%;
 }
+
 
 .secondary-grid img {
     width: 100%;
     height: 100%;
+    min-height: 0;
+    min-width: 0;
     object-fit: cover;
     border-radius: 12px;
-    min-height: 240px;
 }
 
 

@@ -129,6 +129,10 @@
       "PackagePath": "staticwebassets\\images\\Frame36.png"
     },
     {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\OIP.webp",
+      "PackagePath": "staticwebassets\\images\\OIP.webp"
+    },
+    {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Rectangle 3.png",
       "PackagePath": "staticwebassets\\images\\Rectangle 3.png"
     },
@@ -149,6 +153,10 @@
       "PackagePath": "staticwebassets\\images\\Turkey.webp"
     },
     {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\Venezuela-7-The-Orinoco-and-its-delta-e1490917945896.webp",
+      "PackagePath": "staticwebassets\\images\\Venezuela-7-The-Orinoco-and-its-delta-e1490917945896.webp"
+    },
+    {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\baku.avif",
       "PackagePath": "staticwebassets\\images\\baku.avif"
     },
@@ -157,12 +165,20 @@
       "PackagePath": "staticwebassets\\images\\baku.webp"
     },
     {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\dsc_1920_45035203494_o.webp",
+      "PackagePath": "staticwebassets\\images\\dsc_1920_45035203494_o.webp"
+    },
+    {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\dubai.webp",
       "PackagePath": "staticwebassets\\images\\dubai.webp"
     },
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\emirates.jpg",
       "PackagePath": "staticwebassets\\images\\emirates.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\flag-of-ecuador.webp",
+      "PackagePath": "staticwebassets\\images\\flag-of-ecuador.webp"
     },
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\londres.jpg",
@@ -203,6 +219,14 @@
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\tokyo.webp",
       "PackagePath": "staticwebassets\\images\\tokyo.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\turismo-na-bolivia.webp",
+      "PackagePath": "staticwebassets\\images\\turismo-na-bolivia.webp"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\turismo-no-uruguai-punta-del-este.webp",
+      "PackagePath": "staticwebassets\\images\\turismo-no-uruguai-punta-del-este.webp"
     },
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\images\\uploads\\0313b1e0-03e0-4bd9-9c9f-4e639918f2f6_2024_Nitro_option_01_3840x2400.jpg",
@@ -543,6 +567,10 @@
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\hotel-ticket.js",
       "PackagePath": "staticwebassets\\js\\hotel-ticket.js"
+    },
+    {
+      "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\hotels.js",
+      "PackagePath": "staticwebassets\\js\\hotels.js"
     },
     {
       "Id": "C:\\Users\\Renna\\OneDrive\\Projetos-Back-End\\ProjetosCsharp\\RazorPage\\TravelSys\\wwwroot\\js\\login.js",

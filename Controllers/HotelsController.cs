@@ -17,13 +17,20 @@ public class HotelsController : Controller
     }
 
     [HttpGet]
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
         if (User.Identity?.IsAuthenticated == true)
         {
             return RedirectToAction("Listing");
         }
-        return View("Findstays");
+        
+        var recentHotels = await _context.Hotels
+            .AsNoTracking()
+            .OrderByDescending(h => h.Id)
+            .Take(4)
+            .ToListAsync();
+            
+        return View("Findstays", recentHotels);
     }
 
     [Authorize]
@@ -181,7 +188,7 @@ public class HotelsController : Controller
     {
         int ticketId = id ?? (TempData["TicketId"] as int? ?? 0);
         
-        HotelBooking booking = null;
+        HotelBooking? booking = null;
 
         if (ticketId > 0)
         {
