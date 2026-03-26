@@ -1,0 +1,16 @@
+build_output.txt
+error.log
+*.log
+bin/
+obj/
+*.exe
+*.pdb
+*.vs
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.userosscache
+*.userosscache
+*.userosscache
+*.userosscache
