@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using ProjetoHotelAviao.Data;
 using ProjetoHotelAviao.Models;
 using ProjetoHotelAviao.Models.ViewModels;
@@ -12,10 +13,12 @@ namespace ProjetoHotelAviao.Controllers;
 public class AdminController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public AdminController(ApplicationDbContext context)
+    public AdminController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
 
     public async Task<IActionResult> Index()
@@ -39,7 +42,161 @@ public class AdminController : Controller
         return View(viewModel);
     }
 
-    [AllowAnonymous] // Temporary access for fix
+    public IActionResult AdicionarAdmin()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> SalvarAdmin(string firstName, string lastName, string email, string password, string phone, UserRole role)
+    {
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+        {
+            TempData["ErrorMessage"] = "Email e senha são obrigatórios.";
+            return RedirectToAction("GestaoUsuarios");
+        }
+
+        var existingUser = await _userManager.FindByEmailAsync(email);
+        if (existingUser != null)
+        {
+            TempData["ErrorMessage"] = "Este email já está cadastrado.";
+            return RedirectToAction("GestaoUsuarios");
+        }
+
+        var adminUser = new Administrator
+        {
+            UserName = email,
+            Email = email,
+            FirstName = firstName,
+            LastName = lastName,
+            Phone = phone,
+            CreatedAt = DateTime.UtcNow,
+            EmailConfirmed = true,
+            Role = role
+        };
+
+        var result = await _userManager.CreateAsync(adminUser, password);
+        if (result.Succeeded)
+        {
+            await _userManager.AddToRoleAsync(adminUser, "Admin");
+            
+            TempData["SuccessMessage"] = $"Administrador {firstName} cadastrado com sucesso na nova tabela!";
+            return RedirectToAction("GestaoUsuarios");
+        }
+
+        TempData["ErrorMessage"] = "Erro ao criar administrador: " + string.Join(", ", result.Errors.Select(e => e.Description));
+        return RedirectToAction("GestaoUsuarios");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GestaoUsuarios(int page = 1)
+    {
+        const int pageSize = 5;
+        
+        var totalAdmins = await _context.Administrators.CountAsync();
+        var totalPages = (int)Math.Ceiling(totalAdmins / (double)pageSize);
+        
+        if (page < 1) page = 1;
+        if (page > totalPages && totalPages > 0) page = totalPages;
+
+        var admins = await _context.Administrators
+            .OrderByDescending(a => a.CreatedAt)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        ViewBag.CurrentPage = page;
+        ViewBag.TotalPages = totalPages;
+
+        return View(admins);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AtualizarAdmin(string userId, string firstName, string lastName, string email, string phone, UserRole role, string newPassword)
+    {
+        // Segurança: Apenas o Admin Master (admin@gmail.com) pode gerenciar outros admins
+        if (User.Identity?.Name != "admin@gmail.com")
+        {
+            TempData["ErrorMessage"] = "Apenas o Admin Master tem permissão para editar outros administradores.";
+            return RedirectToAction("GestaoUsuarios");
+        }
+
+        var admin = await _context.Administrators.FindAsync(userId);
+        if (admin == null) return NotFound();
+
+        if (admin.Email != email)
+        {
+            admin.Email = email;
+            admin.UserName = email;
+            admin.NormalizedEmail = email.ToUpper();
+            admin.NormalizedUserName = email.ToUpper();
+        }
+
+        admin.FirstName = firstName;
+        admin.LastName = lastName;
+        admin.Phone = phone;
+        admin.Role = role;
+
+        var result = await _userManager.UpdateAsync(admin);
+        
+        if (result.Succeeded && !string.IsNullOrEmpty(newPassword))
+        {
+            var token = await _userManager.GeneratePasswordResetTokenAsync(admin);
+            var passResult = await _userManager.ResetPasswordAsync(admin, token, newPassword);
+            
+            if (!passResult.Succeeded)
+            {
+                TempData["ErrorMessage"] = "Perfil atualizado, mas erro ao alterar senha: " + 
+                                           string.Join(", ", passResult.Errors.Select(e => e.Description));
+                return RedirectToAction("GestaoUsuarios");
+            }
+        }
+
+        if (result.Succeeded)
+        {
+            TempData["SuccessMessage"] = $"Administrador {firstName} atualizado com sucesso!";
+        }
+        else
+        {
+            TempData["ErrorMessage"] = "Erro ao atualizar administrador: " + 
+                                       string.Join(", ", result.Errors.Select(e => e.Description));
+        }
+
+        return RedirectToAction("GestaoUsuarios");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> ExcluirUsuario(string userId)
+    {
+        if (User.Identity?.Name != "admin@gmail.com")
+        {
+            TempData["ErrorMessage"] = "Apenas o Admin Master pode excluir administradores.";
+            return RedirectToAction("GestaoUsuarios");
+        }
+
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null) return NotFound();
+
+        if (user.Email == "admin@gmail.com")
+        {
+            TempData["ErrorMessage"] = "O Admin Master não pode ser excluído.";
+            return RedirectToAction("GestaoUsuarios");
+        }
+
+        var result = await _userManager.DeleteAsync(user);
+        if (result.Succeeded)
+        {
+            TempData["SuccessMessage"] = "Administrador removido com sucesso.";
+        }
+        else
+        {
+            TempData["ErrorMessage"] = "Erro ao excluir administrador.";
+        }
+
+        return RedirectToAction("GestaoUsuarios");
+    }
+
+    [AllowAnonymous] 
     public async Task<IActionResult> FixDb()
     {
         var results = new List<string>();
@@ -58,8 +215,6 @@ public class AdminController : Controller
         {
             try
             {
-                // Note: IF NOT EXISTS for ADD COLUMN is MariaDB/MySQL 8.0.21+. 
-                // If it fails due to syntax on older MySQL, we try the standard ADD.
                 await _context.Database.ExecuteSqlRawAsync(query);
                 results.Add($"Sucesso: {query}");
             }
@@ -71,7 +226,6 @@ public class AdminController : Controller
                 }
                 else
                 {
-                    // Try without IF NOT EXISTS if it's a syntax error
                     try 
                     {
                         var standardQuery = query.Replace("IF NOT EXISTS ", "");
@@ -137,7 +291,6 @@ public class AdminController : Controller
             conversionRate = Math.Round((decimal)totalBookings / usersCount * 100, 1);
         }
 
-        // Chart Data: Revenue by Month (last 6 months)
         var last6Months = Enumerable.Range(0, 6)
             .Select(i => DateTime.Now.AddMonths(-i))
             .OrderBy(d => d)
@@ -163,7 +316,6 @@ public class AdminController : Controller
             });
         }
 
-        // Chart Data: Bookings by Destination (Top 5)
         var bookingsByDestination = await _context.Bookings
             .Include(b => b.Flight)
             .Where(b => b.Flight != null)
@@ -261,7 +413,6 @@ public class AdminController : Controller
 
     public async Task<IActionResult> GerenciarTarefas()
     {
-        // Garante que a tabela existe antes de consultar
         try {
             await _context.Database.ExecuteSqlRawAsync(@"
                 CREATE TABLE IF NOT EXISTS AdminTasks (
@@ -428,8 +579,8 @@ public class AdminController : Controller
         ModelState.Remove("NewHotel.Reviews");
         ModelState.Remove("NewFlight.Rating");
         ModelState.Remove("NewFlight.Reviews");
-        ModelState.Remove("NewFlight.Logo"); // Handled in controller
-        ModelState.Remove("NewFlight.MainImage"); // Handled in controller
+        ModelState.Remove("NewFlight.Logo"); 
+        ModelState.Remove("NewFlight.MainImage"); 
        
         foreach (var key in ModelState.Keys.Where(k => k.StartsWith("NewHotel")))
         {
@@ -527,11 +678,10 @@ public class AdminController : Controller
             ModelState.Remove(key);
         }
 
-        // Remove validation for fields that are now either optional or not in the UI
         ModelState.Remove("NewHotel.Stars");
         ModelState.Remove("NewHotel.Rating");
         ModelState.Remove("NewHotel.Reviews");
-        ModelState.Remove("NewHotel.Logo"); // If not required
+        ModelState.Remove("NewHotel.Logo"); 
 
         if (ModelState.IsValid)
         {

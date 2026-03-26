@@ -1,4 +1,4 @@
-/* Admin Dashboard - Gupy Inspired Style */
+
 
 :root {
     --admin-primary: #8DD3BB;
@@ -17,7 +17,6 @@ body.admin-body {
     padding: 0;
 }
 
-/* Sidebar Layout */
 .admin-wrapper {
     display: flex;
     min-height: 100vh;
@@ -33,6 +32,12 @@ body.admin-body {
     position: fixed;
     height: 100vh;
     z-index: 1000;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-sidebar.collapsed {
+    width: 80px;
+    cursor: pointer;
 }
 
 .admin-logo {
@@ -41,6 +46,41 @@ body.admin-body {
     font-size: 24px;
     font-weight: 700;
     color: var(--admin-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 32px;
+    cursor: pointer;
+}
+
+.admin-sidebar.collapsed .logo-text {
+    display: none;
+}
+
+.admin-sidebar.collapsed .admin-logo {
+    justify-content: center;
+    padding: 0;
+}
+
+.sidebar-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--admin-text-muted);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.sidebar-toggle-btn:hover {
+    background-color: rgba(141, 211, 187, 0.1);
+    color: var(--admin-primary);
+}
+
+.admin-sidebar.collapsed .sidebar-toggle-btn {
+    position: relative;
+    top: 10px;
+    margin-bottom: 25px;
 }
 
 .admin-logo i {
@@ -50,7 +90,7 @@ body.admin-body {
 .admin-nav {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 15px;
     flex: 1;
 }
 
@@ -74,6 +114,28 @@ body.admin-body {
     font-weight: 500;
     transition: all 0.3s ease;
     border-left: 4px solid transparent;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.admin-sidebar.collapsed .admin-nav-item {
+    padding: 18px 0;
+    justify-content: center;
+    border-left-width: 0;
+    border-right: 4px solid transparent;
+}
+
+.admin-sidebar.collapsed .admin-nav {
+    gap: 12px;
+}
+
+.admin-sidebar.collapsed .admin-nav-item span {
+    display: none;
+}
+
+.admin-sidebar.collapsed .admin-nav-item:hover,
+.admin-sidebar.collapsed .admin-nav-item.active {
+    border-right-color: var(--admin-primary);
 }
 
 .admin-nav-item:hover,
@@ -88,14 +150,17 @@ body.admin-body {
     text-align: center;
 }
 
-/* Main Content Area */
 .admin-main {
     flex: 1;
     margin-left: 260px;
     padding: 32px 48px;
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Top Bar */
+.admin-main.expanded {
+    margin-left: 80px;
+}
+
 .admin-topbar {
     display: flex;
     justify-content: space-between;
@@ -115,7 +180,6 @@ body.admin-body {
     border-radius: 50%;
 }
 
-/* Hero Section */
 .admin-hero {
     background: linear-gradient(135deg, #112211 0%, #223322 100%);
     border-radius: 16px;
@@ -138,7 +202,6 @@ body.admin-body {
     opacity: 0.8;
 }
 
-/* Stats Grid */
 .admin-stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -182,7 +245,6 @@ body.admin-body {
     color: #F44336;
 }
 
-/* Dashboard Sections */
 .dashboard-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -208,7 +270,6 @@ body.admin-body {
     font-weight: 700;
 }
 
-/* Tables */
 .admin-table {
     width: 100%;
     border-collapse: collapse;
@@ -219,7 +280,6 @@ body.admin-body {
     margin-right: 12px;
 }
 
-/* Task Card Refactor */
 .task-card {
     padding: 15px;
     background: #fff;
@@ -260,7 +320,6 @@ body.admin-body {
     gap: 6px;
 }
 
-/* Management Views Utility */
 .mgmt-title {
     font-size: 24px;
     font-weight: 700;
@@ -288,7 +347,6 @@ body.admin-body {
     color: #666;
 }
 
-/* Overview Refactor */
 .admin-hero .hero-illustration {
      position: absolute;
      right: 48px;
@@ -343,7 +401,6 @@ body.admin-body {
     font-weight: 600;
 }
 
-/* Management Views Refactor */
 .mgmt-dropdown-menu {
     border-radius: 12px;
     border: none;
@@ -407,7 +464,6 @@ body.admin-body {
     color: #D93025;
 }
 
-/* Kanban & Modals Refactor */
 .kanban-col {
     background: #F4F5F6;
     box-shadow: none;
@@ -470,7 +526,6 @@ body.admin-body {
     box-shadow: 0 0 0 4px rgba(141, 62, 235, 0.1);
 }
 
-/* Charts Refactor */
 .chart-container {
     padding: 24px;
     min-height: 400px;
@@ -516,12 +571,10 @@ body.admin-body {
 .overflow-visible { overflow: visible; }
 .d-none { display: none; }
 
-/* Tabs Logic inside Dashboard */
 .admin-content-tabs {
     margin-top: 32px;
 }
 
-/* Special Gupy-style Cards */
 .admin-row-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -662,7 +715,6 @@ body.admin-body {
     display: block;
 }
 
-/* Forms in Admin */
 .admin-form-group {
     margin-bottom: 20px;
 }
@@ -700,7 +752,6 @@ body.admin-body {
     background-color: #7ABF9F;
 }
 
-/* Animations Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -714,7 +765,6 @@ body.admin-body {
     border-radius: 10px;
 }
 
-/* Gupy-style Management Area */
 .mgmt-header {
     display: flex;
     justify-content: space-between;
@@ -833,7 +883,6 @@ body.admin-body {
     padding: 10px 24px;
     border-radius: 10px;
     background: #0030BF;
-    /* Closer to Gupy blue */
     color: #FFF;
     border: none;
     font-weight: 600;
@@ -923,7 +972,6 @@ body.admin-body {
     color: var(--admin-text-main);
 }
 
-/* Status Filters Bar - minimalist high-fidelity */
 .mgmt-status-filters {
     padding: 14px 24px;
     background: #FFF;
@@ -962,7 +1010,6 @@ body.admin-body {
     opacity: 0.7;
 }
 
-/* --- Creation Stepper Layout --- */
 .mgmt-creation-container {
     display: flex;
     min-height: calc(100vh - 80px);
@@ -1070,7 +1117,7 @@ body.admin-body {
 
 .btn-continuar {
     padding: 10px 32px;
-    background: #E34F1A; /* Gupy primary orange-ish color */
+    background: #E34F1A;
     color: #fff;
     border-radius: 8px;
     font-weight: 500;
@@ -1138,7 +1185,6 @@ body.admin-body {
     cursor: pointer;
 }
 
-/* Custom Select Styling */
 .admin-select-wrapper {
     position: relative;
 }
@@ -1162,7 +1208,6 @@ body.admin-body {
     padding-right: 40px;
 }
 
-/* Toggle Switch */
 .switch-container {
     display: flex;
     align-items: center;
@@ -1208,7 +1253,7 @@ body.admin-body {
 }
 
 input:checked + .slider {
-    background-color: #5C81FF; /* Gupy blue for toggle */
+    background-color: #5C81FF;
 }
 
 input:checked + .slider:before {
@@ -1221,7 +1266,6 @@ input:checked + .slider:before {
     color: #112211;
 }
 
-/* Buttons refinement */
 .admin-stepper-container .btn-sair {
     height: 44px;
     padding: 0 32px;
@@ -1285,7 +1329,6 @@ input:checked + .slider:before {
     margin-top: 32px;
 }
 
-/* Hide the main footer initially or adjust it */
 .creation-footer {
     display: none;
 }
@@ -1294,7 +1337,6 @@ input:checked + .slider:before {
     display: flex;
 }
 
-/* AI Assistant Banner */
 .ai-assistant-banner {
     background: #E8F0FE;
     border: 1px solid #C2D7FF;
@@ -1318,7 +1360,6 @@ input:checked + .slider:before {
     line-height: 1.6;
 }
 
-/* Rich Text Editor Mock */
 .rich-editor-container {
     border: 1px solid #D1D5DB;
     border-radius: 12px;
@@ -1390,7 +1431,6 @@ input:checked + .slider:before {
     outline: none;
 }
 
-/* Header Icons (Top Right) */
 .creation-header-actions {
     display: flex;
     gap: 12px;
@@ -1414,7 +1454,6 @@ input:checked + .slider:before {
     background: #FDF2F0;
 }
 
-/* Custom Radios */
 .admin-radio-group {
     display: flex;
     gap: 24px;
@@ -1458,7 +1497,6 @@ input:checked + .slider:before {
     transform: translate(-50%, -50%);
 }
 
-/* Section Header Refinement */
 .section-sub-title {
     font-size: 18px;
     font-weight: 700;
@@ -1473,7 +1511,6 @@ input:checked + .slider:before {
     line-height: 1.5;
 }
 
-/* Special Footer Buttons */
 .admin-stepper-container .btn-save-exit {
     height: 44px;
     padding: 0 24px;
@@ -1521,7 +1558,6 @@ input:checked + .slider:before {
     opacity: 0.9;
 }
 
-/* Custom File Upload Component */
 .admin-file-upload-container {
     position: relative;
     width: 100%;
@@ -1583,5 +1619,5 @@ input:checked + .slider:before {
     font-size: 13px;
     color: #0030BF;
     font-weight: 500;
-    display: none; /* Shown via JS */
+    display: none; 
 }

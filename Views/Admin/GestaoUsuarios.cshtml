@@ -1,0 +1,274 @@
+@model List<ProjetoHotelAviao.Models.Administrator>
+@using ProjetoHotelAviao.Models
+@{
+    ViewData["Title"] = "Gestão de Administradores";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mgmt-header mb-4">
+    <div>
+        <h1 class="mgmt-title">Gestão de Administradores</h1>
+        <p class="mgmt-subtitle">Administre apenas as contas com privilégios administrativos no sistema.</p>
+    </div>
+    <div>
+        <button class="btn-mgmt-primary" data-bs-toggle="modal" data-bs-target="#newAdminModal">
+            <i class="fas fa-user-plus"></i> Novo Administrador
+        </button>
+    </div>
+</div>
+
+<div class="admin-card">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show mx-3 mt-3" role="alert">
+            <i class="fas fa-check-circle me-2"></i> @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="table-responsive">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Administrador</th>
+                    <th>E-mail</th>
+                    <th>Cargo Atual</th>
+                    <th>Cadastro</th>
+                    <th class="text-end">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="5" class="text-center py-5">
+                            <i class="fas fa-users-slash fa-3x mb-3 text-muted"></i>
+                            <p class="text-muted">Nenhum administrador encontrado no banco de dados.</p>
+                        </td>
+                    </tr>
+                }
+                @foreach (var user in Model)
+                {
+                    var isMaster = user.Email == "admin@gmail.com";
+                    <tr class="@(isMaster ? "admin-master-row" : "")">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="user-avatar-sm me-3 @(isMaster ? "avatar-master" : "")">
+                                    @if(isMaster) { <i class="fas fa-crown"></i> }
+                                    else { @(user.FirstName?.Substring(0, 1) ?? "U") }
+                                </div>
+                                <div>
+                                    <div class="fw-bold text-dark">
+                                        @user.FirstName @user.LastName
+                                        @if(isMaster) { <span class="ms-1 text-warning"><i class="fas fa-check-circle"></i></span> }
+                                    </div>
+                                    <small class="text-muted">ID: @user.Id.Substring(0, 8)...</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>@user.Email</td>
+                        <td>
+                            @if (isMaster)
+                            {
+                                <span class="badge bg-warning text-dark"><i class="fas fa-star me-1"></i> Admin Master</span>
+                            }
+                            else
+                            {
+                                @switch (user.Role)
+                                {
+                                    case UserRole.SUPER_ADMIN:
+                                        <span class="badge bg-danger">Super Admin</span>
+                                        break;
+                                    case UserRole.ADMIN:
+                                        <span class="badge bg-primary">Admin</span>
+                                        break;
+                                    default:
+                                        <span class="badge bg-secondary">Usuário</span>
+                                        break;
+                                }
+                            }
+                        </td>
+                        <td>@user.CreatedAt.ToString("dd/MM/yyyy")</td>
+                        <td class="text-end">
+                            @if (User.Identity?.Name == "admin@gmail.com")
+                            {
+                                <button class="btn btn-sm btn-mgmt-edit me-2 edit-admin-btn" 
+                                        data-id="@user.Id" 
+                                        data-firstname="@user.FirstName" 
+                                        data-lastname="@user.LastName" 
+                                        data-email="@user.Email" 
+                                        data-phone="@user.Phone" 
+                                        data-role="@((int)user.Role)"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#editAdminModal">
+                                    <i class="fas fa-edit"></i> Editar
+                                </button>
+                                
+                                @if (user.Email != "admin@gmail.com")
+                                {
+                                    <form asp-action="ExcluirUsuario" method="post" class="d-inline-block" onsubmit="return confirm('Tem certeza que deseja excluir este administrador?')">
+                                        <input type="hidden" name="userId" value="@user.Id" />
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                }
+                            }
+                            else
+                            {
+                                <span class="text-muted small"><i class="fas fa-lock"></i> Somente Master</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @if (ViewBag.TotalPages > 1)
+    {
+        <div class="d-flex justify-content-between align-items-center mt-4 px-3 pb-3">
+            <div class="text-muted small">
+                Mostrando página <span class="text-white fw-bold">@ViewBag.CurrentPage</span> de <span class="text-white fw-bold">@ViewBag.TotalPages</span>
+            </div>
+            <nav aria-label="Navegação de administradores">
+                <ul class="pagination pagination-sm mb-0 admin-pagination">
+                    <li class="page-item @(ViewBag.CurrentPage <= 1 ? "disabled" : "")">
+                        <a class="page-link" href="@Url.Action("GestaoUsuarios", new { page = ViewBag.CurrentPage - 1 })" aria-label="Anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                    </li>
+                    
+                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("GestaoUsuarios", new { page = i })">@i</a>
+                        </li>
+                    }
+                    
+                    <li class="page-item @(ViewBag.CurrentPage >= ViewBag.TotalPages ? "disabled" : "")">
+                        <a class="page-link" href="@Url.Action("GestaoUsuarios", new { page = ViewBag.CurrentPage + 1 })" aria-label="Próximo">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    }
+</div>
+
+
+<div class="modal fade" id="newAdminModal" tabindex="-1" aria-labelledby="newAdminModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content admin-modal-content">
+            <div class="modal-header admin-modal-header">
+                <h5 class="modal-title admin-modal-title" id="newAdminModalLabel">Cadastrar Novo Administrador</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="SalvarAdmin" method="post">
+                <div class="modal-body admin-modal-body p-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label admin-form-label">Primeiro Nome</label>
+                            <input type="text" name="firstName" class="form-control admin-form-input" placeholder="Ex: João" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label admin-form-label">Sobrenome</label>
+                            <input type="text" name="lastName" class="form-control admin-form-input" placeholder="Ex: Silva" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label admin-form-label">E-mail Corporativo</label>
+                        <input type="email" name="email" class="form-control admin-form-input" placeholder="admin@travelsys.com" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label admin-form-label">Senha Temporária</label>
+                            <input type="password" name="password" class="form-control admin-form-input" placeholder="Mínimo 6 caracteres" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label admin-form-label">Telefone (Opcional)</label>
+                            <input type="text" name="phone" class="form-control admin-form-input" placeholder="(00) 00000-0000">
+                        </div>
+                    </div>
+
+                    <div class="mb-0">
+                        <label class="form-label admin-form-label">Nível de Acesso</label>
+                        <select name="role" class="form-select admin-form-input" required>
+                            <option value="@((int)UserRole.ADMIN)">Administrador Comum</option>
+                            <option value="@((int)UserRole.SUPER_ADMIN)">Super Administrador</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer admin-modal-footer">
+                    <button type="button" class="btn-mgmt-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn-mgmt-primary">Concluir Cadastro</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="editAdminModal" tabindex="-1" aria-labelledby="editAdminModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content admin-modal-content">
+            <div class="modal-header admin-modal-header">
+                <h5 class="modal-title admin-modal-title" id="editAdminModalLabel">Editar Administrador</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="AtualizarAdmin" method="post">
+                <input type="hidden" name="userId" id="edit-userId" />
+                <div class="modal-body admin-modal-body p-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label admin-form-label">Primeiro Nome</label>
+                            <input type="text" name="firstName" id="edit-firstName" class="form-control admin-form-input" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label admin-form-label">Sobrenome</label>
+                            <input type="text" name="lastName" id="edit-lastName" class="form-control admin-form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label admin-form-label">E-mail</label>
+                        <input type="email" name="email" id="edit-email" class="form-control admin-form-input" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label admin-form-label">Telefone</label>
+                            <input type="text" name="phone" id="edit-phone" class="form-control admin-form-input">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label admin-form-label">Nova Senha (Opcional)</label>
+                            <input type="password" name="newPassword" id="edit-password" class="form-control admin-form-input" placeholder="Deixe em branco para manter">
+                        </div>
+                    </div>
+
+                    <div class="mb-0">
+                        <label class="form-label admin-form-label">Nível de Acesso</label>
+                        <select name="role" id="edit-role" class="form-select admin-form-input" required>
+                            <option value="@((int)UserRole.ADMIN)">Administrador Comum</option>
+                            <option value="@((int)UserRole.SUPER_ADMIN)">Super Administrador</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer admin-modal-footer">
+                    <button type="button" class="btn-mgmt-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn-mgmt-primary">Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Styles {
+    <link rel="stylesheet" href="~/css/GestaoUsuarios.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="~/js/GestaoUsuarios.js" asp-append-version="true"></script>
+}

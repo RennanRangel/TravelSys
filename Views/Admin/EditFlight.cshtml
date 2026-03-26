@@ -5,7 +5,6 @@
 }
 
 <div class="mgmt-creation-container admin-stepper-container">
-    <!-- Sidebar Stepper -->
     <div class="mgmt-stepper-sidebar">
         <div class="stepper-section-title">QUAL É O VOO?</div>
         <a href="#section-detalhes" class="stepper-item active">Detalhes do voo</a>
@@ -18,7 +17,6 @@
         <a href="#section-valores" class="stepper-item">Valores e Precificação</a>
     </div>
 
-    <!-- Main Content Form -->
     <div class="mgmt-creation-content-wrapper">
         <form asp-action="UpdateFlight" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="Id" />
@@ -31,7 +29,6 @@
                     <h2>Detalhe os dados do seu voo</h2>
                 </div>
 
-                <!-- Seção: Detalhes -->
                 <div id="section-detalhes" class="creation-form-section active">
                     <div class="admin-form-group">
                         <label>Dê um nome para a companhia aérea * <i class="fas fa-circle-info" title="Use o nome comercial completo"></i></label>
@@ -97,7 +94,6 @@
                     </div>
                 </div>
 
-                <!-- Seção: Rota -->
                 <div id="section-rota" class="creation-form-section">
                     <div class="creation-header d-flex justify-content-between align-items-center">
                         <h2>Rota e Conectividade</h2>
@@ -172,7 +168,6 @@
                     </div>
                 </div>
 
-                <!-- Seção: Horários -->
                 <div id="section-horarios" class="creation-form-section">
                     <div class="creation-header d-flex justify-content-between align-items-center">
                         <h2>Horários e Disponibilidade</h2>
@@ -223,7 +218,6 @@
                     </div>
                 </div>
 
-                <!-- Seção: Descrição e Políticas -->
                 <div id="section-descricao" class="creation-form-section">
                     <div class="creation-header">
                         <h2>Descreva e detalhe aqui as informações do seu voo <i class="fas fa-circle-info info-icon-sm"></i></h2>
@@ -288,7 +282,6 @@
                     </div>
                 </div>
 
-                <!-- Seção: Imagens -->
                 <div id="section-imagens" class="creation-form-section">
                     <div class="creation-header d-flex justify-content-between align-items-center">
                         <h2>Identidade Visual e Ativos</h2>
@@ -345,7 +338,6 @@
                     </div>
                 </div>
 
-                <!-- Seção: Valores -->
                 <div id="section-valores" class="creation-form-section">
                     <div class="creation-header d-flex justify-content-between align-items-center">
                         <h2>Valores e Precificação</h2>

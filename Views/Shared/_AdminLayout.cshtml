@@ -13,47 +13,48 @@
 <body class="admin-body">
 
 <div class="admin-wrapper">
-    <!-- Sidebar -->
-    <aside class="admin-sidebar">
+    <aside id="admin-sidebar" class="admin-sidebar collapsed">
         <div class="admin-logo">
-            Travel<i class="fas fa-plane-departure"></i>
+            <span class="logo-text">Travel</span><i class="fas fa-plane-departure"></i>
         </div>
         <nav class="admin-nav">
             <a asp-controller="Admin" asp-action="Index" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")">
-                <i class="fas fa-home"></i> Visão Geral
+                <i class="fas fa-home"></i> <span>Visão Geral</span>
             </a>
             <a asp-controller="Admin" asp-action="GestaoViagens" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "GestaoViagens" ? "active" : "")">
-                <i class="fas fa-plane-departure"></i> Gestão de Viagens
+                <i class="fas fa-plane-departure"></i> <span>Gestão de Viagens</span>
+            </a>
+            <a href="/Admin/GestaoUsuarios" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "GestaoUsuarios" ? "active" : "")">
+                <i class="fas fa-users-cog"></i>
+                <span class="nav-text">Gestão de Usuários</span>
             </a>
             <a asp-controller="Admin" asp-action="GestaoHospedagens" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "GestaoHospedagens" ? "active" : "")">
-                <i class="fas fa-bed"></i> Gestão de Hospedagens
+                <i class="fas fa-bed"></i> <span>Gestão de Hospedagens</span>
             </a>
             <a asp-controller="Admin" asp-action="AnalisarDados" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "AnalisarDados" ? "active" : "")">
-                <i class="fas fa-chart-line"></i> Analisar Dados
+                <i class="fas fa-chart-line"></i> <span>Analisar Dados</span>
             </a>
             <a asp-controller="Admin" asp-action="Relatorios" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "Relatorios" ? "active" : "")">
-                <i class="fas fa-file-alt"></i> Relatórios
+                <i class="fas fa-file-alt"></i> <span>Relatórios</span>
             </a>
             <a asp-controller="Admin" asp-action="GerenciarTarefas" class="admin-nav-item @(ViewContext.RouteData.Values["action"]?.ToString() == "GerenciarTarefas" ? "active" : "")">
-                <i class="fas fa-list-check"></i> Gerenciar Tarefas
+                <i class="fas fa-list-check"></i> <span>Gerenciar Tarefas</span>
             </a>
         </nav>
         
         <div class="admin-sidebar-footer">
             <a href="/" class="admin-nav-item">
-                <i class="fas fa-external-link-alt"></i> Back to Site
+                <i class="fas fa-external-link-alt"></i> <span>Back to Site</span>
             </a>
             <form asp-controller="Account" asp-action="Logout" method="post" class="admin-logout-form">
                 <button type="submit" class="admin-nav-item w-100 border-0 bg-transparent text-start">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
                 </button>
             </form>
         </div>
     </aside>
 
-    <!-- Main Content -->
-    <main class="admin-main">
-        <!-- Topbar -->
+    <main id="admin-main" class="admin-main expanded">
         <header class="admin-topbar">
             <div class="breadcrumb-area">
                 <span class="breadcrumb-label">Pages</span> / <strong>@ViewData["Title"]</strong>
@@ -74,6 +75,9 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.js"></script>
+
+<script src="~/js/admin-layout.js" asp-append-version="true"></script>
+
 @await RenderSectionAsync("Scripts", required: false)
 
 </body>

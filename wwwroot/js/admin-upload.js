@@ -1,6 +1,3 @@
-/**
- * Gerenciamento de Upload Admin (Simplificado)
- */
 document.addEventListener('DOMContentLoaded', () => {
     const magicInputs = document.querySelectorAll('.magic-paste-target');
 
@@ -34,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Sincronizar input de arquivo com input de texto
     document.querySelectorAll('input[type="file"]').forEach(fileInput => {
         fileInput.addEventListener('change', () => {
             if (fileInput.files.length > 0) {

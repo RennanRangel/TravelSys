@@ -1,8 +1,5 @@
-/**
- * Gerenciamento de Listagem de Hotéis (Simplificado)
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Cache de Elementos
+    
     const DOM = {
         filterHeaders: document.querySelectorAll('.filter-header'),
         sortTabs: document.querySelectorAll('.sort-tab'),
@@ -15,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsInfo: document.querySelector('.results-info p')
     };
 
-    // --- FILTROS E ABAS ---
 
     DOM.filterHeaders.forEach(header => {
         header.addEventListener('click', function() {
@@ -37,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- FAVORITOS (Delegation) ---
 
     DOM.hotelCardsContainer?.addEventListener('click', (e) => {
         const btn = e.target.closest('.btn-favorite');
@@ -50,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- SLIDERS DE PREÇO ---
 
     if (DOM.priceSliders.length === 2) {
         const [minSlider, maxSlider] = DOM.priceSliders;
@@ -79,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- NEWSLETTER E BUSCA ---
 
     DOM.newsletterForm?.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -101,7 +94,7 @@ function applyPropertyType(type) {
     if (propertyTypeInput && filterForm) {
         var current = propertyTypeInput.value;
         if (current === type) {
-            propertyTypeInput.value = ""; // Toggle off to show all
+            propertyTypeInput.value = ""; 
         } else {
             propertyTypeInput.value = type;
         }

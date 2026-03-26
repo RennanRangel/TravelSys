@@ -16,7 +16,6 @@ body {
     height: 100vh;
 }
 
-/* Left Side - Form */
 .login-left {
     flex: 1.5;
     display: flex;
@@ -295,7 +294,6 @@ h1 {
     transform: translateY(-2px);
 }
 
-/* Right Side - Image */
 .login-right {
     flex: 1;
     position: relative;
@@ -338,7 +336,6 @@ h1 {
     border-radius: 4px;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
     .login-right {
         display: none;
@@ -372,7 +369,6 @@ h1 {
     }
 }
 
-/* Responsive Breakpoints */
 @media (min-width: 576px) {
     .login-content {
         max-width: 400px;
@@ -387,19 +383,12 @@ h1 {
 
 @media (min-width: 992px) {
 
-    /* Re-enable the split view for larger screens if it was hidden by max-width */
-    .login-container {
-        flex-direction: row;
-    }
-
     .login-right {
         display: flex;
-        /* Show image section */
     }
 
     .login-left {
         flex: 1;
-        /* Reset flex */
     }
 }
 

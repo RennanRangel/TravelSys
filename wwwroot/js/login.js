@@ -1,8 +1,5 @@
-/**
- * Gerenciamento de Login (Carrossel & UI)
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Cache de Elementos
+    
     const DOM = {
         image: document.querySelector('.login-right img'),
         indicators: document.querySelectorAll('.indicator'),
@@ -18,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentIndex = 0;
 
-    // --- CARROSSEL ---
 
     const changeImage = (index) => {
         if (!DOM.image) return;
@@ -41,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-    // --- VISIBILIDADE DA SENHA ---
 
     if (DOM.togglePassword && DOM.passwordInput) {
         DOM.togglePassword.addEventListener('click', () => {

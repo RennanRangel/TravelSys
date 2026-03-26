@@ -5,9 +5,7 @@ body {
     line-height: 1.6;
 }
 
-/* Listing and Hotel-specific Landing styles remain here */
 
-/* Sections */
 .recent-searches {
     max-width: 1200px;
     margin: 220px auto 80px;
@@ -53,7 +51,6 @@ body {
     opacity: 0.6;
 }
 
-/* Fall into travel */
 .travel-section {
     max-width: 1200px;
     margin: 80px auto;

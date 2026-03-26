@@ -1,8 +1,5 @@
-/**
- * Gerenciamento de Formulários Administrativos com Stepper
- */
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Gerenciamento de Upload de Arquivos
+    
     window.updateFileUpload = function(input) {
         const container = input.closest('.admin-file-upload-container');
         if (!container) return;
@@ -18,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // 2. Lógica do Stepper (Navegação entre Seções)
     const sections = document.querySelectorAll('.creation-form-section');
     const stepperItems = document.querySelectorAll('.stepper-item');
     const nextButtons = document.querySelectorAll('.next-step');
@@ -63,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 3. Validação de Formulário com Troca de Aba Automática
     document.addEventListener('invalid', function(e) {
         const section = e.target.closest('.creation-form-section');
         if (section) {
@@ -77,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, true);
 
-    // 4. Lógica de Campos de Preço por Classe (Voo)
     window.togglePriceFields = function() {
         const chkEco = document.getElementById('chkEconomy');
         const chkBus = document.getElementById('chkBusiness');
@@ -118,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Inicialização se for voo
     if (document.getElementById('chkEconomy')) {
         togglePriceFields();
     }

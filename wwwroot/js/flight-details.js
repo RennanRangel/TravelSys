@@ -1,8 +1,5 @@
-/**
- * Gerenciamento de Detalhes de Voo (Simplificado)
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Cache de Elementos
+    
     const DOM = {
         title: document.querySelector('.title-info h1'),
         location: document.querySelector('.location-info span'),
@@ -19,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         bookBtn: document.querySelector('.btn-book')
     };
 
-    // --- FUNÇÕES DE LÓGICA ---
 
     const updateUI = (flight) => {
         if (!flight) return;
@@ -53,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // --- INICIALIZAÇÃO ---
 
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
@@ -63,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (flight) updateUI(flight);
     }
 
-    // Favoritos
+    
     DOM.favoriteBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const icon = btn.querySelector('i.fa-heart');
@@ -76,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Classe de Voo
+    
     DOM.classChecks.forEach(check => {
         check.addEventListener('change', () => {
             if (check.checked) DOM.classChecks.forEach(c => { if (c !== check) c.checked = false; });

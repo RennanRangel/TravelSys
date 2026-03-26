@@ -1,8 +1,5 @@
-/**
- * Núcleo de Interações Globais (TravelSys)
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Cache de Elementos
+    
     const DOM = {
         tabBtns: document.querySelectorAll('.tab-btn'),
         flightsForm: document.querySelector('#flights-form'),
@@ -14,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animatedElements: document.querySelectorAll('.destination-card, .review-card, .feature-card')
     };
 
-    // --- CHAVEAMENTO DE ABAS (Home/Busca) ---
 
     DOM.tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -27,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- NEWSLETTER ---
 
     DOM.newsletterForm?.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -38,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- ANIMAÇÕES AO ROLAR (Observer) ---
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -56,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // --- HEADER: EFEITO DE SCROLL ---
 
     window.addEventListener('scroll', () => {
         if (!DOM.header) return;
@@ -66,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         DOM.header.style.boxShadow = isScrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
     });
 
-    // --- CARDS DE RECURSOS E DESTINOS ---
 
     DOM.featureCards.forEach(card => {
         card.querySelector('.btn-secondary')?.addEventListener('click', (e) => {
@@ -83,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- CARREGAMENTO INICIAL ---
     document.body.style.opacity = '0';
     setTimeout(() => {
         document.body.style.transition = 'opacity 0.5s ease';

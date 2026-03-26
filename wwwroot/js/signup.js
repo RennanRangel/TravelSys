@@ -1,8 +1,5 @@
-/**
- * Gerenciamento de Cadastro (Carrossel & Validação)
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Cache de Elementos
+    
     const DOM = {
         image: document.querySelector('.signup-left img'),
         indicators: document.querySelectorAll('.indicator'),
@@ -20,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentIndex = 0;
 
-    // --- CARROSSEL ---
 
     const changeImage = (index) => {
         if (!DOM.image) return;
@@ -37,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-    // --- VISIBILIDADE DA SENHA ---
 
     DOM.toggleBtns.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -52,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- VALIDAÇÃO ---
 
     if (DOM.form) {
         DOM.form.addEventListener('submit', (e) => {

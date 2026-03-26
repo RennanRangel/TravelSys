@@ -1,14 +1,10 @@
-/**
- * Gerenciamento de Página de Voos (Simplificado)
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // --- HERO IMAGE ROTATION ---
     const heroImg = document.getElementById('flight-hero-img');
     if (heroImg) {
         const heroImages = [
-            'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1440&h=537&fit=crop', // Initial plane wing
-            'https://images.unsplash.com/photo-1542296332-2e4473faf563?w=1600&h=600&fit=crop', // Airplane taking off
-            'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&h=600&fit=crop' // Window view / nature
+            'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1440&h=537&fit=crop',
+            'https://images.unsplash.com/photo-1542296332-2e4473faf563?w=1600&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&h=600&fit=crop'
         ];
         let heroIdx = 0;
         
@@ -18,21 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
             heroIdx = (heroIdx + 1) % heroImages.length;
             console.log('Rotating flight hero image to index:', heroIdx);
             
-            // Fade out
             heroImg.style.opacity = 0;
             
             setTimeout(() => {
                 heroImg.src = heroImages[heroIdx];
-                // Fade in
                 heroImg.style.opacity = 1;
             }, 800);
         }
         
         setInterval(rotateHeroBg, 5000);
-        // Execute a first rotation early just to prove it works
-        setTimeout(rotateHeroBg, 3000);
     }
-    // 1. Cache de Elementos
+    
     const DOM = {
         tabBtns: document.querySelectorAll('.tab-btn'),
         searchForm: document.querySelector('.search-form'),
@@ -40,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         markers: document.querySelectorAll('.location-marker')
     };
 
-    // --- ABAS ---
 
     DOM.tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -49,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- FORMULÁRIOS ---
 
     DOM.searchForm?.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -62,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         DOM.newsletterForm.reset();
     });
 
-    // --- ANIMAÇÃO DE MARCADORES ---
 
     DOM.markers.forEach((marker, i) => {
         setTimeout(() => {
@@ -75,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         }, i * 200);
     });
-    // --- TICKER AMÉRICA DO SUL ---
     const countries = [
         { name: 'Brasil', capital: 'Brasília', price: '$ 450', img: '/images/OIP.webp' },
         { name: 'Argentina', capital: 'Buenos Aires', price: '$ 520', img: 'https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800' },
@@ -91,12 +79,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Suriname', capital: 'Paramaribo', price: '$ 640', img: 'https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?w=800' },
         { name: 'Venezuela', capital: 'Caracas', price: '$ 400', img: '/images/Venezuela-7-The-Orinoco-and-its-delta-e1490917945896.webp' },
 
-        // --- AMÉRICA DO NORTE ---
         { name: 'Estados Unidos', capital: 'Washington', price: '$ 800', img: 'https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=800' },
         { name: 'Canadá', capital: 'Ottawa', price: '$ 850', img: 'https://images.unsplash.com/photo-1503614472-8413df3ded4a?w=800' },
         { name: 'México', capital: 'Cidade do México', price: '$ 600', img: 'https://images.unsplash.com/photo-1512813588311-50745b729ac3?w=800' },
 
-        // --- EUROPA ---
         { name: 'França', capital: 'Paris', price: '$ 950', img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800' },
         { name: 'Reino Unido', capital: 'Londres', price: '$ 980', img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800' },
         { name: 'Alemanha', capital: 'Berlim', price: '$ 920', img: 'https://images.unsplash.com/photo-1589544621535-7798dd1c0704?w=800' },
@@ -107,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
 
-    // --- TICKER AMÉRICA DO SUL (GRADE DINÂMICA) ---
     const tickers = [];
     for (let i = 0; i < 3; i++) {
         tickers.push({
@@ -118,15 +103,14 @@ document.addEventListener('DOMContentLoaded', () => {
             link: document.getElementById(`ticker-link-${i}`)
         });
 
-        // Inicializar imagens e transições para os 3 cards
         if (tickers[i].card) {
             tickers[i].card.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.7)), url('${countries[i].img}')`;
             if (tickers[i].bgTitle) tickers[i].bgTitle.textContent = countries[i].name.toUpperCase();
         }
     }
 
-    let currentCountryIdx = 3; // Começa a rotar o 4º país
-    let currentCardIdx = 0;    // Começa rotando o 1º card da grade
+    let currentCountryIdx = 3; 
+    let currentCardIdx = 0;    
 
     function updateTicker() {
         const target = tickers[currentCardIdx];
@@ -134,34 +118,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const country = countries[currentCountryIdx];
 
-        // Efeito de saída
         target.card.style.opacity = '0';
         target.card.style.transform = 'translateY(20px) scale(0.95)';
 
         setTimeout(() => {
-            // Atualiza conteúdo do card alvo
             if (target.country) target.country.textContent = country.name;
             if (target.capital) target.capital.textContent = `${country.capital}, ${country.name}`;
             if (target.bgTitle) target.bgTitle.textContent = country.name.toUpperCase();
             if (target.card) target.card.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.7)), url('${country.img}')`;
             if (target.link) target.link.href = `/Flights/Listing?route=${encodeURIComponent(country.name)}`;
 
-            // Efeito de entrada
             target.card.style.opacity = '1';
             target.card.style.transform = 'translateY(0) scale(1)';
             
-            // Avança para o próximo país e próximo card
             currentCountryIdx = (currentCountryIdx + 1) % countries.length;
             currentCardIdx = (currentCardIdx + 1) % 3;
         }, 500);
     }
 
-    // Inicia o intervalo se houver cards carregados
     if (tickers[0].card) {
         setInterval(updateTicker, 3000);
     }
 
-    // --- BACKPACKING SECTION (ROTAÇÃO DINÂMICA) ---
     const backpackingCountries = [
         {
             name: 'Brasil',
@@ -276,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // Backpacking DOM elements
+    
     const bpTitle = document.getElementById('bp-title');
     const bpPrice = document.getElementById('bp-price');
     const bpDesc = document.getElementById('bp-description');
@@ -291,7 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let bpIndex = 0;
 
-    // Configurando transições suaves de fade via JS para evitar piscar brusco
     if (bpTitle) bpTitle.style.transition = 'opacity 0.4s ease-in-out';
     if (bpPrice) bpPrice.style.transition = 'opacity 0.4s ease-in-out';
     if (bpDesc) bpDesc.style.transition = 'opacity 0.4s ease-in-out';
@@ -302,17 +279,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateBackpacking() {
         if (!bpTitle || !bpPrice || !bpDesc) return;
 
-        // Avança o índice
         bpIndex = (bpIndex + 1) % backpackingCountries.length;
         const c = backpackingCountries[bpIndex];
 
-        // 1. Fade OUT
         bpTitle.style.opacity = 0;
         bpPrice.style.opacity = 0;
         bpDesc.style.opacity = 0;
         bpImgs.forEach(img => { if (img) img.style.opacity = 0; });
 
-        // 2. Espera a animação de Fade Out terminar (400ms) para trocar o conteúdo
         setTimeout(() => {
             bpTitle.textContent = `Backpacking ${c.name}`;
             bpPrice.textContent = c.price;
@@ -330,18 +304,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 bpLink.href = `/Flights/Listing?route=${encodeURIComponent(c.name)}`;
             }
 
-            // 3. Fade IN com o novo conteúdo
             bpTitle.style.opacity = 1;
             bpPrice.style.opacity = 1;
             bpDesc.style.opacity = 1;
             bpImgs.forEach(img => { if (img) img.style.opacity = 1; });
-
-        }, 400); // tempo de espera do Fade Out
+        }, 400);
     }
 
-    // Intervalo de Rotação (Troca a cada 5 Segundos)
     if (bpTitle) {
-        // Inicializa opacidade caso comece escondido
         bpTitle.style.opacity = 1;
         bpPrice.style.opacity = 1;
         bpDesc.style.opacity = 1;

@@ -17,14 +17,12 @@
 }
 
 <div class="main-container">
-   
     <div class="breadcrumbs">
         <a href="@Url.Action("Index", "Flights")">Flights</a> <i class="fas fa-chevron-right"></i>
         <a href="@Url.Action("Details", "Flights", new { id = Model.Id })">@Model.Airline</a> <i class="fas fa-chevron-right"></i>
         <span>Ticket</span>
     </div>
 
-   
     <div class="ticket-header-section">
         <div class="ticket-title">
             <h1>@Model.Airline</h1>
@@ -42,7 +40,6 @@
         </div>
     </div>
 
-   
     <div class="boarding-pass">
        
         <div class="pass-details">
@@ -139,7 +136,6 @@
             </div>
         </div>
 
-        
         <div class="pass-map">
             <div class="map-placeholder">
                 <i class="fas fa-plane map-plane-icon"></i>
@@ -148,7 +144,6 @@
         </div>
     </div>
 
-    
     <div class="terms-section">
         <h2>Terms and Conditions</h2>
 

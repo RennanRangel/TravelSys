@@ -10,7 +10,6 @@
 }
 
 <div class="main-container">
-    <!-- Breadcrumbs -->
     <div class="breadcrumbs">
         <nav>
             <a href="#">Turkey</a> <i class="fas fa-chevron-right"></i>
@@ -19,7 +18,6 @@
         </nav>
     </div>
 
-    <!-- Confirmation Header -->
     <div class="confirmation-header">
         <div class="header-left">
             <h2>@(flight?.Airline ?? "Unknown") A380 Airbus</h2>
@@ -37,9 +35,7 @@
         </div>
     </div>
 
-    <!-- Boarding Pass Section - Ida -->
     <div class="boarding-pass-container">
-        <!-- Vertical Timeline Side -->
         <div class="pass-timeline">
             <div class="time-block top">
                 <span class="time">@flight?.Departure</span>
@@ -56,7 +52,6 @@
             </div>
         </div>
 
-        <!-- Main Ticket Body -->
         <div class="pass-main">
             <div class="pass-ticket-header">
                 <div class="passenger-info">
@@ -117,7 +112,6 @@
             </div>
         </div>
 
-        <!-- IDA/LABEL Side -->
         <div class="pass-label-side">
              <h2 class="pass-label-text pass-label-ida">IDA</h2>
         </div>
@@ -125,9 +119,7 @@
 
     @if (Model.IsRoundTrip)
     {
-        <!-- Boarding Pass Section - Volta -->
         <div class="boarding-pass-container boarding-pass-margin">
-            <!-- Vertical Timeline Side -->
             <div class="pass-timeline">
                 <div class="time-block top">
                     <span class="time">@(flight?.Arrival ?? "--:--")</span>
@@ -146,7 +138,6 @@
 
             </div>
 
-            <!-- Main Ticket Body -->
             <div class="pass-main">
                 <div class="pass-ticket-header">
                     <div class="passenger-info">
@@ -208,14 +199,12 @@
                 </div>
             </div>
 
-            <!-- VOLTA/LABEL Side -->
             <div class="pass-label-side">
                 <h2 class="pass-label-text pass-label-volta">VOLTA</h2>
             </div>
         </div>
     }
 
-    <!-- Terms and Conditions Section -->
     <div class="terms-conditions-container">
         <h2>Terms and Conditions</h2>
         

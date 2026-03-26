@@ -1,6 +1,3 @@
-/**
- * Gerenciador de Bilhetes de Voo (Simplificado)
- */
 document.addEventListener('DOMContentLoaded', () => {
     const DOM = {
         botaoDownload: document.querySelector('.btn-download'),

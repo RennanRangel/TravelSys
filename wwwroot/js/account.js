@@ -1,8 +1,5 @@
-/**
- * Gerenciamento de Conta
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Tab switching (Main)
+    
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabPanels = document.querySelectorAll('.tab-content-panel');
 
@@ -22,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. Sub-tab switching (Tickets/Bookings)
+    
     const subTabBtns = document.querySelectorAll('.sub-tab-btn');
     const ticketContainers = document.querySelectorAll('.ticket-list-container');
 
@@ -41,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Modal Logic (Add Card)
+    
     const addCardModal = document.getElementById('add-card-modal');
     const openModalBtn = document.getElementById('open-add-card');
     const closeModalBtn = document.getElementById('close-add-card');
@@ -64,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Handle URL Hash for direct tab access
+    
     const handleHash = () => {
         const hash = window.location.hash;
         if (hash === '#payments') {
@@ -74,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     handleHash();
 
-    // 5. Profile Image Upload handling (if elements exist)
+    
     const uploadCoverBtn = document.querySelector('.btn-upload-cover');
     const uploadCoverInput = document.querySelector('#upload-cover');
     const coverImageDisplay = document.querySelector('#cover-image-display');
@@ -111,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. Inline Editing Logic
+    
     const detailRows = document.querySelectorAll('.detail-row');
     
     detailRows.forEach(row => {
@@ -189,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Booking Dropdown Logic (Event Delegation) ---
     document.addEventListener('click', (e) => {
         const toggleBtn = e.target.closest('.btn-options-toggle');
         
@@ -209,7 +205,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Delete Bookings Logic ---
     const deleteBookingBtns = document.querySelectorAll('.btn-delete-booking-ajax');
     deleteBookingBtns.forEach(btn => {
         btn.addEventListener('click', async (e) => {

@@ -1,8 +1,5 @@
-/**
- * Gerenciamento de Detalhes do Hotel (Simplificado)
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Cache de Elementos
+    
     const DOM = {
         breadcrumbName: document.querySelector('#breadcrumbHotelName'),
         title: document.querySelector('#hotelTitle'),
@@ -19,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btnFavorite: document.querySelector('#btnFavorite')
     };
 
-    // --- FUNÇÕES DE LÓGICA ---
 
     const getRatingLabel = (rating) => {
         const score = parseFloat(rating);
@@ -43,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (DOM.ratingText) DOM.ratingText.textContent = getRatingLabel(hotel.rating);
         if (DOM.overview) DOM.overview.textContent = hotel.overview || 'Sem descrição disponível.';
 
-        // Estrelas
         if (DOM.stars) {
             DOM.stars.innerHTML = '';
             const count = parseInt(hotel.stars) || 5;
@@ -57,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
             DOM.stars.appendChild(span);
         }
 
-        // Galeria
         if (DOM.gallery) {
             DOM.gallery.innerHTML = '';
             if (hotel.mainImage) {
@@ -74,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Comodidades
         if (DOM.amenities) {
             DOM.amenities.innerHTML = `
                 <div class="badge">
@@ -95,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (DOM.mapFrame && hotel.mapUrl) DOM.mapFrame.src = hotel.mapUrl;
     };
 
-    // --- INICIALIZAÇÃO ---
 
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
@@ -105,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (hotel) updateUI(hotel);
     }
 
-    // Auth sync
     if (typeof updateHeader === 'function') updateHeader();
     if (typeof updateProfileDropdown === 'function') updateProfileDropdown();
 });

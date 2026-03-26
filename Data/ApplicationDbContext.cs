@@ -18,12 +18,12 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
     public DbSet<HotelBooking> HotelBookings { get; set; }
     public DbSet<UserCard> UserCards { get; set; }
     public DbSet<AdminTask> AdminTasks { get; set; }
+    public DbSet<Administrator> Administrators { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
         
-        // Configure ApplicationUser table name (optional - keeps default AspNetUsers)
-        // builder.Entity<ApplicationUser>().ToTable("Users");
+        builder.Entity<Administrator>().ToTable("Administrators");
     }
 }

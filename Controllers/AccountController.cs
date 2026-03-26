@@ -304,7 +304,6 @@ public class AccountController : Controller
             user = await _userManager.FindByIdAsync(user.Id);
         }
 
-        // Handle Email Change
         if (!string.IsNullOrEmpty(model.Email) && model.Email != user.Email)
         {
             var emailExists = await _userManager.FindByEmailAsync(model.Email);
@@ -314,7 +313,7 @@ public class AccountController : Controller
             if (!emailResult.Succeeded) return Json(new { success = false, message = "Failed to update email." });
 
             await _userManager.SetUserNameAsync(user, model.Email);
-            // Reload user
+         
             user = await _userManager.FindByIdAsync(user.Id);
             if (user == null) return Json(new { success = false, message = "User not found after update." });
         }

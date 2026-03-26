@@ -1,0 +1,82 @@
+
+.admin-pagination .page-link {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #444;
+    padding: 0.5rem 0.85rem;
+    margin: 0 4px;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 500;
+}
+
+.admin-pagination .page-link:hover {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.admin-pagination .page-item.active .page-link {
+    background: #000;
+    border-color: #ffc107;
+    color: #ffc107;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+}
+
+.admin-pagination .page-item.disabled .page-link {
+    background: transparent;
+    color: #ccc;
+    border-color: rgba(0, 0, 0, 0.05);
+    cursor: not-allowed;
+}
+
+.btn-mgmt-edit {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #000;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-mgmt-edit:hover {
+    background: #000;
+    color: white;
+    border-color: #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.admin-master-row {
+    background-color: rgba(255, 193, 7, 0.05);
+}
+
+.admin-master-row td {
+    border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+.avatar-master {
+    background: linear-gradient(135deg, #ffc107, #ff9800);
+    color: #000;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.4);
+}
+
+.user-avatar-sm {
+    width: 32px;
+    height: 32px;
+    background: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 0.85rem;
+}
+
+.badge {
+    padding: 0.5em 0.8em;
+    font-weight: 500;
+    border-radius: 6px;
+}

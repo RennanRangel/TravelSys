@@ -4,10 +4,12 @@ namespace ProjetoHotelAviao.Models;
 
 public class User
 {
+    [Key]
     public int Id { get; set; }
     
     [Required]
     [EmailAddress]
+    [MaxLength(150)]
     public string Email { get; set; } = string.Empty;
     
     [Required]
@@ -19,7 +21,8 @@ public class User
     
     public string? Phone { get; set; }
     
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow; 
     
-    public bool IsAdmin { get; set; } = false;
+    [Required]
+    public UserRole Role { get; set; } = UserRole.USER;
 }

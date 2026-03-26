@@ -23,7 +23,6 @@ public class Hotel
     
     public string? GalleryImages { get; set; } 
     
-    // Updated: Stars are no longer required by admin per latest request
     public int? Stars { get; set; }
     
     [Required]
@@ -37,7 +36,6 @@ public class Hotel
     
     public string? Amenities { get; set; } 
 
-    // New Fields from UI
     public string? Region { get; set; }
     public string? BookingMode { get; set; }
     public string? CheckIn { get; set; }

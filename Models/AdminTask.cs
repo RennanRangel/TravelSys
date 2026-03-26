@@ -11,10 +11,8 @@ public class AdminTask
     
     public string? Description { get; set; }
     
-    // "afazer", "andamento", "concluido"
     public string Status { get; set; } = "afazer";
     
-    // "alta", "media", "baixa", "urgente"
     public string Priority { get; set; } = "media";
     
     public string? AssignedTo { get; set; }

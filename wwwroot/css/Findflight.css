@@ -1,4 +1,7 @@
-/* Findflight.css - Landing page styles for Flight search */
+body{
+  overflow-x: hidden;
+}
+
 
 .hero {
     min-height: 800px;
@@ -10,6 +13,18 @@
     color: #FFFFFF;
     position: relative;
     overflow: visible;
+}
+
+.hero-background {
+    position: absolute;
+    top: -17px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 600px;
+    z-index: 1; 
+    overflow: hidden;
+    border-radius: 0 0 24px 24px;
 }
 
 .hero-container {
@@ -24,20 +39,16 @@
     z-index: 2;
     height: 100%;
     justify-content: flex-end;
-    padding-bottom: 80px;
+    padding-bottom: 220px;
 }
 
 
 
 .img-hero {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center 20%;
-    z-index: 1;
 }
 
 .hero-content {
@@ -75,7 +86,7 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     padding: 32px;
     width: 100%;
-    margin-top: 150px;
+    margin-top: 10px;
 }
 
 .search-card h2 {
@@ -188,7 +199,6 @@
     background-color: #7bc1a8;
 }
 
-/* Sections */
 .section-header {
     text-align: left;
     margin-bottom: 48px;
@@ -238,7 +248,6 @@
 }
 
 
-/* Headers align directly with the grid/hero (no offset) */
 .travel-section .section-header-text {
     padding-left: 0; 
 }
@@ -249,12 +258,10 @@
 
 /* Full width section */
 
-/* Map Section specific */
 .map-section {
     width: 100%;
     margin: 180px 0;
     padding: 0;
-    /* Full width section */
 }
 
 .map-section .section-header {
@@ -418,6 +425,7 @@
     opacity: 0.8;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -601,7 +609,6 @@
 
 
 
-/* Global Destinations Section Alignment */
 #global-destinations-section {
     padding: 60px 150px; /* Standardized to 150px */
     margin-top: 40px;
@@ -612,7 +619,6 @@
 
 
 
-/* Ensure the header text within this section doesn't have extra double padding */
 #global-destinations-section .section-header {
     width: 100%;
     padding: 0; 
@@ -652,7 +658,6 @@
     }
 }
 
-/* GLOBAL FIX: Force See All Button Style in all section headers */
 #flights-findflight .section-header .btn-see-all {
     display: inline-flex;
     align-items: center;

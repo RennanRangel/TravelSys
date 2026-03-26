@@ -1,6 +1,3 @@
-/**
- * Gerenciamento de Favoritos (Voo e Hotel)
- */
 const FavoritesManager = {
     initButtons: function() {
         const favoriteBtns = document.querySelectorAll('.favorite-btn, .heart-btn');
@@ -25,7 +22,6 @@ const FavoritesManager = {
     }
 };
 
-// Auto-inicialização global
 document.addEventListener('DOMContentLoaded', () => {
     FavoritesManager.initButtons();
 });

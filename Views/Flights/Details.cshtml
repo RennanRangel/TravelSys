@@ -9,14 +9,12 @@
 
 
 <div class="main-container">
-    
     <div class="breadcrumbs">
         <a href="@Url.Action("Index", "Flights")">Flights</a> <i class="fas fa-chevron-right"></i>
         <a href="#">@Model.Airline</a> <i class="fas fa-chevron-right"></i>
         <span>@Model.From to @Model.To</span>
     </div>
 
-    
     <div class="title-section">
         <div class="title-info">
             <h1>@Model.Airline Flight</h1>
@@ -47,7 +45,6 @@
         </div>
     </div>
 
-    
     <div class="hero-section">
         @if (!string.IsNullOrEmpty(Model.MainImage))
         {
@@ -61,7 +58,6 @@
         }
     </div>
 
-    
     <div class="features-section">
         <div class="features-header">
             <h2 id="features-title-display">Recursos do Voo</h2>
@@ -106,8 +102,6 @@
             <img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?w=300" alt="Entertainment">
         </div>
     </div>
-
-    
 
     <div class="policies-section additional-info-section">
         <h3>Informações Adicionais</h3>
@@ -165,7 +159,6 @@
 
     
     <div class="flight-schedules">
-        <!-- Ida Flight -->
         <div class="return-flight-card">
             <div class="flight-header">
                 <h3>Ida Wed, Dec 8</h3>
@@ -218,7 +211,6 @@
         }
         @if (showVolta)
         {
-        <!-- Return Flight -->
         <div class="return-flight-card schedule-card-margin">
             <div class="flight-header">
                 <h3>Return Sat, Dec 11</h3>

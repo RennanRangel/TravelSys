@@ -396,7 +396,6 @@ body {
     }
 }
 
-/* Desktop: Show sidebar */
 @media (min-width: 992px) {
     .sidebar {
         display: block;
@@ -1133,7 +1132,6 @@ body {
     }
 }
 
-/* Responsive Breakpoints */
 @media (min-width: 576px) {
     .flight-header {
         flex-direction: row;
@@ -1207,7 +1205,6 @@ body {
         max-width: 1200px;
     }
 }
-/* --- Premium Flight Card Redesign (Mockup 2955) --- */
 .flight-card-premium {
     background: #FFFFFF;
     border: 1px solid #E7E8E9;
@@ -1520,9 +1517,6 @@ body {
     }
 }
 
-/* =========================================
-   GENERIC UTILITY CLASSES
-   ========================================= */
 .btn-apply-filters {
     width: 100%;
     margin-top: 20px;

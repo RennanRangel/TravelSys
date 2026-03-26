@@ -1,12 +1,9 @@
-/**
- * Painel Administrativo (Arquitetura Simplificada e Funcional)
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Estado Global do Script
+    
     let editingFlightId = null;
     let editingHotelId = null;
 
-    // 2. Cache de Elementos (Seletors Principais)
+    
     const DOM = {
         tabBtns: document.querySelectorAll('.admin-tab-btn'),
         tabContents: document.querySelectorAll('.tab-content'),
@@ -17,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         messageContainer: document.querySelector('#messageContainer')
     };
 
-    // --- FUNÇÕES UTILITÁRIAS ---
 
     const showMessage = (text, type = 'success') => {
         const id = `msg_${Date.now()}`;
@@ -46,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const generateId = (prefix) => `${prefix}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
-    // --- GESTÃO DE ABAS ---
 
     DOM.tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -58,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- PREVIEW DE IMAGENS ---
 
     const setupPreview = (inputId, previewId) => {
         const input = document.querySelector(`#${inputId}`);
@@ -77,13 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Setup inicial de previews
     setupPreview('flightMainImage', 'previewMainImage');
     for (let i = 1; i <= 8; i++) setupPreview(`flightGallery${i}`, `previewGallery${i}`);
     setupPreview('hotelMainImage', 'previewHotelMainImage');
     for (let i = 1; i <= 4; i++) setupPreview(`hotelGallery${i}`, `previewHotelGallery${i}`);
 
-    // --- VOO: LÓGICA DE NEGÓCIO ---
 
     const getFlights = () => JSON.parse(localStorage.getItem('adminFlights')) || [];
 
@@ -130,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#flightFrom').value = flight.from;
         document.querySelector('#flightTo').value = flight.to;
         document.querySelector('#flightPrice').value = flight.price;
-        // ... outros campos ...
         
         const submitBtn = DOM.flightForm?.querySelector('.btn-submit');
         if (submitBtn) submitBtn.innerHTML = '<i class="fas fa-save"></i> Atualizar Voo';
@@ -147,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     DOM.flightForm?.addEventListener('submit', async (e) => {
         e.preventDefault();
-        // Lógica simplificada de coleta
         const formData = new FormData(DOM.flightForm);
         const flightData = {
             id: editingFlightId || generateId('flight'),
@@ -155,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
             from: formData.get('From'),
             to: formData.get('To'),
             price: formData.get('Price'),
-            // ... coletar outros campos via querySelector direto se necessário ...
         };
 
         let flights = getFlights();
@@ -173,7 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loadFlights();
     });
 
-    // --- HOTEL: LÓGICA DE NEGÓCIO ---
 
     const getHotels = () => JSON.parse(localStorage.getItem('adminHotels')) || [];
 
@@ -246,7 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loadHotels();
     });
 
-    // --- INICIALIZAÇÃO ---
     loadFlights();
     loadHotels();
 });

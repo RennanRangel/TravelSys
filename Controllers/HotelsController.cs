@@ -47,7 +47,6 @@ public class HotelsController : Controller
         ViewData["CurrentType"] = propertyType;
         var query = _context.Hotels.AsNoTracking();
 
-        // 1. Filtering (Server Side)
         if (!string.IsNullOrEmpty(location))
         {
             query = query.Where(h => h.Location.Contains(location) || h.Name.Contains(location));
@@ -74,7 +73,6 @@ public class HotelsController : Controller
             query = query.Where(h => h.Rating >= minRate);
         }
 
-        // Amenities filtering (comma separated in DB)
         if (amenities != null && amenities.Length > 0)
         {
             foreach (var amenity in amenities)
@@ -83,7 +81,6 @@ public class HotelsController : Controller
             }
         }
 
-        // 2. Counts (Dynamic)
         ViewData["HotelCount"] = await _context.Hotels.CountAsync(h => h.Type == "Hotel");
         ViewData["MotelCount"] = await _context.Hotels.CountAsync(h => h.Type == "Motel");
         ViewData["ResortCount"] = await _context.Hotels.CountAsync(h => h.Type == "Resort");
@@ -94,7 +91,6 @@ public class HotelsController : Controller
             .OrderBy(l => l)
             .ToListAsync();
 
-        // 3. Sorting (Server Side)
         query = sortOrder switch
         {
             "price_desc" => query.OrderByDescending(h => h.Price),
@@ -102,7 +98,6 @@ public class HotelsController : Controller
             _ => query.OrderBy(h => h.Price),
         };
 
-        // 4. Pagination
         int pageSize = 5;
         var paginatedHotels = await PaginatedList<Hotel>.CreateAsync(query, pageNumber ?? 1, pageSize);
         
@@ -197,7 +192,6 @@ public class HotelsController : Controller
                 .FirstOrDefaultAsync(b => b.Id == ticketId);
         }
 
-        // Se não achou por ID ou TempData, pega o mais recente de todos
         if (booking == null)
         {
             booking = await _context.HotelBookings

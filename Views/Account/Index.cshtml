@@ -11,7 +11,6 @@
 
 <div class="account-profile-container">
     @Html.AntiForgeryToken()
-    <!-- Profile Header with Cover and Avatar -->
     <div class="profile-hero-section">
         <div class="profile-cover">
             <div class="cover-overlay"></div>
@@ -30,7 +29,6 @@
         </div>
     </div>
 
-    <!-- Interface Tabs -->
     <div class="profile-tabs-container">
         <div class="tabs-nav">
             <button class="tab-btn @(ViewBag.ActiveTab == "account" ? "active" : "")" data-target="account-tab">Account</button>
@@ -39,7 +37,6 @@
         </div>
     </div>
 
-    <!-- Account Details Tab -->
     <div class="tab-content-panel @(ViewBag.ActiveTab == "account" ? "active" : "")" id="account-tab">
         <div class="content-header">
             <h2>Account</h2>
@@ -105,7 +102,6 @@
         </div>
     </div>
 
-    <!-- Tickets/Bookings Tab -->
     <div class="tab-content-panel @(ViewBag.ActiveTab == "bookings" ? "active" : "")" id="bookings-tab">
         <div class="header-with-filter">
             <h2>Tickets/Bookings</h2>
@@ -114,7 +110,6 @@
             </div>
         </div>
 
-        <!-- Sub-tabs for Flights / Stays -->
         <div class="sub-tabs-nav">
             <button class="sub-tab-btn active" data-subtarget="flights-list">
                 <i class="fas fa-plane"></i> Flights
@@ -124,7 +119,6 @@
             </button>
         </div>
 
-        <!-- Flight Bookings List -->
         <div class="ticket-list-container active-sub" id="flights-list">
             @if (Model.FlightBookings.Any())
             {
@@ -202,7 +196,6 @@
             }
         </div>
 
-        <!-- Stay Bookings List -->
         <div class="ticket-list-container" id="stays-list">
             @if (Model.StayBookings.Any())
             {
@@ -276,7 +269,6 @@
         </div>
     </div>
 
-    <!-- Payment Methods Tab -->
     <div class="tab-content-panel @(ViewBag.ActiveTab == "payments" ? "active" : "")" id="payment-tab">
         <div class="content-header">
             <h2>Payment methods</h2>
@@ -327,7 +319,6 @@
                 </div>
             }
 
-            <!-- Add New Card Box -->
             <div class="add-new-card-box" id="open-add-card">
                 <div class="plus-circle-wrap">
                     <i class="fas fa-plus"></i>
@@ -337,7 +328,6 @@
         </div>
     </div>
 
-    <!-- Add New Card Modal -->
     <div class="modal-overlay d-none" id="add-card-modal">
         <div class="modal-card-content">
             <button class="close-modal" id="close-add-card">&times;</button>

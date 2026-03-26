@@ -68,6 +68,10 @@ CREATE TABLE AspNetUsers (
     Phone LONGTEXT NULL,
     CreatedAt DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
     IsBCryptPassword TINYINT(1) NOT NULL DEFAULT 0,
+    ProfilePicture LONGTEXT NULL,
+    Address LONGTEXT NULL,
+    DateOfBirth DATETIME(6) NULL,
+    Role INT NOT NULL DEFAULT 3,
     PRIMARY KEY (Id)
 ) CHARACTER SET = utf8mb4;
 
@@ -229,6 +233,12 @@ INSERT INTO
         ConcurrencyStamp
     )
 VALUES (
+        UUID(),
+        'SuperAdmin',
+        'SUPERADMIN',
+        UUID()
+    ),
+    (
         UUID(),
         'Admin',
         'ADMIN',

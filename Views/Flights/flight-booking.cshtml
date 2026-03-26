@@ -27,14 +27,12 @@
 
     <div class="booking-layout">
         <div class="booking-content">
-            <!-- Flight Header -->
             <div class="flight-header-section">
                 <div class="title-price-row">
                     <h2>@Model.Airline A380 Airbus</h2>
                     <span class="price">R$ @baseFare.ToString("N2")</span>
                 </div>
                 
-                <!-- Ida Schedule Card -->
                 <div class="flight-schedule-card">
                     <div class="card-header">
                         <h3>Ida Wed, Dec 8</h3>
@@ -83,7 +81,6 @@
 
                 @if (isVolta)
                 {
-                    <!-- Volta Schedule Card -->
                     <div class="flight-schedule-card schedule-card-margin">
                         <div class="card-header">
                             <h3>Volta Sat, Dec 11</h3>
@@ -132,7 +129,6 @@
                 }
             </div>
 
-            <!-- Payment Options -->
             <div class="payment-options-box">
                 <div class="payment-option selected" id="opt-full" onclick="selectPayment('full')">
                     <div class="option-text">
@@ -155,7 +151,6 @@
                 </div>
             </div>
 
-            <!-- Authentication Section -->
             <form asp-action="Payment" asp-route-id="@Model.Id" asp-route-volta="@(isVolta ? "true" : "false")" method="get" class="auth-booking-section">
                 <h3>Login or Sign up to book</h3>
                 <div class="input-phone-group">
@@ -183,7 +178,6 @@
             </form>
         </div>
 
-        <!-- Sidebar -->
         <aside class="booking-sidebar">
             <div class="sidebar-summary-card">
                 <div class="summary-header">

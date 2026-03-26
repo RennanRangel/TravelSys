@@ -1,0 +1,79 @@
+@using ProjetoHotelAviao.Models
+@{
+    ViewData["Title"] = "Cadastrar Novo Administrador";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="mgmt-header mb-4">
+    <div>
+        <h1 class="mgmt-title">Cadastrar Novo Administrador</h1>
+        <p class="mgmt-subtitle">Crie novas contas administrativas com permissões específicas.</p>
+    </div>
+    <div>
+        <a href="/Admin/Index" class="btn-mgmt-secondary"><i class="fas fa-arrow-left"></i> Voltar</a>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="admin-card p-4">
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="fas fa-exclamation-circle me-2"></i> @TempData["ErrorMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            }
+
+            <form asp-action="SalvarAdmin" method="post" class="admin-form">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label admin-form-label">Primeiro Nome</label>
+                        <input type="text" name="firstName" class="form-control admin-form-input" placeholder="Ex: João" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label admin-form-label">Sobrenome</label>
+                        <input type="text" name="lastName" class="form-control admin-form-input" placeholder="Ex: Silva" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label admin-form-label">E-mail Corporativo</label>
+                    <input type="email" name="email" class="form-control admin-form-input" placeholder="admin@travelsys.com" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label admin-form-label">Senha Temporária</label>
+                        <input type="password" name="password" class="form-control admin-form-input" placeholder="Mínimo 6 caracteres" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label admin-form-label">Telefone (Opcional)</label>
+                        <input type="text" name="phone" class="form-control admin-form-input" placeholder="(00) 00000-0000">
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label admin-form-label">Nível de Acesso</label>
+                    <select name="role" class="form-select admin-form-input" required>
+                        <option value="@((int)UserRole.ADMIN)">Administrador Comum</option>
+                        <option value="@((int)UserRole.SUPER_ADMIN)">Super Administrador</option>
+                    </select>
+                    <div class="form-text text-muted mt-2">
+                        <i class="fas fa-info-circle"></i> Super Admins têm permissões totais sobre o sistema e outros usuários.
+                    </div>
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn-mgmt-primary py-3">
+                        <i class="fas fa-user-shield me-2"></i> Concluir Cadastro de Administrador
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/AdicionarAdmin.css" asp-append-version="true" />
+}

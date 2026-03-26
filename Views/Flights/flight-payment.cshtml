@@ -35,7 +35,6 @@
                 <input type="hidden" name="volta" value="@(isVolta ? "true" : "false")" />
                 <input type="hidden" name="flightClass" value="@ViewBag.FlightClass" />
 
-                <!-- Flight Header Section -->
                 <div class="flight-header-section">
                     <div class="title-price-row">
                         <h2>@Model.Airline A380 Airbus</h2>
@@ -43,7 +42,6 @@
                         <span class="price">R$ @displayPriceTotal.ToString("N2")</span>
                     </div>
                     
-                    <!-- Ida Schedule Card -->
                     <div class="flight-schedule-card">
                         <div class="card-header">
                             <h3>Ida Wed, Dec 8</h3>
@@ -90,7 +88,6 @@
 
                     @if (isVolta)
                     {
-                        <!-- Volta Schedule Card -->
                         <div class="flight-schedule-card schedule-card-margin">
                             <div class="card-header">
                                 <h3>Volta Sat, Dec 11</h3>
@@ -137,7 +134,6 @@
                     }
                 </div>
 
-                <!-- Payment Plan Section -->
                 <div class="payment-plan-section">
                     <div class="plan-option selected" id="plan-full" onclick="selectPlan('full')">
                         <div class="option-text">
@@ -160,7 +156,6 @@
                     </div>
                 </div>
 
-                <!-- Card Management Section -->
                 <div class="card-management-section">
                     @if (ViewBag.UserCards != null && ((IEnumerable<ProjetoHotelAviao.Models.UserCard>)ViewBag.UserCards).Any())
                     {
@@ -191,7 +186,6 @@
             </form>
         </div>
 
-        <!-- Sidebar -->
         <aside class="booking-sidebar">
             <div class="sidebar-summary-card">
                 <div class="summary-header">
@@ -237,7 +231,6 @@
     </div>
 </div>
 
-<!-- Add New Card Modal (Matches 2112) -->
 <div class="modal-overlay" id="addCardModal">
     <div class="modal-card">
         <button class="close-modal" onclick="closeAddCardModal()">&times;</button>

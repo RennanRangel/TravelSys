@@ -182,10 +182,8 @@ main {
     }
 }
 
-/* Responsive Breakpoints */
 @media (min-width: 576px) {
 
-    /* Small devices (landscape phones, 576px and up) */
     .container {
         max-width: 540px;
         padding: 0 30px;
@@ -194,7 +192,6 @@ main {
 
 @media (min-width: 768px) {
 
-    /* Medium devices (tablets, 768px and up) */
     .container {
         max-width: 720px;
     }
@@ -217,7 +214,6 @@ main {
 
 @media (min-width: 992px) {
 
-    /* Large devices (desktops, 992px and up) */
     .container {
         max-width: 960px;
     }
@@ -229,7 +225,6 @@ main {
 
 @media (min-width: 1200px) {
 
-    /* X-Large devices (large desktops, 1200px and up) */
     .container {
         max-width: 1140px;
     }
@@ -237,13 +232,11 @@ main {
 
 @media (min-width: 1400px) {
 
-    /* XX-Large devices (larger desktops, 1400px and up) */
     .container {
         max-width: 1320px;
     }
 }
 
-/* Premium User Dropdown */
 body .navbar .dropdown-menu-user {
     width: 320px;
     padding: 0;

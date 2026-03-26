@@ -10,9 +10,7 @@
 
 
 <div class="main-container">
-    
     <div class="top-section">
-        
         <aside class="sidebar">
         <h3 class="sidebar-title">Filters</h3>
 
@@ -122,9 +120,7 @@
         </form>
     </aside>
 
-        
         <div class="right-column">
-            
             <div class="search-bar">
                 <form asp-action="Listing" method="get" class="search-container">
                     <div class="search-fields">
@@ -169,9 +165,7 @@
                 </form>
             </div>
 
-            
         <div class="results-content">
-        
         <div class="sorting-header">
             <div class="sorting-tabs">
                 @{
@@ -253,7 +247,6 @@
                             </div>
 
                             <div class="flight-itinerary-rows">
-                                <!-- Ida -->
                                 <div class="itinerary-row">
                                     <div class="row-left">
                                         <input type="checkbox" checked data-price="@flight.Price" data-card="@cid" onchange="updateCardPrice('@cid')">
@@ -278,7 +271,6 @@
 
                                 @if (flight.TripType == "Round trip")
                                 {
-                                <!-- Volta -->
                                 <div class="itinerary-row">
                                     <div class="row-left">
                                         <input type="checkbox" data-price="@flight.Price" data-card="@cid" onchange="updateCardPrice('@cid')">

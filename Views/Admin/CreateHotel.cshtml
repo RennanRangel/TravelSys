@@ -5,7 +5,6 @@
 }
 
 <div class="mgmt-creation-container admin-stepper-container">
-    <!-- Sidebar Stepper -->
     <div class="mgmt-stepper-sidebar">
         <div class="stepper-section-title">QUAL É O HOTEL?</div>
         <a href="#section-detalhes" class="stepper-item active">Detalhes do hotel</a>
@@ -18,7 +17,6 @@
         <a href="#section-imagens" class="stepper-item">Identidade Visual e Fotos</a>
     </div>
 
-    <!-- Main Content Form -->
     <div class="mgmt-creation-content-wrapper">
         <form asp-action="CreateHotel" method="post" enctype="multipart/form-data">
             <div class="mgmt-creation-content">
@@ -26,7 +24,6 @@
                     <h2>Detalhe os dados do seu hotel</h2>
                 </div>
 
-                <!-- Seção: Detalhes -->
                 <div id="section-detalhes" class="creation-form-section active">
                     <div class="admin-form-group">
                         <label>Dê um nome para o seu hotel * <i class="fas fa-circle-info" title="Use o nome oficial completo"></i></label>
@@ -74,7 +71,6 @@
                     </div>
                 </div>
 
-                <!-- Seção: Localização -->
                 <div id="section-localizacao" class="creation-form-section">
                     <div class="creation-header d-flex justify-content-between align-items-center">
                         <h2>Localização do Estabelecimento</h2>
@@ -149,7 +145,6 @@
                     </div>
                 </div>
 
-                <!-- Seção: Horários -->
                 <div id="section-horarios" class="creation-form-section">
                     <div class="creation-header d-flex justify-content-between align-items-center">
                         <h2>Horários de Estadia</h2>
@@ -196,7 +191,6 @@
                     </div>
                 </div>
 
-                <!-- Seção: Descrição e Comodidades -->
                 <div id="section-descricao" class="creation-form-section">
                     <div class="creation-header">
                         <h2>Descreva e detalhe aqui o seu estabelecimento <i class="fas fa-circle-info info-icon-sm"></i></h2>
@@ -266,7 +260,6 @@
                     </div>
                 </div>
 
-                <!-- Seção: Valores -->
                 <div id="section-valores" class="creation-form-section">
                     <div class="creation-header d-flex justify-content-between align-items-center">
                         <h2>Valores e Classificação</h2>
@@ -293,7 +286,6 @@
                     </div>
                 </div>
 
-                <!-- Seção: Imagens -->
                 <div id="section-imagens" class="creation-form-section">
                     <div class="creation-header d-flex justify-content-between align-items-center">
                         <h2>Identidade Visual e Fotos</h2>

@@ -1,8 +1,5 @@
-/**
- * Gerenciamento de Reserva de Hotel (Simplificado)
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Cache de Elementos
+    
     const DOM = {
         paymentCards: document.querySelectorAll('.payment-card'),
         savedCards: document.querySelectorAll('.saved-card'),
@@ -13,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         formNewsletter: document.querySelector('.newsletter-form')
     };
 
-    // --- FUNÇÕES DE LÓGICA ---
 
     const removeSelection = (selector) => {
         document.querySelectorAll(selector).forEach(el => {
@@ -41,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (radio) radio.checked = true;
     };
 
-    // --- SELEÇÃO DE PAGAMENTO ---
 
     DOM.paymentCards.forEach(card => {
         card.addEventListener('click', () => {
@@ -57,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- MODAL E FORMULÁRIO ---
 
     DOM.btnNovoCartao?.addEventListener('click', () => DOM.modal?.classList.add('active'));
     DOM.fecharModal?.addEventListener('click', () => DOM.modal?.classList.remove('active'));

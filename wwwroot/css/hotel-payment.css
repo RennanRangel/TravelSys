@@ -8,7 +8,6 @@ body .payment-container {
     color: #112211;
 }
 
-/* Breadcrumbs */
 .breadcrumbs {
     display: flex;
     align-items: center;
@@ -28,7 +27,6 @@ body .payment-container {
     opacity: 0.5;
 }
 
-/* Page Layout */
 .booking-layout {
     display: grid;
     grid-template-columns: 1.8fr 1.2fr;
@@ -42,7 +40,6 @@ body .payment-container {
     }
 }
 
-/* Summary Box */
 .booking-summary-box {
     background: #FFFFFF;
     border: 1px solid #E7E8E9;
@@ -176,7 +173,6 @@ body .payment-container {
     flex: 1;
 }
 
-/* Payment Plans */
 .payment-plans {
     display: flex;
     flex-direction: column;
@@ -232,7 +228,6 @@ body .payment-container {
     transform: translate(-50%, -50%);
 }
 
-/* Card Selection */
 .payment-methods {
     display: flex;
     flex-direction: column;
@@ -300,7 +295,6 @@ body .payment-container {
     font-size: 20px;
 }
 
-/* Sidebar Summary */
 .summary-sidebar {
     background: #FFFFFF;
     border-radius: 16px;
@@ -392,7 +386,6 @@ body .payment-container {
     opacity: 0.9;
 }
 
-/* Modal Styles */
 .modal-sistema {
     display: none;
     position: fixed;

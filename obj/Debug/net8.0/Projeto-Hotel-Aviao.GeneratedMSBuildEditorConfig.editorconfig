@@ -46,6 +46,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWdudXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Renna/OneDrive/Projetos-Back-End/ProjetosCsharp/RazorPage/TravelSys/Views/Admin/AdicionarAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRpY2lvbmFyQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Renna/OneDrive/Projetos-Back-End/ProjetosCsharp/RazorPage/TravelSys/Views/Admin/AnalisarDados.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQW5hbGlzYXJEYWRvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -72,6 +76,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Renna/OneDrive/Projetos-Back-End/ProjetosCsharp/RazorPage/TravelSys/Views/Admin/GestaoHospedagens.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cR2VzdGFvSG9zcGVkYWdlbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Renna/OneDrive/Projetos-Back-End/ProjetosCsharp/RazorPage/TravelSys/Views/Admin/GestaoUsuarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cR2VzdGFvVXN1YXJpb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Renna/OneDrive/Projetos-Back-End/ProjetosCsharp/RazorPage/TravelSys/Views/Admin/GestaoViagens.cshtml]

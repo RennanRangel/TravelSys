@@ -1,9 +1,4 @@
-/**
- * Utilitários de Autenticação (Arquitetura Simplificada)
- * Mantém funções globais para compatibilidade com o projeto.
- */
 
-// 1. Verificação de Login
 const isLoggedIn = () => {
     try {
         const userData = localStorage.getItem('userData');
@@ -14,7 +9,6 @@ const isLoggedIn = () => {
     }
 };
 
-// 2. Recuperação de Dados
 const getUserData = () => {
     try {
         const userData = localStorage.getItem('userData');
@@ -24,19 +18,16 @@ const getUserData = () => {
     }
 };
 
-// 3. Verificação Admin
 const isAdmin = () => {
     const user = getUserData();
     return user?.loggedIn && user.email === 'admin@gmail.com';
 };
 
-// 4. Logout
 const logout = () => {
     localStorage.removeItem('userData');
     window.location.href = '/Account/Login';
 };
 
-// 5. Atualização de Cabeçalho (DOM Cache Local)
 const updateHeader = () => {
     const headerActions = document.querySelector('.header-actions');
     if (!headerActions) return;
@@ -61,7 +52,6 @@ const updateHeader = () => {
     }
 };
 
-// 6. Atualização de Dropdown
 const updateProfileDropdown = () => {
     const user = getUserData();
     if (!user?.loggedIn) return;
@@ -93,7 +83,6 @@ const updateProfileDropdown = () => {
     }
 };
 
-// 7. Proteção de Páginas
 const protectPage = () => {
     if (!isLoggedIn()) window.location.href = '/Account/Login';
 };
@@ -110,7 +99,6 @@ const protectAdminPage = () => {
     }
 };
 
-// 9. Password Toggle
 const initPasswordToggles = () => {
     document.querySelectorAll('.toggle-password').forEach(button => {
         button.addEventListener('click', function() {
@@ -130,7 +118,6 @@ const initPasswordToggles = () => {
     });
 };
 
-// 8. Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     updateHeader();
     updateProfileDropdown();

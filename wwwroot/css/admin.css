@@ -638,10 +638,8 @@ body {
     color: #79747E;
 }
 
-/* Responsive Breakpoints */
 @media (min-width: 576px) {
 
-    /* Small devices (landscape phones, 576px and up) */
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -654,7 +652,6 @@ body {
 
 @media (min-width: 768px) {
 
-    /* Medium devices (tablets, 768px and up) */
     .admin-container {
         flex-direction: row;
     }
@@ -678,7 +675,6 @@ body {
 
 @media (min-width: 992px) {
 
-    /* Large devices (desktops, 992px and up) */
     .stats-grid {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -695,7 +691,6 @@ body {
 
 @media (min-width: 1200px) {
 
-    /* X-Large devices (large desktops, 1200px and up) */
     .admin-container {
         max-width: 100%;
         padding: 0;
@@ -704,7 +699,6 @@ body {
 
 @media (min-width: 1400px) {
 
-    /* XX-Large devices (larger desktops, 1400px and up) */
     .main-content {
         padding: 40px;
     }

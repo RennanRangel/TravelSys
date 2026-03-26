@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- HERO IMAGE ROTATION ---
     const heroImg = document.getElementById('hotel-hero-img');
     if (heroImg) {
         const heroImages = [
-            'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&h=900&fit=crop', // Initial image
-            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&h=900&fit=crop', // Resort pool
-            'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1600&h=900&fit=crop', // Beach resort
-            'https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=1600&h=900&fit=crop'  // Luxury hotel
+            'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&h=900&fit=crop',
+            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&h=900&fit=crop',
+            'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1600&h=900&fit=crop',
+            'https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=1600&h=900&fit=crop'
         ];
         let heroIdx = 0;
         
@@ -15,12 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         function rotateHeroBg() {
             heroIdx = (heroIdx + 1) % heroImages.length;
             
-            // Fade out
             heroImg.style.opacity = 0;
             
             setTimeout(() => {
                 heroImg.src = heroImages[heroIdx];
-                // Fade in
                 heroImg.style.opacity = 1;
             }, 800);
         }
@@ -28,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(rotateHeroBg, 5000);
     }
 
-    // --- TICKER AMÉRICA DO SUL (GRADE DINÂMICA) ---
     const countries = [
         { name: 'Brasil', capital: 'Brasília', price: '$ 450', img: '/images/OIP.webp' },
         { name: 'Argentina', capital: 'Buenos Aires', price: '$ 520', img: 'https://images.unsplash.com/photo-1589909202802-8f4aadce1849?w=800' },
@@ -44,12 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Suriname', capital: 'Paramaribo', price: '$ 640', img: 'https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?w=800' },
         { name: 'Venezuela', capital: 'Caracas', price: '$ 400', img: '/images/Venezuela-7-The-Orinoco-and-its-delta-e1490917945896.webp' },
 
-        // --- AMÉRICA DO NORTE ---
         { name: 'Estados Unidos', capital: 'Washington', price: '$ 800', img: 'https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=800' },
         { name: 'Canadá', capital: 'Ottawa', price: '$ 850', img: 'https://images.unsplash.com/photo-1503614472-8413df3ded4a?w=800' },
         { name: 'México', capital: 'Cidade do México', price: '$ 600', img: 'https://images.unsplash.com/photo-1512813588311-50745b729ac3?w=800' },
 
-        // --- EUROPA ---
         { name: 'França', capital: 'Paris', price: '$ 950', img: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800' },
         { name: 'Reino Unido', capital: 'Londres', price: '$ 980', img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800' },
         { name: 'Alemanha', capital: 'Berlim', price: '$ 920', img: 'https://images.unsplash.com/photo-1589544621535-7798dd1c0704?w=800' },
@@ -95,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (target.capital) target.capital.textContent = `${country.capital}, ${country.name}`;
             if (target.bgTitle) target.bgTitle.textContent = country.name.toUpperCase();
             if (target.card) target.card.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.7)), url('${country.img}')`;
-            if (target.link) target.link.href = `/Hotels/Listing?destination=${encodeURIComponent(country.name)}`; // Alterado para Hotels
+            if (target.link) target.link.href = `/Hotels/Listing?destination=${encodeURIComponent(country.name)}`;
 
             target.card.style.opacity = '1';
             target.card.style.transform = 'translateY(0) scale(1)';
@@ -109,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateTicker, 3000);
     }
 
-    // --- BACKPACKING / FEATURED STAYS SECTION (ROTAÇÃO DINÂMICA) ---
     const featuredStays = [
         {
             name: 'Sri Lanka',
@@ -168,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('bp-img-1')
     ];
 
-    // Configurando transições suaves de fade via JS para evitar piscar brusco
     if (bpTitle) bpTitle.style.transition = 'opacity 0.4s ease-in-out';
     if (bpPrice) bpPrice.style.transition = 'opacity 0.4s ease-in-out';
     if (bpDescription) bpDescription.style.transition = 'opacity 0.4s ease-in-out';
@@ -179,43 +171,35 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateFeaturedStays() {
         if (!bpTitle || !bpPrice || !bpDescription) return;
 
-        // Avança o índice
         bpIndex = (bpIndex + 1) % featuredStays.length;
         const data = featuredStays[bpIndex];
 
-        // 1. Fade OUT
         bpTitle.style.opacity = 0;
         bpPrice.style.opacity = 0;
         bpDescription.style.opacity = 0;
         bpImgs.forEach(img => { if (img) img.style.opacity = 0; });
 
-        // 2. Espera a animação de Fade Out terminar (400ms) para trocar o conteúdo
         setTimeout(() => {
             bpTitle.textContent = "Backpacking " + data.name;
             bpPrice.textContent = data.price;
             bpDescription.textContent = data.description;
             
-            // Atualizando as imagens
             data.images.forEach((src, index) => {
                 if (bpImgs[index]) {
                     bpImgs[index].src = src;
                 }
             });
 
-            // Opcional: atualizar link dinamicamente se quiser levar para a busca daquele país
             if (bpLink) {
                 bpLink.href = `/Hotels/Listing?destination=${encodeURIComponent(data.name)}`;
             }
 
-            // 3. Fade IN com o novo conteúdo
             bpTitle.style.opacity = 1;
             bpPrice.style.opacity = 1;
             bpDescription.style.opacity = 1;
             bpImgs.forEach(img => { if (img) img.style.opacity = 1; });
-
-        }, 400); // tempo de espera do Fade Out
+        }, 400);
     }
 
-    // Intervalo de Rotação (Troca a cada 5 Segundos)
     setInterval(updateFeaturedStays, 5000);
 });

@@ -1,4 +1,3 @@
-/* CSS/flight-details.css - Mobile First Refactor */
 * {
     margin: 0;
     padding: 0;
@@ -12,9 +11,6 @@ body {
     line-height: 1.6;
 }
 
-/* =========================================
-   HEADER
-   ========================================= */
 .header {
     background-color: #FFFFFF;
     border-bottom: 1px solid #E7E8E9;
@@ -42,7 +38,6 @@ body {
 
 .header-tabs {
     display: none;
-    /* Hidden on mobile */
     gap: 24px;
 }
 
@@ -140,7 +135,6 @@ body {
     font-weight: 600;
     font-size: 14px;
     display: none;
-    /* Hide on mobile */
 }
 
 .profile-dropdown {
@@ -210,9 +204,6 @@ body {
     color: #79747E;
 }
 
-/* =========================================
-   MAIN CONTAINER
-   ========================================= */
 .main-container {
     max-width: 1400px;
     margin: 24px auto;
@@ -249,11 +240,9 @@ body {
     color: #79747E;
 }
 
-/* Title Section */
 .title-section {
     display: flex;
     flex-direction: column;
-    /* Stacked on mobile */
     gap: 24px;
     margin-bottom: 24px;
 }
@@ -308,7 +297,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* Left align on mobile */
     gap: 16px;
     width: 100%;
 }
@@ -359,7 +347,6 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     flex: 1;
-    /* Stretch on mobile */
     text-align: center;
 }
 
@@ -374,7 +361,6 @@ body {
     display: flex;
 }
 
-/* Hero Section */
 .hero-section {
     width: 100%;
     height: 250px;
@@ -409,7 +395,6 @@ body {
     transform: scale(1.02);
 }
 
-/* Features */
 .features-section {
     margin-top: 64px;
     margin-bottom: 32px;
@@ -498,9 +483,7 @@ body {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* Policies */
 .policies-section {
-    background-color: #f1fcf8; /* Light green background */
     border-radius: 16px;
     padding: 32px;
     margin-bottom: 32px;
@@ -516,7 +499,6 @@ body {
 .policies-grid {
     display: grid;
     grid-template-columns: 1fr;
-    /* Single column on mobile */
     gap: 16px;
 }
 
@@ -546,7 +528,7 @@ body {
 }
 
 .info-item-box {
-    background: #def7ee; /* Slightly darker green than the section background */
+    background: #def7ee; 
     padding: 20px;
     border-radius: 12px;
     border: none;
@@ -763,7 +745,6 @@ body {
     font-weight: 500;
 }
 
-/* Newsletter */
 .newsletter-section {
     background-color: #8DD3BB;
     padding: 40px 0;
@@ -776,7 +757,6 @@ body {
     padding: 0 20px;
     display: flex;
     flex-direction: column;
-    /* Stacked */
     gap: 32px;
 }
 

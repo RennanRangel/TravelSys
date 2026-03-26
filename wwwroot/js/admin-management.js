@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const priceFilter = document.getElementById('filterPrice');
         const maxPrice = priceFilter ? parseFloat(priceFilter.value) : Number.MAX_VALUE;
 
-        // Loop rows
         tableRows.forEach(row => {
             const rowStatus = row.getAttribute('data-status');
             const rowText = row.innerText.toLowerCase();
@@ -32,17 +31,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Attach text search
     if (searchInput) {
         searchInput.addEventListener('input', filterTable);
     }
 
-    // Attach status change
     statusFilters.forEach(filter => {
         filter.addEventListener('change', filterTable);
     });
 
-    // Handle Select All
     if (selectAllCheckbox) {
         selectAllCheckbox.addEventListener('change', function() {
             rowCheckboxes.forEach(cb => {
@@ -54,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Handle individual row checking
     rowCheckboxes.forEach(cb => {
         cb.addEventListener('change', toggleMassActions);
     });
@@ -66,13 +61,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Initial Filter
     filterTable();
 
-    // Expose applyFilters to global
     window.applyFilters = function() {
         filterTable();
-        // optionally close dropdown
         document.body.click(); 
     };
 

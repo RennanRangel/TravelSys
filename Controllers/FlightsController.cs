@@ -42,7 +42,6 @@ public class FlightsController : Controller
         
         var query = _context.Flights.AsNoTracking();
 
-        // 1. Static City/Route List (for UI)
         ViewData["AvailableCities"] = await _context.Flights
             .Where(f => !string.IsNullOrEmpty(f.From))
             .Select(f => f.From)
@@ -50,7 +49,6 @@ public class FlightsController : Controller
             .Distinct()
             .ToListAsync();
 
-        // 2. Filtering (Server Side)
         if (!string.IsNullOrEmpty(route))
         {
             var r = route.Trim().ToLower();
@@ -69,7 +67,6 @@ public class FlightsController : Controller
         if (airlines != null && airlines.Length > 0) query = query.Where(f => airlines.Contains(f.Airline));
         if (tripType != null && tripType.Length > 0) query = query.Where(f => tripType.Contains(f.TripType));
 
-        // 3. Stats for UI (Cheapest, Best, Quickest)
         var allResults = await query.ToListAsync();
         if (allResults.Any())
         {
@@ -77,7 +74,6 @@ public class FlightsController : Controller
             ViewData["BestPrice"] = allResults.Max(f => f.Rating);
         }
 
-        // 4. Sorting
         query = sortOrder switch
         {
             "cheapest" => query.OrderBy(f => f.Price),
@@ -85,7 +81,6 @@ public class FlightsController : Controller
             _ => query.OrderBy(f => f.Price),
         };
 
-        // 5. Pagination
         int pageSize = 5;
         var paginated = await PaginatedList<Flight>.CreateAsync(query, pageNumber ?? 1, pageSize);
         return View("Listing", paginated);

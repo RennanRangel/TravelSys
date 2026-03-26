@@ -1,4 +1,8 @@
-/* Findstays.css - Landing page styles for Hotel search */
+body{
+    overflow-x: hidden;
+}
+
+
 
 .hero {
     min-height: 800px;
@@ -13,6 +17,18 @@
     margin-top: 00px;
 }
 
+.hero-background {
+    position: absolute;
+    top: -17px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 600px;
+    z-index: 1; 
+    overflow: hidden;
+    border-radius: 0 0 24px 24px;
+}
+
 .hero-container {
     max-width: 1232px;
     width: 100%;
@@ -24,18 +40,14 @@
     position: relative;
     z-index: 2;
     height: 100%;
-    justify-content: center; /* Center content vertically */
-    padding-top: 120px;
+    justify-content: flex-end;
+    padding-bottom: 220px;
 }
 
 .img-hero {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 1;
 }
 
 .hero-content {
@@ -63,8 +75,8 @@
 .search-container {
     width: 100%;
     position: relative;
-    margin-top: 60px; /* More space from title */
-    margin-bottom: -460px; /* Pull content up further */
+    margin-top: 20px;
+    margin-bottom: -460px; 
 }
 
 .search-card {
@@ -185,7 +197,6 @@
     background-color: #7bc1a8;
 }
 
-/* Sections */
 .section-header {
     text-align: left;
     margin-bottom: 48px;
@@ -225,7 +236,6 @@
     background-color: #8DD3BB;
 }
 
-/* Recent Searches specific */
 .recent-searches {
     max-width: 1200px;
     margin: 220px auto 80px;
@@ -249,7 +259,6 @@
     cursor: pointer;
 }
 
-/* Travel Grid - 4 Column Layout */
 .travel-section {
     max-width: 1400px;
     margin: 80px auto;
@@ -280,7 +289,6 @@
     justify-content: space-between;
 }
 
-/* Gigantic background title style */
 .bg-title {
     position: absolute;
     top: 30px;
@@ -368,7 +376,6 @@
 
 
 
-/* Global Destinations Section Alignment */
 #global-destinations-section {
     padding: 60px 0; /* Changed from 150px to fit Findstays' padding structure */
     margin-top: 40px;
@@ -379,7 +386,6 @@
 
 
 
-/* Ensure the header text within this section doesn't have extra double padding */
 #global-destinations-section .section-header {
     width: 100%;
     padding: 0; 
@@ -412,7 +418,6 @@
     font-weight: 500;
 }
 
-/* Travel Grid - Featured Layout */
 .travel-featured-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

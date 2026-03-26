@@ -13,16 +13,33 @@ public static class DbInitializer
         var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         var configuration = serviceProvider.GetRequiredService<IConfiguration>();
 
-        // 1. Repairs / Schema Maintenance (MUST BE FIRST)
         await EnsureSchemaRepair(context);
 
-        // 2. Roles setup
         string[] roles = { "Admin", "User" };
         foreach (var role in roles)
         {
             if (!await roleManager.RoleExistsAsync(role))
             {
                 await roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
+        var adminRole = await roleManager.FindByNameAsync("Admin");
+        if (adminRole != null)
+        {
+            var adminClaims = await roleManager.GetClaimsAsync(adminRole);
+            var requiredClaims = new[] {
+                new System.Security.Claims.Claim("Permission", "ManageTasks"),
+                new System.Security.Claims.Claim("Permission", "DeleteTrip"),
+                new System.Security.Claims.Claim("Permission", "AccessAdminPanel")
+            };
+
+            foreach (var claim in requiredClaims)
+            {
+                if (!adminClaims.Any(c => c.Type == claim.Type && c.Value == claim.Value))
+                {
+                    await roleManager.AddClaimAsync(adminRole, claim);
+                    Console.WriteLine($">>> DB SEED: Claim '{claim.Value}' added to Admin role.");
+                }
             }
         }
 
@@ -33,7 +50,7 @@ public static class DbInitializer
         var existingAdmin = await userManager.FindByEmailAsync(adminEmail);
         if (existingAdmin == null)
         {
-            var adminUser = new ApplicationUser
+            var adminUser = new Administrator
             {
                 UserName = adminEmail,
                 Email = adminEmail,
@@ -42,7 +59,8 @@ public static class DbInitializer
                 PhoneNumber = "1234567890",
                 CreatedAt = DateTime.UtcNow,
                 EmailConfirmed = true,
-                IsBCryptPassword = false
+                IsBCryptPassword = false,
+                Role = UserRole.ADMIN
             };
 
             var result = await userManager.CreateAsync(adminUser, adminPassword);
@@ -64,7 +82,7 @@ public static class DbInitializer
         var existingAdmin2 = await userManager.FindByEmailAsync(admin2Email);
         if (existingAdmin2 == null)
         {
-            var adminUser2 = new ApplicationUser
+            var adminUser2 = new Administrator
             {
                 UserName = admin2Email,
                 Email = admin2Email,
@@ -73,7 +91,8 @@ public static class DbInitializer
                 PhoneNumber = "1234567891",
                 CreatedAt = DateTime.UtcNow,
                 EmailConfirmed = true,
-                IsBCryptPassword = false
+                IsBCryptPassword = false,
+                Role = UserRole.ADMIN
             };
 
             var result = await userManager.CreateAsync(adminUser2, admin2Password);
@@ -93,7 +112,6 @@ public static class DbInitializer
 
         try 
         {
-            // 1. Repair HOTELS
             var hotelCols = new (string Name, string Type)[] { 
                 ("Region", "LONGTEXT NULL"), ("BookingMode", "LONGTEXT NULL"), 
                 ("CheckIn", "LONGTEXT NULL"), ("CheckOut", "LONGTEXT NULL"), 
@@ -106,7 +124,6 @@ public static class DbInitializer
             foreach (var col in hotelCols) await EnsureColumn(conn, "Hotels", col.Name, col.Type);
             await ExecuteManual(conn, "ALTER TABLE Hotels MODIFY COLUMN Stars INT NULL");
 
-            // 2. Repair FLIGHTS
             var flightCols = new (string Name, string Type)[] { 
                 ("MainImage", "LONGTEXT NULL"), ("GalleryImages", "LONGTEXT NULL"), 
                 ("Policies", "LONGTEXT NULL"), ("Amenities", "LONGTEXT NULL"), 
@@ -119,7 +136,6 @@ public static class DbInitializer
             };
             foreach (var col in flightCols) await EnsureColumn(conn, "Flights", col.Name, col.Type);
 
-            // 3. Repair BOOKINGS
             var bookingCols = new (string Name, string Type)[] { 
                 ("Gate", "LONGTEXT NULL"), ("Seat", "LONGTEXT NULL"), 
                 ("TicketNumber", "LONGTEXT NULL"), ("UserName", "LONGTEXT NULL"), 
@@ -128,7 +144,6 @@ public static class DbInitializer
             };
             foreach (var col in bookingCols) await EnsureColumn(conn, "Bookings", col.Name, col.Type);
 
-            // 4. Repair HOTELBOOKINGS
             var hbCols = new (string Name, string Type)[] { 
                 ("UserName", "LONGTEXT NULL"), ("RoomType", "LONGTEXT NULL"), 
                 ("PaymentType", "LONGTEXT NULL"), ("ReservationNumber", "LONGTEXT NULL"), 
@@ -136,28 +151,56 @@ public static class DbInitializer
             };
             foreach (var col in hbCols) await EnsureColumn(conn, "HotelBookings", col.Name, col.Type);
 
-            // 5. Repair USERCARDS
             await EnsureColumn(conn, "UserCards", "CardType", "LONGTEXT NULL");
 
-            // 6. Repair ASPNETUSERS
             var userCols = new (string Name, string Type)[] { 
                 ("FirstName", "LONGTEXT NULL"), ("LastName", "LONGTEXT NULL"), 
-                ("PhoneNumber", "LONGTEXT NULL"), ("IsBCryptPassword", "TINYINT(1) DEFAULT 0"), 
+                ("PhoneNumber", "LONGTEXT NULL"), 
+                ("IsBCryptPassword", "TINYINT(1) DEFAULT 0"), 
                 ("ProfilePicture", "LONGTEXT NULL"),
                 ("Address", "LONGTEXT NULL"),
-                ("DateOfBirth", "DATETIME(6) NULL")
+                ("DateOfBirth", "DATETIME(6) NULL"),
+                ("Role", "INT NOT NULL DEFAULT 3")
             };
             foreach (var col in userCols) await EnsureColumn(conn, "AspNetUsers", col.Name, col.Type);
             await EnsureColumn(conn, "AspNetUsers", "CreatedAt", "DATETIME(6) DEFAULT CURRENT_TIMESTAMP(6)");
 
-            // 7. Repair ADMINTASKS
-            // Tabela já criada via CREATE TABLE IF NOT EXISTS anteriormente ou pode ser reforçada aqui
             var taskCols = new (string Name, string Type)[] { 
                 ("Title", "LONGTEXT NOT NULL"), ("Description", "LONGTEXT NULL"), 
                 ("Status", "LONGTEXT NOT NULL"), ("Priority", "LONGTEXT NOT NULL"), 
                 ("AssignedTo", "LONGTEXT NULL") 
             };
             foreach (var col in taskCols) await EnsureColumn(conn, "AdminTasks", col.Name, col.Type);
+            
+            await ExecuteManual(conn, @"
+                UPDATE AspNetUsers 
+                SET Role = 2 
+                WHERE Id IN (
+                    SELECT ur.UserId 
+                    FROM AspNetUserRoles ur 
+                    JOIN AspNetRoles r ON ur.RoleId = r.Id 
+                    WHERE r.Name = 'Admin'
+                ) AND (Role = 3 OR Role = 0)");
+
+            await ExecuteManual(conn, @"
+                CREATE TABLE IF NOT EXISTS Administrators (
+                    Id VARCHAR(255) NOT NULL,
+                    PRIMARY KEY (Id),
+                    CONSTRAINT FK_Administrators_AspNetUsers_Id FOREIGN KEY (Id) REFERENCES AspNetUsers (Id) ON DELETE CASCADE
+                )");
+
+            await ExecuteManual(conn, @"
+                INSERT IGNORE INTO Administrators (Id)
+                SELECT Id FROM AspNetUsers WHERE Role = 1 OR Role = 2");
+
+            await ExecuteManual(conn, @"
+                UPDATE AspNetUsers 
+                SET Role = 1 
+                WHERE Email = 'admin@gmail.com'");
+                
+            await ExecuteManual(conn, @"
+                INSERT IGNORE INTO Administrators (Id)
+                SELECT Id FROM AspNetUsers WHERE Email = 'admin@gmail.com'");
 
         }
         catch (Exception ex)

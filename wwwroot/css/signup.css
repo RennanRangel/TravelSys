@@ -16,7 +16,6 @@ body {
     height: 100vh;
 }
 
-/* Left Side - Image */
 .signup-left {
     flex: 1;
     position: relative;
@@ -59,7 +58,6 @@ body {
     border-radius: 4px;
 }
 
-/* Right Side - Form */
 .signup-right {
     flex: 1.5;
     display: flex;
@@ -130,12 +128,10 @@ h1 {
     font-size: 16px;
     color: #112211;
     margin-bottom: 24px;
-    /* Increased spacing */
     font-weight: 400;
     opacity: 0.75;
 }
 
-/* Form Elements */
 .signup-form {
     display: flex;
     flex-direction: column;
@@ -223,7 +219,6 @@ h1 {
 
 .form-options {
     margin-bottom: 32px;
-    /* Increased spacing */
 }
 
 .checkbox-label {
@@ -354,7 +349,6 @@ h1 {
     transform: translateY(-2px);
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
     .signup-left {
         display: none;
@@ -389,19 +383,15 @@ h1 {
     }
 }
 
-/* Responsive Breakpoints */
 @media (min-width: 576px) {
 
-    /* Small devices (landscape phones, 576px and up) */
     .form-row {
         grid-template-columns: 1fr 1fr;
-        /* Restore 2 columns for form row */
     }
 }
 
 @media (min-width: 768px) {
 
-    /* Medium devices (tablets, 768px and up) */
     .signup-right {
         padding: 40px;
     }
@@ -409,14 +399,12 @@ h1 {
 
 @media (min-width: 992px) {
 
-    /* Large devices (desktops, 992px and up) */
     .signup-container {
         flex-direction: row;
     }
 
     .signup-left {
         display: flex;
-        /* Show left image */
         order: 1;
     }
 
