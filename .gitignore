@@ -1,16 +1,36 @@
-build_output.txt
-error.log
-*.log
+# Arquivos de configuração sensíveis
+appsettings.json
+appsettings.*.json
+!appsettings.Development.json.example
+
+# Migrations / SQL específicos
+identity_migration.sql
+
+# Arquivos gerados pelo Visual Studio / .NET
 bin/
 obj/
-*.exe
-*.pdb
-*.vs
 *.user
 *.userosscache
-*.sln.docstates
 *.suo
-*.userosscache
-*.userosscache
-*.userosscache
-*.userosscache
+*.sln.docstates
+.vs/
+*.csproj.user
+publish/
+
+# Logs e temporários
+*.log
+logs/
+*.tmp
+*.temp
+
+# Bancos de dados locais
+*.db
+*.sqlite
+*.sqlite3
+
+# Outros comuns
+*.dll
+*.pdb
+*.nupkg
+.env
+.env.*
