@@ -5,7 +5,7 @@
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/hotel-ticket.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/Hotels/hotel-ticket.css" asp-append-version="true">
 }
 
 <div class="main-container">
@@ -15,19 +15,6 @@
         <span>@hotel?.Name</span>
     </div>
 
-    <header class="ticket-header-top">
-        <div class="hotel-title-wrap">
-            <h1>@hotel?.Name</h1>
-            <p class="location"><i class="fas fa-map-marker-alt"></i> @hotel?.Location</p>
-        </div>
-        <div class="ticket-actions-wrap ticket-actions-right">
-            <div class="price-tag">$@Model.TotalPrice.ToString("F0")</div>
-            <div class="ticket-actions">
-                <button class="btn-action-icon"><i class="fas fa-share-alt"></i></button>
-                <button class="btn-download">Download</button>
-            </div>
-        </div>
-    </header>
 
     <div class="ticket-card">
         <div class="ticket-left">
@@ -130,3 +117,5 @@
 @section Scripts {
     <!-- FontAwesome handles icons -->
 }
+
+

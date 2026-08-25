@@ -1,4 +1,4 @@
-@{
+﻿@{
     Layout = null;
     ViewData["Title"] = "Sign up - Travel";
 }
@@ -9,124 +9,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="~/css/signup.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Account/signup.css" asp-append-version="true">
 </head>
-<body>
-    <div class="signup-container">
-        <div class="signup-left">
-            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&h=1600&fit=crop" alt="Hotel Pool">
-            <div class="image-indicators">
-                <span class="indicator active"></span>
-                <span class="indicator"></span>
-                <span class="indicator"></span>
-            </div>
-        </div>
+<body class="dark-theme">
 
-        <div class="signup-right">
-            <div class="signup-content">
-                <div class="signup-header">
-                    <a href="@Url.Action("Login", "Account")" class="back-btn">
-                        <i class="fas fa-chevron-left"></i> Back to login
-                    </a>
-                    <div class="logo">
-                        <span class="logo-text">Travel<i class="fas fa-plane-departure"></i></span>
+    <div class="signup-container container-fluid p-0">
+        <div class="row g-0 w-100 h-100">
+            
+            <div class="col-12 col-lg-5 signup-left d-flex flex-column p-4 p-md-5">
+                <div class="signup-content mx-auto w-100">
+
+                    <!-- Cabeçalho idêntico ao da tela de Login -->
+                    <div class="d-flex align-items-center justify-content-between mb-5">
+                        <a asp-controller="Home" asp-action="Index" class="back-link d-inline-flex align-items-center gap-2 text-decoration-none fw-medium" style="color: #4B5563;">
+                            <i class="fas fa-chevron-left" style="color: #D97706;"></i> 
+                            <span>Back</span>
+                        </a>
+                        <a asp-controller="Home" asp-action="Index" class="logo-area d-flex align-items-center gap-2 text-decoration-none">
+                            <span class="logo-text fw-bold" style="color: #112211; font-size: 24px;">Travel</span>
+                            <i class="fas fa-plane-departure" style="color: #8DD3BB; font-size: 20px;"></i>
+                        </a>
                     </div>
-                </div>
 
-                <h1>Sign up</h1>
-                <p class="subtitle">Let's get you all set up so you can access your personal account.</p>
+                    <div class="mb-4">
+                        <h1 class="login-title">Create an Account</h1>
+                        <p class="login-subtitle">Kindly fill in your details to create an account</p>
+                    </div>
 
-                <form class="signup-form" method="post" action="@Url.Action("Signup", "Account")">
-                    @Html.AntiForgeryToken()
                     @if (!ViewData.ModelState.IsValid)
                     {
-                        <div class="validation-errors">
-                            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-                            {
-                                <p>@error.ErrorMessage</p>
-                            }
+                        <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                            <ul class="mb-0 ps-3">
+                                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                {
+                                    <li>@error.ErrorMessage</li>
+                                }
+                            </ul>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     }
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <input type="text" id="firstName" name="FirstName" placeholder="Example" required>
+                    <form method="post" action="@Url.Action("Signup", "Account")" class="d-flex flex-column gap-3 login-form">
+                        @Html.AntiForgeryToken()
+
+                        <div>
+                            <label for="firstName" class="form-label custom-label">Your fullname*</label>
+                            <input type="text" class="form-control custom-input" id="firstName" name="FirstName" placeholder="Enter your name" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" name="LastName" placeholder="Example" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="Email" placeholder="emailexample@gmail.com" required>
+                        <div>
+                            <label for="email" class="form-label custom-label">Email address*</label>
+                            <input type="email" class="form-control custom-input" id="email" name="Email" placeholder="Enter email address" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="Phone" placeholder="+1 123 456 7890">
+                        <div>
+                            <label for="password" class="form-label custom-label">Create password*</label>
+                            <div class="position-relative">
+                                <input type="password" class="form-control custom-input pe-5" id="password" name="Password" placeholder="Create a password" required>
+                                <button class="btn toggle-password" type="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <div class="password-wrapper">
-                            <input type="password" id="password" name="Password" placeholder="••••••••••••••••" required>
-                            <button type="button" class="toggle-password">
-                                <i class="fas fa-eye-slash"></i>
-                            </button>
+                        <div>
+                            <label for="confirmPassword" class="form-label custom-label">Confirm password*</label>
+                            <div class="position-relative">
+                                <input type="password" class="form-control custom-input pe-5" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                                <button class="btn toggle-password" type="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirm Password</label>
-                        <div class="password-wrapper">
-                            <input type="password" id="confirmPassword" name="ConfirmPassword" placeholder="••••••••••••••••" required>
-                            <button type="button" class="toggle-password">
-                                <i class="fas fa-eye-slash"></i>
-                            </button>
+                        <div class="form-check my-2 d-flex align-items-center gap-2">
+                            <input class="form-check-input custom-checkbox" type="checkbox" required id="termsCheck">
+                            <label class="form-check-label custom-check-label" for="termsCheck">
+                                I agree to terms & conditions
+                            </label>
                         </div>
-                    </div>
 
-                    <div class="form-options">
-                        <label class="checkbox-label">
-                            <input type="checkbox" required>
-                            <span>I agree to all the <a href="#">Terms</a> and <a href="#">Privacy Policies</a></span>
-                        </label>
-                    </div>
+                        <button type="submit" class="btn custom-btn mt-2 fw-semibold">Register Account</button>
 
-                    <button type="submit" class="btn-signup">Create account</button>
+                        <div class="divider">
+                            <span>Or</span>
+                        </div>
 
-                    <p class="login-text">Already have an account? <a href="@Url.Action("Login", "Account")">Login</a></p>
-
-                    <div class="divider">
-                        <span>Or Sign up with</span>
-                    </div>
-
-                    <div class="social-signup">
-                        <button type="button" class="social-btn facebook">
-                            <i class="fab fa-facebook-f"></i>
+                        <button type="button" class="btn google-btn w-100 d-flex align-items-center justify-content-center gap-2">
+                            <i class="fab fa-google text-white fs-5"></i>
+                            Register with Google
                         </button>
-                        <button type="button" class="social-btn google">
-                            <i class="fab fa-google"></i>
-                        </button>
-                        <button type="button" class="social-btn apple">
-                            <i class="fab fa-apple"></i>
-                        </button>
-                    </div>
-                </form>
+                        
+                        <p class="text-center small mt-4 login-link">
+                            Already have an account? <a href="@Url.Action("Login", "Account")">Login</a>
+                        </p>
+                    </form>
+                </div>
             </div>
+
+            <div class="col-lg-7 d-none d-lg-flex signup-right align-items-center justify-content-center p-4">
+                <div class="image-container-right">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" 
+                         alt="Abstract Spiral" 
+                         class="w-100 h-100 object-fit-cover">
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <script src="~/js/signup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/Account/signup.js" asp-append-version="true"></script>
 </body>
 </html>

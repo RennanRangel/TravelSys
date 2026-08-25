@@ -4,68 +4,70 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="mgmt-header mb-4">
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-3">
     <div>
-        <h1 class="mgmt-title">Cadastrar Novo Administrador</h1>
-        <p class="mgmt-subtitle">Crie novas contas administrativas com permissões específicas.</p>
+        <h1 class="h3 fw-bold text-dark mb-1">Cadastrar Novo Administrador</h1>
+        <p class="text-muted small mb-0">Crie novas contas administrativas com permissões específicas.</p>
     </div>
     <div>
-        <a href="/Admin/Index" class="btn-mgmt-secondary"><i class="fas fa-arrow-left"></i> Voltar</a>
+        <a href="/Admin/Index" class="btn btn-outline-secondary btn-sm px-3 py-2 fw-semibold">
+            <i class="fas fa-arrow-left me-1"></i> Voltar
+        </a>
     </div>
 </div>
 
 <div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="admin-card p-4">
+    <div class="col-12 col-md-8">
+        <div class="card border-0 shadow-sm rounded-3 p-4 bg-white">
             @if (TempData["ErrorMessage"] != null)
             {
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
                     <i class="fas fa-exclamation-circle me-2"></i> @TempData["ErrorMessage"]
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             }
 
-            <form asp-action="SalvarAdmin" method="post" class="admin-form">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label admin-form-label">Primeiro Nome</label>
-                        <input type="text" name="firstName" class="form-control admin-form-input" placeholder="Ex: João" required>
+            <form asp-action="SalvarAdmin" method="post">
+                <div class="row g-3 mb-3">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold small text-secondary">Primeiro Nome</label>
+                        <input type="text" name="firstName" class="form-control py-2" placeholder="Ex: João" required>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label admin-form-label">Sobrenome</label>
-                        <input type="text" name="lastName" class="form-control admin-form-input" placeholder="Ex: Silva" required>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold small text-secondary">Sobrenome</label>
+                        <input type="text" name="lastName" class="form-control py-2" placeholder="Ex: Silva" required>
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label admin-form-label">E-mail Corporativo</label>
-                    <input type="email" name="email" class="form-control admin-form-input" placeholder="admin@travelsys.com" required>
+                    <label class="form-label fw-semibold small text-secondary">E-mail Corporativo</label>
+                    <input type="email" name="email" class="form-control py-2" placeholder="admin@travelsys.com" required>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label admin-form-label">Senha Temporária</label>
-                        <input type="password" name="password" class="form-control admin-form-input" placeholder="Mínimo 6 caracteres" required>
+                <div class="row g-3 mb-3">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold small text-secondary">Senha Temporária</label>
+                        <input type="password" name="password" class="form-control py-2" placeholder="Mínimo 6 caracteres" required>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label admin-form-label">Telefone (Opcional)</label>
-                        <input type="text" name="phone" class="form-control admin-form-input" placeholder="(00) 00000-0000">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold small text-secondary">Telefone (Opcional)</label>
+                        <input type="text" name="phone" class="form-control py-2" placeholder="(00) 00000-0000">
                     </div>
                 </div>
 
                 <div class="mb-4">
-                    <label class="form-label admin-form-label">Nível de Acesso</label>
-                    <select name="role" class="form-select admin-form-input" required>
+                    <label class="form-label fw-semibold small text-secondary">Nível de Acesso</label>
+                    <select name="role" class="form-select py-2" required>
                         <option value="@((int)UserRole.ADMIN)">Administrador Comum</option>
                         <option value="@((int)UserRole.SUPER_ADMIN)">Super Administrador</option>
                     </select>
-                    <div class="form-text text-muted mt-2">
-                        <i class="fas fa-info-circle"></i> Super Admins têm permissões totais sobre o sistema e outros usuários.
+                    <div class="form-text text-muted mt-2 small">
+                        <i class="fas fa-info-circle me-1"></i> Super Admins têm permissões totais sobre o sistema e outros usuários.
                     </div>
                 </div>
 
                 <div class="d-grid mt-4">
-                    <button type="submit" class="btn-mgmt-primary py-3">
+                    <button type="submit" class="btn btn-primary py-2.5 fw-semibold shadow-sm">
                         <i class="fas fa-user-shield me-2"></i> Concluir Cadastro de Administrador
                     </button>
                 </div>
@@ -75,5 +77,6 @@
 </div>
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/AdicionarAdmin.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Admin/admin-create.css" asp-append-version="true" />
 }
+

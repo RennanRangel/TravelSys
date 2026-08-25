@@ -217,6 +217,12 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> ForgotPassword(string email)
     {
+        if (string.IsNullOrEmpty(email))
+        {
+            ModelState.AddModelError(string.Empty, "Please enter your email address.");
+            return View();
+        }
+
         var user = await _userManager.FindByEmailAsync(email);
         if (user == null)
         {
@@ -251,19 +257,26 @@ public class AccountController : Controller
 
         var token = await _userManager.GeneratePasswordResetTokenAsync(user);
         var result = await _userManager.ResetPasswordAsync(user, token, password);
-        
-        if (result.Succeeded)
-        {
-            user.IsBCryptPassword = false;
-            await _userManager.UpdateAsync(user);
-            return RedirectToAction("Login");
-        }
+
+    if (user == null)
+{
+    return NotFound();
+}
+
+if (result.Succeeded)
+{
+    user.IsBCryptPassword = false;
+    await _userManager.UpdateAsync(user);
+
+    TempData["SuccessMessage"] = "Password successfully reset. You can now login.";
+    return RedirectToAction("Login");
+}
 
         foreach (var error in result.Errors)
         {
             ModelState.AddModelError(string.Empty, error.Description);
         }
-        
+
         ViewData["Email"] = email;
         return View();
     }

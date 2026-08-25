@@ -1,11 +1,11 @@
-@model ProjetoHotelAviao.Models.PaginatedList<ProjetoHotelAviao.Models.Flight>
+﻿@model ProjetoHotelAviao.Models.PaginatedList<ProjetoHotelAviao.Models.Flight>
 @using System.Linq
 @{
     ViewData["Title"] = "Flight Listing - Travel";
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/flights-listing.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/Flights/flights-listing.css" asp-append-version="true">
 }
 
 
@@ -343,6 +343,7 @@
 
 
 @section Scripts {
-    <script src="~/js/flights-listing.js"></script>
-    <script src="~/js/favorites-manager.js"></script>
+    <script src="~/js/Flights/flights-listing.js"></script>
+    <script src="~/js/Shared/favorites-manager.js"></script>
 }
+

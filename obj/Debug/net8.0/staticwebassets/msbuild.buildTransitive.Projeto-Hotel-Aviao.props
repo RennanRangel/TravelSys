@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\Projeto-Hotel-Aviao.props" />
-</Project>

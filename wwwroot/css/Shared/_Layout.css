@@ -1,0 +1,346 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #112211;
+  background-color: #fafbfc;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Header Principal (Compacto - Height: 50px)
+   ========================================================================== */
+.header {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  z-index: 1000;
+}
+
+.header-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  position: relative;
+}
+
+/* 1. Esquerda: Links de Navegação (Find Flight & Find Stays) */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #112211;
+  font-weight: 600;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #8dd3bb;
+}
+
+/* 2. Centro: Logo Travel (Centralizado Absoluto) */
+.logo,
+.logo-center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #112211;
+  text-decoration: none;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo i,
+.logo-center i {
+  color: #8dd3bb;
+}
+
+/* 3. Direita: Perfil do Usuário e Ações */
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  flex: 1;
+}
+
+.user-profile-btn,
+.user-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none !important;
+  color: #112211;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: none !important;
+}
+
+.user-profile-btn::after {
+  display: none; /* Esconde a seta padrão do Bootstrap */
+}
+
+.user-avatar-nav {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.user-email-text {
+  color: #112211;
+  font-weight: 600;
+  font-size: 13px;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Dropdown Menu do Perfil */
+.dropdown-menu-user {
+  width: 280px;
+  padding: 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 8px !important;
+  overflow: hidden;
+  background: #ffffff;
+  z-index: 1050;
+}
+
+.dropdown-user-header {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar-menu {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-text-info h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  color: #112211;
+  max-width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-text-info span {
+  font-size: 12px;
+  color: #666;
+}
+
+.dropdown-divider-premium {
+  height: 1px;
+  background: #f0f0f0;
+  margin: 0;
+}
+
+.dropdown-item-premium {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  color: #112211;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-item-premium:hover {
+  background: rgba(141, 211, 187, 0.15);
+  color: #112211;
+}
+
+.item-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-left i {
+  width: 18px;
+  font-size: 15px;
+  text-align: center;
+}
+
+.chevron-right {
+  font-size: 10px;
+  opacity: 0.4;
+}
+
+/* Botões para visitante (Login / Sign Up) */
+.btn-login,
+.btn-text {
+  text-decoration: none;
+  color: #112211;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.btn-login:hover,
+.btn-text:hover {
+  color: #8dd3bb;
+}
+
+.btn-signup {
+  background-color: #112211;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-signup:hover {
+  background-color: #000000;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 16px;
+    height: 64px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-link span {
+    display: none;
+  }
+
+  .logo,
+  .logo-center {
+    font-size: 18px;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .btn-login,
+  .btn-text {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .btn-signup {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+/* ==========================================================================
+   Main & Footer
+   ========================================================================== */
+main {
+  min-height: calc(100vh - 200px);
+}
+
+.footer {
+  background-color: #8dd3bb;
+  padding: 48px 0 24px 0;
+  margin-top: 60px;
+  color: #112211;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr repeat(5, 1fr);
+  gap: 32px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+}
+
+.social-links a {
+  color: #112211;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.footer-column h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: #112211;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.8;
+}

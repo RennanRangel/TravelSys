@@ -1,27 +1,21 @@
-@model IEnumerable<ProjetoHotelAviao.Models.Hotel>
+﻿@model IEnumerable<ProjetoHotelAviao.Models.Hotel>
 @{
     ViewData["Title"] = "Hotel Listing - Travel";
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/hotel-ticket.css">
+    <link rel="stylesheet" href="~/css/Hotels/hotel-ticket.css">
 }
 
 @section Scripts {
-    <script src="~/js/hotel-ticket.js"></script>
+    <script src="~/js/Hotels/hotel-ticket.js"></script>
 }
 
- 
-    <header class="header">
-        <div class="header-container">
-            <div class="header-left">
-                <div class="header-tabs">
-                    <a href="flights-listing.html" class="tab-link"><i class="fas fa-plane"></i> Find Flight</a>
-                    <a href="hotel-listing.html" class="tab-link active"><i class="fas fa-hotel"></i> Find Stays</a>
-                </div>
-                
-                    <span>CVK Park Bosphorus Hotel Istanbul</span>
-                </div>
+<div class="main-container">
+    <div class="breadcrumbs">
+        <a href="@Url.Action("Listing", "Hotels")">Hotels</a> <i class="fas fa-chevron-right"></i>
+        <span>CVK Park Bosphorus Hotel Istanbul</span>
+    </div>
 
                 
                 <div class="ticket-header-section">
@@ -189,3 +183,4 @@
                     </div>
                 </div>
             </section>
+
