@@ -28,10 +28,31 @@
                 <div class="header-actions-jadoo">
                     @if (isAuthenticated)
                     {
-                        <span class="user-greeting">Olá, @User.Identity.Name</span>
-                        <form asp-controller="Account" asp-action="Logout" method="post" style="display: inline;">
-                            <button type="submit" class="btn-logout-jadoo">Sair</button>
-                        </form>
+                        <div class="user-dropdown">
+                            <button class="user-dropdown-btn" id="userDropdownBtnJadoo">
+                                <i class="fas fa-user-circle"></i>
+                                <span>@User.Identity.Name</span>
+                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            </button>
+                            <div class="user-dropdown-menu" id="userDropdownMenuJadoo">
+                                <div class="dropdown-header">
+                                    <i class="fas fa-user-circle dropdown-avatar"></i>
+                                    <div>
+                                        <p class="dropdown-name">@User.Identity.Name</p>
+                                        <p class="dropdown-role">Viajante</p>
+                                    </div>
+                                </div>
+                                <hr class="dropdown-divider">
+                                <a href="/Admin" class="dropdown-item"><i class="fas fa-tachometer-alt"></i> Minhas Reservas</a>
+                                <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Configurações</a>
+                                <hr class="dropdown-divider">
+                                <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <button type="submit" class="dropdown-item dropdown-logout">
+                                        <i class="fas fa-sign-out-alt"></i> Sair
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     }
                     else
                     {
@@ -54,8 +75,8 @@ else
         <div class="header-container">
             <!-- 1. Esquerda: Navegação -->
             <nav class="nav-links">
-                <a href="/Flights" class="nav-link"><i class="fas fa-plane"></i> Find Flight</a>
-                <a href="/Hotels" class="nav-link"><i class="fas fa-hotel"></i> Find Stays</a>
+                <a href="/Flights" class="nav-link @(controller == "flights" ? "active" : "")"><i class="fas fa-plane"></i> Voos</a>
+                <a href="/Hotels" class="nav-link @(controller == "hotels" ? "active" : "")"><i class="fas fa-hotel"></i> Hotéis</a>
             </nav>
 
             <!-- 2. Centro: Logo -->
@@ -67,10 +88,31 @@ else
             <div class="header-actions">
                 @if (isAuthenticated)
                 {
-                    <span class="user-greeting" style="font-weight: 600; font-size: 13px; margin-right: 10px;">Olá, @User.Identity?.Name</span>
-                    <form asp-controller="Account" asp-action="Logout" method="post" style="display: inline;">
-                        <button type="submit" class="btn-login" style="background: none; border: none; padding: 0; color: inherit; font: inherit; cursor: pointer;">Logout</button>
-                    </form>
+                    <div class="user-dropdown">
+                        <button class="user-dropdown-btn" id="userDropdownBtn">
+                            <i class="fas fa-user-circle"></i>
+                            <span>@User.Identity?.Name</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </button>
+                        <div class="user-dropdown-menu" id="userDropdownMenu">
+                            <div class="dropdown-header">
+                                <i class="fas fa-user-circle dropdown-avatar"></i>
+                                <div>
+                                    <p class="dropdown-name">@User.Identity?.Name</p>
+                                    <p class="dropdown-role">Viajante</p>
+                                </div>
+                            </div>
+                            <hr class="dropdown-divider">
+                            <a href="/Admin" class="dropdown-item"><i class="fas fa-tachometer-alt"></i> Minhas Reservas</a>
+                            <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Configurações</a>
+                            <hr class="dropdown-divider">
+                            <form asp-controller="Account" asp-action="Logout" method="post">
+                                <button type="submit" class="dropdown-item dropdown-logout">
+                                    <i class="fas fa-sign-out-alt"></i> Sair
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 }
                 else
                 {

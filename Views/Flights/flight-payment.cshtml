@@ -1,4 +1,4 @@
-﻿@model ProjetoHotelAviao.Models.Flight
+@model ProjetoHotelAviao.Models.Flight
 @{
     ViewData["Title"] = "Payment - TravelSys";
     
@@ -20,9 +20,9 @@
 <div class="main-container">
     <div class="breadcrumbs">
         <nav>
-            <a href="#">Turkey</a> <i class="fas fa-chevron-right"></i>
-            <a href="#">Istanbul</a> <i class="fas fa-chevron-right"></i>
-            <span>CVK Park Bosphorus Hotel Istanbul</span>
+            <a href="/Flights">Voos</a> <i class="fas fa-chevron-right"></i>
+            <a href="#">@Model.Airline</a> <i class="fas fa-chevron-right"></i>
+            <span>@Model.From para @Model.To</span>
         </nav>
     </div>
 
@@ -50,7 +50,7 @@
                         <div class="card-content">
                             <div class="airline-box-bordered">
                                 <div class="logo-box">
-                                    <img src="@Model.Logo" alt="@Model.Airline">
+                                    <img src="@Model.Logo" alt="@Model.Airline" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1540339832862-47455993ac53?w=80';">
                                 </div>
                                 <div class="airline-info">
                                     <h4>@Model.Airline</h4>
@@ -96,7 +96,7 @@
                             <div class="card-content">
                                 <div class="airline-box-bordered">
                                     <div class="logo-box">
-                                        <img src="@Model.Logo" alt="@Model.Airline">
+                                        <img src="@Model.Logo" alt="@Model.Airline" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1540339832862-47455993ac53?w=80';">
                                     </div>
                                     <div class="airline-info">
                                         <h4>@Model.Airline</h4>
@@ -189,19 +189,22 @@
         <aside class="booking-sidebar">
             <div class="sidebar-summary-card">
                 <div class="summary-header">
-                    <img src="@(string.IsNullOrEmpty(Model.MainImage) ? "/img/flights/A380.jpg" : Model.MainImage)" alt="Flight" class="summary-img">
+                    <img src="@(string.IsNullOrEmpty(Model.MainImage) ? "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600" : Model.MainImage)" 
+                         alt="@Model.Airline" 
+                         class="summary-img"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600';">
                     <div class="summary-info">
                         <span class="class-label">@(ViewBag.FlightClass ?? "Economy")</span>
                         <h4>@Model.Airline A380 Airbus</h4>
                         <div class="rating-box">
-                            <span class="score">@Model.Rating</span>
-                            <span class="text">Very Good</span>
-                            <span class="reviews">@Model.Reviews reviews</span>
+                            <span class="score">@(Model.Rating > 0 ? Model.Rating.ToString("F1") : "4.8")</span>
+                            <span class="text">Muito Bom</span>
+                            <span class="reviews">@Model.Reviews avaliações</span>
                         </div>
                     </div>
                 </div>
                 <div class="protection-box">
-                    <p>Your booking is protected by <strong>golobe</strong></p>
+                    <p>Sua reserva está protegida pela <strong>Travel</strong></p>
                 </div>
                 <div class="price-details-box">
                     <h4>Price Details</h4>
@@ -291,5 +294,4 @@
 @section Scripts {
     <script src="~/js/Flights/flight-payment.js"></script>
 }
-
 
