@@ -1,349 +1,372 @@
-﻿@model ProjetoHotelAviao.Models.PaginatedList<ProjetoHotelAviao.Models.Flight>
+@model ProjetoHotelAviao.Models.PaginatedList<ProjetoHotelAviao.Models.Flight>
 @using System.Linq
 @{
-    ViewData["Title"] = "Flight Listing - Travel";
+    ViewData["Title"] = "Voos - Travel";
+    var currentSort = ViewData["CurrentSort"] as string ?? "cheapest";
 }
 
 @section Styles {
     <link rel="stylesheet" href="~/css/Flights/flights-listing.css" asp-append-version="true">
 }
 
+<div class="listing-page">
 
-<div class="main-container">
-    <div class="top-section">
-        <aside class="sidebar">
-        <h3 class="sidebar-title">Filters</h3>
-
-        <form asp-action="Listing" method="get">
-            @if (ViewData["SearchRoute"] != null)
-            {
-                <input type="hidden" name="route" value="@ViewData["SearchRoute"]" />
-            }
-            @if (ViewData["CurrentSort"] != null)
-            {
-                <input type="hidden" name="sortOrder" value="@ViewData["CurrentSort"]" />
-            }
-            
-            <div class="filter-section">
-                <div class="filter-header">
-                    <h4>Price</h4>
-                    <i class="fas fa-chevron-up"></i>
-                </div>
-                <div class="filter-content">
-                    <div class="price-range">
-                        <input type="range" name="minPrice" min="50" max="1200" value="@(ViewData["MinPrice"] ?? 50)" class="range-slider">
-                        <input type="range" name="maxPrice" min="50" max="1200" value="@(ViewData["MaxPrice"] ?? 1200)" class="range-slider">
-                    </div>
-                    <div class="price-labels">
-                        <span>$@(ViewData["MinPrice"] ?? 50)</span>
-                        <span>$@(ViewData["MaxPrice"] ?? 1200)</span>
-                    </div>
-                </div>
+    <!-- Category Tabs Bar -->
+    <div class="category-tabs-bar">
+        <div class="category-tabs-scroll">
+            <a href="#" onclick="applySort('cheapest'); return false;" class="cat-tab @(currentSort == "cheapest" ? "active" : "")">
+                <i class="fas fa-tag"></i>
+                <span>Mais Baratos</span>
+            </a>
+            <a href="#" onclick="applySort('best'); return false;" class="cat-tab @(currentSort == "best" ? "active" : "")">
+                <i class="fas fa-star"></i>
+                <span>Melhor Opção</span>
+            </a>
+            <a href="#" onclick="applySort('quickest'); return false;" class="cat-tab @(currentSort == "quickest" ? "active" : "")">
+                <i class="fas fa-bolt"></i>
+                <span>Mais Rápidos</span>
+            </a>
+            <a href="#" class="cat-tab">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Ida e Volta</span>
+            </a>
+            <a href="#" class="cat-tab">
+                <i class="fas fa-plane"></i>
+                <span>Só Ida</span>
+            </a>
+        </div>
+        <div class="filter-pills">
+            <button class="filter-pill" id="btnToggleFilters">
+                <i class="fas fa-sliders-h"></i> Filtros
+            </button>
+            <div class="price-display-toggle">
+                <span>Exibir preço total</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="totalPriceToggle">
+                    <span class="toggle-slider"></span>
+                </label>
             </div>
+        </div>
+    </div>
 
-            
-            <div class="filter-section">
-                <div class="filter-header">
-                    <h4>Departure Time</h4>
-                    <i class="fas fa-chevron-up"></i>
-                </div>
-                <div class="filter-content">
-                    <div class="time-range">
-                        <input type="range" name="minTime" min="0" max="24" value="@(ViewData["MinTime"] ?? 0)" class="range-slider">
-                        <input type="range" name="maxTime" min="0" max="24" value="@(ViewData["MaxTime"] ?? 24)" class="range-slider">
-                    </div>
-                    <div class="time-labels">
-                        <span>00:00am</span>
-                        <span>11:59pm</span>
-                    </div>
-                </div>
-            </div>
+    <!-- Main Layout -->
+    <div class="listing-layout">
 
-            
-
-
-            
-            <div class="filter-section">
-                <div class="filter-header">
-                    <h4>Airlines</h4>
-                    <i class="fas fa-chevron-up"></i>
-                </div>
-                <div class="filter-content">
-                    @{
-                        var selectedAirlines = ViewData["SelectedAirlines"] as string[] ?? new string[0];
-                    }
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="airlines" value="Emirates" @(selectedAirlines.Contains("Emirates") ? "checked" : "")>
-                        <span>Emirates</span>
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="airlines" value="Fly Dubai" @(selectedAirlines.Contains("Fly Dubai") ? "checked" : "")>
-                        <span>Fly Dubai</span>
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="airlines" value="Qatar" @(selectedAirlines.Contains("Qatar") ? "checked" : "")>
-                        <span>Qatar</span>
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="airlines" value="Etihad" @(selectedAirlines.Contains("Etihad") ? "checked" : "")>
-                        <span>Etihad</span>
-                    </label>
-                </div>
-            </div>
-
-            
-            <div class="filter-section">
-                <div class="filter-header">
-                    <h4>Trips</h4>
-                    <i class="fas fa-chevron-up"></i>
-                </div>
-                <div class="filter-content">
-                    @{
-                        var selectedTripTypes = ViewData["SelectedTripTypes"] as string[] ?? new string[0];
-                    }
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="tripType" value="Round trip" @(selectedTripTypes.Contains("Round trip") ? "checked" : "")>
-                        <span>Round trip</span>
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="tripType" value="One Way" @(selectedTripTypes.Contains("One Way") ? "checked" : "")>
-                        <span>One Way</span>
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="tripType" value="Multi-City" @(selectedTripTypes.Contains("Multi-City") ? "checked" : "")>
-                        <span>Multi-City</span>
-                    </label>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-apply-filters">Apply Filters</button>
-        </form>
-    </aside>
-
-        <div class="right-column">
-            <div class="search-bar">
-                <form asp-action="Listing" method="get" class="search-container">
-                    <div class="search-fields">
-                        <div class="search-field">
-                            <label>From - To</label>
-                            <div class="route-input-container">
-                                <input type="text" name="route" value="@ViewData["SearchRoute"]" placeholder="Lahore - Karachi" list="city-list">
-                                <datalist id="city-list">
-                                    @if (ViewData["AvailableCities"] is List<string> cities)
-                                    {
-                                        foreach (var city in cities)
-                                        {
-                                            <option value="@city"></option>
-                                        }
-                                    }
-                                </datalist>
-                                <i class="fas fa-exchange-alt swap-icon" onclick="document.querySelector('input[name=\'route\']').value = '';"></i>
-                            </div>
-                        </div>
-                        <div class="search-field">
-                            <label>Trip</label>
-                            <select name="tripType">
-                                @{
-                                    var selectedTrips = ViewData["SelectedTripTypes"] as string[] ?? new string[0];
-                                }
-                                <option value="">Any</option>
-                                <option value="Round trip" selected="@(selectedTrips.Contains("Round trip"))">Round trip</option>
-                                <option value="One Way" selected="@(selectedTrips.Contains("One Way"))">One Way</option>
-                                <option value="Multi-City" selected="@(selectedTrips.Contains("Multi-City"))">Multi-City</option>
-                            </select>
-                        </div>
-                        <div class="search-field">
-                            <label>Depart - Return</label>
-                            <input type="text" name="dates" placeholder="Add dates">
-                        </div>
-                        <div class="search-field">
-                            <label>Passenger - Class</label>
-                            <input type="text" name="passengers" placeholder="1 Passenger, Economy">
-                        </div>
-                        <button type="submit" class="btn-search"><i class="fas fa-search"></i></button>
-                    </div>
-                </form>
-            </div>
-
-        <div class="results-content">
-        <div class="sorting-header">
-            <div class="sorting-tabs">
-                @{
-                    var currentSort = ViewData["CurrentSort"] as string ?? "cheapest";
+        <!-- Sidebar Filters -->
+        <aside class="listing-sidebar" id="listingSidebar">
+            <h3 class="sidebar-title">Filtros</h3>
+            <form asp-action="Listing" method="get" id="filterForm">
+                @if (ViewData["SearchRoute"] != null)
+                {
+                    <input type="hidden" name="route" value="@ViewData["SearchRoute"]" />
                 }
-                <a href="#" onclick="applySort('cheapest'); return false;" class="sort-tab @(currentSort == "cheapest" ? "active" : "")">
-                    <strong>Cheapest</strong>
-                    <span>$@ViewData["CheapestPrice"] . @ViewData["CheapestDuration"]</span>
-                </a>
-                <a href="#" onclick="applySort('best'); return false;" class="sort-tab @(currentSort == "best" ? "active" : "")">
-                    <strong>Best</strong>
-                    <span>$@ViewData["BestPrice"] . @ViewData["BestDuration"]</span>
-                </a>
-                <a href="#" onclick="applySort('quickest'); return false;" class="sort-tab @(currentSort == "quickest" ? "active" : "")">
-                    <strong>Quickest</strong>
-                    <span>$@ViewData["QuickestPrice"] . @ViewData["QuickestDuration"]</span>
-                </a>
-            </div>
-            <div class="sorting-options">
-                <button class="btn-other-sort"><i class="fas fa-sliders-h"></i> Other sort</button>
-            </div>
-        </div>
+                <input type="hidden" name="sortOrder" id="sortOrderInput" value="@currentSort" />
 
-        
-        <div class="results-info">
-            <p>Showing @Model.Count() of <span>@Model.Count() places</span></p>
-            <div class="sort-dropdown">
-                <form id="filterForm" asp-action="Listing" method="get">
-                    <input type="hidden" name="sortOrder" id="sortOrderInput" value="@currentSort" />
-                    @if (ViewData["SearchRoute"] != null) { <input type="hidden" name="route" value="@ViewData["SearchRoute"]" /> }
-                    @if (ViewData["MinPrice"] != null) { <input type="hidden" name="minPrice" value="@ViewData["MinPrice"]" /> }
-                    @if (ViewData["MaxPrice"] != null) { <input type="hidden" name="maxPrice" value="@ViewData["MaxPrice"]" /> }
-                    @if (ViewData["MinTime"] != null) { <input type="hidden" name="minTime" value="@ViewData["MinTime"]" /> }
-                    @if (ViewData["MaxTime"] != null) { <input type="hidden" name="maxTime" value="@ViewData["MaxTime"]" /> }
-                    
-                    @foreach (var r in (int[])(ViewData["SelectedRatings"] ?? new int[0]))
-                    {
-                        <input type="hidden" name="rating" value="@r" />
-                    }
-                    @foreach (var a in (string[])(ViewData["SelectedAirlines"] ?? new string[0]))
-                    {
-                        <input type="hidden" name="airlines" value="@a" />
-                    }
-                    @foreach (var t in (string[])(ViewData["SelectedTripTypes"] ?? new string[0]))
-                    {
-                        <input type="hidden" name="tripType" value="@t" />
-                    }
+                <!-- Preço -->
+                <div class="filter-section">
+                    <div class="filter-header">
+                        <h4>Preço</h4>
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <div class="filter-content">
+                        <div class="price-range">
+                            <input type="range" name="minPrice" min="50" max="1200" value="@(ViewData["MinPrice"] ?? 50)" class="range-slider">
+                            <input type="range" name="maxPrice" min="50" max="1200" value="@(ViewData["MaxPrice"] ?? 1200)" class="range-slider">
+                        </div>
+                        <div class="price-labels">
+                            <span>$@(ViewData["MinPrice"] ?? 50)</span>
+                            <span>$@(ViewData["MaxPrice"] ?? 1200)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Horário de Partida -->
+                <div class="filter-section">
+                    <div class="filter-header">
+                        <h4>Horário de Partida</h4>
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <div class="filter-content">
+                        <div class="price-range">
+                            <input type="range" name="minTime" min="0" max="24" value="@(ViewData["MinTime"] ?? 0)" class="range-slider">
+                            <input type="range" name="maxTime" min="0" max="24" value="@(ViewData["MaxTime"] ?? 24)" class="range-slider">
+                        </div>
+                        <div class="price-labels">
+                            <span>00:00</span>
+                            <span>23:59</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Companhias Aéreas -->
+                <div class="filter-section">
+                    <div class="filter-header">
+                        <h4>Companhias Aéreas</h4>
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <div class="filter-content">
+                        @{
+                            var selectedAirlines = ViewData["SelectedAirlines"] as string[] ?? new string[0];
+                        }
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="airlines" value="Emirates" @(selectedAirlines.Contains("Emirates") ? "checked" : "")>
+                            <span>Emirates</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="airlines" value="Fly Dubai" @(selectedAirlines.Contains("Fly Dubai") ? "checked" : "")>
+                            <span>Fly Dubai</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="airlines" value="Qatar" @(selectedAirlines.Contains("Qatar") ? "checked" : "")>
+                            <span>Qatar Airways</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="airlines" value="Etihad" @(selectedAirlines.Contains("Etihad") ? "checked" : "")>
+                            <span>Etihad Airways</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Tipo de Viagem -->
+                <div class="filter-section">
+                    <div class="filter-header">
+                        <h4>Tipo de Viagem</h4>
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <div class="filter-content">
+                        @{
+                            var selectedTripTypes = ViewData["SelectedTripTypes"] as string[] ?? new string[0];
+                        }
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="tripType" value="Round trip" @(selectedTripTypes.Contains("Round trip") ? "checked" : "")>
+                            <span>Ida e Volta</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="tripType" value="One Way" @(selectedTripTypes.Contains("One Way") ? "checked" : "")>
+                            <span>Só Ida</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="tripType" value="Multi-City" @(selectedTripTypes.Contains("Multi-City") ? "checked" : "")>
+                            <span>Multi-destino</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-apply-filters">Aplicar Filtros</button>
+            </form>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="listing-main">
+
+            <!-- Search Bar -->
+            <div class="listing-search-bar">
+                <form asp-action="Listing" method="get" class="listing-search-form">
+                    <div class="search-field">
+                        <i class="fas fa-exchange-alt"></i>
+                        <input type="text" name="route" value="@ViewData["SearchRoute"]" placeholder="Origem - Destino" list="city-list">
+                        <datalist id="city-list">
+                            @if (ViewData["AvailableCities"] is List<string> cities)
+                            {
+                                foreach (var city in cities)
+                                {
+                                    <option value="@city"></option>
+                                }
+                            }
+                        </datalist>
+                    </div>
+                    <div class="search-divider"></div>
+                    <div class="search-field">
+                        <i class="fas fa-random"></i>
+                        <select name="tripType" class="search-select">
+                            @{
+                                var selTrips = ViewData["SelectedTripTypes"] as string[] ?? new string[0];
+                            }
+                            <option value="">Qualquer tipo</option>
+                            <option value="Round trip" selected="@(selTrips.Contains("Round trip"))">Ida e Volta</option>
+                            <option value="One Way" selected="@(selTrips.Contains("One Way"))">Só Ida</option>
+                            <option value="Multi-City" selected="@(selTrips.Contains("Multi-City"))">Multi-destino</option>
+                        </select>
+                    </div>
+                    <div class="search-divider"></div>
+                    <div class="search-field">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="text" name="dates" placeholder="Datas">
+                    </div>
+                    <div class="search-divider"></div>
+                    <div class="search-field">
+                        <i class="fas fa-user-friends"></i>
+                        <input type="text" name="passengers" placeholder="Passageiros e classe">
+                    </div>
+                    <button type="submit" class="btn-search-listing">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </form>
             </div>
-        </div>
 
+            <!-- Results info -->
+            <div class="results-info">
+                <p><span>@Model.Count()</span> voos encontrados</p>
+            </div>
 
+            <!-- Hidden form for sort/filter state -->
+            <form id="filterFormHidden" asp-action="Listing" method="get" style="display:none;">
+                <input type="hidden" name="sortOrder" id="sortOrderInputHidden" value="@currentSort" />
+                @if (ViewData["SearchRoute"] != null) { <input type="hidden" name="route" value="@ViewData["SearchRoute"]" /> }
+                @if (ViewData["MinPrice"] != null) { <input type="hidden" name="minPrice" value="@ViewData["MinPrice"]" /> }
+                @if (ViewData["MaxPrice"] != null) { <input type="hidden" name="maxPrice" value="@ViewData["MaxPrice"]" /> }
+                @foreach (var a in (string[])(ViewData["SelectedAirlines"] ?? new string[0]))
+                {
+                    <input type="hidden" name="airlines" value="@a" />
+                }
+                @foreach (var t in (string[])(ViewData["SelectedTripTypes"] ?? new string[0]))
+                {
+                    <input type="hidden" name="tripType" value="@t" />
+                }
+            </form>
 
-        <div class="flight-cards">
-            @if (!Model.Any())
-            {
-                <div class="no-results">
-                    <p>No flights found for "@ViewData["SearchRoute"]".</p>
-                </div>
-            }
-            
-            @{ var cardIndex = 0; }
-            @foreach (var flight in Model)
-            {
-                var cid = $"card-{cardIndex}";
-                <div class="flight-card-premium" id="@cid">
-                    <div class="card-upper-section">
-                        <div class="airline-logo-side">
-                            <img src="@flight.Logo" alt="@flight.Airline">
+            <!-- Flight Cards -->
+            <div class="flight-cards-list">
+                @if (!Model.Any())
+                {
+                    <div class="no-results">
+                        <i class="fas fa-plane fa-3x"></i>
+                        <p>Nenhum voo encontrado para "@ViewData["SearchRoute"]".</p>
+                        <a href="/Flights" class="btn-back">Voltar para Voos</a>
+                    </div>
+                }
+
+                @{ var cardIndex = 0; }
+                @foreach (var flight in Model)
+                {
+                    var cid = $"card-{cardIndex}";
+                    <div class="flight-card" id="@cid">
+                        <!-- Logo + Companhia -->
+                        <div class="flight-card-airline">
+                            @if (!string.IsNullOrEmpty(flight.Logo))
+                            {
+                                <img src="@flight.Logo" alt="@flight.Airline" class="airline-logo">
+                            }
+                            else
+                            {
+                                <div class="airline-logo-placeholder"><i class="fas fa-plane"></i></div>
+                            }
+                            <span class="airline-name">@flight.Airline</span>
                         </div>
-                        
-                        <div class="flight-details-main">
-                            <div class="info-header-row">
 
-                                <div class="price-capsule">
-                                    <span class="price-hint">starting from @flight.Airline</span>
-                                    <span class="price-total" id="price-@cid">R$ @flight.Price.ToString("N2")</span>
+                        <!-- Itinerário -->
+                        <div class="flight-card-body">
+                            <!-- Ida -->
+                            <div class="flight-leg">
+                                <div class="leg-time">
+                                    <span class="time-bold">@flight.Departure</span>
+                                    <span class="iata-code">@flight.From</span>
+                                </div>
+                                <div class="leg-line">
+                                    <span class="stop-badge">@flight.Stops</span>
+                                    <div class="flight-line">
+                                        <div class="line-dot"></div>
+                                        <div class="line-bar"></div>
+                                        <i class="fas fa-plane line-plane"></i>
+                                        <div class="line-bar"></div>
+                                        <div class="line-dot"></div>
+                                    </div>
+                                    <span class="duration-badge">@flight.Duration</span>
+                                </div>
+                                <div class="leg-time leg-time-right">
+                                    <span class="time-bold">@flight.Arrival</span>
+                                    <span class="iata-code">@flight.To</span>
                                 </div>
                             </div>
 
-                            <div class="flight-itinerary-rows">
-                                <div class="itinerary-row">
-                                    <div class="row-left">
-                                        <input type="checkbox" checked data-price="@flight.Price" data-card="@cid" onchange="updateCardPrice('@cid')">
-                                        <div class="time-slot">
-                                            <span class="flight-time-range">@flight.Departure - @flight.Arrival</span>
-                                        </div>
+                            <!-- Volta (se aplicável) -->
+                            @if (flight.TripType == "Round trip")
+                            {
+                                <div class="flight-leg flight-leg-return">
+                                    <div class="leg-time">
+                                        <span class="time-bold">@flight.Arrival</span>
+                                        <span class="iata-code">@flight.To</span>
                                     </div>
-                                    <div class="row-middle">
-                                        <span class="stop-type">@flight.Stops</span>
-                                    </div>
-                                    <div class="row-right">
-                                        <span class="duration-text">@flight.Duration</span>
-                                        <div class="route-details route-details-inline">
-                                            <span class="route-code">@flight.From-@flight.To</span>
-                                            @if (!string.IsNullOrEmpty(flight.Terminal))
-                                            {
-                                                <span class="terminal-info terminal-info-inline">Terminal @flight.Terminal</span>
-                                            }
+                                    <div class="leg-line">
+                                        <span class="stop-badge">@flight.Stops</span>
+                                        <div class="flight-line">
+                                            <div class="line-dot"></div>
+                                            <div class="line-bar"></div>
+                                            <i class="fas fa-plane line-plane line-plane-return"></i>
+                                            <div class="line-bar"></div>
+                                            <div class="line-dot"></div>
                                         </div>
+                                        <span class="duration-badge">@flight.Duration</span>
+                                    </div>
+                                    <div class="leg-time leg-time-right">
+                                        <span class="time-bold">@flight.Departure</span>
+                                        <span class="iata-code">@flight.From</span>
                                     </div>
                                 </div>
+                            }
+                        </div>
 
-                                @if (flight.TripType == "Round trip")
-                                {
-                                <div class="itinerary-row">
-                                    <div class="row-left">
-                                        <input type="checkbox" data-price="@flight.Price" data-card="@cid" onchange="updateCardPrice('@cid')">
-                                        <div class="time-slot">
-                                            <span class="flight-time-range">@flight.Arrival - @flight.Departure</span>
-                                        </div>
-                                    </div>
-                                    <div class="row-middle">
-                                        <span class="stop-type">@flight.Stops</span>
-                                    </div>
-                                    <div class="row-right">
-                                        <span class="duration-text">@flight.Duration</span>
-                                        <span class="route-code">@flight.To-@flight.From</span>
-                                    </div>
-                                </div>
-                                }
+                        <!-- Preço + Ações -->
+                        <div class="flight-card-actions">
+                            <div class="price-block">
+                                <span class="price-hint">a partir de</span>
+                                <span class="price-value">R$ @flight.Price.ToString("N2")</span>
+                                <span class="price-person">por pessoa</span>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="btn-heart-flight" onclick="event.stopPropagation();" title="Salvar">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <a href="/Flights/Details/@flight.Id?ida=true&volta=false" class="btn-view-flight">
+                                    Ver Voo
+                                </a>
                             </div>
                         </div>
                     </div>
+                    cardIndex++;
+                }
+            </div>
 
-                    <div class="card-footer-divider"></div>
-
-                    <div class="card-bottom-actions">
-                        <button class="btn-wishlist"><i class="far fa-heart"></i></button>
-                        <a href="/Flights/Details/@flight.Id?ida=true&volta=false" id="link-@cid" class="btn-action-primary">View Deals</a>
-                    </div>
-                </div>
-                cardIndex++;
-            }
-        </div>
-            <div class="pagination-container pagination-container-inline">
+            <!-- Pagination -->
+            <div class="pagination-container">
                 @{
                     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
                     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-                }
 
-                @{
                     string GetPaginationUrl(int page)
                     {
                         var query = Context.Request.Query.ToDictionary(q => q.Key, q => q.Value);
                         query["pageNumber"] = page.ToString();
-                        
                         var queryString = string.Join("&", query.SelectMany(kvp => kvp.Value.Select(v => $"{kvp.Key}={System.Net.WebUtility.UrlEncode(v)}")));
                         return Url.Action("Listing") + "?" + queryString;
                     }
                 }
-
-                <a href="@GetPaginationUrl(Model.PageIndex - 1)"
-                   class="pagination-link-premium @prevDisabled">
-                    Previous
+                <a href="@GetPaginationUrl(Model.PageIndex - 1)" class="page-btn @prevDisabled">
+                    <i class="fas fa-chevron-left"></i>
                 </a>
-
                 @for (int i = 1; i <= Model.TotalPages; i++)
                 {
                     var activeClass = i == Model.PageIndex ? "active" : "";
-                    <a href="@GetPaginationUrl(i)"
-                       class="pagination-number-premium @activeClass">
-                        @i
-                    </a>
+                    <a href="@GetPaginationUrl(i)" class="page-btn @activeClass">@i</a>
                 }
-
-                <a href="@GetPaginationUrl(Model.PageIndex + 1)"
-                   class="pagination-link-premium @nextDisabled">
-                    Next
+                <a href="@GetPaginationUrl(Model.PageIndex + 1)" class="page-btn @nextDisabled">
+                    <i class="fas fa-chevron-right"></i>
                 </a>
             </div>
-        </div>
+
+        </main>
     </div>
 </div>
 
-
 @section Scripts {
     <script src="~/js/Flights/flights-listing.js"></script>
-    <script src="~/js/Shared/favorites-manager.js"></script>
+    <script>
+        document.getElementById('btnToggleFilters')?.addEventListener('click', function () {
+            document.getElementById('listingSidebar').classList.toggle('open');
+        });
+        function applySort(sort) {
+            document.getElementById('sortOrderInputHidden').value = sort;
+            document.getElementById('filterFormHidden').submit();
+        }
+    </script>
 }
-

@@ -136,3 +136,150 @@ body .navbar .nav-link-premium {
 body .navbar .btn-signup-nav {
   border-radius: 8px;
 }
+
+/* =============================================
+   User Dropdown Menu (ambos os headers)
+   ============================================= */
+.user-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.user-dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222;
+  padding: 7px 12px 7px 14px;
+  border-radius: 21px;
+  transition: box-shadow 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.user-dropdown-btn:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.user-dropdown-btn .fa-user-circle {
+  font-size: 26px;
+  color: #717171;
+}
+
+.user-dropdown-btn .dropdown-arrow {
+  font-size: 11px;
+  transition: transform 0.25s ease;
+}
+
+.user-dropdown.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.user-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  min-width: 230px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 8px 28px rgba(0,0,0,0.20);
+  padding: 8px 0;
+  z-index: 9999;
+  animation: dropdownFadeIn 0.18s ease;
+}
+
+.user-dropdown.open .user-dropdown-menu {
+  display: block;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px 10px;
+}
+
+.dropdown-avatar {
+  font-size: 38px;
+  color: #717171;
+  flex-shrink: 0;
+}
+
+.dropdown-name {
+  margin: 0;
+  font-weight: 700;
+  font-size: 13px;
+  color: #112211;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.dropdown-role {
+  margin: 0;
+  font-size: 11px;
+  color: #888;
+}
+
+.dropdown-divider {
+  margin: 4px 0;
+  border: none;
+  border-top: 1px solid #f0f0f0;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #222;
+  text-decoration: none;
+  transition: background 0.12s ease;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.dropdown-item:hover {
+  background: #f7f7f7;
+  color: #000;
+}
+
+.dropdown-item i {
+  width: 16px;
+  color: #717171;
+  font-size: 13px;
+  text-align: center;
+}
+
+.dropdown-logout {
+  color: #e74c3c;
+}
+
+.dropdown-logout i {
+  color: #e74c3c;
+}
+
+.dropdown-logout:hover {
+  background: #fff5f5;
+  color: #c0392b;
+}
