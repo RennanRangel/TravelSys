@@ -1,165 +1,207 @@
-﻿@{
-    ViewData["Title"] = "Find Flights - Travel";
+@model IEnumerable<ProjetoHotelAviao.Models.Flight>
+@{
+    ViewData["Title"] = "Voos - Travel";
+    ViewData["BodyClass"] = "flights-page";
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/Flights/Findflight.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/css/Flights/flights.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/Shared/home.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/Hotels/hotels.css" asp-append-version="true">
 }
 
-<div id="flights-findflight" class="flights-landing">
-    <section class="hero">
-        <div class="hero-background">
-            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1440&h=537&fit=crop" id="flight-hero-img" alt="Flight Hero" class="img-hero">
+<div class="hotels-page-container">
+
+    <!-- 1. Hero Section -->
+    <section class="hotels-hero">
+        <div class="hotels-hero-bg">
+            <img src="/images/uploads/hero_background.png" alt="Mountain stream background landscape">
         </div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Make your travel wishlist, we'll do the rest</h1>
-                <p>Special offers to suit your plan</p>
+        <div class="hotels-hero-container">
+            <div class="hotels-hero-content">
+                <h1>O mundo inteiro<br>espera por você.</h1>
             </div>
-            <div class="search-container">
-                <div class="search-card">
-                    <h2>Where are you flying?</h2>
-                    <div class="search-form">
-                        <form asp-controller="Flights" asp-action="Listing" method="get">
-                            <partial name="_FlightSearchForm" />
-                            
-                            <div class="form-footer">
-                                <a href="#" class="promo-link">
-                                    <i class="fas fa-plus"></i> Add Promo Code
-                                </a>
-                                <button type="submit" class="btn-show-flights">
-                                    <i class="fas fa-paper-plane"></i> Show Flights
-                                </button>
+            
+            <div class="hotels-search-card">
+                <form asp-controller="Flights" asp-action="Listing" method="get" class="search-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Origem - Destino</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" name="route" placeholder="Buscar cidades, aeroportos" value="@ViewData["SearchRoute"]">
                             </div>
-                        </form>
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo de Viagem</label>
+                            <div class="input-with-icon">
+                                <select name="tripType">
+                                    <option value="Round trip">Ida e Volta</option>
+                                    <option value="One Way">Somente Ida</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Ida - Volta</label>
+                            <div class="input-with-icon">
+                                <i class="far fa-calendar"></i>
+                                <input type="text" name="dates" placeholder="Ida - Volta">
+                            </div>
+                        </div>
+                        <div class="form-group-btn">
+                            <button type="submit" class="hotels-btn-search">
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Top Categories (inside hero) -->
+            <div class="hotels-hero-categories">
+                <p class="hero-categories-label">Principais categorias</p>
+                <div class="hotels-categories-row">
+                    <div class="hotels-category-item active">
+                        <i class="fas fa-plane"></i>
+                        <span>Aviões</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="map-section">
-        <div class="section-header">
-            <div class="section-header-text">
-                <h2>Let's go places together</h2>
-                <p>Discover the latest offers and news and start planning your next trip with us.</p>
+    <!-- 3. Top Vacation Destinations Section -->
+    <section class="hotels-section hotels-destinations-section">
+        <h2 class="hotels-section-title">Principais Destinos de Férias</h2>
+        <div class="hotels-dest-grid">
+            <div class="hotels-dest-card" onclick="window.location.href='@Url.Action("Listing", "Flights", new { route = "Bali" })'">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80" alt="Bali, Indonésia">
+                <div class="hotels-dest-overlay">
+                    <h3>Bali, Indonésia</h3>
+                </div>
             </div>
-            <a href="#" class="btn-see-all">See All</a>
-        </div>
-        <div class="map-container">
-            <div class="map-background">
-                <!-- Location Markers (Mock as in image) -->
-                <div class="location-marker marker-1">
-                    <div class="marker-popup">
-                        <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=100" alt="James Blue">
-                        <div class="marker-info">
-                            <span class="marker-title">James Blue</span>
-                            <span class="marker-subtitle">Boarding Pass #123</span>
-                        </div>
-                    </div>
+            <div class="hotels-dest-card" onclick="window.location.href='@Url.Action("Listing", "Flights", new { route = "Kerry" })'">
+                <img src="https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=600&q=80" alt="Kerry, Irlanda">
+                <div class="hotels-dest-overlay">
+                    <h3>Kerry, Irlanda</h3>
                 </div>
-                <div class="location-marker marker-2">
-                    <div class="marker-popup">
-                        <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?w=100" alt="Sarah Green">
-                        <div class="marker-info">
-                            <span class="marker-title">Sarah Green</span>
-                            <span class="marker-subtitle">Boarding Pass #456</span>
-                        </div>
-                    </div>
+            </div>
+            <div class="hotels-dest-card" onclick="window.location.href='@Url.Action("Listing", "Flights", new { route = "Sydney" })'">
+                <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=80" alt="Sydney, Austrália">
+                <div class="hotels-dest-overlay">
+                    <h3>Sydney, Austrália</h3>
                 </div>
-                <div class="location-marker marker-3">
-                    <div class="marker-popup">
-                        <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=100" alt="Alex White">
-                        <div class="marker-info">
-                            <span class="marker-title">Alex White</span>
-                            <span class="marker-subtitle">Boarding Pass #789</span>
-                        </div>
-                    </div>
+            </div>
+            <div class="hotels-dest-card" onclick="window.location.href='@Url.Action("Listing", "Flights", new { route = "Paris" })'">
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80" alt="Paris, França">
+                <div class="hotels-dest-overlay">
+                    <h3>Paris, França</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="travel-section" id="global-destinations-section">
-
-        <div class="section-header">
-            <div class="section-header-text">
-                <h2>Fall into travel</h2>
-                <p>Going somewhere to celebrate this season? Whether you're going home or somewhere to roam, we've got the travel tools to get you to your destination.</p>
-            </div>
-            <a href="#" class="btn-see-all">See All</a>
-        </div>
-        <div class="travel-grid">
-            <!-- Card 0 -->
-            <div id="ticker-card-0" class="travel-card ticker-card">
-                <h2 class="bg-title" id="bg-title-0">BRASIL</h2>
-                <div class="card-overlay">
-                    <div class="card-info">
-                        <h3 class="card-title" id="ticker-country-0">Brasil</h3>
-                        <p class="card-subtitle" id="ticker-capital-0">Brasília</p>
-                    </div>
-                    <a href="#" id="ticker-link-0" class="btn-book">Book Now</a>
+    <!-- 4. Offers Section -->
+    <section class="hotels-section" style="padding-top: 0;">
+        <h2 class="hotels-section-title">Ofertas Especiais</h2>
+        <div class="hotels-offers-grid">
+            <div class="hotels-offer-card">
+                <div class="hotels-offer-content">
+                    <span class="hotels-offer-badge">Voos Nacionais</span>
+                    <h3>Grandes economias em voos com a Travel.</h3>
+                    <p>Reserve voos nacionais com os melhores preços promocionais</p>
+                    <a href="/Flights" class="hotels-offer-btn">Reserve Agora</a>
+                </div>
+                <div class="hotels-offer-img">
+                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&q=80" alt="Asa de Avião">
                 </div>
             </div>
-
-            <!-- Card 1 -->
-            <div id="ticker-card-1" class="travel-card ticker-card">
-                <h2 class="bg-title" id="bg-title-1">ARGENTINA</h2>
-                <div class="card-overlay">
-                    <div class="card-info">
-                        <h3 class="card-title" id="ticker-country-1">Argentina</h3>
-                        <p class="card-subtitle" id="ticker-capital-1">Buenos Aires</p>
-                    </div>
-                    <a href="#" id="ticker-link-1" class="btn-book">Book Now</a>
+            <div class="hotels-offer-card">
+                <div class="hotels-offer-content">
+                    <span class="hotels-offer-badge">Hotéis Internacionais</span>
+                    <h3>Aproveite até 20% de desconto em Hotéis Internacionais</h3>
+                    <p>Aproveite esta temporada com reservas de hotéis exclusivas na Travel.</p>
+                    <a href="/Hotels" class="hotels-offer-btn">Reserve Agora</a>
                 </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div id="ticker-card-2" class="travel-card ticker-card">
-                <h2 class="bg-title" id="bg-title-2">CHILE</h2>
-                <div class="card-overlay">
-                    <div class="card-info">
-                        <h3 class="card-title" id="ticker-country-2">Chile</h3>
-                        <p class="card-subtitle" id="ticker-capital-2">Santiago</p>
-                    </div>
-                    <a href="#" id="ticker-link-2" class="btn-book">Book Now</a>
+                <div class="hotels-offer-img">
+                    <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=500&q=80" alt="Piscina de Resort">
                 </div>
             </div>
         </div>
-
-
     </section>
 
-    <section class="travel-section" id="backpacking-section">
-        <div class="section-header">
-            <div class="section-header-text">
-                <h2>Fall into travel</h2>
-                <p>Going somewhere to celebrate this season? Whether you're going home or somewhere to roam, we've got the travel tools to get you to your destination.</p>
+    <!-- 5. Browse by flight category Section -->
+    <section class="hotels-section" id="property-types" style="padding-top: 0;">
+        <h2 class="hotels-section-title">Navegue por categoria de voo</h2>
+        <div class="hotels-property-grid">
+            <div class="hotels-property-card" onclick="window.location.href='/Flights'">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&q=80" alt="Voos Nacionais">
+                <h3>Voos Nacionais</h3>
             </div>
-            <a href="#" class="btn-see-all">See All</a>
+            <div class="hotels-property-card" onclick="window.location.href='/Flights'">
+                <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=80" alt="Voos Internacionais">
+                <h3>Voos Internacionais</h3>
+            </div>
+            <div class="hotels-property-card" onclick="window.location.href='/Flights'">
+                <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=500&q=80" alt="Primeira Classe">
+                <h3>Primeira Classe</h3>
+            </div>
+            <div class="hotels-property-card" onclick="window.location.href='/Flights'">
+                <img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?w=500&q=80" alt="Classe Econômica">
+                <h3>Classe Econômica</h3>
+            </div>
         </div>
-        <div class="travel-featured-grid">
-            <div class="featured-card">
-                <div class="featured-badge">From <strong id="bp-price">$450</strong></div>
-                <div class="featured-info">
-                    <h3 id="bp-title">Backpacking Brasil</h3>
-                    <p id="bp-description">Traveling is a unique experience as it's the best way to unplug from the pushes and pulls of daily life. It helps us to forget about our problems, frustrations, and fears at home. During our journey, we experience life in different ways. We explore new places, cultures, cuisines, traditions, and ways of living.</p>
-                </div>
-                <a href="#" id="bp-link" class="btn-book-featured">Book Flight</a>
-            </div>
-            <div class="secondary-grid">
-                <img id="bp-img-0" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Destination 1">
-                <img id="bp-img-1" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Destination 2">
-            </div>
+    </section>
 
+    <!-- 6. Travel Expert Banner Section -->
+    <section class="hotels-section" style="padding-top: 0;">
+        <div class="hotels-expert-banner">
+            <div class="hotels-expert-bg">
+                <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&q=80" alt="Travel map context background">
+            </div>
+            <div class="hotels-expert-content">
+                <h2>Planeje sua viagem com especialistas</h2>
+                <p>Nossos consultores profissionais criam o roteiro perfeito para você</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Community Section -->
+    <section class="hotels-section" style="padding-top: 0; padding-bottom: 120px;">
+        <h2 class="hotels-section-title">Conecte-se com outros viajantes em nossa comunidade</h2>
+        <div class="hotels-community-grid">
+            <div class="hotels-community-card">
+                <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Comunidade Índia">
+                <div class="hotels-community-info">
+                    <h3>Índia</h3>
+                    <p class="community-tag">Comunidade de viagens</p>
+                    <p class="community-count">155.073 viajantes</p>
+                </div>
+            </div>
+            <div class="hotels-community-card">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&q=80" alt="Papo de Viagem">
+                <div class="hotels-community-info">
+                    <h3>Papo de Viagem</h3>
+                    <p class="community-tag">Comunidade de viagens</p>
+                    <p class="community-count">155.073 viajantes</p>
+                </div>
+            </div>
+            <div class="hotels-community-card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&q=80" alt="Comunidade Praias">
+                <div class="hotels-community-info">
+                    <h3>Praias</h3>
+                    <p class="community-tag">Comunidade de viagens</p>
+                    <p class="community-count">155.073 viajantes</p>
+                </div>
+            </div>
+            <div class="hotels-community-card">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&q=80" alt="Comunidade Montanhas">
+                <div class="hotels-community-info">
+                    <h3>Montanhas</h3>
+                    <p class="community-tag">Comunidade de viagens</p>
+                    <p class="community-count">155.073 viajantes</p>
+                </div>
+            </div>
         </div>
     </section>
 
 </div>
-
-@section Scripts {
-    <script src="~/js/Flights/flights.js" asp-append-version="true"></script>
-}
-
-

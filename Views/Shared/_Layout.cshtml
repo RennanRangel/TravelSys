@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8" />
@@ -6,77 +6,87 @@
     <title>@ViewData["Title"] - Travel</title>
     <!-- CSS Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Volkhov:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/Shared/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Shared/_Layout.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
-<body>
+<body class="@ViewData["BodyClass"]">
     <partial name="_Header" />
 
     <main role="main">
         @RenderBody()
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <span>Travel</span>
-                        <i class="fas fa-plane-departure"></i>
+    @if (ViewData["BodyClass"]?.ToString() == "home-page" || ViewData["BodyClass"]?.ToString() == "hotels-page" || ViewData["BodyClass"]?.ToString() == "flights-page")
+    {
+        <partial name="_FooterTravel" />
+    }
+    else
+    {
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <span>Travel</span>
+                            <i class="fas fa-plane-departure"></i>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="footer-column">
+                        <h4>Our Destinations</h4>
+                        <ul>
+                            <li><a href="#">Canada</a></li>
+                            <li><a href="#">Alaska</a></li>
+                            <li><a href="#">France</a></li>
+                            <li><a href="#">Iceland</a></li>
+                        </ul>
                     </div>
-                </div>
-                <div class="footer-column">
-                    <h4>Our Destinations</h4>
-                    <ul>
-                        <li><a href="#">Canada</a></li>
-                        <li><a href="#">Alaska</a></li>
-                        <li><a href="#">France</a></li>
-                        <li><a href="#">Iceland</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Our Activities</h4>
-                    <ul>
-                        <li><a href="#">Northern Lights</a></li>
-                        <li><a href="#">Cruising & sailing</a></li>
-                        <li><a href="#">Multi-activities</a></li>
-                        <li><a href="#">Kayaing</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Travel Blogs</h4>
-                    <ul>
-                        <li><a href="#">Bali Travel Guide</a></li>
-                        <li><a href="#">Sri Lanka Travel Guide</a></li>
-                        <li><a href="#">Peru Travel Guide</a></li>
-                        <li><a href="#">Bali Travel Guide</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>About Us</h4>
-                    <ul>
-                        <li><a href="#">Our Story</a></li>
-                        <li><a href="#">Work with us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Contact Us</h4>
-                    <ul>
-                        <li><a href="#">Our Story</a></li>
-                        <li><a href="#">Work with us</a></li>
-                    </ul>
+                    <div class="footer-column">
+                        <h4>Our Activities</h4>
+                        <ul>
+                            <li><a href="#">Northern Lights</a></li>
+                            <li><a href="#">Cruising & sailing</a></li>
+                            <li><a href="#">Multi-activities</a></li>
+                            <li><a href="#">Kayaing</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Travel Blogs</h4>
+                        <ul>
+                            <li><a href="#">Bali Travel Guide</a></li>
+                            <li><a href="#">Sri Lanka Travel Guide</a></li>
+                            <li><a href="#">Peru Travel Guide</a></li>
+                            <li><a href="#">Bali Travel Guide</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>About Us</h4>
+                        <ul>
+                            <li><a href="#">Our Story</a></li>
+                            <li><a href="#">Work with us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li><a href="#">Our Story</a></li>
+                            <li><a href="#">Work with us</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    }
 
     <!-- JS Bootstrap Bundle (Necessário para acionar o clique do perfil) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

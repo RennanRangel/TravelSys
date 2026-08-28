@@ -1,800 +1,1423 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Trade+Gothic+LT+Extended&display=swap");
+/* ==========================================================================
+   Home Page Stylesheet
+   ========================================================================== */
 
-
+/* Design Tokens & Custom Properties */
 :root {
-  --primary: #8dd3bb;
-  --primary-hover: #7bc1a8;
-  --dark: #112211;
-  --text-muted: #79747e;
-  --bg-main: #fafbfc;
-  --white: #ffffff;
-  --border-color: #e7e8e9;
-
-  --font-main: "Montserrat", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: "Trade Gothic LT Extended", "Montserrat", sans-serif;
-
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-full: 9999px;
-
-  --shadow-soft: 0 10px 30px rgba(17, 34, 17, 0.05);
-  --shadow-card: 0 12px 24px rgba(17, 34, 17, 0.08);
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: 'Volkhov', Georgia, "Times New Roman", serif;
+  
+  --color-primary: #DF6951;     /* Orange/Coral Accent */
+  --color-secondary: #181E4B;   /* Deep Dark Navy */
+  --color-yellow: #F1A501;      /* Yellow accent */
+  --color-text-dark: #212832;   /* Dark text */
+  --color-text-muted: #5E6282;  /* Muted grey-blue text */
+  --color-bg-light: #FFF9F6;    /* Very light warm background tint */
+  --color-border: #E5E5E5;
+  
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 50px rgba(24, 30, 75, 0.1);
+  --shadow-card-hover: 0 30px 60px rgba(0, 0, 0, 0.1);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--font-main);
-  color: var(--dark);
-  background-color: var(--bg-main);
+/* 1. Global Home Page Rules */
+.home-page {
+  font-family: var(--font-sans);
+  color: var(--color-text-dark);
+  background-color: #ffffff;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  position: relative;
 }
 
-.container {
+.home-page main {
+  min-height: auto;
+}
+
+/* Glassmorphic Background Decorative Blobs */
+.bg-blobs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.blob-1 {
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(255,241,218,0.7) 0%, rgba(255,255,255,0) 70%);
+  filter: blur(40px);
+}
+
+.blob-2 {
+  position: absolute;
+  top: 100px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(213,241,255,0.4) 0%, rgba(255,255,255,0) 70%);
+  filter: blur(50px);
+}
+
+.blob-3 {
+  position: absolute;
+  top: 1200px;
+  right: -250px;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(255,230,224,0.45) 0%, rgba(255,255,255,0) 75%);
+  filter: blur(60px);
+}
+
+/* Decors */
+.decors-grid {
+  position: absolute;
+  top: 480px;
+  right: 5%;
+  width: 153px;
+  height: 166px;
+  background-image: radial-gradient(#DF6951 15%, transparent 16%);
+  background-size: 16px 16px;
+  opacity: 0.15;
+  z-index: -1;
+}
+
+/* Section Header Typography */
+.jadoo-section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.jadoo-section-subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.jadoo-section-title {
+  font-family: var(--font-serif);
+  font-size: 50px;
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   2. Header & Navigation (Jadoo Layout Overrides)
+   ========================================================================== */
+.home-page .header-jadoo,
+.hotels-page .header-jadoo,
+.flights-page .header-jadoo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  border-bottom: none;
+  z-index: 100;
+}
+
+.home-page .header-container,
+.hotels-page .header-container,
+.flights-page .header-container {
+  height: 100px;
   max-width: 1232px;
-  margin: 0 auto;
   padding: 0 24px;
 }
 
-
-
-
-
-.hero {
-  position: relative;
-  height: 640px;
-  margin-bottom: 220px;
-  border-bottom-left-radius: var(--radius-lg);
-  border-bottom-right-radius: var(--radius-lg);
-  overflow: visible;
-}
-
-.hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  border-bottom-left-radius: var(--radius-lg);
-  border-bottom-right-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
-.hero-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.65) 100%
-  );
-}
-
-.hero-content {
-  padding-top: 140px;
-  color: var(--white);
-}
-
-.hero-title {
-  font-family: var(--font-heading);
-  font-size: 48px;
+.logo-jadoo {
+  position: static !important;
+  transform: none !important;
+  font-family: var(--font-sans);
   font-weight: 700;
-  margin-bottom: 12px;
-  max-width: 600px;
-  text-align: left;
-  line-height: 1.15;
-}
-
-.hero-subtitle {
-  font-size: 20px;
-  font-weight: 500;
-  text-align: left;
-  opacity: 0.9;
-}
-
-.search-container {
-  position: absolute;
-  bottom: -180px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-}
-
-.search-card {
-  background: var(--white);
-  border-radius: var(--radius-md);
-  padding: 32px;
-  box-shadow: var(--shadow-card);
-  border: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.search-tabs {
+  font-size: 32px;
+  color: var(--color-secondary) !important;
+  text-decoration: none;
   display: flex;
+  align-items: center;
+}
+
+.logo-jadoo .logo-dot {
+  color: var(--color-primary);
+  font-size: 40px;
+  line-height: 1;
+}
+
+.logo-jadoo .logo-plane-icon {
+  color: #8DD3BB;
+  font-size: 24px;
+  margin-left: 6px;
+  transform: none;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-links-jadoo {
+  display: flex;
+  align-items: center;
   gap: 32px;
-  margin-bottom: 28px;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 12px;
 }
 
-.tab-btn {
-  background: none;
-  border: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-main);
-  font-weight: 600;
-  font-size: 16px;
-  color: var(--dark);
-  cursor: pointer;
-  padding: 8px 0;
-  position: relative;
-  opacity: 0.6;
-  transition: opacity 0.2s;
-}
-
-.tab-btn:hover,
-.tab-btn.active {
-  opacity: 1;
-}
-
-.tab-btn.active::after {
-  content: "";
-  position: absolute;
-  bottom: -13px;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: var(--primary);
-  border-radius: 2px;
-}
-
-.search-header h3 {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-.search-form {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.form-group label {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: var(--dark);
-}
-
-.input-wrapper {
-  position: relative;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--bg-main);
-  transition: border-color 0.2s;
-}
-
-.input-wrapper:focus-within {
-  border-color: var(--dark);
-  background: var(--white);
-}
-
-.input-wrapper input {
-  border: none;
-  outline: none;
-  width: 100%;
-  font-family: var(--font-main);
+.nav-link-jadoo {
+  color: #212832;
   font-size: 15px;
-  color: var(--dark);
-  background: transparent;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-.search-actions {
+.nav-link-jadoo:hover {
+  color: var(--color-primary);
+}
+
+.header-actions-jadoo {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
-.btn-promo {
-  background: none;
-  border: none;
-  font-weight: 600;
+.user-greeting {
   font-size: 14px;
+  font-weight: 500;
+  color: var(--color-secondary);
+}
+
+.btn-login-jadoo {
+  color: var(--color-text-dark);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.btn-login-jadoo:hover {
+  color: var(--color-primary);
+}
+
+.btn-signup-jadoo {
+  border: 1px solid var(--color-text-dark);
+  border-radius: 5px;
+  padding: 8px 22px;
+  color: var(--color-text-dark);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.btn-signup-jadoo:hover {
+  background-color: var(--color-text-dark);
+  color: #ffffff;
+}
+
+.btn-logout-jadoo {
+  background: none;
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+  padding: 6px 16px;
+  color: var(--color-primary);
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.btn-logout-jadoo:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.lang-selector {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--dark);
-}
-
-.btn-show-places {
-  background: var(--primary);
-  border: none;
-  padding: 14px 28px;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
   font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-dark);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.2s ease;
 }
 
-.btn-show-places:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
+.lang-selector i {
+  font-size: 10px;
+  margin-top: 2px;
 }
 
 /* ==========================================================================
-   4. SEÇÃO: BUSCAS RECENTES (Recent Searches)
+   3. Hero Section
    ========================================================================== */
-.recent-searches {
-  padding: 60px 0;
+.jadoo-hero {
+  padding-top: 180px;
+  padding-bottom: 80px;
+  position: relative;
 }
 
-.section-title {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 28px;
-  letter-spacing: -0.5px;
-}
-
-.recent-grid {
+.jadoo-hero-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 20px;
+  align-items: center;
 }
 
-.recent-card {
+.jadoo-hero-content {
+  max-width: 620px;
+}
+
+.hero-tagline {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+
+.hero-main-title {
+  font-family: var(--font-serif);
+  font-size: 68px;
+  color: var(--color-secondary);
+  line-height: 1.12;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+}
+
+/* Custom highlight under "enjoy" matching mockup */
+.enjoy-highlight {
+  position: relative;
+  display: inline-block;
+}
+
+.enjoy-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'><path d='M3,15 Q100,2 197,15' stroke='%23DF6951' stroke-width='4' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: -1;
+}
+
+.hero-desc {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.btn-find-out {
+  background-color: var(--color-yellow);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 36px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0px 15px 30px rgba(241, 165, 1, 0.2);
+  transition: all 0.3s;
+}
+
+.btn-find-out:hover {
+  background-color: #d69300;
+  transform: translateY(-2px);
+  box-shadow: 0px 20px 35px rgba(241, 165, 1, 0.3);
+}
+
+.btn-play-demo {
+  background: none;
+  border: none;
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 16px;
-  border-radius: var(--radius-md);
-  background: var(--white);
-  box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  cursor: pointer;
+  padding: 0;
 }
 
-.recent-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
+.play-icon-wrapper {
+  width: 52px;
+  height: 52px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 14px;
+  box-shadow: 0 10px 20px rgba(223, 105, 81, 0.25);
+  transition: all 0.3s;
+  padding-left: 3px; /* visual center alignment */
 }
 
-.recent-card img {
-  width: 72px;
-  height: 72px;
-  border-radius: var(--radius-sm);
-  object-fit: cover;
+.btn-play-demo:hover .play-icon-wrapper {
+  transform: scale(1.1);
+  box-shadow: 0 12px 25px rgba(223, 105, 81, 0.4);
 }
 
-.recent-info h3 {
+.play-text {
   font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: var(--dark);
+  font-weight: 500;
+  color: #686D77;
+  transition: color 0.3s;
 }
 
-.recent-info p {
-  font-size: 13px;
-  color: var(--text-muted);
+.btn-play-demo:hover .play-text {
+  color: var(--color-primary);
+}
+
+/* Hero Image & Plane Graphics */
+.jadoo-hero-graphics {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-main-img {
+  width: 105%;
+  height: auto;
+  max-width: 540px;
+  z-index: 2;
+  position: relative;
+}
+
+/* Background blob specific to Hero Image in Jadoo */
+.hero-bg-accent {
+  position: absolute;
+  top: -20px;
+  right: 0px;
+  width: 90%;
+  height: 90%;
+  background: radial-gradient(circle, rgba(254,233,212,0.8) 0%, rgba(255,255,255,0) 80%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* ==========================================================================
-   5. SEÇÕES DE DESTINOS E PLACES (Fall Into Travel)
+   4. Services Section
    ========================================================================== */
-.fall-into-travel {
-  padding: 40px 0 80px;
+.jadoo-services {
+  padding: 160px 0;
+  position: relative;
 }
 
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 32px;
-}
-
-.section-subtitle {
-  max-width: 700px;
-  margin-top: 12px;
-  font-size: 16px;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.btn-see-all {
-  padding: 10px 20px;
-  border: 1px solid var(--primary);
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  color: var(--dark);
-  font-weight: 600;
-  font-size: 14px;
-  transition: all 0.2s ease;
-}
-
-.btn-see-all:hover {
-  background: var(--primary);
-}
-
-.places-grid {
+.services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 36px;
+  margin-top: 60px;
 }
 
-.place-card {
+.services-grid-two {
+  grid-template-columns: repeat(2, minmax(260px, 340px));
+  justify-content: center;
+}
+
+.service-card {
+  background-color: #ffffff;
+  border-radius: 36px;
+  padding: 44px 32px;
+  text-align: center;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
-  height: 420px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: var(--shadow-soft);
+  z-index: 2;
+  border: 1px solid transparent;
+  transform-style: preserve-3d;
 }
 
-.place-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.service-icon-container {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.service-icon-img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.service-icon-fa {
+  font-size: 56px;
+  color: var(--color-secondary);
   transition: transform 0.4s ease;
 }
 
-.place-card:hover img {
-  transform: scale(1.08);
-}
-
-.place-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 24px;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.75) 100%
-  );
-  color: var(--white);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.place-info h3 {
-  font-size: 22px;
+.service-title {
+  font-size: 20px;
   font-weight: 600;
+  color: var(--color-secondary);
+  margin-bottom: 16px;
 }
 
-.place-price {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.btn-book {
-  width: 100%;
-  padding: 14px;
-  background: var(--primary);
-  border: none;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--dark);
-  transition: background 0.2s ease;
-}
-
-.btn-book:hover {
-  background: var(--primary-hover);
-}
-
-/* BACKPACKING SECTION */
-.fall-into-travel-backpacking {
-  padding-bottom: 80px;
-}
-
-.backpacking-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.backpacking-main {
-  background: var(--primary);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 420px;
-}
-
-.backpacking-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.backpacking-header h2 {
-  font-size: 36px;
-  font-weight: 700;
-  max-width: 280px;
-  line-height: 1.2;
-}
-
-.price-badge {
-  background: var(--white);
-  padding: 8px 16px;
-  border-radius: var(--radius-sm);
-  text-align: center;
-}
-
-.price-badge span {
-  display: block;
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
-.price-badge strong {
-  font-size: 18px;
-  color: var(--dark);
-}
-
-.backpacking-content p {
-  margin-bottom: 28px;
+.service-desc {
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.8;
+  color: var(--color-text-muted);
 }
 
-.btn-book-white {
-  background: var(--white);
-  border: none;
-  padding: 14px;
-  width: 100%;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--dark);
-  transition: background 0.2s;
+/* Card 2: Special Jadoo highlight styled card */
+.service-card.active-highlight {
+  background-color: #ffffff;
+  box-shadow: var(--shadow-lg);
 }
 
-.btn-book-white:hover {
-  background: #f0f0f0;
+/* Custom background block decoration for the active card */
+.service-card.active-highlight::before {
+  content: '';
+  position: absolute;
+  bottom: -28px;
+  left: -28px;
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-primary);
+  border-radius: 30px 10px 18px 10px;
+  z-index: -1;
+  transition: transform 0.3s;
+  transform: translateZ(-1px);
 }
 
-.backpacking-images {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 16px;
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card-hover);
 }
 
-.backpacking-images img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: var(--radius-md);
+.service-card:hover .service-icon-fa {
+  transform: rotate(5deg) scale(1.05);
 }
 
 /* ==========================================================================
-   6. VIDEO SHOWCASE SECTION
+   5. Destinations Section
    ========================================================================== */
-.video-showcase {
-  padding: 60px 0;
+.jadoo-destinations {
+  padding: 160px 0;
+  position: relative;
 }
 
-.video-showcase-content {
-  background: linear-gradient(135deg, #cdeae1 0%, var(--primary) 100%);
-  border-radius: var(--radius-lg);
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.dest-card {
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+
+.dest-img-container {
+  height: 320px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.dest-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.dest-card:hover .dest-img-container img {
+  transform: scale(1.08);
+}
+
+.dest-info-body {
+  padding: 24px 20px 32px 20px;
+  background-color: #ffffff;
+}
+
+.dest-meta-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden;
+  margin-bottom: 20px;
 }
 
-.video-text {
-  padding: 48px;
-  width: 50%;
+.dest-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color 0.3s;
 }
 
-.video-text h2 {
-  font-size: 40px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  color: var(--dark);
+.dest-card:hover .dest-title {
+  color: var(--color-secondary);
 }
 
-.video-info h3 {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--dark);
+.dest-price {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text-muted);
 }
 
-.video-info p {
-  font-size: 15px;
-  color: var(--dark);
-  margin-bottom: 24px;
-  line-height: 1.6;
-  opacity: 0.85;
-}
-
-.video-stats {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 28px;
-}
-
-.stat-item {
+.dest-duration-row {
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.stat-item strong {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--dark);
-}
-
-.stat-item span {
-  font-size: 13px;
-  color: var(--dark);
-  opacity: 0.8;
-}
-
-.btn-explore {
-  background-color: var(--dark);
-  color: var(--white);
-  border: none;
-  padding: 14px 28px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-main);
-  font-weight: 600;
   font-size: 14px;
-  cursor: pointer;
-  display: inline-flex;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.dest-duration-row i {
+  color: var(--color-text-dark);
+  font-size: 15px;
+}
+
+.dest-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================================================
+   6. Steps / Booking Section
+   ========================================================================== */
+.jadoo-steps {
+  padding: 160px 0;
+  position: relative;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
   align-items: center;
-  gap: 8px;
-  transition: all 0.2s ease;
 }
 
-.btn-explore:hover {
-  background-color: #000;
-  transform: translateY(-2px);
+.steps-left {
+  max-width: 520px;
 }
 
-.video-container {
-  width: 50%;
-  padding: 32px;
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 40px;
 }
 
-.video-wrapper {
+.step-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.step-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.step-icon-yellow { background-color: #F0BB1F; }
+.step-icon-orange { background-color: #F15A2B; }
+.step-icon-teal { background-color: #006380; }
+
+.step-info h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+
+.step-info p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* Floating Mockup Cards (Right side) */
+.steps-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Santorini card */
+.card-trip-greece {
+  background-color: #ffffff;
+  border-radius: 26px;
+  box-shadow: var(--shadow-lg);
+  padding: 20px 24px;
+  width: 370px;
+  position: relative;
+  z-index: 2;
+}
+
+.greece-img {
+  width: 100%;
+  height: 160px;
+  border-radius: 24px;
+  object-fit: cover;
+  margin-bottom: 24px;
+}
+
+.greece-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #080809;
+  margin-bottom: 8px;
+}
+
+.greece-meta {
+  font-size: 14px;
+  color: #84829A;
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.greece-actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.greece-circle-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #F5F5F7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #84829A;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.greece-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #E6E6E6;
+}
+
+.greece-people {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #84829A;
+}
+
+.greece-people i {
+  color: #172432;
+  font-size: 16px;
+}
+
+.greece-heart {
+  color: #4B5563;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.greece-heart.liked {
+  color: var(--color-primary);
+}
+
+/* Overlay Ongoing / Rome card */
+.card-ongoing-rome {
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: var(--shadow-lg);
+  padding: 16px 20px;
+  width: 260px;
+  position: absolute;
+  bottom: 50px;
+  right: -30px;
+  z-index: 3;
+  display: flex;
+  gap: 12px;
+  animation: floatCard 4s ease-in-out infinite alternate;
+}
+
+.rome-avatar-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.rome-avatar-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rome-info {
+  flex-grow: 1;
+}
+
+.rome-status {
+  font-size: 11px;
+  font-weight: 500;
+  color: #84829A;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.rome-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #080809;
+  margin-bottom: 8px;
+}
+
+.rome-progress-meta {
+  font-size: 12px;
+  font-weight: 500;
+  color: #080809;
+  margin-bottom: 6px;
+}
+
+.rome-progress-meta span {
+  color: #857AF9;
+}
+
+.rome-progress-bg {
+  width: 100%;
+  height: 5px;
+  background-color: #F5F5F7;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.rome-progress-fill {
+  height: 100%;
+  width: 40%;
+  background-color: #857AF9;
+  border-radius: 3px;
+}
+
+@keyframes floatCard {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* ==========================================================================
+   7. Testimonials Section
+   ========================================================================== */
+.jadoo-testimonials {
+  padding: 160px 0;
+  position: relative;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+.testimonials-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.testimonial-dots {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #E5E5E5;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background-color: #39425D;
+}
+
+/* Testimonials Carousel (right side stacked layout) */
+.testimonials-right {
+  position: relative;
+  height: 380px;
+  display: flex;
+  align-items: center;
+}
+
+.testimonial-stack {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
+  max-width: 500px;
+  height: 280px;
 }
 
-.video-wrapper iframe {
+.testimonial-card {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  background-color: #ffffff;
+  border-radius: 28px;
+  padding: 28px 34px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  opacity: 0;
+  z-index: 1;
+}
+
+.testimonial-card.active {
+  opacity: 1;
+  z-index: 3;
+  transform: translateY(0) scale(1);
+}
+
+.testimonial-card.next {
+  opacity: 0.8;
+  z-index: 2;
+  transform: translateY(60px) translateX(30px) scale(0.95);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+  pointer-events: none;
+}
+
+.avatar-wrapper {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  box-shadow: var(--shadow-sm);
+  z-index: 4;
+}
+
+.avatar-wrapper img {
+  width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+.quote-text {
+  font-size: 16px;
+  line-height: 2;
+  color: var(--color-text-muted);
+  margin-bottom: 34px;
+  font-weight: 500;
+}
+
+.author-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 5px;
+}
+
+.author-location {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* Nav arrows on right side */
+.testimonials-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-arrow {
+  background: none;
   border: none;
+  color: #BCB7C2;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.nav-arrow:hover {
+  color: var(--color-secondary);
 }
 
 /* ==========================================================================
-   7. NEWSLETTER SECTION
+   8. Brand Logos
    ========================================================================== */
-.newsletter {
-  padding-bottom: 60px;
-}
-
-.newsletter-box {
-  background: #cdeae1;
-  border-radius: var(--radius-lg);
-  padding: 0 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.jadoo-brands {
+  padding: 140px 0;
   position: relative;
-  height: 360px;
 }
 
-.newsletter-content {
-  max-width: 480px;
+.brands-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brands-logos-img {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   9. Subscribe Banner Section
+   ========================================================================== */
+.jadoo-subscribe {
+  padding: 160px 0 180px;
+  position: relative;
+}
+
+.subscribe-card {
+  background: linear-gradient(135deg, rgba(223, 105, 81, 0.05) 0%, rgba(223, 105, 81, 0.02) 100%);
+  border-radius: 129px 20px 20px 20px;
+  padding: 80px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(223, 105, 81, 0.05);
+}
+
+.subscribe-card::before {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(254,233,212,0.5) 0%, rgba(255,255,255,0) 70%);
+  z-index: 1;
+}
+
+.subscribe-card::after {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(213,241,255,0.4) 0%, rgba(255,255,255,0) 70%);
+  z-index: 1;
+}
+
+.subscribe-title {
+  font-size: 33px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  max-width: 860px;
+  margin: 0 auto 50px auto;
+  position: relative;
   z-index: 2;
 }
 
-.newsletter-content h2 {
-  font-size: 40px;
+.subscribe-form {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.subscribe-input-wrapper {
+  flex-grow: 1;
+  position: relative;
+}
+
+.subscribe-input-wrapper i {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #39425D;
+  font-size: 16px;
+}
+
+.subscribe-input {
+  width: 100%;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 20px 24px 20px 60px;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  color: var(--color-text-dark);
+  box-shadow: var(--shadow-sm);
+  outline: none;
+}
+
+.subscribe-input::placeholder {
+  color: #39425D;
+  opacity: 0.6;
+}
+
+.btn-subscribe {
+  background: linear-gradient(180deg, #FF946D 0%, #FF7D68 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0 44px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 10px 20px rgba(255, 125, 104, 0.2);
+}
+
+.btn-subscribe:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(255, 125, 104, 0.4);
+}
+
+/* Floating plane icons */
+.subscribe-plane-container {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 70px;
+  height: 70px;
+  background-color: #857AF9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 24px;
+  transform: rotate(45deg);
+  z-index: 3;
+}
+
+/* Plus sign vectors in the corner */
+.plus-sign-grid {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  width: 120px;
+  height: 100px;
+  background-image: radial-gradient(#DF6951 15%, transparent 16%);
+  background-size: 16px 16px;
+  opacity: 0.12;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   10. Footer Scoped Styles
+   ========================================================================== */
+.home-page .footer,
+.hotels-page .footer,
+.flights-page .footer {
+  background-color: #ffffff;
+  padding: 100px 0 60px 0;
+  margin-top: 60px;
+  color: var(--color-text-muted);
+}
+
+.home-page .footer-content,
+.hotels-page .footer-content,
+.flights-page .footer-content {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr) 1.2fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.footer-desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin-top: 24px;
+}
+
+.home-page .footer-column h4,
+.hotels-page .footer-column h4,
+.flights-page .footer-column h4 {
+  font-size: 20px;
   font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--dark);
-}
-
-.newsletter-content p {
+  color: #080809;
   margin-bottom: 24px;
-  opacity: 0.8;
-  font-size: 15px;
 }
 
-.newsletter-form {
+.home-page .footer-column ul li,
+.hotels-page .footer-column ul li,
+.flights-page .footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.home-page .footer-column ul li a,
+.hotels-page .footer-column ul li a,
+.flights-page .footer-column ul li a {
+  color: var(--color-text-muted);
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.9;
+  transition: color 0.3s;
+}
+
+.home-page .footer-column ul li a:hover,
+.hotels-page .footer-column ul li a:hover,
+.flights-page .footer-column ul li a:hover {
+  color: var(--color-primary);
+}
+
+.footer-social-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.social-circle-row {
+  display: flex;
+  gap: 16px;
+}
+
+.social-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #080809;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.social-circle:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.footer-app-downloads h5 {
+  font-size: 16px;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.app-btn-row {
   display: flex;
   gap: 12px;
 }
 
-.newsletter-form input {
-  flex: 1;
-  padding: 14px 16px;
-  border: 1px solid transparent;
-  border-radius: var(--radius-sm);
-  outline: none;
-  font-family: var(--font-main);
-  font-size: 14px;
-}
-
-.newsletter-form button {
-  background: var(--dark);
-  color: var(--white);
-  border: none;
-  padding: 14px 28px;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.newsletter-form button:hover {
-  background: #000;
-}
-
-.newsletter-img {
-  position: absolute;
-  right: 40px;
-  bottom: 0;
-  width: 360px;
-}
-
-.newsletter-img img {
-  width: 100%;
-  display: block;
-}
-
-/* ==========================================================================
-   8. FOOTER
-   ========================================================================== */
-.footer {
-  background: var(--primary);
-  padding: 64px 0;
-  margin-top: 60px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr repeat(5, 1fr);
-  gap: 32px;
-}
-
-.social-icons {
+.app-btn {
+  background-color: #080809;
+  border-radius: 35px;
+  padding: 12px 28px;
   display: flex;
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.social-icons a {
-  color: var(--dark);
-  font-size: 18px;
-  transition: opacity 0.2s;
-}
-
-.social-icons a:hover {
-  opacity: 0.6;
-}
-
-.footer-links h4 {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  color: var(--dark);
-}
-
-.footer-links ul {
-  list-style: none;
-}
-
-.footer-links li {
-  margin-bottom: 10px;
-}
-
-.footer-links a {
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
   text-decoration: none;
-  color: var(--dark);
-  font-size: 13px;
-  opacity: 0.75;
-  transition: opacity 0.2s;
+  font-family: var(--font-sans);
+  transition: transform 0.3s;
+  min-width: 160px;
 }
 
-.footer-links a:hover {
-  opacity: 1;
+.app-btn:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+.app-btn i {
+  font-size: 26px;
+}
+
+.app-btn-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-btn-text span:first-child {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.7;
+}
+
+.app-btn-text span:last-child {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.copyright-text {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  border-top: 1px solid #F5F5F7;
+  padding-top: 30px;
 }
 
 /* ==========================================================================
-   9. BREAKPOINTS RESPONSIVOS
+   11. Responsiveness
    ========================================================================== */
-@media (max-width: 992px) {
-  .search-form {
-    grid-template-columns: 1fr 1fr;
+@media (max-width: 1024px) {
+  .jadoo-hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
   }
-  .recent-grid,
-  .places-grid {
+  
+  .jadoo-hero-content {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .hero-main-title {
+    font-size: 52px;
+  }
+  
+  .hero-actions {
+    justify-content: center;
+  }
+  
+  .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .backpacking-grid,
-  .video-showcase-content {
+  
+  .destinations-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .steps-grid {
     grid-template-columns: 1fr;
-    flex-direction: column;
+    gap: 60px;
   }
-  .video-text,
-  .video-container {
-    width: 100%;
-    padding: 32px;
+  
+  .steps-left {
+    max-width: 100%;
   }
-  .footer-grid {
-    grid-template-columns: repeat(3, 1fr);
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
   }
-  .newsletter-img {
-    display: none;
-  }
-  .newsletter-box {
-    padding: 40px;
-    height: auto;
+  
+  .home-page .footer-content {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 576px) {
-  .search-form {
+@media (max-width: 768px) {
+  .header-right {
+    display: none;
+  }
+  
+  .logo-jadoo {
+    margin: 0 auto;
+  }
+  
+  .home-page .header-container {
+    justify-content: center;
+  }
+
+  .hero-main-title {
+    font-size: 40px;
+  }
+  
+  .jadoo-section-title {
+    font-size: 36px;
+  }
+  
+  .services-grid {
     grid-template-columns: 1fr;
   }
-  .recent-grid,
-  .places-grid {
+  
+  .destinations-grid {
     grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
+  
+  .card-trip-greece {
+    width: 100%;
+    max-width: 320px;
   }
-  .hero-title {
-    font-size: 32px;
+  
+  .card-ongoing-rome {
+    right: 10px;
+  }
+  
+  .subscribe-card {
+    padding: 50px 20px;
+    border-radius: 40px 10px 10px 10px;
+  }
+  
+  .subscribe-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .subscribe-form {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .btn-subscribe {
+    padding: 16px;
+  }
+  
+  .home-page .footer-content {
+    grid-template-columns: 1fr;
   }
 }

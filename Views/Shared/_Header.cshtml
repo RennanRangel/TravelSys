@@ -1,20 +1,83 @@
-<header class="header">
-    <div class="header-container">
-        <!-- 1. Esquerda: Navegação -->
-        <nav class="nav-links">
-            <a href="/Flights" class="nav-link"><i class="fas fa-plane"></i> Find Flight</a>
-            <a href="/Hotels" class="nav-link"><i class="fas fa-hotel"></i> Find Stays</a>
-        </nav>
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString()?.ToLower();
+    var action = ViewContext.RouteData.Values["action"]?.ToString()?.ToLower();
+    bool isJadooStyle = (controller == "home" && action == "index") ||
+                        (controller == "hotels" && action == "index") ||
+                        (controller == "flights" && action == "index");
+    bool isAuthenticated = User.Identity?.IsAuthenticated == true;
+}
 
-        <!-- 2. Centro: Logo -->
-        <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">
-            <div class="logo-text">Travel <i class="fas fa-plane-departure"></i></div>
-        </a>
+@if (isJadooStyle)
+{
+    <header class="header header-jadoo">
+        <div class="header-container">
+            <!-- 1. Left: Travel Logo -->
+            <a class="logo logo-jadoo" asp-area="" asp-controller="Home" asp-action="Index">
+                <span class="logo-text">Travel</span><i class="fas fa-plane-departure logo-plane-icon"></i>
+            </a>
 
-        <!-- 3. Direita: Ações -->
-        <div class="header-actions">
-            <a href="/Account/Login" class="btn-login">Login</a>
-            <a href="/Account/Signup" class="btn-signup">Sign up</a>
+            <!-- 2. Right: Navigation and Actions -->
+            <div class="header-right">
+                <nav class="nav-links-jadoo">
+                    <a href="/#destinations" class="nav-link-jadoo">Destinos</a>
+                    <a href="/Hotels" class="nav-link-jadoo">Hotéis</a>
+                    <a href="/Flights" class="nav-link-jadoo">Voos</a>
+                    <a href="/Admin" class="nav-link-jadoo">Reservas</a>
+                </nav>
+
+                <div class="header-actions-jadoo">
+                    @if (isAuthenticated)
+                    {
+                        <span class="user-greeting">Olá, @User.Identity.Name</span>
+                        <form asp-controller="Account" asp-action="Logout" method="post" style="display: inline;">
+                            <button type="submit" class="btn-logout-jadoo">Sair</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a href="/Account/Login" class="btn-login-jadoo">Entrar</a>
+                        <a href="/Account/Signup" class="btn-signup-jadoo">Cadastrar</a>
+                    }
+
+                    <div class="lang-selector">
+                        <span>PT</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
+}
+else
+{
+    <header class="header">
+        <div class="header-container">
+            <!-- 1. Esquerda: Navegação -->
+            <nav class="nav-links">
+                <a href="/Flights" class="nav-link"><i class="fas fa-plane"></i> Find Flight</a>
+                <a href="/Hotels" class="nav-link"><i class="fas fa-hotel"></i> Find Stays</a>
+            </nav>
+
+            <!-- 2. Centro: Logo -->
+            <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">
+                <div class="logo-text">Travel <i class="fas fa-plane-departure"></i></div>
+            </a>
+
+            <!-- 3. Direita: Ações -->
+            <div class="header-actions">
+                @if (isAuthenticated)
+                {
+                    <span class="user-greeting" style="font-weight: 600; font-size: 13px; margin-right: 10px;">Olá, @User.Identity?.Name</span>
+                    <form asp-controller="Account" asp-action="Logout" method="post" style="display: inline;">
+                        <button type="submit" class="btn-login" style="background: none; border: none; padding: 0; color: inherit; font: inherit; cursor: pointer;">Logout</button>
+                    </form>
+                }
+                else
+                {
+                    <a href="/Account/Login" class="btn-login">Login</a>
+                    <a href="/Account/Signup" class="btn-signup">Sign up</a>
+                }
+            </div>
+        </div>
+    </header>
+}

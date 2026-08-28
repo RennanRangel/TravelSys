@@ -1,175 +1,204 @@
-﻿@model IEnumerable<ProjetoHotelAviao.Models.Hotel>
+@model IEnumerable<ProjetoHotelAviao.Models.Hotel>
 @{
-    ViewData["Title"] = "Find Stays - Travel";
+    ViewData["Title"] = "Hotéis - Travel";
+    ViewData["BodyClass"] = "hotels-page";
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/Hotels/Findstays.css">
-    <link rel="stylesheet" href="~/css/Hotels/hotels.css">
+    <link rel="stylesheet" href="~/css/Shared/home.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/Hotels/hotels.css" asp-append-version="true">
 }
 
-<div id="hotels-findstays" class="landing-page">
-    <section class="hero">
-        <div class="hero-background">
-            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600&h=900&fit=crop" id="hotel-hero-img" alt="Hotel Hero" class="img-hero">
-        </div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Make your travel wishlist, we'll do the rest</h1>
-                <p>Special offers to suit your plan</p>
-            </div>
-            <div class="search-container">
-                <div class="search-card">
-                    <h2>Where are you staying?</h2>
-                    <div class="search-form">
-                        <form asp-controller="Hotels" asp-action="Listing" method="get">
-                            <partial name="_HotelSearchForm" />
-                            
-                            <div class="form-footer">
-                                <a href="#" class="promo-link">
-                                    <i class="fas fa-plus"></i> Add Promo Code
-                                </a>
-                                <button type="submit" class="btn-show-places">
-                                    <i class="fas fa-building"></i> Show Places
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="hotels-page-container">
 
-    <section class="recent-searches">
-        <div class="section-header">
-            <div class="section-header-text">
-                <h2>Your recent searches</h2>
-            </div>
+    <!-- 1. Hero Section -->
+    <section class="hotels-hero">
+        <div class="hotels-hero-bg">
+            <img src="/images/uploads/hero_background.png" alt="Mountain stream background landscape">
         </div>
-        <div class="recent-grid">
-            @if (Model != null && Model.Any())
-            {
-                foreach (var hotel in Model)
-                {
-                    <div class="recent-card" onclick="window.location.href='@Url.Action("Details", "Hotels", new { id = hotel.Id })'">
-                        <img src="@hotel.MainImage" alt="@hotel.Name" onerror="this.src='/images/placeholder.jpg'" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
-                        <div class="recent-info">
-                            <h3>@hotel.Name</h3>
-                            <p>@hotel.Location</p>
+        <div class="hotels-hero-container">
+            <div class="hotels-hero-content">
+                <h1>O mundo inteiro<br>espera por você.</h1>
+            </div>
+            
+            <div class="hotels-search-card">
+                <form asp-controller="Hotels" asp-action="Listing" method="get" class="search-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Destino</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-search"></i>
+                                <input type="text" name="location" placeholder="Buscar destinos, hotéis" value="@ViewData["CurrentLocation"]">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Check-in</label>
+                            <div class="input-with-icon">
+                                <i class="far fa-calendar"></i>
+                                <input type="text" name="checkIn" placeholder="Check-in" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Check-out</label>
+                            <div class="input-with-icon">
+                                <i class="far fa-calendar"></i>
+                                <input type="text" name="checkOut" placeholder="Check-out" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                        </div>
+                        <div class="form-group-btn">
+                            <button type="submit" class="hotels-btn-search">
+                                Buscar
+                            </button>
                         </div>
                     </div>
-                }
-            }
-            else
-            {
-                <div class="recent-card">
-                    <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=200" alt="Istanbul">
-                    <div class="recent-info">
-                        <h3>Istanbul, Turkey</h3>
-                        <p>325 places</p>
-                    </div>
-                </div>
-                <div class="recent-card">
-                    <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=200" alt="Sydney">
-                    <div class="recent-info">
-                        <h3>Sydney, Australia</h3>
-                        <p>325 places</p>
-                    </div>
-                </div>
-                <div class="recent-card">
-                    <img src="https://imgs.search.brave.com/7rlQVSwjTyohf2bLBALmPPlP9O_ER7VtRWSwtiAbh60/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvODc4/NTE3Njc0L3Bob3Rv/L3ZpZXctb2YtYmFr/dS5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9ZGVsbWRzeU1q/MU1UYWo0S1Z0SG9I/d3A1NjlsTnRBeDZJ/N2V6WWVEeFBHWT0" alt="Baku">
-                    <div class="recent-info">
-                        <h3>Baku, Azerbaijan</h3>
-                        <p>325 places</p>
-                    </div>
-                </div>
-                <div class="recent-card">
-                    <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=200" alt="Male">
-                    <div class="recent-info">
-                        <h3>Malé, Maldives</h3>
-                        <p>325 places</p>
-                    </div>
-                </div>
-            }
-        </div>
-    </section>
-
-    <section class="travel-section" id="global-destinations-section">
-
-        <div class="section-header">
-            <div class="section-header-text">
-                <h2>Fall into travel</h2>
-                <p>Going somewhere to celebrate this season? Whether you're going home or somewhere to roam, we've got the travel tools to get you to your destination.</p>
+                </form>
             </div>
-            <a href="#" class="btn-see-all">See All</a>
-        </div>
-        <div class="travel-grid">
-            <!-- Card 0 -->
-            <div id="ticker-card-0" class="travel-card ticker-card">
-                <h2 class="bg-title" id="bg-title-0">MELBOURNE</h2>
-                <div class="card-overlay">
-                    <div class="card-info">
-                        <h3 class="card-title" id="ticker-country-0">Melbourne</h3>
-                        <p class="card-subtitle" id="ticker-capital-0">An amazing journey</p>
+            <!-- Top Categories (inside hero) -->
+            <div class="hotels-hero-categories">
+                <p class="hero-categories-label">Principais categorias</p>
+                <div class="hotels-categories-row">
+                    <div class="hotels-category-item active">
+                        <i class="fas fa-hotel"></i>
+                        <span>Hotéis</span>
                     </div>
-                    <a href="#" id="ticker-link-0" class="btn-book">Book a Hotel</a>
                 </div>
-            </div>
-
-            <!-- Card 1 -->
-            <div id="ticker-card-1" class="travel-card ticker-card">
-                <h2 class="bg-title" id="bg-title-1">PARIS</h2>
-                <div class="card-overlay">
-                    <div class="card-info">
-                        <h3 class="card-title" id="ticker-country-1">Paris</h3>
-                        <p class="card-subtitle" id="ticker-capital-1">A Paris Adventure</p>
-                    </div>
-                    <a href="#" id="ticker-link-1" class="btn-book">Book a Hotel</a>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div id="ticker-card-2" class="travel-card ticker-card">
-                <h2 class="bg-title" id="bg-title-2">LONDON</h2>
-                <div class="card-overlay">
-                    <div class="card-info">
-                        <h3 class="card-title" id="ticker-country-2">London</h3>
-                        <p class="card-subtitle" id="ticker-capital-2">London eye adventure</p>
-                    </div>
-                    <a href="#" id="ticker-link-2" class="btn-book">Book a Hotel</a>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <section class="travel-section">
-        <div class="section-header">
-            <div class="section-header-text">
-                <h2>Fall into travel</h2>
-                <p>Going somewhere to celebrate this season? Whether you're going home or somewhere to roam, we've got the travel tools to get you to your destination.</p>
-            </div>
-            <a href="#" class="btn-see-all">See All</a>
-        </div>
-        <div class="travel-featured-grid">
-            <div class="featured-card">
-                <div class="featured-badge">From <strong id="bp-price">$700</strong></div>
-                <div class="featured-info">
-                    <h3 id="bp-title">Backpacking Sri Lanka</h3>
-                    <p id="bp-description">Traveling is a unique experience as it's the best way to unplug from the pushes and pulls of daily life. It helps us to forget about our problems, frustrations, and fears at home. During our journey, we experience life in different ways. We explore new places, cultures, cuisines, traditions, and ways of living.</p>
-                </div>
-                <a href="#" id="bp-link" class="btn-book-featured">Book Hotel</a>
-            </div>
-            <div class="secondary-grid">
-                <img id="bp-img-0" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Sri Lanka 1">
-                <img id="bp-img-1" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800" alt="Sri Lanka 2">
             </div>
         </div>
     </section>
+
+    <!-- 3. Top Vacation Destinations Section -->
+    <section class="hotels-section hotels-destinations-section">
+        <h2 class="hotels-section-title">Principais Destinos de Férias</h2>
+        <div class="hotels-dest-grid">
+            <div class="hotels-dest-card" onclick="window.location.href='@Url.Action("Listing", "Hotels", new { location = "Bali" })'">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80" alt="Bali, Indonésia">
+                <div class="hotels-dest-overlay">
+                    <h3>Bali, Indonésia</h3>
+                </div>
+            </div>
+            <div class="hotels-dest-card" onclick="window.location.href='@Url.Action("Listing", "Hotels", new { location = "Kerry" })'">
+                <img src="https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=600&q=80" alt="Kerry, Irlanda">
+                <div class="hotels-dest-overlay">
+                    <h3>Kerry, Irlanda</h3>
+                </div>
+            </div>
+            <div class="hotels-dest-card" onclick="window.location.href='@Url.Action("Listing", "Hotels", new { location = "Sydney" })'">
+                <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=80" alt="Sydney, Austrália">
+                <div class="hotels-dest-overlay">
+                    <h3>Sydney, Austrália</h3>
+                </div>
+            </div>
+            <div class="hotels-dest-card" onclick="window.location.href='@Url.Action("Listing", "Hotels", new { location = "Paris" })'">
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80" alt="Paris, França">
+                <div class="hotels-dest-overlay">
+                    <h3>Paris, França</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Offers Section -->
+    <section class="hotels-section" style="padding-top: 0;">
+        <h2 class="hotels-section-title">Ofertas Especiais</h2>
+        <div class="hotels-offers-grid">
+            <div class="hotels-offer-card">
+                <div class="hotels-offer-content">
+                    <span class="hotels-offer-badge">Voos Nacionais</span>
+                    <h3>Grandes economias em voos com a Travel.</h3>
+                    <p>Reserve voos nacionais com os melhores preços promocionais</p>
+                    <a href="/Flights" class="hotels-offer-btn">Reserve Agora</a>
+                </div>
+                <div class="hotels-offer-img">
+                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&q=80" alt="Asa de Avião">
+                </div>
+            </div>
+            <div class="hotels-offer-card">
+                <div class="hotels-offer-content">
+                    <span class="hotels-offer-badge">Hotéis Internacionais</span>
+                    <h3>Aproveite até 20% de desconto em Hotéis Internacionais</h3>
+                    <p>Aproveite esta temporada com reservas de hotéis exclusivas na Travel.</p>
+                    <a href="#property-types" class="hotels-offer-btn">Reserve Agora</a>
+                </div>
+                <div class="hotels-offer-img">
+                    <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=500&q=80" alt="Piscina de Resort">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Browse by property type Section -->
+    <section class="hotels-section" id="property-types" style="padding-top: 0;">
+        <h2 class="hotels-section-title">Navegue por tipo de propriedade</h2>
+        <div class="hotels-property-grid">
+            <div class="hotels-property-card" onclick="window.location.href='@Url.Action("Listing", "Hotels", new { propertyType = "Hotel" })'">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" alt="Hotéis">
+                <h3>Hotéis</h3>
+            </div>
+            <div class="hotels-property-card" onclick="window.location.href='@Url.Action("Listing", "Hotels", new { propertyType = "Apartment" })'">
+                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&q=80" alt="Apartamentos">
+                <h3>Apartamentos</h3>
+            </div>
+            <div class="hotels-property-card" onclick="window.location.href='@Url.Action("Listing", "Hotels", new { propertyType = "Resort" })'">
+                <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=500&q=80" alt="Resorts">
+                <h3>Resorts</h3>
+            </div>
+            <div class="hotels-property-card" onclick="window.location.href='@Url.Action("Listing", "Hotels", new { propertyType = "Villa" })'">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&q=80" alt="Villas">
+                <h3>Villas</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Travel Expert Banner Section -->
+    <section class="hotels-section" style="padding-top: 0;">
+        <div class="hotels-expert-banner">
+            <div class="hotels-expert-bg">
+                <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&q=80" alt="Travel map context background">
+            </div>
+            <div class="hotels-expert-content">
+                <h2>Planeje sua viagem com especialistas</h2>
+                <p>Nossos consultores profissionais criam o roteiro perfeito para você</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Community Section -->
+    <section class="hotels-section" style="padding-top: 0; padding-bottom: 120px;">
+        <h2 class="hotels-section-title">Conecte-se com outros viajantes em nossa comunidade</h2>
+        <div class="hotels-community-grid">
+            <div class="hotels-community-card">
+                <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Comunidade Índia">
+                <div class="hotels-community-info">
+                    <h3>Índia</h3>
+                    <p class="community-tag">Comunidade de viagens</p>
+                    <p class="community-count">155.073 viajantes</p>
+                </div>
+            </div>
+            <div class="hotels-community-card">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=500&q=80" alt="Papo de Viagem">
+                <div class="hotels-community-info">
+                    <h3>Papo de Viagem</h3>
+                    <p class="community-tag">Comunidade de viagens</p>
+                    <p class="community-count">155.073 viajantes</p>
+                </div>
+            </div>
+            <div class="hotels-community-card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&q=80" alt="Comunidade Praias">
+                <div class="hotels-community-info">
+                    <h3>Praias</h3>
+                    <p class="community-tag">Comunidade de viagens</p>
+                    <p class="community-count">155.073 viajantes</p>
+                </div>
+            </div>
+            <div class="hotels-community-card">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=500&q=80" alt="Comunidade Montanhas">
+                <div class="hotels-community-info">
+                    <h3>Montanhas</h3>
+                    <p class="community-tag">Comunidade de viagens</p>
+                    <p class="community-count">155.073 viajantes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </div>
-
-@section Scripts {
-    <script src="~/js/Hotels/hotels.js"></script>
-}
-
-
