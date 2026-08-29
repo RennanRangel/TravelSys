@@ -17,5 +17,4 @@
       el.classList.remove("open");
     });
   });
-
 });

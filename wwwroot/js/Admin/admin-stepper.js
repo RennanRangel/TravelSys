@@ -1,118 +1,130 @@
-﻿document.addEventListener('DOMContentLoaded', function() {
-    
-    window.updateFileUpload = function(input) {
-        const container = input.closest('.admin-file-upload-container');
-        if (!container) return;
-        
-        const display = container.querySelector('.filename-display');
-        const textSpan = display ? display.querySelector('.name-text') : null;
-        
-        if (input.files && input.files.length > 0) {
-            if (textSpan) textSpan.textContent = input.files[0].name;
-            if (display) display.style.display = 'block';
-        } else {
-            if (display) display.style.display = 'none';
-        }
-    };
+﻿document.addEventListener("DOMContentLoaded", () => {
+  window.updateFileUpload = (input) => {
+    const container = input.closest(".admin-file-upload-container");
+    if (!container) return;
 
-    const sections = document.querySelectorAll('.creation-form-section');
-    const stepperItems = document.querySelectorAll('.stepper-item');
-    const nextButtons = document.querySelectorAll('.next-step');
-    const prevButtons = document.querySelectorAll('.prev-step');
-    let currentStep = 0;
+    const display = container.querySelector(".filename-display");
+    const textSpan = display ? display.querySelector(".name-text") : null;
 
-    function updateStepperUI() {
-        sections.forEach((s, i) => {
-            s.classList.toggle('active', i === currentStep);
-        });
-
-        stepperItems.forEach((item, i) => {
-            item.classList.toggle('active', i === currentStep);
-        });
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (input.files && input.files.length > 0) {
+      if (textSpan) textSpan.textContent = input.files[0].name;
+      if (display) display.style.display = "block";
+    } else {
+      if (display) display.style.display = "none";
     }
+  };
 
-    nextButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            if (currentStep < sections.length - 1) {
-                currentStep++;
-                updateStepperUI();
-            }
-        });
-    });
+  const sections = document.querySelectorAll(".creation-form-section");
+  const stepperItems = document.querySelectorAll(".stepper-item");
+  const nextButtons = document.querySelectorAll(".next-step");
+  const prevButtons = document.querySelectorAll(".prev-step");
+  let currentStep = 0;
 
-    prevButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            if (currentStep > 0) {
-                currentStep--;
-                updateStepperUI();
-            }
-        });
+  const updateStepperUI = () => {
+    sections.forEach((s, i) => {
+      s.classList.toggle("active", i === currentStep);
     });
 
     stepperItems.forEach((item, i) => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            currentStep = i;
-            updateStepperUI();
-        });
+      item.classList.toggle("active", i === currentStep);
     });
 
-    document.addEventListener('invalid', function(e) {
-        const section = e.target.closest('.creation-form-section');
-        if (section) {
-            const sectionsArray = Array.from(sections);
-            const idx = sectionsArray.indexOf(section);
-            if (idx !== -1 && idx !== currentStep) {
-                currentStep = idx;
-                updateStepperUI();
-                setTimeout(() => e.target.reportValidity(), 50);
-            }
-        }
-    }, true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-    window.togglePriceFields = function() {
-        const chkEco = document.getElementById('chkEconomy');
-        const chkBus = document.getElementById('chkBusiness');
-        const chkFir = document.getElementById('chkFirstClass');
-        
-        const eco = chkEco ? chkEco.checked : false;
-        const bus = chkBus ? chkBus.checked : false;
-        const fir = chkFir ? chkFir.checked : false;
-        
-        const contEco = document.getElementById('price-economy-container');
-        const contBus = document.getElementById('price-business-container');
-        const contFir = document.getElementById('price-firstclass-container');
-        
-        if (contEco) {
-            contEco.style.display = eco ? 'block' : 'none';
-            const inp = document.querySelector('[name="EconomyPrice"]') || document.querySelector('[name="NewFlight.EconomyPrice"]');
-            if (inp) inp.required = eco;
-        }
-        if (contBus) {
-            contBus.style.display = bus ? 'block' : 'none';
-            const inp = document.querySelector('[name="BusinessPrice"]') || document.querySelector('[name="NewFlight.BusinessPrice"]');
-            if (inp) inp.required = bus;
-        }
-        if (contFir) {
-            contFir.style.display = fir ? 'block' : 'none';
-            const inp = document.querySelector('[name="FirstClassPrice"]') || document.querySelector('[name="NewFlight.FirstClassPrice"]');
-            if (inp) inp.required = fir;
-        }
-        
-        const classes = [];
-        if (eco) classes.push(chkEco.value);
-        if (bus) classes.push(chkBus.value);
-        if (fir) classes.push(chkFir.value);
-        
-        const hiddenInput = document.getElementById('FlightClasses');
-        if (hiddenInput) {
-            hiddenInput.value = classes.join(',');
-        }
-    };
+  nextButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (currentStep < sections.length - 1) {
+        currentStep++;
+        updateStepperUI();
+      }
+    });
+  });
 
-    if (document.getElementById('chkEconomy')) {
-        togglePriceFields();
+  prevButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (currentStep > 0) {
+        currentStep--;
+        updateStepperUI();
+      }
+    });
+  });
+
+  stepperItems.forEach((item, i) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      currentStep = i;
+      updateStepperUI();
+    });
+  });
+
+  document.addEventListener(
+    "invalid",
+    (e) => {
+      const section = e.target.closest(".creation-form-section");
+      if (!section) return;
+
+      const sectionsArray = Array.from(sections);
+      const idx = sectionsArray.indexOf(section);
+
+      if (idx !== -1 && idx !== currentStep) {
+        currentStep = idx;
+        updateStepperUI();
+        setTimeout(() => e.target.reportValidity(), 50);
+      }
+    },
+    true,
+  );
+
+  window.togglePriceFields = () => {
+    const chkEco = document.getElementById("chkEconomy");
+    const chkBus = document.getElementById("chkBusiness");
+    const chkFir = document.getElementById("chkFirstClass");
+
+    const eco = chkEco ? chkEco.checked : false;
+    const bus = chkBus ? chkBus.checked : false;
+    const fir = chkFir ? chkFir.checked : false;
+
+    const contEco = document.getElementById("price-economy-container");
+    const contBus = document.getElementById("price-business-container");
+    const contFir = document.getElementById("price-firstclass-container");
+
+    if (contEco) {
+      contEco.style.display = eco ? "block" : "none";
+      const inp =
+        document.querySelector('[name="EconomyPrice"]') ||
+        document.querySelector('[name="NewFlight.EconomyPrice"]');
+      if (inp) inp.required = eco;
     }
+
+    if (contBus) {
+      contBus.style.display = bus ? "block" : "none";
+      const inp =
+        document.querySelector('[name="BusinessPrice"]') ||
+        document.querySelector('[name="NewFlight.BusinessPrice"]');
+      if (inp) inp.required = bus;
+    }
+
+    if (contFir) {
+      contFir.style.display = fir ? "block" : "none";
+      const inp =
+        document.querySelector('[name="FirstClassPrice"]') ||
+        document.querySelector('[name="NewFlight.FirstClassPrice"]');
+      if (inp) inp.required = fir;
+    }
+
+    const classes = [];
+    if (eco) classes.push(chkEco.value);
+    if (bus) classes.push(chkBus.value);
+    if (fir) classes.push(chkFir.value);
+
+    const hiddenInput = document.getElementById("FlightClasses");
+    if (hiddenInput) {
+      hiddenInput.value = classes.join(",");
+    }
+  };
+
+  if (document.getElementById("chkEconomy")) {
+    togglePriceFields();
+  }
 });

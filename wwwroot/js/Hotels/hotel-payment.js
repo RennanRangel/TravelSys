@@ -1,101 +1,108 @@
-﻿
-document.addEventListener('DOMContentLoaded', () => {
-    const DOM = {
-        containerCheckout: document.querySelector('.checkout-pagamento'),
-        listaCartoes: document.querySelector('.lista-cartoes'),
-        btnAdicionarCartao: document.querySelector('#addNewCardBtn'),
-        modal: document.querySelector('#addCardModal'),
-        fecharModal: document.querySelector('.modal-sistema__fechar'),
-        displayPreco: document.querySelector('#totalPriceDisplay'),
-        inputTipoPagamento: document.querySelector('#selectedPaymentType'),
-        formFinalizar: document.querySelector('.form-pagamento-final'),
-        btnSubmeter: document.querySelector('.btn-acao--primario')
-    };
+﻿document.addEventListener("DOMContentLoaded", () => {
+  const DOM = {
+    containerCheckout: document.querySelector(".checkout-pagamento"),
+    listaCartoes: document.querySelector(".lista-cartoes"),
+    btnAdicionarCartao: document.querySelector("#addNewCardBtn"),
+    modal: document.querySelector("#addCardModal"),
+    fecharModal: document.querySelector(".modal-sistema__fechar"),
+    displayPreco: document.querySelector("#totalPriceDisplay"),
+    inputTipoPagamento: document.querySelector("#selectedPaymentType"),
+    formFinalizar: document.querySelector(".form-pagamento-final"),
+    btnSubmeter: document.querySelector(".btn-acao--primario"),
+  };
 
-    if (!DOM.containerCheckout && !DOM.listaCartoes) return;
+  if (!DOM.containerCheckout && !DOM.listaCartoes) return;
 
-    const handleSelecaoPagamento = (elemento) => {
-        DOM.containerCheckout.querySelectorAll('.checkout-pagamento__item').forEach(el => {
-            el.classList.remove('checkout-pagamento__item--selecionado');
-        });
-        elemento.classList.add('checkout-pagamento__item--selecionado');
-        const radio = elemento.querySelector('input[type="radio"]');
-        if (radio) radio.checked = true;
-        const valorRaw = elemento.dataset.amount;
-        if (valorRaw && DOM.displayPreco) {
-            const valor = parseFloat(valorRaw.replace(',', '.'));
-            if (!isNaN(valor)) {
-                DOM.displayPreco.textContent = `$${valor.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
-            }
-        }
+  const handleSelecaoPagamento = (elemento) => {
+    DOM.containerCheckout
+      .querySelectorAll(".checkout-pagamento__item")
+      .forEach((el) => {
+        el.classList.remove("checkout-pagamento__item--selecionado");
+      });
+    elemento.classList.add("checkout-pagamento__item--selecionado");
+    const radio = elemento.querySelector('input[type="radio"]');
+    if (radio) radio.checked = true;
+    const valorRaw = elemento.dataset.amount;
+    if (valorRaw && DOM.displayPreco) {
+      const valor = parseFloat(valorRaw.replace(",", "."));
+      if (!isNaN(valor)) {
+        DOM.displayPreco.textContent = `$${valor.toLocaleString("en-US", { minimumFractionDigits: 2 })}`;
+      }
+    }
 
-        if (DOM.inputTipoPagamento) {
-            DOM.inputTipoPagamento.value = elemento.dataset.type;
-        }
-    };
+    if (DOM.inputTipoPagamento) {
+      DOM.inputTipoPagamento.value = elemento.dataset.type;
+    }
+  };
 
-    const handleSelecaoCartao = (elemento) => {
-        DOM.listaCartoes.querySelectorAll('.cartao-salvo').forEach(c => {
-            c.classList.remove('cartao-salvo--selecionado');
-        });
-        elemento.classList.add('cartao-salvo--selecionado');
-    };
-
-    const toggleModal = (exibir) => {
-        const classeAtiva = 'modal-sistema--ativo';
-        exibir ? DOM.modal?.classList.add(classeAtiva) : DOM.modal?.classList.remove(classeAtiva);
-    };
-
-    const handleSubmissao = (e) => {
-        const btn = DOM.btnSubmeter;
-        if (!btn || btn.classList.contains('btn-acao--loading')) {
-            e.preventDefault();
-            return;
-        }
-        btn.classList.add('btn-acao--loading');
-        btn.disabled = true;
-    };
-
-    DOM.containerCheckout?.addEventListener('click', (e) => {
-        const item = e.target.closest('.checkout-pagamento__item');
-        if (item) handleSelecaoPagamento(item);
+  const handleSelecaoCartao = (elemento) => {
+    DOM.listaCartoes.querySelectorAll(".cartao-salvo").forEach((c) => {
+      c.classList.remove("cartao-salvo--selecionado");
     });
+    elemento.classList.add("cartao-salvo--selecionado");
+  };
 
-    DOM.listaCartoes?.addEventListener('click', (e) => {
-        if (e.target.closest('.cartao-salvo__deletar')) return;
-        const card = e.target.closest('.cartao-salvo');
-        if (card) handleSelecaoCartao(card);
-    });
+  const toggleModal = (exibir) => {
+    const classeAtiva = "modal-sistema--ativo";
+    exibir
+      ? DOM.modal?.classList.add(classeAtiva)
+      : DOM.modal?.classList.remove(classeAtiva);
+  };
 
-    DOM.btnAdicionarCartao?.addEventListener('click', () => toggleModal(true));
-    DOM.fecharModal?.addEventListener('click', () => toggleModal(false));
+  const handleSubmissao = (e) => {
+    const btn = DOM.btnSubmeter;
+    if (!btn || btn.classList.contains("btn-acao--loading")) {
+      e.preventDefault();
+      return;
+    }
+    btn.classList.add("btn-acao--loading");
+    btn.disabled = true;
+  };
 
-    window.addEventListener('click', (e) => {
-        if (e.target === DOM.modal) toggleModal(false);
-    });
+  DOM.containerCheckout?.addEventListener("click", (e) => {
+    const item = e.target.closest(".checkout-pagamento__item");
+    if (item) handleSelecaoPagamento(item);
+  });
 
-    DOM.formFinalizar?.addEventListener('submit', handleSubmissao);
+  DOM.listaCartoes?.addEventListener("click", (e) => {
+    if (e.target.closest(".cartao-salvo__deletar")) return;
+    const card = e.target.closest(".cartao-salvo");
+    if (card) handleSelecaoCartao(card);
+  });
+
+  DOM.btnAdicionarCartao?.addEventListener("click", () => toggleModal(true));
+  DOM.fecharModal?.addEventListener("click", () => toggleModal(false));
+
+  window.addEventListener("click", (e) => {
+    if (e.target === DOM.modal) toggleModal(false);
+  });
+
+  DOM.formFinalizar?.addEventListener("submit", handleSubmissao);
 });
 
 function updatePayment(type, amount) {
-    document.querySelectorAll('.payment-card').forEach(card => card.classList.remove('selected'));
-    if (event && event.currentTarget) {
-        event.currentTarget.classList.add('selected');
-    }
-    const paymentTypeInput = document.getElementById('selectedPaymentType');
-    if (paymentTypeInput) paymentTypeInput.value = type;
-    const totalDisplay = document.getElementById('totalPriceDisplay');
-    if (totalDisplay) totalDisplay.textContent = '$' + amount.toFixed(2);
+  document
+    .querySelectorAll(".payment-card")
+    .forEach((card) => card.classList.remove("selected"));
+  if (event && event.currentTarget) {
+    event.currentTarget.classList.add("selected");
+  }
+  const paymentTypeInput = document.getElementById("selectedPaymentType");
+  if (paymentTypeInput) paymentTypeInput.value = type;
+  const totalDisplay = document.getElementById("totalPriceDisplay");
+  if (totalDisplay) totalDisplay.textContent = "$" + amount.toFixed(2);
 }
 
 function selectCard(element) {
-    document.querySelectorAll('.card-item').forEach(card => card.classList.remove('selected'));
-    if (element) element.classList.add('selected');
+  document
+    .querySelectorAll(".card-item")
+    .forEach((card) => card.classList.remove("selected"));
+  if (element) element.classList.add("selected");
 }
 
 function toggleModal(show) {
-    const modal = document.getElementById('addCardModal');
-    if (modal) {
-        modal.classList.toggle('active', show);
-    }
+  const modal = document.getElementById("addCardModal");
+  if (modal) {
+    modal.classList.toggle("active", show);
+  }
 }
