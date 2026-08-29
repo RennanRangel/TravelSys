@@ -1,15 +1,11 @@
-/* =============================================
-   Hotel Listing Page — Airbnb Style
-   ============================================= */
+﻿
 
-/* Page wrapper */
 .listing-page {
     min-height: 100vh;
     background: #fff;
     font-family: 'Montserrat', sans-serif;
 }
 
-/* ── Category Tabs Bar ── */
 .category-tabs-bar {
     position: sticky;
     top: 64px;
@@ -62,7 +58,6 @@
     border-bottom-color: #222;
 }
 
-/* ── Filter Pills ── */
 .filter-pills {
     display: flex;
     align-items: center;
@@ -130,7 +125,6 @@
 .toggle-switch input:checked + .toggle-slider { background: #222; }
 .toggle-switch input:checked + .toggle-slider::before { transform: translateX(18px); }
 
-/* ── Layout ── */
 .listing-layout {
     display: flex;
     max-width: 1400px;
@@ -140,7 +134,6 @@
     align-items: flex-start;
 }
 
-/* ── Sidebar ── */
 .listing-sidebar {
     width: 280px;
     flex-shrink: 0;
@@ -150,7 +143,7 @@
     padding: 24px;
     position: sticky;
     top: 130px;
-    display: none; /* hidden by default, toggled via JS */
+    display: none; 
 }
 
 .listing-sidebar.open {
@@ -253,13 +246,11 @@
 }
 .btn-apply-filters:hover { background: #000; }
 
-/* ── Main Content ── */
 .listing-main {
     flex: 1;
     min-width: 0;
 }
 
-/* ── Search Bar ── */
 .listing-search-bar {
     background: #fff;
     border: 1px solid #ddd;
@@ -323,7 +314,6 @@
 }
 .btn-search-listing:hover { background: #6bb99e; }
 
-/* ── Results info ── */
 .results-info {
     margin-bottom: 20px;
     font-size: 15px;
@@ -331,7 +321,6 @@
 }
 .results-info span { font-weight: 700; }
 
-/* ── Property Grid (4 cols, Airbnb style) ── */
 .property-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -350,7 +339,6 @@
     .property-grid { grid-template-columns: 1fr; }
 }
 
-/* ── Property Card ── */
 .property-card {
     cursor: pointer;
     border-radius: 12px;
@@ -387,7 +375,6 @@
     color: #ccc;
 }
 
-/* Heart button */
 .btn-heart {
     position: absolute;
     top: 12px;
@@ -424,7 +411,6 @@
     gap: 4px;
 }
 
-/* Card info */
 .property-info {
     padding: 12px 2px 4px;
 }
@@ -481,7 +467,6 @@
     font-weight: 700;
 }
 
-/* ── No Results ── */
 .no-results {
     grid-column: 1 / -1;
     text-align: center;
@@ -504,7 +489,6 @@
     font-size: 14px;
 }
 
-/* ── Pagination ── */
 .pagination-container {
     display: flex;
     justify-content: center;

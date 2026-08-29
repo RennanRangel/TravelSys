@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     
     const DOM = {
         breadcrumbName: document.querySelector('#breadcrumbHotelName'),
@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mapFrame: document.querySelector('#hotelMapFrame'),
         btnFavorite: document.querySelector('#btnFavorite')
     };
-
 
     const getRatingLabel = (rating) => {
         const score = parseFloat(rating);
@@ -87,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (DOM.mapFrame && hotel.mapUrl) DOM.mapFrame.src = hotel.mapUrl;
     };
-
 
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');

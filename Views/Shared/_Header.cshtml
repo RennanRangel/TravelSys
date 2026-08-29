@@ -1,4 +1,4 @@
-@{
+﻿@{
     var controller = ViewContext.RouteData.Values["controller"]?.ToString()?.ToLower();
     var action = ViewContext.RouteData.Values["action"]?.ToString()?.ToLower();
     bool isJadooStyle = (controller == "home" && action == "index") ||
@@ -11,12 +11,12 @@
 {
     <header class="header header-jadoo">
         <div class="header-container">
-            <!-- 1. Left: Travel Logo -->
+            
             <a class="logo logo-jadoo" asp-area="" asp-controller="Home" asp-action="Index">
                 <span class="logo-text">Travel</span><i class="fas fa-plane-departure logo-plane-icon"></i>
             </a>
 
-            <!-- 2. Right: Navigation and Actions -->
+            
             <div class="header-right">
                 <nav class="nav-links-jadoo">
                     <a href="/#destinations" class="nav-link-jadoo">Destinos</a>
@@ -73,18 +73,18 @@ else
 {
     <header class="header">
         <div class="header-container">
-            <!-- 1. Esquerda: Navegação -->
+            
             <nav class="nav-links">
                 <a href="/Flights" class="nav-link @(controller == "flights" ? "active" : "")"><i class="fas fa-plane"></i> Voos</a>
                 <a href="/Hotels" class="nav-link @(controller == "hotels" ? "active" : "")"><i class="fas fa-hotel"></i> Hotéis</a>
             </nav>
 
-            <!-- 2. Centro: Logo -->
+            
             <a class="logo" asp-area="" asp-controller="Home" asp-action="Index">
                 <div class="logo-text">Travel <i class="fas fa-plane-departure"></i></div>
             </a>
 
-            <!-- 3. Direita: Ações -->
+            
             <div class="header-actions">
                 @if (isAuthenticated)
                 {

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+﻿document.addEventListener('DOMContentLoaded', function () {
     const statusFilters = document.querySelectorAll('input[name="status-filter"]');
     const tableRows = document.querySelectorAll('.mgmt-table tbody tr');
     const searchInput = document.querySelector('.mgmt-search-input');

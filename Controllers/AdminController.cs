@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
@@ -114,7 +114,6 @@ public class AdminController : Controller
     [HttpPost]
     public async Task<IActionResult> AtualizarAdmin(string userId, string firstName, string lastName, string email, string phone, UserRole role, string newPassword)
     {
-        // Segurança: Apenas o Admin Master (admin@gmail.com) pode gerenciar outros admins
         if (User.Identity?.Name != "admin@gmail.com")
         {
             TempData["ErrorMessage"] = "Apenas o Admin Master tem permissão para editar outros administradores.";

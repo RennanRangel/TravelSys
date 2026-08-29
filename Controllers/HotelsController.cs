@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using ProjetoHotelAviao.Data;
@@ -207,7 +207,6 @@ public class HotelsController : Controller
 
         return View("hotel-ticket-booking", booking);
     }
-
 
     [HttpGet]
     public IActionResult Create() => View();

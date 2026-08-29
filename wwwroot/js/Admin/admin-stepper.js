@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿document.addEventListener('DOMContentLoaded', function() {
     
     window.updateFileUpload = function(input) {
         const container = input.closest('.admin-file-upload-container');

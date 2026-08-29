@@ -1,4 +1,4 @@
-/* flight-ticket.css - Mockup 2173 */
+﻿
 
 .main-container {
     max-width: 1200px;
@@ -6,7 +6,6 @@
     padding: 40px 20px;
 }
 
-/* Header Section */
 .confirmation-header {
     display: flex;
     justify-content: space-between;
@@ -71,7 +70,6 @@
     cursor: pointer;
 }
 
-/* Boarding Pass Container */
 .boarding-pass-container {
     display: flex;
     gap: 32px;
@@ -83,7 +81,6 @@
     margin-bottom: 64px;
 }
 
-/* Timeline Side */
 .pass-timeline {
     width: 160px;
     background: #fafafa;
@@ -132,7 +129,6 @@
     opacity: 0.2;
 }
 
-/* Main Ticket Body */
 .pass-main {
     flex: 1;
     padding: 40px;
@@ -262,7 +258,6 @@
     color: #8DD3BB;
 }
 
-/* Map Section */
 .pass-map-side {
     width: 320px;
     background: #fdfdfd;
@@ -305,12 +300,11 @@
     position: relative;
     width: 100%;
     height: 240px;
-    background: url('https://www.transparenttextures.com/patterns/gray-dotted-map.png'); /* Fallback pattern */
+    background: url('https://www.transparenttextures.com/patterns/gray-dotted-map.png'); 
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-/* Terms and Conditions Section */
 .terms-conditions-container {
     padding-top: 64px;
     border-top: 1px solid #E7E8E9;

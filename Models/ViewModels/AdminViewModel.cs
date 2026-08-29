@@ -1,4 +1,4 @@
-using ProjetoHotelAviao.Models;
+﻿using ProjetoHotelAviao.Models;
 
 namespace ProjetoHotelAviao.Models.ViewModels;
 
@@ -23,8 +23,6 @@ public class AdminViewModel
     public IFormFile? FlightLogoUpload { get; set; }
     public IFormFile? FlightMainImageUpload { get; set; }
     public IFormFile? HotelMainImageUpload { get; set; }
-
-    // Chart Data
     public List<RevenueDataPoint> RevenueByMonth { get; set; } = new();
     public List<DestinationDataPoint> BookingsByDestination { get; set; } = new();
 }

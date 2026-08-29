@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 body .ticket-container {
     max-width: 1240px;
@@ -8,7 +8,6 @@ body .ticket-container {
     color: #112211;
 }
 
-/* Breadcrumbs */
 .breadcrumbs {
     display: flex;
     align-items: center;
@@ -39,7 +38,6 @@ body .ticket-container .nav-link-back:hover {
     color: #112211;
 }
 
-/* Header Section */
 .ticket-header-top {
     display: flex;
     justify-content: space-between;
@@ -94,7 +92,6 @@ body .ticket-container .nav-link-back:hover {
     font-size: 14px;
 }
 
-/* Ticket Card */
 .ticket-card {
     background: #FFFFFF;
     border-radius: 16px;
@@ -295,7 +292,6 @@ body .ticket-container .nav-link-back:hover {
     letter-spacing: 2px;
 }
 
-/* Terms and Conditions */
 .terms-footer {
     padding-top: 64px;
     border-top: 1px solid #E7E8E9;

@@ -1,10 +1,6 @@
-/**
- * Gerenciamento de Tarefas Administrativas (Kanban)
- */
+﻿
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Configuração de Drag and Drop
     const initializeDragAndDrop = () => {
-        // Tornar os cards arrastáveis
         document.querySelectorAll('.kanban-drop-zone .admin-card').forEach(card => {
             card.setAttribute('draggable', 'true');
 
@@ -17,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.classList.remove('dragging');
             });
         });
-
-        // Configurar as zonas de drop
         document.querySelectorAll('.kanban-drop-zone').forEach(zone => {
             zone.addEventListener('dragover', function(e) {
                 e.preventDefault();
@@ -52,8 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     initializeDragAndDrop();
-
-    // 2. Funções Globais para o Modal e Operações CRUD
     window.openNewTaskModal = function() {
         const modalEl = document.getElementById('newTaskModal');
         if (modalEl) {

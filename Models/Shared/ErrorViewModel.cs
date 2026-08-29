@@ -1,4 +1,4 @@
-namespace ProjetoHotelAviao.Models;
+﻿namespace ProjetoHotelAviao.Models;
 
 public class ErrorViewModel
 {

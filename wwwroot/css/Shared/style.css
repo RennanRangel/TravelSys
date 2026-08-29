@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap");
 
 * {
   margin: 0;
@@ -691,10 +691,6 @@ body {
   }
 }
 
-/* ==========================================
-   CORREÇÃO DA NAVBAR (SEM !IMPORTANT)
-   ========================================== */
-
 header .navbar,
 body .navbar {
   background-color: #ffffff;
@@ -704,7 +700,6 @@ body .navbar {
   z-index: 100;
 }
 
-/* Força alinhamento horizontal do contêiner */
 header .navbar .container,
 body .navbar .container {
   display: flex;
@@ -713,7 +708,6 @@ body .navbar .container {
   justify-content: space-between;
 }
 
-/* Logo */
 header .navbar-brand,
 body .navbar-brand {
   display: flex;
@@ -735,7 +729,6 @@ body .navbar-brand {
   font-size: 0.95em;
 }
 
-/* Links do Menu Central */
 header .navbar .navbar-nav,
 body .navbar .navbar-nav {
   display: flex;
@@ -774,7 +767,6 @@ body .navbar .site-nav-link:hover {
   background-color: rgba(141, 211, 187, 0.25);
 }
 
-/* Botões / Ações do Lado Direito */
 header .navbar .navbar-actions,
 body .navbar .navbar-actions {
   display: flex;

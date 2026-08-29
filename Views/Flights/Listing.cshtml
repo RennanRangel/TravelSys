@@ -1,4 +1,4 @@
-@model ProjetoHotelAviao.Models.PaginatedList<ProjetoHotelAviao.Models.Flight>
+﻿@model ProjetoHotelAviao.Models.PaginatedList<ProjetoHotelAviao.Models.Flight>
 @using System.Linq
 @{
     ViewData["Title"] = "Voos - Travel";
@@ -11,7 +11,7 @@
 
 <div class="listing-page">
 
-    <!-- Category Tabs Bar -->
+    
     <div class="category-tabs-bar">
         <div class="category-tabs-scroll">
             <a href="#" onclick="applySort('cheapest'); return false;" class="cat-tab @(currentSort == "cheapest" ? "active" : "")">
@@ -49,10 +49,10 @@
         </div>
     </div>
 
-    <!-- Main Layout -->
+    
     <div class="listing-layout">
 
-        <!-- Sidebar Filters -->
+        
         <aside class="listing-sidebar" id="listingSidebar">
             <h3 class="sidebar-title">Filtros</h3>
             <form asp-action="Listing" method="get" id="filterForm">
@@ -62,7 +62,7 @@
                 }
                 <input type="hidden" name="sortOrder" id="sortOrderInput" value="@currentSort" />
 
-                <!-- Preço -->
+                
                 <div class="filter-section">
                     <div class="filter-header">
                         <h4>Preço</h4>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
 
-                <!-- Horário de Partida -->
+                
                 <div class="filter-section">
                     <div class="filter-header">
                         <h4>Horário de Partida</h4>
@@ -98,7 +98,7 @@
                     </div>
                 </div>
 
-                <!-- Companhias Aéreas -->
+                
                 <div class="filter-section">
                     <div class="filter-header">
                         <h4>Companhias Aéreas</h4>
@@ -127,7 +127,7 @@
                     </div>
                 </div>
 
-                <!-- Tipo de Viagem -->
+                
                 <div class="filter-section">
                     <div class="filter-header">
                         <h4>Tipo de Viagem</h4>
@@ -156,10 +156,10 @@
             </form>
         </aside>
 
-        <!-- Main Content -->
+        
         <main class="listing-main">
 
-            <!-- Search Bar -->
+            
             <div class="listing-search-bar">
                 <form asp-action="Listing" method="get" class="listing-search-form">
                     <div class="search-field">
@@ -204,12 +204,12 @@
                 </form>
             </div>
 
-            <!-- Results info -->
+            
             <div class="results-info">
                 <p><span>@Model.Count()</span> voos encontrados</p>
             </div>
 
-            <!-- Hidden form for sort/filter state -->
+            
             <form id="filterFormHidden" asp-action="Listing" method="get" style="display:none;">
                 <input type="hidden" name="sortOrder" id="sortOrderInputHidden" value="@currentSort" />
                 @if (ViewData["SearchRoute"] != null) { <input type="hidden" name="route" value="@ViewData["SearchRoute"]" /> }
@@ -225,7 +225,7 @@
                 }
             </form>
 
-            <!-- Flight Cards -->
+            
             <div class="flight-cards-list">
                 @if (!Model.Any())
                 {
@@ -241,7 +241,7 @@
                 {
                     var cid = $"card-{cardIndex}";
                     <div class="flight-card" id="@cid">
-                        <!-- Logo + Companhia -->
+                        
                         <div class="flight-card-airline">
                             @if (!string.IsNullOrEmpty(flight.Logo))
                             {
@@ -254,9 +254,9 @@
                             <span class="airline-name">@flight.Airline</span>
                         </div>
 
-                        <!-- Itinerário -->
+                        
                         <div class="flight-card-body">
-                            <!-- Ida -->
+                            
                             <div class="flight-leg">
                                 <div class="leg-time">
                                     <span class="time-bold">@flight.Departure</span>
@@ -279,7 +279,7 @@
                                 </div>
                             </div>
 
-                            <!-- Volta (se aplicável) -->
+                            
                             @if (flight.TripType == "Round trip")
                             {
                                 <div class="flight-leg flight-leg-return">
@@ -306,7 +306,7 @@
                             }
                         </div>
 
-                        <!-- Preço + Ações -->
+                        
                         <div class="flight-card-actions">
                             <div class="price-block">
                                 <span class="price-hint">a partir de</span>
@@ -327,7 +327,7 @@
                 }
             </div>
 
-            <!-- Pagination -->
+            
             <div class="pagination-container">
                 @{
                     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";

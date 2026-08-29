@@ -1,4 +1,4 @@
-@{
+﻿@{
     ViewData["Title"] = "Travel - Agência de Viagens";
     ViewData["BodyClass"] = "home-page";
 }
@@ -7,21 +7,18 @@
     <link rel="stylesheet" href="~/css/Shared/home.css" asp-append-version="true">
 }
 
-<!-- Glassmorphism Background Blobs -->
 <div class="bg-blobs">
     <div class="blob-1"></div>
     <div class="blob-2"></div>
     <div class="blob-3"></div>
 </div>
 
-<!-- Decorative grid of dots (top-right of Category) -->
 <div class="decors-grid"></div>
 
-<!-- 1. Hero Section -->
 <section class="jadoo-hero">
     <div class="container">
         <div class="jadoo-hero-grid">
-            <!-- Hero Left -->
+            
             <div class="jadoo-hero-content">
                 <p class="hero-tagline">Melhores destinos ao redor do mundo</p>
                 <h1 class="hero-main-title">
@@ -41,7 +38,7 @@
                 </div>
             </div>
             
-            <!-- Hero Right -->
+            
             <div class="jadoo-hero-graphics">
                 <div class="hero-bg-accent"></div>
                 <img src="/images/uploads/hero_traveler.png" alt="Smiling Traveler sitting on suitcase" class="hero-main-img">
@@ -50,7 +47,6 @@
     </div>
 </section>
 
-<!-- 2. Services / Category Section -->
 <section class="jadoo-services">
     <div class="container">
         <div class="jadoo-section-header">
@@ -59,7 +55,7 @@
         </div>
         
         <div class="services-grid services-grid-two">
-            <!-- Card 1: Melhores Hotéis -->
+            
             <div class="service-card">
                 <div class="service-icon-container">
                     <i class="fas fa-hotel service-icon-fa" style="color: #4A90E2;"></i>
@@ -68,7 +64,7 @@
                 <p class="service-desc">Encontre os melhores hotéis e acomodações incríveis para a sua estadia perfeita.</p>
             </div>
 
-            <!-- Card 2: Melhores Voos -->
+            
             <div class="service-card active-highlight">
                 <div class="service-icon-container">
                     <i class="fas fa-plane service-icon-fa" style="color: #DF6951; transform: rotate(-15deg);"></i>
@@ -80,7 +76,6 @@
     </div>
 </section>
 
-<!-- 3. Top Destinations Section -->
 <section class="jadoo-destinations" id="destinations">
     <div class="container">
         <div class="jadoo-section-header">
@@ -89,7 +84,7 @@
         </div>
         
         <div class="destinations-grid">
-            <!-- Dest 1: Roma -->
+            
             <div class="dest-card">
                 <div class="dest-img-container">
                     <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80" alt="Roma, Itália">
@@ -106,7 +101,7 @@
                 </div>
             </div>
 
-            <!-- Dest 2: Londres -->
+            
             <div class="dest-card">
                 <div class="dest-img-container">
                     <img src="/images/Shared/londres.jpg" alt="Londres, Reino Unido">
@@ -123,7 +118,7 @@
                 </div>
             </div>
 
-            <!-- Dest 3: Europa -->
+            
             <div class="dest-card">
                 <div class="dest-img-container">
                     <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80" alt="Europa Completa">
@@ -143,17 +138,16 @@
     </div>
 </section>
 
-<!-- 4. Steps Section -->
 <section class="jadoo-steps">
     <div class="container">
         <div class="steps-grid">
-            <!-- Steps Left -->
+            
             <div class="steps-left">
                 <h3 class="jadoo-section-subtitle" style="text-align: left;">Fácil e Rápido</h3>
                 <h2 class="jadoo-section-title" style="text-align: left; font-size: 44px; margin-bottom: 24px;">Reserve sua próxima viagem em 3 passos simples</h2>
                 
                 <div class="steps-list">
-                    <!-- Step 1 -->
+                    
                     <div class="step-item">
                         <div class="step-icon-box step-icon-yellow">
                             <i class="fas fa-map-location-dot"></i>
@@ -164,7 +158,7 @@
                         </div>
                     </div>
                     
-                    <!-- Step 2 -->
+                    
                     <div class="step-item">
                         <div class="step-icon-box step-icon-orange">
                             <i class="fas fa-credit-card"></i>
@@ -175,7 +169,7 @@
                         </div>
                     </div>
 
-                    <!-- Step 3 -->
+                    
                     <div class="step-item">
                         <div class="step-icon-box step-icon-teal">
                             <i class="fas fa-car"></i>
@@ -188,9 +182,9 @@
                 </div>
             </div>
             
-            <!-- Steps Right (Floating Mockups) -->
+            
             <div class="steps-right">
-                <!-- Greece Trip Card -->
+                
                 <div class="card-trip-greece">
                     <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=500&q=80" alt="Santorini, Grécia" class="greece-img">
                     <h3 class="greece-title">Viagem para a Grécia</h3>
@@ -213,7 +207,7 @@
                     </div>
                 </div>
 
-                <!-- Overlapping Ongoing Card -->
+                
                 <div class="card-ongoing-rome">
                     <div class="rome-avatar-container">
                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Viajante">
@@ -234,11 +228,10 @@
     </div>
 </section>
 
-<!-- 5. Testimonials Section -->
 <section class="jadoo-testimonials">
     <div class="container">
         <div class="testimonials-grid">
-            <!-- Left Header & Dots -->
+            
             <div class="testimonials-left">
                 <div>
                     <h3 class="jadoo-section-subtitle" style="text-align: left;">Depoimentos</h3>
@@ -250,10 +243,10 @@
                 </div>
             </div>
             
-            <!-- Right Stack -->
+            
             <div class="testimonials-right">
                 <div class="testimonial-stack" id="testimonial-stack-container">
-                    <!-- Testimonial 1 -->
+                    
                     <div class="testimonial-card active" data-index="0">
                         <div class="avatar-wrapper">
                             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Mike Taylor">
@@ -265,7 +258,7 @@
                         <p class="author-location">Lahore, Paquistão</p>
                     </div>
 
-                    <!-- Testimonial 2 -->
+                    
                     <div class="testimonial-card next" data-index="1">
                         <div class="avatar-wrapper">
                             <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Chris Thomas">
@@ -278,7 +271,7 @@
                     </div>
                 </div>
                 
-                <!-- Nav Arrows -->
+                
                 <div class="testimonials-nav">
                     <button class="nav-arrow" id="testimonial-prev-btn"><i class="fas fa-chevron-up"></i></button>
                     <button class="nav-arrow" id="testimonial-next-btn"><i class="fas fa-chevron-down"></i></button>
@@ -288,7 +281,6 @@
     </div>
 </section>
 
-<!-- 6. Brands Section -->
 <section class="jadoo-brands">
     <div class="container">
         <div class="brands-row">
@@ -297,14 +289,13 @@
     </div>
 </section>
 
-<!-- 7. Subscribe Section -->
 <section class="jadoo-subscribe">
     <div class="container">
         <div class="subscribe-card">
-            <!-- Plus signs accent -->
+            
             <div class="plus-sign-grid"></div>
             
-            <!-- Floating Plane Icon -->
+            
             <div class="subscribe-plane-container">
                 <i class="fas fa-paper-plane"></i>
             </div>
@@ -324,7 +315,6 @@
     </div>
 </section>
 
-<!-- Video Lightbox Modal (For Play Demo) -->
 <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content" style="background: transparent; border: none;">

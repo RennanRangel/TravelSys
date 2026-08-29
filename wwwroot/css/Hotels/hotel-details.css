@@ -1,4 +1,4 @@
-
+﻿
 .main-container {
     max-width: 1240px;
     margin: 0 auto;
@@ -219,7 +219,7 @@
 
 .section-divider {
     border: 0;
-    border-top: 1.5px solid #D1D1D1; /* More visible grey */
+    border-top: 1.5px solid #D1D1D1; 
     margin: 64px 0;
     opacity: 0.8;
 }

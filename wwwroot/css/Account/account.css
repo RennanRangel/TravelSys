@@ -1,4 +1,4 @@
-
+﻿
 .account-profile-container {
     max-width: 1240px;
     margin: 100px auto 60px;
@@ -796,7 +796,7 @@ hr.ticket-sep {
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
-    color: #000080; /* Visa Blue */
+    color: #000080; 
 }
 
 .select-arrow-custom {
@@ -813,7 +813,6 @@ hr.ticket-sep {
     cursor: pointer;
 }
 
-/* Checkbox Style */
 .checkbox-container {
     display: flex;
     align-items: center;
@@ -872,7 +871,6 @@ hr.ticket-sep {
 
 .d-none { display: none !important; }
 
-/* Inline Edit Styles */
 .edit-inputs {
     margin-top: 10px;
     display: flex;

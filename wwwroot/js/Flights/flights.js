@@ -32,14 +32,12 @@
         markers: document.querySelectorAll('.location-marker')
     };
 
-
     DOM.tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             DOM.tabBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         });
     });
-
 
     DOM.searchForm?.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -51,7 +49,6 @@
         alert('Obrigado por se inscrever!');
         DOM.newsletterForm.reset();
     });
-
 
     DOM.markers.forEach((marker, i) => {
         setTimeout(() => {
@@ -91,7 +88,6 @@
         { name: 'Portugal', capital: 'Lisboa', price: '$ 870', img: 'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800' },
         { name: 'Holanda', capital: 'Amsterdã', price: '$ 960', img: 'https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=800' }
     ];
-
 
     const tickers = [];
     for (let i = 0; i < 3; i++) {
@@ -251,9 +247,6 @@
         }
     ];
 
-
-
-
     
     const bpTitle = document.getElementById('bp-title');
     const bpPrice = document.getElementById('bp-price');
@@ -263,9 +256,6 @@
         document.getElementById('bp-img-0'),
         document.getElementById('bp-img-1')
     ];
-
-
-
 
     let bpIndex = 0;
 
@@ -291,8 +281,6 @@
             bpTitle.textContent = `Backpacking ${c.name}`;
             bpPrice.textContent = c.price;
             bpDesc.textContent = c.description;
-            
-            // Atualizando as imagens
             c.images.forEach((src, i) => {
                 if (bpImgs[i]) {
                     bpImgs[i].src = src;

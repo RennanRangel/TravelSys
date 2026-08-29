@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
 * {
   margin: 0;
@@ -13,9 +13,6 @@ body {
   line-height: 1.5;
 }
 
-/* ==========================================================================
-   Header Principal (Compacto - Height: 50px)
-   ========================================================================== */
 .header {
   width: 100%;
   background-color: #ffffff;
@@ -38,7 +35,6 @@ body {
   position: relative;
 }
 
-/* 1. Esquerda: Links de Navegação (Find Flight & Find Stays) */
 .nav-links {
   display: flex;
   align-items: center;
@@ -73,7 +69,6 @@ body {
   border-color: #222;
 }
 
-/* 2. Centro: Logo Travel (Centralizado Absoluto) */
 .logo,
 .logo-center {
   display: flex;
@@ -96,7 +91,6 @@ body {
   font-size: 18px;
 }
 
-/* 3. Direita: Perfil do Usuário e Ações */
 .header-actions {
   display: flex;
   align-items: center;
@@ -118,7 +112,7 @@ body {
 }
 
 .user-profile-btn::after {
-  display: none; /* Esconde a seta padrão do Bootstrap */
+  display: none; 
 }
 
 .user-avatar-nav {
@@ -139,7 +133,6 @@ body {
   text-overflow: ellipsis;
 }
 
-/* Dropdown Menu do Perfil */
 .dropdown-menu-user {
   width: 280px;
   padding: 0;
@@ -227,7 +220,6 @@ body {
   opacity: 0.4;
 }
 
-/* Botões para visitante (Login / Sign Up) */
 .btn-login,
 .btn-text {
   text-decoration: none;
@@ -296,9 +288,6 @@ body {
   }
 }
 
-/* ==========================================================================
-   Main & Footer
-   ========================================================================== */
 main {
   min-height: calc(100vh - 200px);
 }

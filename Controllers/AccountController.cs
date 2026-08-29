@@ -1,4 +1,4 @@
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -296,7 +296,6 @@ if (result.Succeeded)
         return RedirectToAction("Index", "Home");
     }
 
-
     [Authorize]
     [HttpPost]
     public async Task<IActionResult> UpdateProfile([FromBody] ProfileUpdateModel model)
@@ -331,8 +330,6 @@ if (result.Succeeded)
             if (user == null) return Json(new { success = false, message = "User not found after update." });
         }
 
-
-        // Handle Password Change
         if (!string.IsNullOrEmpty(model.NewPassword))
         {
             if (string.IsNullOrEmpty(model.CurrentPassword))

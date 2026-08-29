@@ -1,18 +1,15 @@
-/* ==========================================================================
-   Home Page Stylesheet
-   ========================================================================== */
+﻿
 
-/* Design Tokens & Custom Properties */
 :root {
   --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-serif: 'Volkhov', Georgia, "Times New Roman", serif;
   
-  --color-primary: #DF6951;     /* Orange/Coral Accent */
-  --color-secondary: #181E4B;   /* Deep Dark Navy */
-  --color-yellow: #F1A501;      /* Yellow accent */
-  --color-text-dark: #212832;   /* Dark text */
-  --color-text-muted: #5E6282;  /* Muted grey-blue text */
-  --color-bg-light: #FFF9F6;    /* Very light warm background tint */
+  --color-primary: #DF6951;     
+  --color-secondary: #181E4B;   
+  --color-yellow: #F1A501;      
+  --color-text-dark: #212832;   
+  --color-text-muted: #5E6282;  
+  --color-bg-light: #FFF9F6;    
   --color-border: #E5E5E5;
   
   --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.03);
@@ -21,7 +18,6 @@
   --shadow-card-hover: 0 30px 60px rgba(0, 0, 0, 0.1);
 }
 
-/* 1. Global Home Page Rules */
 .home-page {
   font-family: var(--font-sans);
   color: var(--color-text-dark);
@@ -34,7 +30,6 @@
   min-height: auto;
 }
 
-/* Glassmorphic Background Decorative Blobs */
 .bg-blobs {
   position: absolute;
   top: 0;
@@ -76,7 +71,6 @@
   filter: blur(60px);
 }
 
-/* Decors */
 .decors-grid {
   position: absolute;
   top: 480px;
@@ -89,7 +83,6 @@
   z-index: -1;
 }
 
-/* Section Header Typography */
 .jadoo-section-header {
   text-align: center;
   margin-bottom: 60px;
@@ -111,9 +104,6 @@
   font-weight: 700;
 }
 
-/* ==========================================================================
-   2. Header & Navigation (Jadoo Layout Overrides)
-   ========================================================================== */
 .home-page .header-jadoo,
 .hotels-page .header-jadoo,
 .flights-page .header-jadoo {
@@ -261,9 +251,6 @@
   margin-top: 2px;
 }
 
-/* ==========================================================================
-   3. Hero Section
-   ========================================================================== */
 .jadoo-hero {
   padding-top: 180px;
   padding-bottom: 80px;
@@ -300,7 +287,6 @@
   letter-spacing: -1px;
 }
 
-/* Custom highlight under "enjoy" matching mockup */
 .enjoy-highlight {
   position: relative;
   display: inline-block;
@@ -374,7 +360,7 @@
   font-size: 14px;
   box-shadow: 0 10px 20px rgba(223, 105, 81, 0.25);
   transition: all 0.3s;
-  padding-left: 3px; /* visual center alignment */
+  padding-left: 3px; 
 }
 
 .btn-play-demo:hover .play-icon-wrapper {
@@ -393,7 +379,6 @@
   color: var(--color-primary);
 }
 
-/* Hero Image & Plane Graphics */
 .jadoo-hero-graphics {
   position: relative;
   display: flex;
@@ -408,7 +393,6 @@
   position: relative;
 }
 
-/* Background blob specific to Hero Image in Jadoo */
 .hero-bg-accent {
   position: absolute;
   top: -20px;
@@ -420,9 +404,6 @@
   pointer-events: none;
 }
 
-/* ==========================================================================
-   4. Services Section
-   ========================================================================== */
 .jadoo-services {
   padding: 160px 0;
   position: relative;
@@ -485,13 +466,11 @@
   color: var(--color-text-muted);
 }
 
-/* Card 2: Special Jadoo highlight styled card */
 .service-card.active-highlight {
   background-color: #ffffff;
   box-shadow: var(--shadow-lg);
 }
 
-/* Custom background block decoration for the active card */
 .service-card.active-highlight::before {
   content: '';
   position: absolute;
@@ -515,9 +494,6 @@
   transform: rotate(5deg) scale(1.05);
 }
 
-/* ==========================================================================
-   5. Destinations Section
-   ========================================================================== */
 .jadoo-destinations {
   padding: 160px 0;
   position: relative;
@@ -605,9 +581,6 @@
   box-shadow: var(--shadow-lg);
 }
 
-/* ==========================================================================
-   6. Steps / Booking Section
-   ========================================================================== */
 .jadoo-steps {
   padding: 160px 0;
   position: relative;
@@ -666,7 +639,6 @@
   color: var(--color-text-muted);
 }
 
-/* Floating Mockup Cards (Right side) */
 .steps-right {
   display: flex;
   justify-content: center;
@@ -674,7 +646,6 @@
   position: relative;
 }
 
-/* Santorini card */
 .card-trip-greece {
   background-color: #ffffff;
   border-radius: 26px;
@@ -762,7 +733,6 @@
   color: var(--color-primary);
 }
 
-/* Overlay Ongoing / Rome card */
 .card-ongoing-rome {
   background-color: #ffffff;
   border-radius: 18px;
@@ -842,9 +812,6 @@
   100% { transform: translateY(-10px); }
 }
 
-/* ==========================================================================
-   7. Testimonials Section
-   ========================================================================== */
 .jadoo-testimonials {
   padding: 160px 0;
   position: relative;
@@ -881,7 +848,6 @@
   background-color: #39425D;
 }
 
-/* Testimonials Carousel (right side stacked layout) */
 .testimonials-right {
   position: relative;
   height: 380px;
@@ -965,7 +931,6 @@
   font-weight: 500;
 }
 
-/* Nav arrows on right side */
 .testimonials-nav {
   display: flex;
   flex-direction: column;
@@ -989,9 +954,6 @@
   color: var(--color-secondary);
 }
 
-/* ==========================================================================
-   8. Brand Logos
-   ========================================================================== */
 .jadoo-brands {
   padding: 140px 0;
   position: relative;
@@ -1010,9 +972,6 @@
   object-fit: contain;
 }
 
-/* ==========================================================================
-   9. Subscribe Banner Section
-   ========================================================================== */
 .jadoo-subscribe {
   padding: 160px 0 180px;
   position: relative;
@@ -1122,7 +1081,6 @@
   box-shadow: 0 12px 25px rgba(255, 125, 104, 0.4);
 }
 
-/* Floating plane icons */
 .subscribe-plane-container {
   position: absolute;
   top: -20px;
@@ -1140,7 +1098,6 @@
   z-index: 3;
 }
 
-/* Plus sign vectors in the corner */
 .plus-sign-grid {
   position: absolute;
   bottom: 30px;
@@ -1153,9 +1110,6 @@
   z-index: 1;
 }
 
-/* ==========================================================================
-   10. Footer Scoped Styles
-   ========================================================================== */
 .home-page .footer,
 .hotels-page .footer,
 .flights-page .footer {
@@ -1306,9 +1260,6 @@
   padding-top: 30px;
 }
 
-/* ==========================================================================
-   11. Responsiveness
-   ========================================================================== */
 @media (max-width: 1024px) {
   .jadoo-hero-grid {
     grid-template-columns: 1fr;

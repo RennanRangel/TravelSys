@@ -1,4 +1,4 @@
-* {
+﻿* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -220,7 +220,7 @@ body {
 }
 
 .google-btn i {
-  color: #ea4335; /* Cor oficial do logo do Google */
+  color: #ea4335; 
 }
 
 .login-link {

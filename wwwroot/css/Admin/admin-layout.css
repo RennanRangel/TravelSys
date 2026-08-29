@@ -1,4 +1,4 @@
-* {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,7 +10,6 @@ body {
     color: #112211;
     line-height: 1.6;
 }
-
 
 .message-container {
     margin-bottom: 1.5rem;
@@ -388,7 +387,6 @@ body {
     box-shadow: 0 2px 8px rgba(244, 67, 54, 0.3);
     margin-top: 5px;
 }
-
 
 .item-details {
     display: grid;

@@ -1,8 +1,5 @@
-/**
- * Gerenciamento de Listagem de Voos (Simplificado)
- */
+﻿
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Cache de Elementos
     const DOM = {
         filterHeaders: document.querySelectorAll('.filter-header'),
         sortTabs: document.querySelectorAll('.sort-tab'),
@@ -13,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         newsletterForm: document.querySelector('.newsletter-form'),
         flightCardsContainer: document.querySelector('.flight-cards')
     };
-
-    // --- FILTROS E ABAS ---
 
     DOM.filterHeaders.forEach(header => {
         header.addEventListener('click', function() {
@@ -36,8 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- FAVORITOS (Delegation) ---
-
     DOM.flightCardsContainer?.addEventListener('click', (e) => {
         const btn = e.target.closest('.btn-favorite');
         if (btn) {
@@ -48,8 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-
-    // --- SLIDERS DE PREÇO ---
 
     if (DOM.priceSliders.length === 2) {
         const [minSlider, maxSlider] = DOM.priceSliders;
@@ -77,8 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    // --- SLIDERS DE HORÁRIO ---
 
     const updateTimeLabel = (val, labelElement) => {
         if (!labelElement) return;
@@ -115,8 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- NEWSLETTER ---
-
     DOM.newsletterForm?.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = DOM.newsletterForm.querySelector('input[type="email"]')?.value;
@@ -142,8 +129,6 @@ function updateCardPrice(cardId) {
 
     const checkboxes = card.querySelectorAll('.itinerary-row input[type="checkbox"]');
     const cbArr = Array.from(checkboxes);
-    
-    // Se todos estiverem desmarcados, marca o primeiro (Ida) por padrão
     if (cbArr.length > 0 && cbArr.every(cb => !cb.checked)) {
         cbArr[0].checked = true;
     }

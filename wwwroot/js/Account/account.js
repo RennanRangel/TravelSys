@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabPanels = document.querySelectorAll('.tab-content-panel');
@@ -7,12 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             const targetId = btn.getAttribute('data-target');
             if (!targetId) return;
-
-            // Remove active from all buttons and panels
             tabBtns.forEach(b => b.classList.remove('active'));
             tabPanels.forEach(p => p.classList.remove('active'));
-            
-            // Add active to current
             btn.classList.add('active');
             const target = document.getElementById(targetId);
             if (target) target.classList.add('active');
@@ -27,8 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             const targetId = btn.getAttribute('data-subtarget');
             if (!targetId) return;
-
-            // Remove active from all sub-btns and containers
             subTabBtns.forEach(b => b.classList.remove('active'));
             ticketContainers.forEach(l => l.classList.remove('active-sub'));
             
@@ -122,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const editInputsArea = row.querySelector('.edit-inputs');
 
         changeBtn.addEventListener('click', () => {
-            // Enter edit mode
             changeBtn.classList.add('d-none');
             editActions.classList.remove('d-none');
             valueDisplay.classList.add('d-none');
@@ -130,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         cancelBtn.addEventListener('click', () => {
-            // Exit edit mode without saving
             changeBtn.classList.remove('d-none');
             editActions.classList.add('d-none');
             valueDisplay.classList.remove('d-none');
@@ -192,15 +184,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (toggleBtn) {
             e.stopPropagation();
             const currentMenu = toggleBtn.nextElementSibling;
-            
-            // Close all other menus
             document.querySelectorAll('.options-menu').forEach(m => {
                 if (m !== currentMenu) m.classList.add('d-none');
             });
             
             currentMenu.classList.toggle('d-none');
         } else {
-            // Close all menus when clicking anywhere else
             document.querySelectorAll('.options-menu').forEach(m => m.classList.add('d-none'));
         }
     });

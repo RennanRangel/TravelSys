@@ -1,4 +1,4 @@
-@model ProjetoHotelAviao.Models.PaginatedList<ProjetoHotelAviao.Models.Hotel>
+﻿@model ProjetoHotelAviao.Models.PaginatedList<ProjetoHotelAviao.Models.Hotel>
 @using System.Linq
 @{
     ViewData["Title"] = "Hotéis - Travel";
@@ -11,7 +11,7 @@
 
 <div class="listing-page">
 
-    <!-- Category Tabs Bar (Airbnb style) -->
+    
     <div class="category-tabs-bar">
         <div class="category-tabs-scroll">
             <a href="#" onclick="applyPropertyType('Hotel'); return false;" class="cat-tab @(currentType == "Hotel" ? "active" : "")">
@@ -49,10 +49,10 @@
         </div>
     </div>
 
-    <!-- Main Layout -->
+    
     <div class="listing-layout">
 
-        <!-- Sidebar Filters (collapible) -->
+        
         <aside class="listing-sidebar" id="listingSidebar">
             <h3 class="sidebar-title">Filtros</h3>
             <form asp-action="Listing" method="get" id="filterForm">
@@ -62,7 +62,7 @@
                 }
                 <input type="hidden" name="propertyType" id="propertyTypeInput" value="@currentType" />
 
-                <!-- Price -->
+                
                 <div class="filter-section">
                     <div class="filter-header">
                         <h4>Preço por noite</h4>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
 
-                <!-- Freebies -->
+                
                 <div class="filter-section">
                     <div class="filter-header">
                         <h4>Benefícios</h4>
@@ -109,7 +109,7 @@
                     </div>
                 </div>
 
-                <!-- Amenities -->
+                
                 <div class="filter-section">
                     <div class="filter-header">
                         <h4>Comodidades</h4>
@@ -142,10 +142,10 @@
             </form>
         </aside>
 
-        <!-- Main Content -->
+        
         <main class="listing-main">
 
-            <!-- Search Bar -->
+            
             <div class="listing-search-bar">
                 <form asp-action="Listing" method="get" class="listing-search-form">
                     <div class="search-field">
@@ -182,12 +182,12 @@
                 </form>
             </div>
 
-            <!-- Results info -->
+            
             <div class="results-info">
                 <p><span>@Model.Count()</span> propriedades encontradas</p>
             </div>
 
-            <!-- Property Grid (Airbnb style) -->
+            
             <div class="property-grid">
                 @if (!Model.Any())
                 {
@@ -201,7 +201,7 @@
                 @foreach (var hotel in Model)
                 {
                     <div class="property-card" onclick="window.location.href='@Url.Action("Details", "Hotels", new { id = hotel.Id })'">
-                        <!-- Image -->
+                        
                         <div class="property-img-wrap">
                             @if (!string.IsNullOrEmpty(hotel.MainImage))
                             {
@@ -213,7 +213,7 @@
                                     <i class="fas fa-hotel"></i>
                                 </div>
                             }
-                            <!-- Heart button -->
+                            
                             <button class="btn-heart" onclick="event.stopPropagation();" title="Salvar">
                                 <i class="far fa-heart"></i>
                             </button>
@@ -223,7 +223,7 @@
                             }
                         </div>
 
-                        <!-- Info -->
+                        
                         <div class="property-info">
                             <div class="property-top-row">
                                 <h3 class="property-location">@hotel.Location</h3>
@@ -242,7 +242,7 @@
                 }
             </div>
 
-            <!-- Pagination -->
+            
             <div class="pagination-container">
                 @{
                     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";

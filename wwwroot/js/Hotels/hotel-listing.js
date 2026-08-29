@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     
     const DOM = {
         filterHeaders: document.querySelectorAll('.filter-header'),
@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         hotelCardsContainer: document.querySelector('.hotel-cards'),
         resultsInfo: document.querySelector('.results-info p')
     };
-
 
     DOM.filterHeaders.forEach(header => {
         header.addEventListener('click', function() {
@@ -33,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     DOM.hotelCardsContainer?.addEventListener('click', (e) => {
         const btn = e.target.closest('.btn-favorite');
         if (btn) {
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-
 
     if (DOM.priceSliders.length === 2) {
         const [minSlider, maxSlider] = DOM.priceSliders;
@@ -72,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
 
     DOM.newsletterForm?.addEventListener('submit', (e) => {
         e.preventDefault();

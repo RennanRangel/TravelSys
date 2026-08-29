@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     
     const DOM = {
         image: document.querySelector('.signup-left img'),
@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentIndex = 0;
 
-
     const changeImage = (index) => {
         if (!DOM.image) return;
         currentIndex = index;
@@ -33,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-
     DOM.toggleBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             const input = this.previousElementSibling;
@@ -46,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.classList.toggle('fa-eye-slash', !isLocked);
         });
     });
-
 
     if (DOM.form) {
         DOM.form.addEventListener('submit', (e) => {

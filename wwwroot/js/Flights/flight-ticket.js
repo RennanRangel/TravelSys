@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     const DOM = {
         botaoDownload: document.querySelector('.btn-download'),
         botaoCompartilhar: document.querySelector('.btn-icon')

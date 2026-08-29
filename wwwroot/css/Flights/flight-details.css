@@ -1,8 +1,5 @@
-/* =============================================
-   Flight Details Page — Airbnb Style
-   ============================================= */
+﻿
 
-/* Page container */
 #flight-details-page {
     max-width: 1200px;
     margin: 32px auto 64px auto;
@@ -11,7 +8,6 @@
     color: #222;
 }
 
-/* ── Breadcrumbs ── */
 .breadcrumbs {
     display: flex;
     align-items: center;
@@ -30,7 +26,6 @@
 .breadcrumbs a:hover { color: #8DD3BB; }
 .breadcrumbs i { font-size: 10px; color: #717171; }
 
-/* ── Header section ── */
 .flight-header {
     display: flex;
     justify-content: space-between;
@@ -81,7 +76,6 @@
 .rating-label { font-weight: 600; }
 .rating-reviews { color: #717171; }
 
-/* Header right */
 .header-right {
     display: flex;
     flex-direction: column;
@@ -151,7 +145,6 @@
 }
 .form-inline-block { display: inline-block; }
 
-/* ── Gallery Layout ── */
 .flight-gallery {
     display: grid;
     grid-template-columns: 2fr 1.1fr;
@@ -218,14 +211,12 @@
     transform: scale(1.03);
 }
 
-/* ── Divider ── */
 .section-divider {
     border: none;
     border-top: 1px solid #ebebeb;
     margin: 44px 0;
 }
 
-/* ── Features section ── */
 .features-section {
     padding: 10px 0;
 }
@@ -267,7 +258,6 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
-/* Amenities Row */
 .flight-amenities-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -300,7 +290,6 @@
     margin: 0;
 }
 
-/* ── Features Gallery (flight photos grid) ── */
 .features-gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -320,7 +309,6 @@
     box-shadow: 0 8px 24px rgba(0,0,0,0.12);
 }
 
-/* ── Technical Info Grid ── */
 .additional-info-section h2 {
     font-size: 22px;
     font-weight: 700;
@@ -352,7 +340,6 @@
 }
 .status-active { color: #2e7d32; }
 
-/* ── Flight Schedules Timeline ── */
 .schedules-section h2 {
     font-size: 22px;
     font-weight: 700;
@@ -496,7 +483,6 @@
 }
 .plane-icon-rotated { transform: rotate(-90deg) !important; }
 
-/* ── Policies Cards ── */
 .policies-section-details h2 {
     font-size: 22px;
     font-weight: 700;
@@ -530,7 +516,6 @@
     margin: 0;
 }
 
-/* ── Responsive breakpoints ── */
 @media (max-width: 992px) {
     .flight-header { flex-direction: column; align-items: flex-start; gap: 20px; }
     .header-right { align-items: flex-start; width: 100%; }

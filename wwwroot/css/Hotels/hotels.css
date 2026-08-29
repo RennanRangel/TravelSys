@@ -1,8 +1,5 @@
-/* ==========================================================================
-   Hotels Page Stylesheet
-   ========================================================================== */
+﻿
 
-/* Font Definition */
 :root {
   --font-poppins: 'Poppins', sans-serif;
   --font-volkhov: 'Volkhov', serif;
@@ -21,7 +18,6 @@
   overflow-x: hidden;
 }
 
-/* Sections Base */
 .hotels-section {
   max-width: 1232px;
   margin: 0 auto;
@@ -37,7 +33,6 @@
   letter-spacing: -0.5px;
 }
 
-/* 1. Hero Section */
 .hotels-hero {
   position: relative;
   height: 820px;
@@ -84,7 +79,6 @@
   line-height: 1.15;
 }
 
-/* Search Bar Wrapper */
 .hotels-search-card {
   background: rgba(255, 255, 255, 0.40);
   backdrop-filter: blur(16px);
@@ -174,7 +168,6 @@
   opacity: 1 !important;
 }
 
-/* Custom Search Submit button */
 .hotels-btn-search {
   height: 64px;
   background-color: #112211;
@@ -205,7 +198,6 @@
   align-items: center;
 }
 
-/* 2. Top Categories */
 .hotels-categories-row {
   display: flex;
   justify-content: flex-start;
@@ -238,7 +230,6 @@
   color: var(--color-primary-orange);
 }
 
-/* 3. Top Vacation Destinations */
 .hotels-dest-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -291,7 +282,6 @@
   transform: scale(1.1);
 }
 
-/* 4. Offers */
 .hotels-offers-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -371,7 +361,6 @@
   object-fit: cover;
 }
 
-/* 5. Browse by property type */
 .hotels-property-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -405,7 +394,6 @@
   box-shadow: var(--shadow-hover);
 }
 
-/* 6. Travel Expert Banner */
 .hotels-expert-banner {
   border-radius: 20px;
   position: relative;
@@ -452,7 +440,6 @@
   line-height: 1.5;
 }
 
-/* 7. Community Section */
 .hotels-community-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -505,7 +492,6 @@
   margin-top: 60px;
 }
 
-/* Responsiveness */
 @media (max-width: 1024px) {
   .hotels-dest-grid,
   .hotels-property-grid,
@@ -540,7 +526,6 @@
   }
 }
 
-/* Header Overrides for Hotels and Flights pages */
 .hotels-page .header-jadoo .logo-jadoo,
 .flights-page .header-jadoo .logo-jadoo {
   color: #ffffff !important;
@@ -606,7 +591,6 @@
   color: #ffffff !important;
 }
 
-/* Destinations section spacing below hero */
 .hotels-destinations-section {
   padding-top: 140px !important;
 }

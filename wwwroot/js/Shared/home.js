@@ -1,8 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // ==========================================================================
-    // 1. Heart Button Like Toggle (Trip to Greece card)
-    // ==========================================================================
+﻿document.addEventListener('DOMContentLoaded', () => {
     const heartBtn = document.getElementById('greece-heart-btn');
     if (heartBtn) {
         heartBtn.addEventListener('click', () => {
@@ -11,34 +7,22 @@ document.addEventListener('DOMContentLoaded', () => {
             heartBtn.classList.toggle('liked');
         });
     }
-
-    // ==========================================================================
-    // 2. Play Demo Video Lightbox (Bootstrap Modal)
-    // ==========================================================================
     const btnPlayDemo = document.getElementById('btn-play-demo');
     const videoModalEl = document.getElementById('videoModal');
     const videoIframe = document.getElementById('videoIframe');
     
     if (btnPlayDemo && videoModalEl && videoIframe) {
         const videoUrl = 'https://www.youtube.com/embed/56E6WTh1StE?autoplay=1&rel=0';
-        
-        // Use Bootstrap modal instance
         const bsModal = new bootstrap.Modal(videoModalEl);
         
         btnPlayDemo.addEventListener('click', () => {
             videoIframe.src = videoUrl;
             bsModal.show();
         });
-        
-        // Stop playing when modal is closed
         videoModalEl.addEventListener('hidden.bs.modal', () => {
             videoIframe.src = '';
         });
     }
-
-    // ==========================================================================
-    // 3. Testimonial Stack Slider
-    // ==========================================================================
     const testimonialCards = document.querySelectorAll('.testimonial-card');
     const dots = document.querySelectorAll('.testimonial-dots .dot');
     const btnPrev = document.getElementById('testimonial-prev-btn');
@@ -49,8 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showTestimonial(index) {
         if (totalCards === 0) return;
-        
-        // Normalize index
         activeIndex = (index + totalCards) % totalCards;
         
         testimonialCards.forEach((card, i) => {
@@ -90,13 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
             showTestimonial(idx);
         });
     });
-
-    // Auto rotate testimonials every 7 seconds
     let testimonialInterval = setInterval(() => {
         showTestimonial(activeIndex + 1);
     }, 7000);
-
-    // Pause auto-rotation on mouse enter
     const sliderContainer = document.querySelector('.testimonials-right');
     if (sliderContainer) {
         sliderContainer.addEventListener('mouseenter', () => {
@@ -108,10 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 7000);
         });
     }
-
-    // ==========================================================================
-    // 4. Newsletter Subscribe Submit Handler
-    // ==========================================================================
     const subscribeForm = document.getElementById('subscribe-form');
     if (subscribeForm) {
         subscribeForm.addEventListener('submit', (e) => {

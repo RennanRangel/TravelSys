@@ -1,4 +1,4 @@
-const FavoritesManager = {
+﻿const FavoritesManager = {
     initButtons: function() {
         const favoriteBtns = document.querySelectorAll('.favorite-btn, .heart-btn');
         favoriteBtns.forEach(btn => {

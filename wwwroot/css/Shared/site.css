@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -25,7 +25,6 @@ body .navbar .site-nav-link:hover {
   z-index: 3;
 }
 
-/* 1. Define uma camada superior para o cabeçalho da aplicação */
 header,
 .navbar,
 .header-container {
@@ -33,14 +32,12 @@ header,
   z-index: 100;
 }
 
-/* 2. Garante que o menu suspenso do perfil fique sobre outros elementos */
 .user-dropdown-menu,
 .dropdown-menu {
   position: absolute;
   z-index: 110;
 }
 
-/* Defina a classe da caixa do menu para iniciar escondida e invisível */
 .user-dropdown-card,
 .user-profile-menu,
 .dropdown-menu {
@@ -53,7 +50,6 @@ header,
   z-index: 1000;
 }
 
-/* Exiba somente quando a classe "active" ou "show" estiver presente */
 .user-dropdown-card.active,
 .user-dropdown-card.show,
 .user-profile-menu.active,
@@ -63,28 +59,25 @@ header,
   visibility: visible;
 }
 
-/* Contêiner principal do cabeçalho */
 .header-container,
 .navbar,
 header nav {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Empurra os links para um lado e o perfil para o outro */
+  justify-content: space-between; 
   width: 100%;
-  padding: 0 20px; /* Adiciona um espaço nas bordas laterais */
+  padding: 0 20px; 
   box-sizing: border-box;
 }
 
-/* Se você tem uma div envolvendo apenas a parte do Usuário (Avatar + Email) */
 .user-profile,
 .user-info {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espaço entre a bolinha RE e o e-mail */
-  margin-left: auto; /* Força o alinhamento para a extrema direita */
+  gap: 10px; 
+  margin-left: auto; 
 }
 
-/* 3. Coloca o contêiner dos voos em uma camada abaixo do cabeçalho */
 .main-container {
   position: relative;
   z-index: 1;
@@ -137,9 +130,6 @@ body .navbar .btn-signup-nav {
   border-radius: 8px;
 }
 
-/* =============================================
-   User Dropdown Menu (ambos os headers)
-   ============================================= */
 .user-dropdown {
   position: relative;
   display: inline-flex;

@@ -1,7 +1,6 @@
-body{
+﻿body{
   overflow-x: hidden;
 }
-
 
 .hero {
     min-height: 800px;
@@ -31,7 +30,7 @@ body{
     max-width: 100%;
     width: 100%;
     margin: 0 auto;
-    padding: 0 150px; /* Increased padding to shift right */
+    padding: 0 150px; 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -41,8 +40,6 @@ body{
     justify-content: flex-end;
     padding-bottom: 220px;
 }
-
-
 
 .img-hero {
     width: 100%;
@@ -207,7 +204,6 @@ body{
     align-items: flex-end;
 }
 
-
 .section-header h2 {
     font-size: 32px;
     font-weight: 700;
@@ -222,7 +218,6 @@ body{
     max-width: 600px;
     margin: 0;
 }
-
 
 .btn-see-all {
     padding: 10px 24px;
@@ -240,23 +235,15 @@ body{
     background-color: #8DD3BB;
 }
 
-/* Travel Grid - Featured Layout */
 .travel-section {
     max-width: 100%;
     margin: 80px 0;
-    padding: 0 150px; /* Increased padding to shift right */
+    padding: 0 150px; 
 }
-
 
 .travel-section .section-header-text {
     padding-left: 0; 
 }
-
-
-
-
-
-/* Full width section */
 
 .map-section {
     width: 100%;
@@ -267,10 +254,8 @@ body{
 .map-section .section-header {
     max-width: 100%;
     margin: 0 auto 48px;
-    padding: 0 150px; /* Increased padding to shift right */
+    padding: 0 150px; 
 }
-
-
 
 .map-container {
     width: 100%;
@@ -354,7 +339,6 @@ body{
     opacity: 0.6;
 }
 
-/* Travel Grid - Featured Layout */
 .travel-featured-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -362,11 +346,6 @@ body{
     height: 500px;
     overflow: hidden;
 }
-
-
-
-
-
 
 .featured-card {
     background-color: #8DD3BB;
@@ -378,7 +357,6 @@ body{
     position: relative;
     height: 100%;
 }
-
 
 .featured-badge {
     position: absolute;
@@ -407,7 +385,6 @@ body{
     overflow: hidden;
 }
 
-
 .featured-info h3 {
     font-size: 32px;
     font-weight: 700;
@@ -416,7 +393,6 @@ body{
     max-width: 300px;
     line-height: 1.2;
 }
-
 
 .featured-info p {
     font-size: 13px;
@@ -429,7 +405,6 @@ body{
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-
 
 .btn-book-featured {
     width: 100%;
@@ -450,7 +425,6 @@ body{
     display: block;
 }
 
-
 .btn-book-featured:hover {
     background-color: #f8f8f8;
 }
@@ -463,7 +437,6 @@ body{
     height: 100%;
 }
 
-
 .secondary-grid img {
     width: 100%;
     height: 100%;
@@ -473,26 +446,20 @@ body{
     border-radius: 12px;
 }
 
-
-
 .travel-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Equal columns */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 40px; 
     margin-top: 32px;
-    width: 100%; /* Force grid to fill container */
+    width: 100%; 
 }
-
-
-
-
 
 .travel-card {
     height: 520px; 
-    width: 100%; /* Force exact width of the grid column */
+    width: 100%; 
     min-width: 0; 
     border-radius: 24px;
-    flex-shrink: 0; /* Never shrink */
+    flex-shrink: 0; 
     overflow: hidden;
     position: relative;
     background-size: cover;
@@ -503,7 +470,6 @@ body{
     justify-content: space-between;
 }
 
-/* Gigantic background title style */
 .bg-title {
     position: absolute;
     top: 30px;
@@ -519,12 +485,10 @@ body{
     letter-spacing: -2px;
     line-height: 1;
     z-index: 1;
-    overflow: hidden; /* Prevent text from pushing width */
+    overflow: hidden; 
     white-space: nowrap;
     text-overflow: clip;
 }
-
-
 
 .travel-card:hover {
     transform: translateY(-8px);
@@ -550,14 +514,13 @@ body{
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
     padding: 24px;
     display: flex;
-    flex-direction: row; /* Align text and button horizontally */
+    flex-direction: row; 
     justify-content: space-between;
     align-items: flex-end;
     width: 100%;
     position: relative;
     z-index: 2;
 }
-
 
 .card-content {
     display: flex;
@@ -584,7 +547,7 @@ body{
     opacity: 0.9;
     margin: 4px 0 0 0;
     color: #FFFFFF;
-    max-width: 200px; /* Prevent text from hitting button */
+    max-width: 200px; 
 }
 
 .btn-book {
@@ -592,7 +555,7 @@ body{
     background-color: rgba(255, 255, 255, 0.1);
     color: #FFFFFF;
     border: 1.5px solid #FFFFFF;
-    border-radius: 30px; /* Pill shape */
+    border-radius: 30px; 
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: 600;
@@ -607,17 +570,13 @@ body{
     color: #112211;
 }
 
-
-
 #global-destinations-section {
-    padding: 60px 150px; /* Standardized to 150px */
+    padding: 60px 150px; 
     margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
-
-
 
 #global-destinations-section .section-header {
     width: 100%;
@@ -632,11 +591,9 @@ body{
     margin-top: 24px;
 }
 
-
 .ticker-card {
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 .ticker-card .card-title {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -650,7 +607,6 @@ body{
     opacity: 1;
     font-weight: 500;
 }
-
 
 @media (max-width: 768px) {
     .ticker-card {

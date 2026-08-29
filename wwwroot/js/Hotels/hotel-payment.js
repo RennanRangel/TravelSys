@@ -1,8 +1,5 @@
-/**
- * Gerenciamento de Pagamento de Hotel (Simplificado e Eficiente)
- */
+﻿
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Cache de Elementos (querySelector para consistência)
     const DOM = {
         containerCheckout: document.querySelector('.checkout-pagamento'),
         listaCartoes: document.querySelector('.lista-cartoes'),
@@ -17,20 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!DOM.containerCheckout && !DOM.listaCartoes) return;
 
-    // --- FUNÇÕES DE LÓGICA ---
-
     const handleSelecaoPagamento = (elemento) => {
-        // Limpar estados anteriores
         DOM.containerCheckout.querySelectorAll('.checkout-pagamento__item').forEach(el => {
             el.classList.remove('checkout-pagamento__item--selecionado');
         });
-
-        // Ativar seleção atual
         elemento.classList.add('checkout-pagamento__item--selecionado');
         const radio = elemento.querySelector('input[type="radio"]');
         if (radio) radio.checked = true;
-
-        // Atualizar Preço (Parsing seguro)
         const valorRaw = elemento.dataset.amount;
         if (valorRaw && DOM.displayPreco) {
             const valor = parseFloat(valorRaw.replace(',', '.'));
@@ -65,8 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.add('btn-acao--loading');
         btn.disabled = true;
     };
-
-    // --- REGISTRO DE EVENTOS (Delegation) ---
 
     DOM.containerCheckout?.addEventListener('click', (e) => {
         const item = e.target.closest('.checkout-pagamento__item');

@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using ProjetoHotelAviao.Data;
 using ProjetoHotelAviao.Models;
@@ -14,21 +14,14 @@ string mySqlConnection = builder.Configuration.GetConnectionString("DefaultDatab
 builder.Services.AddDbContext<ApplicationDbContext>(opt => {
     opt.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection));
 });
-
-// Configure ASP.NET Core Identity with ApplicationUser
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
-    // Password settings
     options.Password.RequireDigit = false;
     options.Password.RequireLowercase = false;
     options.Password.RequireUppercase = false;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequiredLength = 6;
-    
-    // User settings
     options.User.RequireUniqueEmail = true;
-    
-    // SignIn settings
     options.SignIn.RequireConfirmedEmail = false;
 })
 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -52,14 +45,6 @@ builder.Services.AddSession(options =>
 var app = builder.Build();
 
 app.UseDeveloperExceptionPage();
-/*
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
-    app.UseHttpsRedirection();
-}
-*/
 
 app.UseStaticFiles();
 
@@ -73,8 +58,6 @@ app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-    // Initialize database and seed data
     using (var scope = app.Services.CreateScope())
     {
         var services = scope.ServiceProvider;

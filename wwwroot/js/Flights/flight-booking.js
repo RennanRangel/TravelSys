@@ -1,8 +1,5 @@
-/**
- * Gerenciamento de Reserva de Voo (Simplificado)
- */
+﻿
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Cache de Elementos
     const DOM = {
         loginForm: document.querySelector('.login-form'),
         socialBtns: document.querySelectorAll('.btn-social'),
@@ -11,12 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
         radios: document.querySelectorAll('input[name="paymentType"]')
     };
 
-    // --- FUNÇÕES DE LÓGICA ---
-
     window.selectPayment = (type) => {
         DOM.radios.forEach(r => { if (r.value === type) r.checked = true; });
-
-        // Atualizar estado visual
         const full = document.querySelector('#radio-full');
         const part = document.querySelector('#radio-part');
         if (full) full.classList.toggle('selected', type === 'full');

@@ -1,8 +1,5 @@
-/**
- * Gerenciamento de Pagamento de Voo (Simplificado e Eficiente)
- */
+﻿
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Cache de Elementos
     const DOM = {
         opcoesPagamento: document.querySelector('.checkout-pagamento'),
         listaCartoes: document.querySelector('.lista-cartoes'),
@@ -14,9 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         formFinal: document.querySelector('.form-pagamento-final'),
         btnFinalizar: document.querySelector('.btn-acao--primario')
     };
-
-
-    // --- FUNÇÕES DE LÓGICA ---
 
     const handleSelecaoPagamento = (elemento) => {
         DOM.opcoesPagamento.querySelectorAll('.checkout-pagamento__item').forEach(c => {
@@ -61,8 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.add('btn-acao--loading');
         btn.disabled = true;
     };
-
-    // --- REGISTRO DE EVENTOS (Delegation) ---
 
     DOM.opcoesPagamento?.addEventListener('click', (e) => {
         const item = e.target.closest('.checkout-pagamento__item');

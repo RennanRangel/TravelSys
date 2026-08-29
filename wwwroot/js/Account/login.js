@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     
     const DOM = {
         image: document.querySelector('.login-right img'),
@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let currentIndex = 0;
-
 
     const changeImage = (index) => {
         if (!DOM.image) return;
@@ -36,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
             changeImage(currentIndex);
         }, 5000);
     }
-
 
     if (DOM.togglePassword && DOM.passwordInput) {
         DOM.togglePassword.addEventListener('click', () => {

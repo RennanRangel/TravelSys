@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     
     const DOM = {
         tabBtns: document.querySelectorAll('.tab-btn'),
@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animatedElements: document.querySelectorAll('.destination-card, .review-card, .feature-card')
     };
 
-
     DOM.tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const type = btn.dataset.tab;
@@ -23,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     DOM.newsletterForm?.addEventListener('submit', (e) => {
         e.preventDefault();
         const email = DOM.newsletterForm.querySelector('input[type="email"]')?.value;
@@ -32,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
             DOM.newsletterForm.reset();
         }
     });
-
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -50,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-
     window.addEventListener('scroll', () => {
         if (!DOM.header) return;
         const isScrolled = window.pageYOffset > 100;
@@ -58,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         DOM.header.style.backdropFilter = isScrolled ? 'blur(10px)' : 'none';
         DOM.header.style.boxShadow = isScrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
     });
-
 
     DOM.featureCards.forEach(card => {
         card.querySelector('.btn-secondary')?.addEventListener('click', (e) => {

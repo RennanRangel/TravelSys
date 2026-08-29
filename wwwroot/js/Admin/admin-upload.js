@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     const magicInputs = document.querySelectorAll('.magic-paste-target');
 
     magicInputs.forEach(input => {

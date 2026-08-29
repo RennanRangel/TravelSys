@@ -1,16 +1,11 @@
-/* =============================================
-   Flights Listing Page — Airbnb Style
-   Reutiliza classes de hotel-listing para layout base
-   ============================================= */
+﻿
 
-/* Page wrapper */
 .listing-page {
     min-height: 100vh;
     background: #fff;
     font-family: 'Montserrat', sans-serif;
 }
 
-/* ── Category Tabs Bar ── */
 .category-tabs-bar {
     position: sticky;
     top: 72px;
@@ -51,7 +46,6 @@
 .cat-tab:hover { color: #222; border-bottom-color: #222; }
 .cat-tab.active { color: #222; border-bottom-color: #222; }
 
-/* ── Filter Pills ── */
 .filter-pills {
     display: flex;
     align-items: center;
@@ -113,7 +107,6 @@
 .toggle-switch input:checked + .toggle-slider { background: #222; }
 .toggle-switch input:checked + .toggle-slider::before { transform: translateX(18px); }
 
-/* ── Layout ── */
 .listing-layout {
     display: flex;
     max-width: 1200px;
@@ -123,7 +116,6 @@
     align-items: flex-start;
 }
 
-/* ── Sidebar ── */
 .listing-sidebar {
     width: 260px;
     flex-shrink: 0;
@@ -229,10 +221,8 @@
 }
 .btn-apply-filters:hover { background: #000; }
 
-/* ── Main Content ── */
 .listing-main { flex: 1; min-width: 0; }
 
-/* ── Search Bar (pill) ── */
 .listing-search-bar {
     background: #fff;
     border: 1px solid #ddd;
@@ -289,7 +279,6 @@
 }
 .btn-search-listing:hover { background: #6bb99e; }
 
-/* ── Results info ── */
 .results-info {
     margin-bottom: 20px;
     font-size: 15px;
@@ -297,14 +286,12 @@
 }
 .results-info span { font-weight: 700; }
 
-/* ── Flight Cards List ── */
 .flight-cards-list {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-/* ── Individual Flight Card ── */
 .flight-card {
     background: #fff;
     border: 1px solid #ebebeb;
@@ -319,7 +306,6 @@
     box-shadow: 0 4px 24px rgba(0,0,0,0.10);
 }
 
-/* Airline logo column */
 .flight-card-airline {
     display: flex;
     flex-direction: column;
@@ -357,7 +343,6 @@
     max-width: 80px;
 }
 
-/* Flight body (itinerary) */
 .flight-card-body {
     flex: 1;
     display: flex;
@@ -365,7 +350,6 @@
     gap: 12px;
 }
 
-/* One leg (departure or return) */
 .flight-leg {
     display: flex;
     align-items: center;
@@ -398,7 +382,6 @@
     margin-top: 2px;
 }
 
-/* Line between airports */
 .leg-line {
     flex: 1;
     display: flex;
@@ -439,7 +422,6 @@
     transform: rotate(-90deg);
 }
 
-/* Actions column (price + buttons) */
 .flight-card-actions {
     display: flex;
     flex-direction: column;
@@ -502,7 +484,6 @@
 }
 .btn-view-flight:hover { background: #6bb99e; color: #fff; }
 
-/* ── No Results ── */
 .no-results {
     text-align: center;
     padding: 80px 20px;
@@ -524,7 +505,6 @@
     font-size: 14px;
 }
 
-/* ── Pagination ── */
 .pagination-container {
     display: flex;
     justify-content: center;
@@ -551,7 +531,6 @@
 .page-btn.active { background: #222; color: #fff; border-color: #222; }
 .page-btn.disabled { opacity: 0.35; pointer-events: none; }
 
-/* ── Responsive ── */
 @media (max-width: 900px) {
     .listing-layout { padding: 24px 20px; }
     .category-tabs-bar { padding: 0 20px; }

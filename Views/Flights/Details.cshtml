@@ -1,4 +1,4 @@
-@model ProjetoHotelAviao.Models.Flight
+﻿@model ProjetoHotelAviao.Models.Flight
 @{
     ViewData["Title"] = "Detalhes do Voo - Travel";
     
@@ -46,14 +46,14 @@
 
 <div id="flight-details-page" class="main-container">
     
-    <!-- Breadcrumbs -->
+    
     <div class="breadcrumbs">
         <a href="/Flights">Voos</a> <i class="fas fa-chevron-right"></i>
         <a href="#">@Model.Airline</a> <i class="fas fa-chevron-right"></i>
         <span>@Model.From para @Model.To</span>
     </div>
 
-    <!-- Header info (Title and Price booking) -->
+    
     <div class="flight-header">
         <div class="header-left">
             <div class="title-row">
@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    <!-- Gallery Grid (Airbnb layout style) -->
+    
     <div class="flight-gallery">
         <div class="gallery-large">
             <img src="@mainImg" alt="Voo da @Model.Airline" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200';">
@@ -109,7 +109,7 @@
 
     <hr class="section-divider">
 
-    <!-- Cabin class selector and flight amenities section -->
+    
     <section class="features-section">
         <div class="features-header">
             <h2 id="features-title-display">Recursos do Voo em Classe Econômica</h2>
@@ -172,7 +172,7 @@
             </div>
         </div>
 
-        <!-- Features Gallery (flight photos) -->
+        
         <div class="features-gallery">
             <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=300" alt="Cockpit" loading="lazy">
             <img src="https://images.unsplash.com/photo-1540339832862-47455993ac53?w=300" alt="Cabine" loading="lazy">
@@ -187,7 +187,7 @@
 
     <hr class="section-divider">
 
-    <!-- Technical and general flight metadata info -->
+    
     <section class="additional-info-section">
         <h2>Informações Técnicas do Voo</h2>
         <div class="info-grid-details">
@@ -212,12 +212,12 @@
 
     <hr class="section-divider">
 
-    <!-- Flight timelines (Schedules) -->
+    
     <section class="schedules-section">
         <h2>Itinerário da Viagem</h2>
         
         <div class="flight-schedules">
-            <!-- Outbound flight -->
+            
             <div class="leg-schedule-card">
                 <div class="leg-header">
                     <h3><i class="fas fa-plane-departure"></i> Voo de Ida &bull; @DateTime.Now.ToString("ddd, dd MMM", new System.Globalization.CultureInfo("pt-BR"))</h3>
@@ -264,7 +264,7 @@
                 </div>
             </div>
 
-            <!-- Inbound flight (Return) -->
+            
             @if (multiplier == 2)
             {
                 <div class="leg-schedule-card">
@@ -318,7 +318,7 @@
 
     <hr class="section-divider">
 
-    <!-- Airlines policies section -->
+    
     <section class="policies-section-details">
         <h2>Políticas de Viagem da @Model.Airline</h2>
         <div class="policies-grid">

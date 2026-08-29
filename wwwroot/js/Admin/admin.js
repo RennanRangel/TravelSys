@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     
     let editingFlightId = null;
     let editingHotelId = null;
@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         hotelsList: document.querySelector('#hotelsList'),
         messageContainer: document.querySelector('#messageContainer')
     };
-
 
     const showMessage = (text, type = 'success') => {
         const id = `msg_${Date.now()}`;
@@ -42,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const generateId = (prefix) => `${prefix}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
-
     DOM.tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const target = btn.dataset.tab;
@@ -52,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(`#${target}`)?.classList.add('active');
         });
     });
-
 
     const setupPreview = (inputId, previewId) => {
         const input = document.querySelector(`#${inputId}`);
@@ -75,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 1; i <= 8; i++) setupPreview(`flightGallery${i}`, `previewGallery${i}`);
     setupPreview('hotelMainImage', 'previewHotelMainImage');
     for (let i = 1; i <= 4; i++) setupPreview(`hotelGallery${i}`, `previewHotelGallery${i}`);
-
 
     const getFlights = () => JSON.parse(localStorage.getItem('adminFlights')) || [];
 
@@ -161,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
         DOM.flightForm.reset();
         loadFlights();
     });
-
 
     const getHotels = () => JSON.parse(localStorage.getItem('adminHotels')) || [];
 

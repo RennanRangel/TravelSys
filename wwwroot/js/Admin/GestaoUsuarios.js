@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿document.addEventListener('DOMContentLoaded', function() {
     const editBtns = document.querySelectorAll('.edit-admin-btn');
     editBtns.forEach(btn => {
         btn.addEventListener('click', function() {

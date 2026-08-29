@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     
     const DOM = {
         paymentCards: document.querySelectorAll('.payment-card'),
@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
         formAddCartao: document.querySelector('.add-card-form'),
         formNewsletter: document.querySelector('.newsletter-form')
     };
-
 
     const removeSelection = (selector) => {
         document.querySelectorAll(selector).forEach(el => {
@@ -37,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (radio) radio.checked = true;
     };
 
-
     DOM.paymentCards.forEach(card => {
         card.addEventListener('click', () => {
             removeSelection('.payment-card');
@@ -51,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
             applySelection(card);
         });
     });
-
 
     DOM.btnNovoCartao?.addEventListener('click', () => DOM.modal?.classList.add('active'));
     DOM.fecharModal?.addEventListener('click', () => DOM.modal?.classList.remove('active'));
