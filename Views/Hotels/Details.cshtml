@@ -2,13 +2,12 @@
 @{
     ViewData["Title"] = Model.Name + " - Hotel Details";
     
-    // Improved Gallery Image Logic with Hotel specific fallbacks
     var hotelFallbacks = new[] {
-        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200", // Grand Lobby
-        "https://images.unsplash.com/photo-1571011272708-34907931336c?w=800", // Pool
-        "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800", // Bed
-        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800", // Bathroom
-        "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800"  // View
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200", 
+        "https://images.unsplash.com/photo-1571011272708-34907931336c?w=800",  
+        "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800", 
+        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800", 
+        "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800"  
     };
 
     var mainImg = Model.MainImage;
@@ -25,7 +24,7 @@
         } catch { }
     }
 
-    // Ensure we have 4 images for the small grid
+    
     for (int i = 0; i < 4; i++) {
         if (galleryImages.Count <= i || galleryImages[i].Contains("flight") || galleryImages[i].Contains("A380")) {
             if (galleryImages.Count <= i) galleryImages.Add(hotelFallbacks[i + 1]);
