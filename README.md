@@ -113,7 +113,7 @@ O administrador tem acesso ao painel de gestão onde pode:
 ### Usuário Comum
 Qualquer pessoa pode criar uma conta através da página de **Sign Up**.
 
-## 🔐 Funcionalidades por Perfil
+## Funcionalidades por Perfil
 
 ### Usuário Não Autenticado
 - Visualizar listagem de voos
